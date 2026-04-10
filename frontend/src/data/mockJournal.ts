@@ -67,11 +67,12 @@ function isPredominantlyArabic(text: string): boolean {
 }
 
 // Map extracted articles to the JournalPost interface
-export const mockJournalPosts: JournalPost[] = (articles as any[]).map((art, idx) => {
+export const mockJournalPosts: JournalPost[] = (articles as any[]).map((art) => {
   return {
     id: art.id,
     slug: art.slug,
-    type: (idx % 3 === 0 ? 'heritage' : idx % 3 === 1 ? 'lifestyle' : 'craftsmanship') as JournalType,
+    type: 'heritage' as JournalType,
+    categoryId: 'heritage',
     title: art.title,
     excerpt: art.excerpt,
     content: art.content,
