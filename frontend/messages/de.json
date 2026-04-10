@@ -1,0 +1,176 @@
+{
+  "Navigation": {
+    "home": "Startseite",
+    "heritage": "Heritage",
+    "arenas": "Arenen",
+    "gearup": "Gearup",
+    "gathering": "Gathering",
+    "portal": "Portal",
+    "mountUp": "Beitreten"
+  },
+  "MountUp": {
+    "title": "Arena-Portal",
+    "subtitle": "Beginnen Sie Ihre Reise in die Welt der Reitkunst. Wählen Sie Ihre Leidenschaft und Ihr Feld für ein unvergessliches Erlebnis.",
+    "steps": {
+      "arena": "Arena-Auswahl",
+      "profile": "Reiterprofil",
+      "passion": "Leidenschaft wählen",
+      "details": "Quest-Details",
+      "confirm": "Verifizierung"
+    },
+    "arenas": {
+      "label": "Gewünschte Arena auswählen",
+      "description": "Wählen Sie den Ort für Ihr Erlebnis, und wir zeigen Ihnen die dort verfügbaren Künste an."
+    },
+    "services": {
+      "archery": {
+        "title": "Bogenkünste",
+        "ground": "Bogenschießen (Boden)",
+        "mounted": "Bogenschießen (Beritten)",
+        "air_rifle": "Luftgewehrschießen (Boden)"
+      },
+      "combat": {
+        "title": "Klinge & Speer",
+        "sword_ground": "Schwertfechten (Boden)",
+        "sword_mounted": "Schwertfechten (Beritten)",
+        "spear_ground": "Speerkampf (Boden)",
+        "spear_mounted": "Speerkampf (Beritten)"
+      },
+      "heritage": {
+        "title": "Feld-Erbe",
+        "tent_pegging": "Tent Pegging",
+        "bedouin_games": "Beduinenspiele"
+      },
+      "journeys": {
+        "title": "Reiseerlebnisse",
+        "horse_tour": "Arabische Pferdetouren",
+        "chariot_tour": "Königliche Kutschenfahrten"
+      }
+    },
+    "fields": {
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Mobilnummer",
+      "experience": "Meisterschaftsstufe",
+      "count": "Erforderliche Anzahl (Pferde/Personen)",
+      "date": "Bevorzugtes Datum"
+    },
+    "actions": {
+      "next": "Nächster Schritt",
+      "back": "Zurück",
+      "submit": "Quest starten",
+      "processing": "Verarbeitung..."
+    },
+    "messages": {
+      "confirmation": "Vielen Dank für Ihr Interesse. Unsere Visiere werden Ihr maßgeschneidertes Erlebnis orchestrieren und Sie in Kürze kontaktieren.",
+      "payment_redirect": "Anfrage registriert. Weiterleitung, um Ihre Position in der Arena zu sichern."
+    }
+  },
+  "Footer": {
+    "about": "Unsere Vision endet nicht bei physischen Erlebnissen. ARKDAR strebt danach, alte Kunst zu bewahren und sie in einem luxuriösen digitalen Gefäß zu präsentieren.",
+    "links": "Erkunden",
+    "contact": "Kontaktiere uns",
+    "rights": "Alle Rechte vorbehalten für ARKDAR ©"
+  },
+  "Home": {
+    "title": "ARKDAR Pferdebogenschießen",
+    "subtitle": "Das hochmoderne technologische Gefäß für authentischen Erbinhalt.",
+    "explore": "Dienstleistungen erkunden",
+    "contact": "Kontaktiere uns",
+    "servicesTitle": "Unsere Dienstleistungen (Schweiz & Ägypten)",
+    "servicesSubtitle": "Live-Erlebnisse, die Mensch und Pferd verbinden und den Nervenkitzel des Bogenschießens wecken",
+    "service1Title": "Pferdebogenschießen",
+    "service1Desc": "Kurse und Erlebnisse, die die Bindung zwischen Reiter und Ross in unvergesslichen Abenteuern stärken.",
+    "service2Title": "Bogenbau-Workshops",
+    "service2Desc": "Erlernen Sie die Fähigkeiten der Vorfahren und fertigen Sie Ihren traditionellen Bogen von Grund auf mit natürlichen Werkzeugen.",
+    "service3Title": "Pferde- und Kutschentouren",
+    "service3Desc": "Genießen Sie Erkundungsausflüge mit unseren reinrassigen Pferden in der Natur der Schweiz und Ägyptens.",
+    "productsTitle": "ARKDAR Kollektion",
+    "productsSubtitle": "Handgefertigte Bogensportausrüstung mit hoher Handwerkskunst und technischer Präzision",
+    "product1": "Handgefertigter Traditioneller Bogen",
+    "product2": "Individuelle Bogensport-Pfeile",
+    "product3": "Reitsport-Lederaccessoires"
+  },
+  "Heritage": {
+    "heroTag": "Wiedererstandene Größe",
+    "title": "Die Seele von ARKDAR",
+    "subtitle": "Wo der Rhythmus des Mamlukenherzens auf die Präzision des digitalen Zeitalters trifft.",
+    "originTitle": "Der Ursprung der Tapferkeit",
+    "originP1": "ARKDAR wurde aus einer einzigen Vision geboren: sicherzustellen, dass das Können der berittenen Bogenschützen niemals vergessen wird. Durch das Studium alter Manuskripte und deren Kombination mit taktischem Training der Neuzeit haben wir einen Zugang zu einem verlorenen Archetyp geschaffen.",
+    "originP2": "Unser Erbe liegt nicht nur in der Vergangenheit; es ist ein lebendiger, atmender Puls, der jeden Pfeil leitet, den wir lösen.",
+    "quote": "Das Erbe ist die Wurzel; Leistung ist die Frucht."
+  },
+  "Arenas": {
+    "heroTag": "Das Feld der Ehre",
+    "title": "Arenen",
+    "subtitle": "Meistern Sie die Kunst von Ross und Bogen in unseren globalen Hubs.",
+    "masterclassTitle": "Elite-Bogenschießen Masterclass",
+    "masterclassDesc": "Treten Sie in die Fußstapfen der Mamluken. Unsere Masterclasses kombinieren traditionelles Pferdehandling mit hochpräzisem Bogenschießen.",
+    "bookSession": "Sitzung buchen",
+    "hubCairo": "Kairo Global Hub",
+    "safetyTitle": "Sicherheit & Präzision",
+    "safetyDesc": "Internationale Sicherheitsstandards in allen Umgebungen angewendet.",
+    "expansionTitle": "Globale Expansion",
+    "switzerland": "SCHWEIZ",
+    "spain": "SPANIEN",
+    "comingSoon": "Demnächst",
+    "toursTitle": "Kulturerbe- & Tourismustouren",
+    "toursDesc": "Entdecken Sie die Schönheit der Natur und die Tiefe des Erbes durch unsere Elite-Touren.",
+    "swissTours": "Interlaken (Schweiz): Malerische Ausritte oder traditionelle Kutschenfahrten.",
+    "egyptTours": "Ägypten (Nur auf Voranmeldung): Maßgeschneiderte Reisen. Bestimmen Sie Anzahl der Pferde, Ort und Dauer; wir übernehmen die Organisation.",
+    "bookTour": "Tour buchen",
+    "ourServices": "Unsere Masterclasses & Dienste"
+  },
+  "Gearup": {
+    "heroTag": "Handwerkliche Exzellenz",
+    "title": "Gearup",
+    "subtitle": "Artefakte von Kraft, Präzision und Schönheit.",
+    "product1Name": "Der Mamluken-Wächterbogen",
+    "product1Type": "Kompositbogen",
+    "product2Name": "Obsidian-Spitzen-Pfeile",
+    "product2Type": "12er-Set",
+    "product3Name": "Imperialer Lederköcher",
+    "product3Type": "Accessoire",
+    "certificate": "Echtheitszertifikat enthalten",
+    "experience": "Artefakt erleben"
+  },
+  "Gathering": {
+    "heroTag": "Herzschlag der Gemeinschaft",
+    "title": "Gathering",
+    "subtitle": "Bleiben Sie mit der globalen ARKDAR-Gemeinschaft verbunden.",
+    "event1Title": "Gizeh-Plateau Bogenschieß-Festival",
+    "event1Date": "15.-20. Mai 2026",
+    "event1Loc": "Gizeh, Ägypten",
+    "event1Type": "Großes Turnier",
+    "event2Title": "Die Gala der europäischen Exzellenz",
+    "event2Date": "10. Sept. 2026",
+    "event2Loc": "Genf, Schweiz",
+    "event2Type": "Ausstellung",
+    "restricted": "Eingeschränkter Zutritt",
+    "innerCircle": "Treten Sie dem inneren Kreis bei",
+    "innerCircleDesc": "Erhalten Sie private Einladungen zu nicht öffentlichen ARKDAR-Events.",
+    "subscribe": "Puls abonnieren"
+  },
+  "Portal": {
+    "title": "ARK-Portal",
+    "subtitle": "Kommandozentrale für die moderne Mamluken-Elite.",
+    "sidebarCore": "ARK-OS KERN",
+    "navOverview": "Taktische Übersicht",
+    "navMetrics": "Pferde-Metriken",
+    "navMembers": "Gildenmitglieder",
+    "navSettings": "Systemeinstellungen",
+    "navLab": "KI Arena-Labor",
+    "viewAsCoach": "Ver als Trainer",
+    "viewAsTrainee": "Ver als Schüler",
+    "coachDashboard": "Trainer-Verwaltungskonsole",
+    "labTitle": "KI Arena-Labor",
+    "labSubtitle": "Simulieren und optimieren Sie Ihre Leistung mit KI.",
+    "connectivity": "Konnektivität",
+    "online": "Globales Netzwerk Online",
+    "accuracy": "Bogenschieß-Genauigkeit",
+    "readiness": "Ross-Bereitschaft",
+    "activeSessions": "Aktive Sitzungen",
+    "syncing": "Synchronisierung der IoT-Knoten",
+    "uplink": "Warten auf Hochgeschwindigkeits-Uplink von der Gizeh-Trainingsanlage..."
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "heritage": "Heritage",
+    "arenas": "Arenas",
+    "gearup": "Gearup",
+    "gathering": "Gathering",
+    "portal": "Portal",
+    "mountUp": "Mount Up"
+  },
+  "MountUp": {
+    "title": "Arena Portal",
+    "subtitle": "Begin your journey in the world of equestrian arts. Choose your passion and field for an unforgettable experience.",
+    "steps": {
+      "arena": "Arena Selection",
+      "profile": "Rider Profile",
+      "passion": "Choose Passion",
+      "details": "Quest Details",
+      "confirm": "Verification"
+    },
+    "arenas": {
+      "label": "Select Desired Arena",
+      "description": "Choose the location for your experience, and we will display the available arts there."
+    },
+    "services": {
+      "archery": {
+        "title": "Archery Arts",
+        "ground": "Ground Archery",
+        "mounted": "Equestrian Archery",
+        "air_rifle": "Air Rifle Shooting (Ground)"
+      },
+      "combat": {
+        "title": "Blade & Spear",
+        "sword_ground": "Sword Fencing (Ground)",
+        "sword_mounted": "Sword Fencing (Mounted)",
+        "spear_ground": "Spear Jousting (Ground)",
+        "spear_mounted": "Spear Jousting (Mounted)"
+      },
+      "heritage": {
+        "title": "Field Heritage",
+        "tent_pegging": "Tent Pegging",
+        "bedouin_games": "Bedouin Games"
+      },
+      "journeys": {
+        "title": "Journey Experiences",
+        "horse_tour": "Arabian Horse Tours",
+        "chariot_tour": "Royal Chariot Tours"
+      }
+    },
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Mobile Number",
+      "experience": "Mastery Level",
+      "count": "Required Number (Horses/People)",
+      "date": "Preferred Date"
+    },
+    "actions": {
+      "next": "Next Step",
+      "back": "Bound Back",
+      "submit": "Initiate Quest",
+      "processing": "Processing..."
+    },
+    "messages": {
+      "confirmation": "Thank you for your interest. Our viziers will orchestrate your bespoke experience and contact you shortly.",
+      "payment_redirect": "Request registered. Redirecting to secure your position in the arena."
+    }
+  },
+  "Footer": {
+    "about": "Our vision doesn't stop at physical experiences. ARKDAR seeks to preserve ancient art and present it in a luxurious digital vessel.",
+    "links": "Explore",
+    "contact": "Contact Us",
+    "rights": "All rights reserved to ARKDAR ©"
+  },
+  "Home": {
+    "title": "ARKDAR Horseback Archery",
+    "subtitle": "The ultra-modern technological vessel for authentic heritage content.",
+    "explore": "Explore Services",
+    "contact": "Contact Us",
+    "servicesTitle": "Our Services (Switzerland & Egypt)",
+    "servicesSubtitle": "Live experiences connecting humans with horses, achieving the thrill of archery",
+    "service1Title": "Horseback Archery",
+    "service1Desc": "Courses and experiences enhancing the bond between rider and steed in unforgettable adventures.",
+    "service2Title": "Bow Making Workshops",
+    "service2Desc": "Learn ancestral skills and craft your traditional bow from scratch using natural tools.",
+    "service3Title": "Horse & Carriage Tours",
+    "service3Desc": "Enjoy exploratory trips with our purebred horses in the nature of Switzerland and Egypt.",
+    "productsTitle": "ARKDAR Collection",
+    "productsSubtitle": "Handcrafted archery equipment with high craftsmanship and engineering precision",
+    "product1": "Handmade Traditional Bow",
+    "product2": "Custom Archery Arrows",
+    "product3": "Equestrian Leather Accessories",
+    "exploreCollection": "Explore Collection",
+    "viewAllCollection": "View All Heritage Artifacts"
+  },
+  "Heritage": {
+    "heroTag": "Resurrecting Greatness",
+    "title": "The Soul of ARKDAR",
+    "subtitle": "Where the rhythm of the Mamluk heart meets the precision of the digital age.",
+    "originTitle": "The Origin of Valor",
+    "originP1": "ARKDAR was born from a singular vision: to ensure that the mastery of the horseback archer is never forgotten. By studying ancient manuscripts and combining them with tactical training of the modern era, we've created a gateway to a lost archetype.",
+    "originP2": "Our heritage is not just in the past; it is a living, breathing pulse that guides every arrow we loose and every digital node we connect.",
+    "quote": "Heritage is the root; Performance is the fruit.",
+    "navVision": "The Vision",
+    "navHistory": "The Lineage",
+    "navJournal": "Daily Pulse",
+    "philosophyTitle": "Philosophy of Mastery",
+    "philosophyP1": "At ARKDAR, we don't just enact history; we re-engineer it. We believe every arrow loosed is an act of connection between the past and the future, and technology is the vessel that preserves that sanctity.",
+    "philosophyP2": "Our philosophy is built on 'Hybrid Elite': merging the peak of digital luxury with the truest expression of human prowess. We are here to create a new benchmark for modern equestrianism.",
+    "shareTitle": "Share the Story",
+    "commentsTitle": "Council Chamber",
+    "relatedTitle": "Continue the Journey",
+    "sidebar_date": "Date",
+    "sidebar_author": "Author",
+    "sidebar_readTime": "Read Time",
+    "sidebar_toc": "Table of Contents",
+    "featuredTitle": "Heritage Spotlights",
+    "featuredSubtitle": "Exclusive selections highlighting the depth of heritage and future innovation.",
+    "placeholderComment": "Write your impression here...",
+    "postComment": "Post Comment",
+    "pillarsTitle": "Power in Three: ARKDAR Pillars",
+    "pillar1Title": "Sovereign Heritage",
+    "pillar1Desc": "Scientific resurrection of Mamluk archery mastery and historical equestrian manuscripts.",
+    "pillar2Title": "Collective Intelligence",
+    "pillar2Desc": "Integrating AI and tactical technology to optimize human performance and document creativity.",
+    "pillar3Title": "Elite Hybrid",
+    "pillar3Desc": "Delivering contemporary luxury and prowess in the world's most prestigious arenas.",
+    "foundersMessageTitle": "Founder's Message",
+    "foundersMessage": "ARKDAR was born from a deep passion for horses and a desire to preserve the dignity of the Arab knight in the digital age. Our goal is to make this heritage alive, accessible, and proud before the world.",
+    "missionTitle": "Our High Mission",
+    "missionDesc": "We don't just teach archery; we create knights with modern minds and heritage hearts.",
+    "ctaExploreStory": "Explore Full Story",
+    "ctaJoinJourney": "Join the Journey"
+  },
+  "Arenas": {
+    "heroTag": "The Field of Honor",
+    "title": "Arenas",
+    "subtitle": "Master the art of horse and bow in our global hubs.",
+    "masterclassTitle": "Elite Archery Masterclass",
+    "masterclassDesc": "Step into the footprints of the Mamluks. Our masterclasses combine traditional horse-handling with high-precision archery, supervised by world-class trainers.",
+    "bookSession": "Book Session",
+    "hubCairo": "Cairo Global Hub",
+    "safetyTitle": "Safety & Precision",
+    "safetyDesc": "International safety standards applied in all environments.",
+    "expansionTitle": "Global Expansion",
+    "switzerland": "SWITZERLAND",
+    "spain": "SPAIN",
+    "comingSoon": "Coming Soon",
+    "toursTitle": "Heritage & Tourism Tours",
+    "toursDesc": "Explore the beauty of nature and the depth of heritage through our elite-designed tours.",
+    "swissTours": "Interlaken (Switzerland): Scenic horse rides or traditional luxury horse-drawn carriage tours.",
+    "egyptTours": "Egypt (Pre-arrangement only): Tailored journeys. Define your horse count, location, and duration; we handle the elite orchestration.",
+    "bookTour": "Book My Tour",
+    "ourServices": "Our Masterclasses & Services"
+  },
+  "Gearup": {
+    "heroTag": "Rare Collectibles",
+    "title": "The Armory",
+    "subtitle": "A curated collection of heritage tools designed with extreme care and historical spirit.",
+    "product1Name": "The Mamluk Guardian Bow",
+    "product1Type": "Composite Bow",
+    "product2Name": "Obsidian Tip Arrows",
+    "product2Type": "Set of 12",
+    "product3Name": "Imperial Leather Quiver",
+    "product3Type": "Accessory",
+    "certificate": "Certificate of Authenticity Included",
+    "experience": "Explore Artifact",
+    "view_details": "Artifact Details"
+  },
+  "Gathering": {
+    "heroTag": "Community Heartbeat",
+    "title": "Gathering",
+    "subtitle": "Stay connected with the ARKDAR global community.",
+    "event1Title": "Giza Plateau Archery Festival",
+    "event1Date": "May 15-20, 2026",
+    "event1Loc": "Giza, Egypt",
+    "event1Type": "Grand Tournament",
+    "event2Title": "The European Excellence Gala",
+    "event2Date": "Sept 10, 2026",
+    "event2Loc": "Geneva, Switzerland",
+    "event2Type": "Exhibition",
+    "restricted": "Restricted Entry",
+    "innerCircle": "Join the Inner Circle",
+    "innerCircleDesc": "Receive private invitations to non-public ARKDAR events.",
+    "subscribe": "Subscribe to Pulse"
+  },
+  "Portal": {
+    "title": "ARK-Portal",
+    "subtitle": "Command center for the modern Mamluk elite.",
+    "sidebarCore": "ARK-OS CORE",
+    "navOverview": "Tactical Overview",
+    "navMetrics": "Horse Metrics",
+    "navMembers": "Guild Members",
+    "navSettings": "Settings",
+    "navLab": "AI Arena Lab",
+    "viewAsCoach": "Switch to Coach View",
+    "viewAsTrainee": "Switch to Trainee View",
+    "coachDashboard": "Coach Management Console",
+    "labTitle": "AI Arena Lab",
+    "labSubtitle": "Simulate and optimize your performance with AI-driven insights.",
+    "connectivity": "Connectivity",
+    "online": "Global Network Online",
+    "accuracy": "Archery Accuracy",
+    "readiness": "Steed Readiness",
+    "activeSessions": "Active Sessions",
+    "syncing": "Syncing Biometrics",
+    "uplink": "Waiting for high-speed uplink from Giza training facility..."
+  }
+}

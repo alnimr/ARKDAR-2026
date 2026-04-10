@@ -1,0 +1,176 @@
+{
+  "Navigation": {
+    "home": "Inicio",
+    "heritage": "Heritage",
+    "arenas": "Arenas",
+    "gearup": "Gearup",
+    "gathering": "Gathering",
+    "portal": "Portal",
+    "mountUp": "Unirse"
+  },
+  "MountUp": {
+    "title": "Portal de la Arena",
+    "subtitle": "Comienza tu viaje en el mundo de las artes ecuestres. Elige tu pasión y campo para una experiencia inolvidable.",
+    "steps": {
+      "arena": "Selección de Arena",
+      "profile": "Perfil del Jinete",
+      "passion": "Elegir Pasión",
+      "details": "Detalles de la Búsqueda",
+      "confirm": "Verificación"
+    },
+    "arenas": {
+      "label": "Seleccionar Arena Deseada",
+      "description": "Elige la ubicación para tu experiencia y mostraremos las artes disponibles allí."
+    },
+    "services": {
+      "archery": {
+        "title": "Artes de Arquería",
+        "ground": "Arquería de Tierra",
+        "mounted": "Arquería Ecuestre",
+        "air_rifle": "Tiro con Rifle de Aire (Tierra)"
+      },
+      "combat": {
+        "title": "Hoja y Lanza",
+        "sword_ground": "Esgrima de Espada (Tierra)",
+        "sword_mounted": "Esgrima de Espada (Montada)",
+        "spear_ground": "Justa de Lanza (Tierra)",
+        "spear_mounted": "Justa de Lanza (Montada)"
+      },
+      "heritage": {
+        "title": "Patrimonio del Campo",
+        "tent_pegging": "Clavado de Tiendas",
+        "bedouin_games": "Juegos Beduinos"
+      },
+      "journeys": {
+        "title": "Experiencias de Viaje",
+        "horse_tour": "Tours de Caballos Árabes",
+        "chariot_tour": "Tours de Carruajes Reales"
+      }
+    },
+    "fields": {
+      "name": "Nombre Completo",
+      "email": "Dirección de Correo",
+      "phone": "Número de Móvil",
+      "experience": "Nivel de Maestría",
+      "count": "Número Requerido (Caballos/Personas)",
+      "date": "Fecha Preferida"
+    },
+    "actions": {
+      "next": "Siguiente Paso",
+      "back": "Retroceder",
+      "submit": "Iniciar Búsqueda",
+      "processing": "Procesando..."
+    },
+    "messages": {
+      "confirmation": "Gracias por su interés. Nuestros visires orquestarán su experiencia a medida y se pondrán en contacto pronto.",
+      "payment_redirect": "Solicitud registrada. Redirigiendo para asegurar su posición en la arena."
+    }
+  },
+  "Footer": {
+    "about": "Nuestra visión no termina en experiencias físicas. ARKDAR busca preservar el arte antiguo, presentándolo en un recipiente digital de lujo.",
+    "links": "Explorar",
+    "contact": "Contáctenos",
+    "rights": "Todos los derechos reservados por ARKDAR ©"
+  },
+  "Home": {
+    "title": "Tiro con arco a caballo ARKDAR",
+    "subtitle": "El recipiente tecnológico de última generación para contenido de patrimonio auténtico.",
+    "explore": "Explorar servicios",
+    "contact": "Contáctenos",
+    "servicesTitle": "Nuestros servicios (Suiza y Egipto)",
+    "servicesSubtitle": "Experiencias en vivo que conectan al hombre y al caballo, despertando la emoción del tiro con arco",
+    "service1Title": "Tiro con arco a caballo",
+    "service1Desc": "Cursos y experiencias diseñadas para fortalecer el vínculo entre jinete y corcel en aventuras inolvidables.",
+    "service2Title": "Talleres de fabricación de arcos",
+    "service2Desc": "Aprenda las habilidades ancestrales y cree su arco tradicional desde cero con herramientas naturales.",
+    "service3Title": "Paseos en coche de caballos",
+    "service3Desc": "Disfrute de viajes exploratorios con nuestros caballos de pura raza en la naturaleza de Suiza y Egipto.",
+    "productsTitle": "Colección ARKDAR",
+    "productsSubtitle": "Equipo de tiro con arco artesanal con alta artesanía y precisión técnica",
+    "product1": "Arco tradicional artesanal",
+    "product2": "Flechas de tiro con arco personalizadas",
+    "product3": "Accesorios de cuero para equitación"
+  },
+  "Heritage": {
+    "heroTag": "Grandeza resurgida",
+    "title": "El Alma de ARKDAR",
+    "subtitle": "Donde el ritmo del corazón mameluco se encuentra con la precisión de la era digital.",
+    "originTitle": "El origen del valor",
+    "originP1": "ARKDAR nació de una sola visión: asegurar que la habilidad del arquero montado nunca sea olvidada. Al estudiar manuscritos antiguos y combinarlos con el entrenamiento táctico de la era moderna, hemos creado un portal a un arquetipo perdido.",
+    "originP2": "Nuestro legado no es solo el pasado; es un pulso vivo que guía cada flecha que lanzamos.",
+    "quote": "El patrimonio es la raíz; el rendimiento es el fruto."
+  },
+  "Arenas": {
+    "heroTag": "El Campo de Honor",
+    "title": "Arenas",
+    "subtitle": "Domina el arte del caballo y el arco en nuestros centros globales.",
+    "masterclassTitle": "Clase magistral de tiro con arco de élite",
+    "masterclassDesc": "Siga los pasos de los mamelucos. Nuestras clases magistrales combinan el manejo tradicional del caballo con el tiro con arco de alta precisión.",
+    "bookSession": "Reservar sesión",
+    "hubCairo": "Centro Global de El Cairo",
+    "safetyTitle": "Seguridad y precisión",
+    "safetyDesc": "Estándares internacionales de seguridad aplicados en todos los entornos.",
+    "expansionTitle": "Expansión Global",
+    "switzerland": "SUIZA",
+    "spain": "ESPAÑA",
+    "comingSoon": "Próximamente",
+    "toursTitle": "Tours de Patrimonio y Turismo",
+    "toursDesc": "Explore la belleza de la naturaleza y la profundidad del patrimonio a través de nuestros tours de élite.",
+    "swissTours": "Interlaken (Suiza): Paseos escénicos a caballo o recorridos tradicionales en carruajes de lujo.",
+    "egyptTours": "Egipto (Solo con cita previa): Viajes a medida. Defina número de caballos, ubicación y duración; nosotros nos encargamos de la organización.",
+    "bookTour": "Reservar Tour",
+    "ourServices": "Nuestras Clases Magistrales y Servicios"
+  },
+  "Gearup": {
+    "heroTag": "Excelencia artesanal",
+    "title": "Gearup",
+    "subtitle": "Artefactos de poder, precisión y belleza.",
+    "product1Name": "El arco guardián mameluco",
+    "product1Type": "Arco compuesto",
+    "product2Name": "Flechas con punta de obsidiana",
+    "product2Type": "Set de 12",
+    "product3Name": "Carcaj de cuero imperial",
+    "product3Type": "Accesorio",
+    "certificate": "Certificado de autenticidad incluido",
+    "experience": "Experimentar artefacto"
+  },
+  "Gathering": {
+    "heroTag": "Latido de la comunidad",
+    "title": "Gathering",
+    "subtitle": "Manténgase conectado con la comunidad global de ARKDAR.",
+    "event1Title": "Festival de tiro con arco del Gizeh-Plateau",
+    "event1Date": "15-20 de mayo de 2026",
+    "event1Loc": "Guiza, Egipto",
+    "event1Type": "Gran Torneo",
+    "event2Title": "La gala de la excelencia europea",
+    "event2Date": "10 de sep de 2026",
+    "event2Loc": "Ginebra, Suiza",
+    "event2Type": "Exhibición",
+    "restricted": "Entrada restringida",
+    "innerCircle": "Únete al círculo íntimo",
+    "innerCircleDesc": "Recibe invitaciones privadas a eventos no públicos de ARKDAR.",
+    "subscribe": "Suscribirse al Pulso"
+  },
+  "Portal": {
+    "title": "Portal ARK",
+    "subtitle": "Centro de mando para la elite mameluca moderna.",
+    "sidebarCore": "NÚCLEO ARK-OS",
+    "navOverview": "Vista táctica",
+    "navMetrics": "Métricas del caballo",
+    "navMembers": "Miembros del gremio",
+    "navSettings": "Ajustes del sistema",
+    "navLab": "Laboratorio IA",
+    "viewAsCoach": "Ver como Entrenador",
+    "viewAsTrainee": "Ver como Alumno",
+    "coachDashboard": "Panel de Control del Entrenador",
+    "labTitle": "Laboratorio de Arena IA",
+    "labSubtitle": "Optimiza tu rendimiento con inteligencia artificial.",
+    "connectivity": "Conectividad",
+    "online": "Red global en línea",
+    "accuracy": "Precisión de tiro con arco",
+    "readiness": "Preparación del corcel",
+    "activeSessions": "Sesiones activas",
+    "syncing": "Sincronizando nodos IoT",
+    "uplink": "Esperando enlace ascendente de alta velocidad de la instalación de entrenamiento de Guiza..."
+  }
+}

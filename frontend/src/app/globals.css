@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Inter:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-brand-primary: #A0061C;
+  --color-brand-secondary: #D90429;
+  --color-brand-light: #EDF2F4;
+
+  --color-surface-dark: #140D0E;
+  --color-surface-light: #FFFFFF;
+
+  --color-text-primary: #140D0E;
+  --color-text-muted: #64748B;
+  --color-text-on-brand: #FFFFFF;
+
+  --font-serif: "El Messiri", serif;
+  --font-sans: "Tajawal", system-ui, sans-serif;
+  --font-dashboard: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-light);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+  
+  /* Ensure prose text is visible on dark background */
+  .prose-invert {
+    --tw-prose-body: #F8FAFC !important; /* Slate 50 - Brighter */
+    --tw-prose-headings: #FFFFFF !important;
+    --tw-prose-lead: #CBD5E1 !important;
+    --tw-prose-links: #F87171 !important; /* Brighter red for links */
+    --tw-prose-bold: #FFFFFF !important;
+    --tw-prose-counters: #CBD5E1 !important;
+    --tw-prose-bullets: #D90429 !important;
+    --tw-prose-hr: #A0061C !important;
+    --tw-prose-quotes: #F8FAFC !important;
+    --tw-prose-quote-borders: #A0061C !important;
+    --tw-prose-captions: #94A3B8 !important;
+    --tw-prose-code: #FFFFFF !important;
+    --tw-prose-pre-code: #F8FAFC !important;
+    --tw-prose-pre-bg: #1A1A1A !important;
+    --tw-prose-th-borders: #A0061C !important;
+    --tw-prose-td-borders: #334155 !important;
+    color: #F8FAFC !important; /* Fallback direct color */
+  }
+
+  /* Specific fix for transparency issues */
+  .prose-invert p, .prose-invert span, .prose-invert li {
+    opacity: 1 !important;
+    color: #F8FAFC !important;
+  }
+}
+
+
+@layer utilities {
+
+  /* ── Glassmorphism Surfaces ── */
+  .glass {
+    background-color: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  }
+  .glass-dark {
+    background-color: rgba(20, 13, 14, 0.90);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  /* ── Brand Color Helpers ── */
+  .text-brand-primary   { color: var(--color-brand-primary); }
+  .text-brand-secondary { color: var(--color-brand-secondary); }
+  .bg-brand-primary     { background-color: var(--color-brand-primary); }
+  .bg-surface-dark      { background-color: var(--color-surface-dark); }
+
+  /* ══════════════════════════════
+    BRAND VISUAL IDENTITY SYSTEM (Elite)
+   ══════════════════════════════ */
+
+/* 1. The Waves (Background Texture) */
+.brand-pattern-waves {
+  background-image: url('/images/brand/brand-waves.png');
+  background-repeat: repeat;
+  background-size: 400px;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* 2. The Crimson Bow (Separator & Accent) */
+.brand-sep-bow {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #A0061C, transparent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-sep-bow::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: #A0061C;
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px #A0061C;
+}
+
+/* 3. The Horse Watermark (Soul/Presence) */
+.brand-horse-bg {
+  background-image: url('/images/brand/brand-horse.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+  /* ── Typography Fixes ── */
+  .text-balance {
+    /* text-wrap: balance fallback */
+    overflow-wrap: break-word;
+  }
+
+  /* ── Animations ── */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-brand-primary transition-all shadow-lg hover:translate-y-[-2px] hover:opacity-90;
+  }
+  
+  .btn-nav {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-brand-primary transition-all shadow-md hover:translate-y-[-1px] hover:opacity-90;
+  }
+}
