@@ -104,14 +104,24 @@ export default async function JournalArticlePage({
   const TypeIcon = typeIconMap[post.type as keyof typeof typeIconMap];
   const typeColor = typeColorMap[post.type as keyof typeof typeColorMap];
 
-  const t = await getTranslations('Heritage');
+  const t = await getTranslations('Heritage').catch(() => null);
   const isRtl = locale === 'ar';
   const BackIcon = isRtl ? ArrowRight : ArrowLeft;
 
-  const formattedDate = new Date(post.date).toLocaleDateString(
-    locale === 'ar' ? 'ar-SA' : locale === 'de' ? 'de-DE' : locale === 'es' ? 'es-ES' : 'en-US',
-    { year: 'numeric', month: 'long', day: 'numeric' }
-  );
+  // Safe date formatting
+  let formattedDate = '';
+  try {
+    const d = new Date(post.date);
+    if (!isNaN(d.getTime())) {
+      formattedDate = d.toLocaleDateString(
+        locale === 'ar' ? 'ar-SA' : locale === 'de' ? 'de-DE' : locale === 'es' ? 'es-ES' : 'en-US',
+        { year: 'numeric', month: 'long', day: 'numeric' }
+      );
+    }
+  } catch (e) {
+    formattedDate = post.date;
+  }
+
 
   const related = mockJournalPosts
     .filter((p) => p.id !== post.id && p.content)
@@ -163,10 +173,10 @@ export default async function JournalArticlePage({
               locale={locale} 
               isRtl={isRtl} 
               translations={{
-                date: t('sidebar_date'),
-                author: t('sidebar_author'),
-                readTime: t('sidebar_readTime'),
-                toc: t('sidebar_toc')
+                date: t?.('sidebar_date') || (locale === 'ar' ? 'التاريخ' : 'Date'),
+                author: t?.('sidebar_author') || (locale === 'ar' ? 'الكاتب' : 'Author'),
+                readTime: t?.('sidebar_readTime') || (locale === 'ar' ? 'وقت القراءة' : 'Read Time'),
+                toc: t?.('sidebar_toc') || (locale === 'ar' ? 'فهرس المقال' : 'Table of Contents')
               }}
             />
 
@@ -272,10 +282,10 @@ export default async function JournalArticlePage({
         <ArticleInteractions 
            locale={locale} 
            translations={{
-             shareTitle: t('shareTitle'),
-             commentsTitle: t('commentsTitle'),
-             placeholderComment: t('placeholderComment'),
-             postComment: t('postComment')
+             shareTitle: t?.('shareTitle') || (locale === 'ar' ? 'شارك القصة' : 'Share'),
+             commentsTitle: t?.('commentsTitle') || (locale === 'ar' ? 'مجلس النقاش' : 'Comments'),
+             placeholderComment: t?.('placeholderComment') || (locale === 'ar' ? 'اكتب انطباعك هنا...' : 'Write here...'),
+             postComment: t?.('postComment') || (locale === 'ar' ? 'إضافة تعليق' : 'Post')
            }}
         />
 
@@ -309,7 +319,7 @@ export default async function JournalArticlePage({
               {related.length > 0 && (
                 <section className="bg-surface-dark/40 backdrop-blur-sm p-8 rounded-[40px] border border-white/5">
                   <h2 className={`text-2xl font-serif font-bold text-white mb-10 ${isRtl ? 'text-right' : 'text-left'}`}>
-                    {t('relatedTitle')}
+                    {t?.('relatedTitle') || (locale === 'ar' ? 'قد يهمك أيضاً' : 'Related Posts')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {related.map((relPost) => {

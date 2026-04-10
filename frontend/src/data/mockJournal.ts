@@ -68,25 +68,32 @@ function isPredominantlyArabic(text: string): boolean {
 
 // Map extracted articles to the JournalPost interface
 export const mockJournalPosts: JournalPost[] = (articles as any[]).map((art) => {
+  // Robust date parsing
+  let formattedDate = '2024-01-01';
+  if (art.date && typeof art.date === 'string') {
+    formattedDate = art.date.split(' ')[0];
+  }
+
   return {
-    id: art.id,
-    slug: art.slug,
-    type: 'heritage' as JournalType,
+    id: art.id || `ark-${Math.random().toString(36).substr(2, 9)}`,
+    slug: art.slug || art.id || `article-${Math.random().toString(36).substr(2, 9)}`,
+    type: (art.type as JournalType) || 'article',
     categoryId: 'heritage',
-    title: art.title,
-    excerpt: art.excerpt,
-    content: art.content,
-    date: art.date.split(' ')[0], // Keep only date part
+    title: art.title || { ar: 'عنوان غير متوفر', en: 'Title Unavailable', de: 'Titel nicht verfügbar', es: 'Título no disponible' },
+    excerpt: art.excerpt || { ar: 'ملخص غير متوفر', en: 'Excerpt Unavailable', de: 'Auszug nicht verfügbar', es: 'Resumen no disponible' },
+    content: art.content || { ar: '', en: '', de: '', es: '' },
+    date: formattedDate,
     author: 'أركدار',
     language: 'ar',
-    status: art.status || 'published',
-    featured: art.id === 'u373770086_inatc_3101' || art.id === 'u373770086_inatc_3416', // Highlight Heritage & Archery
+    status: (art.status === 'published' || art.status === 'draft') ? art.status : 'published',
+    featured: art.id === 'u373770086_inatc_3101' || art.id === 'u373770086_inatc_3416',
     readingTime: {
       ar: '5 دقائق',
       en: '5 min read',
       de: '5 Min. Leszeit',
       es: '5 min de lectura'
     },
-    image: `https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&q=80&w=1200` // Placeholder for now
+    image: `https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&q=80&w=1200`
   };
 });
+
