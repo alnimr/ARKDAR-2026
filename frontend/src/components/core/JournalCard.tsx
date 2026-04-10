@@ -82,10 +82,40 @@ const typeConfig = {
     bg: 'bg-brand-primary/10',
     border: 'border-brand-primary/20',
   },
+  heritage: {
+    icon: FileText,
+    labelAr: 'تراث',
+    labelEn: 'Heritage',
+    labelDe: 'Erbe',
+    labelEs: 'Herencia',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/20',
+  },
+  craftsmanship: {
+    icon: Newspaper,
+    labelAr: 'حرفية',
+    labelEn: 'Craftsmanship',
+    labelDe: 'Handwerk',
+    labelEs: 'Artesanía',
+    color: 'text-brand-secondary',
+    bg: 'bg-brand-secondary/10',
+    border: 'border-brand-secondary/20',
+  },
+  lifestyle: {
+    icon: FileText,
+    labelAr: 'نمط حياة',
+    labelEn: 'Lifestyle',
+    labelDe: 'Lifestyle',
+    labelEs: 'Estilo de vida',
+    color: 'text-blue-400',
+    bg: 'bg-blue-400/10',
+    border: 'border-blue-400/20',
+  },
 };
 
 export default function JournalCard({ post, locale, index = 0 }: JournalCardProps) {
-  const config = typeConfig[post.type];
+  const config = typeConfig[post.type as keyof typeof typeConfig] || typeConfig.article;
   const TypeIcon = config.icon;
   
   const title = post.title[locale as keyof typeof post.title] || post.title.en;

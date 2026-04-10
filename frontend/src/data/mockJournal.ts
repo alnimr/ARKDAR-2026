@@ -80,6 +80,7 @@ export const mockJournalPosts: JournalPost[] = (articles as any[]).map((art) => 
     author: 'أركدار',
     language: 'ar',
     status: art.status || 'published',
+    featured: art.id === 'u373770086_inatc_3101' || art.id === 'u373770086_inatc_3416', // Highlight Heritage & Archery
     readingTime: {
       ar: '5 دقائق',
       en: '5 min read',
