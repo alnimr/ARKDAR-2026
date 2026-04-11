@@ -118,8 +118,8 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
   const config = typeConfig[post.type as keyof typeof typeConfig] || typeConfig.article;
   const TypeIcon = config.icon;
   
-  const title = post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || 'Untitled Article';
-  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.en || post.excerpt?.ar || '';
+  const title = post.title?.[locale as keyof typeof post.title] || post.title?.ar || "";
+  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
   const typeLabel = config[`label${locale === 'ar' ? 'Ar' : locale === 'de' ? 'De' : locale === 'es' ? 'Es' : 'En'}` as keyof typeof config] as string;
 
   const isExternalOnly = post.type === 'press' && post.externalLink && !post.content;

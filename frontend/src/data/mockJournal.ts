@@ -2,8 +2,8 @@ import { JournalPost, JournalType } from "../types/journal";
 
 import articlesRaw from "./articles.json";
 
-// Ultimate Safety Switch: Force serialization and convert any remaining undefined to null
-const articles = JSON.parse(JSON.stringify(articlesRaw, (k, v) => v === undefined ? null : v));
+// Ultimate Safety Switch: Force serialization and convert any remaining undefined to ""
+const articles = JSON.parse(JSON.stringify(articlesRaw, (k, v) => v === undefined ? "" : v));
 
 export const CATEGORIES = [
   { id: 'all', ar: 'الكل', en: 'All', de: 'Alle', es: 'Todos' },

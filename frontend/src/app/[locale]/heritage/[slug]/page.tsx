@@ -110,13 +110,9 @@ export default async function JournalArticlePage({
     notFound();
   }
   
-  const title = post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || 'Untitled Article';
-  // Ensure we have some content to display
-  const content = post.content?.[locale as keyof typeof post.content] || 
-                  post.content?.en || 
-                  post.content?.ar || 
-                  '';
-  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.en || post.excerpt?.ar || '';
+  const title = post.title?.[locale as keyof typeof post.title] || post.title?.ar || "";
+  const content = post.content?.[locale as keyof typeof post.content] || post.content?.ar || "";
+  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
 
   const TypeIcon = typeIconMap[post.type as keyof typeof typeIconMap];
   const typeColor = typeColorMap[post.type as keyof typeof typeColorMap];
