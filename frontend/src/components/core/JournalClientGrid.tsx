@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { JournalPost, CATEGORIES } from '@/data/mockJournal';
+import { JournalPost } from '@/types/journal';
+import { CATEGORIES } from '@/data/mockJournal';
 import JournalCard from './JournalCard';
 import { Search } from 'lucide-react';
 

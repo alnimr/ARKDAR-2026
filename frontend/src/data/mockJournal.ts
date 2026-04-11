@@ -1,5 +1,5 @@
 import { JournalPost, JournalType } from "../types/journal";
-export type { JournalPost, JournalType };
+
 import articles from "./articles.json";
 
 export const CATEGORIES = [

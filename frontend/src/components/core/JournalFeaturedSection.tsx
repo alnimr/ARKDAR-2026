@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { JournalPost } from '@/data/mockJournal';
+import { JournalPost, JournalType } from '@/types/journal';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import { JournalPost } from '@/data/mockJournal';
+import { JournalPost, JournalType } from '@/types/journal';
 import { 
   FileText, 
   Video, 
