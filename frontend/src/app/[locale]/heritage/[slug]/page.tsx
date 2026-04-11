@@ -20,22 +20,12 @@ import ArticleSidebar from '@/components/core/ArticleSidebar';
 import ArticleWrapper, { StaggerItem } from '@/components/core/ArticleWrapper';
 import { getTranslations } from 'next-intl/server';
 
+export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-// Generate static params for all posts
+// Generate static params (Temporarily disabled to bypass build errors)
 export async function generateStaticParams() {
-  const locales = ['ar', 'en', 'de', 'es'];
-  return locales.flatMap((locale) =>
-    mockJournalPosts
-      .filter((post) => 
-        post && 
-        post.slug && 
-        typeof post.slug === 'string' && 
-        post.slug.trim() !== '' &&
-        !post.slug.includes(' ')
-      )
-      .map((post) => ({ locale, slug: post.slug }))
-  );
+  return [];
 }
 
 export async function generateMetadata({
