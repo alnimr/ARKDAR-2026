@@ -66,8 +66,10 @@ function isPredominantlyArabic(text: string): boolean {
   return arabicChars.length / text.length > 0.3;
 }
 
-// Map extracted articles to the JournalPost interface
-export const mockJournalPosts: JournalPost[] = (articles as any[]).map((art) => {
+// Map extracted articles to the JournalPost interface with strict filtering
+export const mockJournalPosts: JournalPost[] = (articles as any[])
+  .filter((art) => art && art.id && art.slug && art.title && art.content)
+  .map((art) => {
   // Robust date parsing
   let formattedDate = '2024-01-01';
   if (art.date && typeof art.date === 'string') {

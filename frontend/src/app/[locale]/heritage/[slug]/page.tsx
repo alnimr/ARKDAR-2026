@@ -52,7 +52,7 @@ export async function generateMetadata({
     };
   }
 
-  const title = (post.title && post.title[locale as keyof typeof post.title]) || (post.title && post.title.en) || (post.title && post.title.ar) || 'ARKDAR Article';
+  const title = post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || 'Untitled Article';
   const description = (post.excerpt && post.excerpt[locale as keyof typeof post.excerpt]) || (post.excerpt && post.excerpt.en) || (post.excerpt && post.excerpt.ar) || '';
 
   const siteName = 'ARKDAR Platform';
@@ -110,7 +110,7 @@ export default async function JournalArticlePage({
     notFound();
   }
   
-  const title = post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || 'ARKDAR Heritage';
+  const title = post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || 'Untitled Article';
   // Ensure we have some content to display
   const content = post.content?.[locale as keyof typeof post.content] || 
                   post.content?.en || 
