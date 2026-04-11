@@ -25,6 +25,7 @@ export async function generateStaticParams() {
   const locales = ['ar', 'en', 'de', 'es'];
   return locales.flatMap((locale) =>
     mockJournalPosts
+      .filter((post) => post && post.slug && post.slug.trim() !== '')
       .map((post) => ({ locale, slug: post.slug }))
   );
 }
@@ -36,30 +37,39 @@ export async function generateMetadata({
 }) {
   const { locale, slug } = await params;
   const post = mockJournalPosts.find((p) => p.slug === slug);
-  if (!post) return { title: 'Not Found | ARKDAR' };
+  
+  if (!post) {
+    return { 
+      title: 'Heritage Article Not Found | ARKDAR',
+      description: 'The requested article could not be found.'
+    };
+  }
 
-  const title = post.title[locale as keyof typeof post.title] || post.title.en;
-  const description = post.excerpt[locale as keyof typeof post.excerpt] || post.excerpt.en;
+  const title = (post.title && post.title[locale as keyof typeof post.title]) || (post.title && post.title.en) || (post.title && post.title.ar) || 'ARKDAR Article';
+  const description = (post.excerpt && post.excerpt[locale as keyof typeof post.excerpt]) || (post.excerpt && post.excerpt.en) || (post.excerpt && post.excerpt.ar) || '';
+
+  const siteName = 'ARKDAR Platform';
 
   return {
-    title: `${title} | ARKDAR Journal`,
+    title: `${title} | ${siteName}`,
     description,
     openGraph: {
-      title: `${title} | ARKDAR Journal`,
+      title: `${title} | ${siteName}`,
       description,
-      images: [{ url: post.image }],
+      images: post.image ? [{ url: post.image }] : [],
       type: 'article',
       publishedTime: post.date,
       authors: [post.author || 'ARKDAR'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | ARKDAR Journal`,
+      title: `${title} | ${siteName}`,
       description,
-      images: [post.image],
+      images: post.image ? [post.image] : [],
     }
   };
 }
+
 
 const typeIconMap = {
   article: FileText,
