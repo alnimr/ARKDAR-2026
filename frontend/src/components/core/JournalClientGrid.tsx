@@ -26,8 +26,8 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
     
     // Search filter
     const query = searchQuery.toLowerCase();
-    const title = (post.title[locale as keyof typeof post.title] || post.title.en).toLowerCase();
-    const excerpt = (post.excerpt[locale as keyof typeof post.excerpt] || post.excerpt.en).toLowerCase();
+    const title = (post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || '').toLowerCase();
+    const excerpt = (post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.en || post.excerpt?.ar || '').toLowerCase();
     
     const matchSearch = query === '' || title.includes(query) || excerpt.includes(query);
 
