@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "arkdarplatform",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,8 +18,8 @@
     "jspdf": "^4.2.1",
     "localforage": "^1.10.0",
     "lucide-react": "^1.7.0",
-    "next": "15.1.4",
-    "next-intl": "^3.26.0",
+    "next": "^15.1.4",
+    "next-intl": "^3.26.5",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },

@@ -89,7 +89,9 @@
     "productsSubtitle": "Handgefertigte Bogensportausrüstung mit hoher Handwerkskunst und technischer Präzision",
     "product1": "Handgefertigter Traditioneller Bogen",
     "product2": "Individuelle Bogensport-Pfeile",
-    "product3": "Reitsport-Lederaccessoires"
+    "product3": "Reitsport-Lederaccessoires",
+    "exploreCollection": "Kollektion erkunden",
+    "viewAllCollection": "Alle Kollektionen ansehen"
   },
   "Heritage": {
     "heroTag": "Wiedererstandene Größe",
@@ -163,7 +165,8 @@
     "product3Name": "Imperialer Lederköcher",
     "product3Type": "Accessoire",
     "certificate": "Echtheitszertifikat enthalten",
-    "experience": "Artefakt erleben"
+    "experience": "Artefakt erleben",
+    "view_details": "Details ansehen"
   },
   "Gathering": {
     "heroTag": "Herzschlag der Gemeinschaft",

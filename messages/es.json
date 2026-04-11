@@ -89,7 +89,9 @@
     "productsSubtitle": "Equipo de tiro con arco artesanal con alta artesanía y precisión técnica",
     "product1": "Arco tradicional artesanal",
     "product2": "Flechas de tiro con arco personalizadas",
-    "product3": "Accesorios de cuero para equitación"
+    "product3": "Accesorios de cuero para equitación",
+    "exploreCollection": "Explorar colección",
+    "viewAllCollection": "Ver todas las colecciones"
   },
   "Heritage": {
     "heroTag": "Grandeza resurgida",
@@ -163,7 +165,8 @@
     "product3Name": "Carcaj de cuero imperial",
     "product3Type": "Accesorio",
     "certificate": "Certificado de autenticidad incluido",
-    "experience": "Experimentar artefacto"
+    "experience": "Experimentar artefacto",
+    "view_details": "Ver detalles"
   },
   "Gathering": {
     "heroTag": "Latido de la comunidad",
