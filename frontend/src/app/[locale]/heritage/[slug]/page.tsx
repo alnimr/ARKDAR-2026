@@ -23,9 +23,18 @@ import { getTranslations } from 'next-intl/server';
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-// Generate static params (Temporarily disabled to bypass build errors)
+// Generate static params
 export async function generateStaticParams() {
-  return [];
+  try {
+    return mockJournalPosts
+      .filter(post => post && post.slug)
+      .map((post) => ({
+        slug: String(post.slug),
+      }));
+  } catch (error) {
+    console.error('Error in generateStaticParams:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({
@@ -335,7 +344,7 @@ export default async function JournalArticlePage({
                       const relExcerpt = relPost.excerpt[locale as keyof typeof relPost.excerpt] || relPost.excerpt.en;
                       return (
                         <Link
-                          key={relPost.id}
+                          key={relPost.id || relPost.slug}
                           href={`/${locale}/heritage/${relPost.slug}`}
                           className="group flex flex-col sm:flex-row gap-5 p-5 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
                         >

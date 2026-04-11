@@ -80,7 +80,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
         ) : (
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post, i) => (
-              <JournalCard key={post.id} post={post} locale={locale} index={i} />
+              <JournalCard key={post.id || i} post={post} locale={locale} index={i} />
             ))}
           </div>
         )}

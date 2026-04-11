@@ -75,8 +75,8 @@ export const mockJournalPosts: JournalPost[] = (articles as any[]).map((art) => 
   }
 
   return {
-    id: art.id || `ark-${Math.random().toString(36).substr(2, 9)}`,
-    slug: art.slug || art.id || `article-${Math.random().toString(36).substr(2, 9)}`,
+    id: art.id || `arkdar_auto_${art.slug || 'missing'}`,
+    slug: art.slug || art.id || `article-${art.id || 'missing'}`,
     type: (art.type as JournalType) || 'article',
     categoryId: 'heritage',
     title: art.title || { ar: 'عنوان غير متوفر', en: 'Title Unavailable', de: 'Titel nicht verfügbar', es: 'Título no disponible' },
