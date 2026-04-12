@@ -24,6 +24,7 @@ export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
 // Generate static params
+/*
 export async function generateStaticParams() {
   try {
     return mockJournalPosts
@@ -36,6 +37,7 @@ export async function generateStaticParams() {
     return [];
   }
 }
+*/
 
 export async function generateMetadata({
   params,
