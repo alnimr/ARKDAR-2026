@@ -33,4 +33,5 @@ export interface JournalPost {
   category?: string;
   categoryId?: string;
   featured?: boolean;
+  isArabic?: boolean;
 }

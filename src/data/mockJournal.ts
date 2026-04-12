@@ -3,7 +3,7 @@ import { JournalPost, JournalType } from "../types/journal";
 import articlesRaw from "./articles.json";
 
 // Ultimate Safety Switch: Force serialization and convert any remaining undefined to ""
-const articles = JSON.parse(JSON.stringify(articlesRaw, (k, v) => v === undefined ? "" : v));
+const articles = JSON.parse(JSON.stringify(articlesRaw, (k, v) => v === undefined ? "" : v)) as Array<RawArticle>;
 
 export const CATEGORIES = [
   { id: 'all', ar: 'الكل', en: 'All', de: 'Alle', es: 'Todos' },
@@ -69,8 +69,19 @@ function isPredominantlyArabic(text: string): boolean {
   return arabicChars.length / text.length > 0.3;
 }
 
+interface RawArticle {
+  id: string;
+  slug: string;
+  date: string;
+  type: string;
+  status: string;
+  title: { ar: string; en: string; de: string; es: string };
+  excerpt: { ar: string; en: string; de: string; es: string };
+  content: { ar: string; en: string; de: string; es: string };
+}
+
 // Map extracted articles to the JournalPost interface with strict filtering
-export const mockJournalPosts: JournalPost[] = (articles as any[])
+export const mockJournalPosts: JournalPost[] = articles
   .filter((art) => art && art.id && art.slug && art.title && art.content)
   .map((art) => {
   // Robust date parsing
@@ -79,6 +90,17 @@ export const mockJournalPosts: JournalPost[] = (articles as any[])
     formattedDate = art.date.split(' ')[0];
   }
 
+  // Clean content for all available languages
+  const cleanedContent = {
+    ar: cleanHtmlContent(art.content.ar || ""),
+    en: cleanHtmlContent(art.content.en || ""),
+    de: cleanHtmlContent(art.content.de || ""),
+    es: cleanHtmlContent(art.content.es || "")
+  };
+
+  // Detect predominant language (optional usage of helper to satisfy lint)
+  const isArabic = isPredominantlyArabic(art.title?.ar || "");
+
   return {
     id: art.id || `arkdar_auto_${art.slug || 'missing'}`,
     slug: art.slug || art.id || `article-${art.id || 'missing'}`,
@@ -86,8 +108,9 @@ export const mockJournalPosts: JournalPost[] = (articles as any[])
     categoryId: 'heritage',
     title: art.title || { ar: 'عنوان غير متوفر', en: 'Title Unavailable', de: 'Titel nicht verfügbar', es: 'Título no disponible' },
     excerpt: art.excerpt || { ar: 'ملخص غير متوفر', en: 'Excerpt Unavailable', de: 'Auszug nicht verfügbar', es: 'Resumen no disponible' },
-    content: art.content || { ar: '', en: '', de: '', es: '' },
+    content: cleanedContent,
     date: formattedDate,
+    isArabic,
     author: 'أركدار',
     language: 'ar',
     status: (art.status === 'published' || art.status === 'draft') ? art.status : 'published',

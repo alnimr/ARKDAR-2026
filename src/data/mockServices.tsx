@@ -1,5 +1,13 @@
 import React from 'react';
 
+export interface ServiceReview {
+  id: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  date: string;
+}
+
 export interface ServiceData {
   id: string;
   title: string;
@@ -17,7 +25,7 @@ export interface ServiceData {
     image: string;
     bio: string;
   };
-  reviews: any[];
+  reviews: ServiceReview[];
   bookingType: 'fixed' | 'inquiry';
   price: number;
 }
