@@ -130,7 +130,16 @@
     "missionTitle": "Unsere erhabene Mission",
     "missionDesc": "Wir lehren nicht nur Bogenschießen; wir erschaffen Reiter mit modernem Verstand und traditionellen Herzen.",
     "ctaExploreStory": "Entdecken Sie die vollständige Geschichte",
-    "ctaJoinJourney": "Begleiten Sie uns auf der Reise"
+    "ctaJoinJourney": "Begleiten Sie uns auf der Reise",
+    "backToJournal": "Zurück zum Journal",
+    "typeArticle": "Artikel",
+    "typeVideo": "Video",
+    "typeDownload": "Herunterladen",
+    "typeNews": "Nachrichten",
+    "downloadCaption": "Beigefügte hochwertige Datei zum späteren Lesen",
+    "downloadButton": "Journal herunterladen (PDF)",
+    "relatedDocumentary": "Zugehöriger Dokumentarfilm",
+    "watchNow": "Jetzt ansehen"
   },
   "Arenas": {
     "heroTag": "Das Feld der Ehre",

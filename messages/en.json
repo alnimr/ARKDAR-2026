@@ -130,7 +130,16 @@
     "missionTitle": "Our High Mission",
     "missionDesc": "We don't just teach archery; we create knights with modern minds and heritage hearts.",
     "ctaExploreStory": "Explore Full Story",
-    "ctaJoinJourney": "Join the Journey"
+    "ctaJoinJourney": "Join the Journey",
+    "backToJournal": "Back to Journal",
+    "typeArticle": "Article",
+    "typeVideo": "Video",
+    "typeDownload": "Download",
+    "typeNews": "News",
+    "downloadCaption": "Attached high-quality file for later reading",
+    "downloadButton": "Download Journal (PDF)",
+    "relatedDocumentary": "Related documentary film",
+    "watchNow": "Watch Now"
   },
   "Arenas": {
     "heroTag": "The Field of Honor",

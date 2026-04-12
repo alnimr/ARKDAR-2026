@@ -176,7 +176,7 @@ export default async function JournalArticlePage({
             className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[3px] text-white/30 hover:text-brand-secondary transition-colors duration-300 mb-12 group"
           >
             <BackIcon size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
-            {locale === 'ar' ? 'العودة للديوان' : locale === 'de' ? 'Zurück' : locale === 'es' ? 'Volver' : 'Back to Journal'}
+            {t?.('backToJournal') || (locale === 'ar' ? 'العودة للديوان' : 'Back to Journal')}
           </Link>
 
           <div className={`flex flex-col lg:flex-row gap-4 ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
@@ -216,12 +216,12 @@ export default async function JournalArticlePage({
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 ${typeColor} text-[10px] font-bold uppercase tracking-widest`}>
                       <TypeIcon size={12} />
                       {post.type === 'article'
-                        ? (locale === 'ar' ? 'مقالة' : 'Article')
+                        ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
                         : post.type === 'media' || post.type === 'video'
-                        ? (locale === 'ar' ? 'فيديو' : 'Video')
+                        ? (t?.('typeVideo') || (locale === 'ar' ? 'فيديو' : 'Video'))
                         : post.type === 'download'
-                        ? (locale === 'ar' ? 'تحميل' : 'Download')
-                        : (locale === 'ar' ? 'أخبار' : 'News')}
+                        ? (t?.('typeDownload') || (locale === 'ar' ? 'تحميل' : 'Download'))
+                        : (t?.('typeNews') || (locale === 'ar' ? 'أخبار' : 'News'))}
                     </span>
                   </div>
 
@@ -278,7 +278,7 @@ export default async function JournalArticlePage({
         {post.downloadUrl && (
           <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-brand-primary/10 to-white/5 border border-white/10 shadow-xl">
             <p className="text-white/60 text-sm mb-4">
-              {locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Attached high-quality file for later reading'}
+              {t?.('downloadCaption') || (locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Attached high-quality file for later reading')}
             </p>
             <a
               href={post.downloadUrl}
@@ -286,7 +286,7 @@ export default async function JournalArticlePage({
               className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-brand-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-brand-secondary hover:shadow-[0_0_20px_rgba(160,6,28,0.4)] transition-all duration-300"
             >
               <Download size={16} />
-              {locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Journal (PDF)'}
+              {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Journal (PDF)')}
             </a>
           </div>
         )}
@@ -311,7 +311,7 @@ export default async function JournalArticlePage({
                 <Video size={32} className="text-white" />
               </div>
               <p className="text-white/50 text-sm mb-4">
-                {locale === 'ar' ? 'فيلم وثائقي مرتبط' : 'Related documentary film'}
+                {t?.('relatedDocumentary') || (locale === 'ar' ? 'فيلم وثائقي مرتبط' : 'Related documentary film')}
               </p>
               <a
                 href={post.mediaUrl}
@@ -319,7 +319,7 @@ export default async function JournalArticlePage({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-brand-secondary text-sm font-bold uppercase tracking-widest hover:text-white transition-colors"
               >
-                {locale === 'ar' ? 'مشاهدة الآن عبر الموقع' : 'Watch Now'}
+                {t?.('watchNow') || (locale === 'ar' ? 'مشاهدة الآن عبر الموقع' : 'Watch Now')}
                 <ExternalLink size={14} />
               </a>
             </div>

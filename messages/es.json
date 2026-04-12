@@ -130,7 +130,16 @@
     "missionTitle": "Nuestra Misión Sublime",
     "missionDesc": "No solo enseñamos arquería; creamos jinetes con mentes modernas y corazones tradicionales.",
     "ctaExploreStory": "Descubre la historia completa",
-    "ctaJoinJourney": "Únete al viaje"
+    "ctaJoinJourney": "Únete al viaje",
+    "backToJournal": "Volver al Diario",
+    "typeArticle": "Artículo",
+    "typeVideo": "Video",
+    "typeDownload": "Descargar",
+    "typeNews": "Noticias",
+    "downloadCaption": "Archivo de alta calidad adjunto para lectura posterior",
+    "downloadButton": "Descargar Revista (PDF)",
+    "relatedDocumentary": "Película documental relacionada",
+    "watchNow": "Ver ahora"
   },
   "Arenas": {
     "heroTag": "El Campo de Honor",

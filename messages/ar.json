@@ -130,7 +130,16 @@
     "missionTitle": "مهمتنا السامية",
     "missionDesc": "نحن لا نعلم الرماية فقط؛ نحن نصنع فرساناً بعقول حديثة وقلوب تراثية.",
     "ctaExploreStory": "اكتشف القصة الكاملة",
-    "ctaJoinJourney": "انضم للرحلة"
+    "ctaJoinJourney": "انضم للرحلة",
+    "backToJournal": "العودة للديوان",
+    "typeArticle": "مقالة",
+    "typeVideo": "فيديو",
+    "typeDownload": "تحميل",
+    "typeNews": "أخبار",
+    "downloadCaption": "مرفق ملف للقراءة لاحقاً بجودة عالية",
+    "downloadButton": "تحميل المجلة (PDF)",
+    "relatedDocumentary": "فيلم وثائقي مرتبط",
+    "watchNow": "مشاهدة الآن عبر الموقع"
   },
   "Arenas": {
     "heroTag": "ميدان الشرف",
