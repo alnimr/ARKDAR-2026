@@ -20,7 +20,8 @@ const eslintConfig = [
       "public/**",
       "**/*.json",
       "**/*.md",
-      "**/scratch/**"
+      "**/scratch/**",
+      "**/scripts/**"
     ],
   },
   ...compat.extends("next/core-web-vitals", "next/typescript"),

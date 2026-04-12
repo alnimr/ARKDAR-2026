@@ -108,7 +108,7 @@ export default async function HomePage({
             </div>
             
             <div className="flex flex-col justify-center gap-6">
-              {[t('product2'), t('product3')].map((p, i) => (
+              {[t('product2'), t('product3')].map((p) => (
                 <div key={p} className="glass-dark p-6 rounded-xl flex justify-between items-center text-white border border-white/5 hover:border-brand-primary/20 transition-all cursor-pointer group">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center">

@@ -131,7 +131,7 @@ export default async function JournalArticlePage({
         { year: 'numeric', month: 'long', day: 'numeric' }
       );
     }
-  } catch (e) {
+  } catch {
     formattedDate = post.date;
   }
 

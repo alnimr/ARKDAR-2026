@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Calendar, User, Clock, Hash } from 'lucide-react';
+import { Calendar, User, Clock } from 'lucide-react';
+import { JournalPost } from '@/types/journal';
 
 interface ArticleSidebarProps {
-  post: any;
+  post: JournalPost;
   locale: string;
   isRtl: boolean;
   translations: {
@@ -63,7 +64,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
     { year: 'numeric', month: 'long', day: 'numeric' }
   );
 
-  const readTime = Math.ceil((post.content?.[locale] || post.content?.en || '').split(' ').length / 200) || 5;
+  const readTime = Math.ceil((post.content[locale as keyof typeof post.content] || post.content.en || '').split(' ').length / 200) || 5;
 
   return (
     <aside className={`hidden lg:block w-64 flex-shrink-0 sticky top-32 h-fit ${isRtl ? 'ml-12' : 'mr-12'}`}>
