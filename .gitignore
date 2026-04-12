@@ -26,7 +26,28 @@ yarn-error.log*
 .env*.local
 
 # vercel
+# vercel
 .vercel
+
+# ARKDAR Extraction & Temporary Files
+*.sql
+*.sql.gz
+raw_heritage_recovery.json
+all_discovered_articles.json
+articles_backup.txt
+db_headers_audit.txt
+discovered_titles.txt
+extracted_articles.json
+extracted_v12.json
+final_mined_articles.json
+output_sample.txt
+recovered_preview.json
+refined_articles.json
+smart_audit_v2.json
+source_git_articles.json
+wp_audit.json
+*.log
+backup/
 
 # typescript
 *.tsbuildinfo
