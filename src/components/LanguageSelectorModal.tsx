@@ -87,7 +87,7 @@ export default function LanguageSelectorModal() {
               {t('title')}
             </h2>
             
-            <p className="text-[#7C7C7C] mb-8 text-lg font-sans max-w-md mx-auto">
+            <p className="text-[#EDF2F4]/60 mb-8 text-lg font-sans font-medium max-w-md mx-auto">
               {t('subtitle')}
             </p>
 
@@ -100,7 +100,7 @@ export default function LanguageSelectorModal() {
                   className={`flex items-center gap-3 p-4 rounded-xl border transition-all duration-300 ${
                     selectedLocale === lang.code 
                     ? 'bg-brand-primary border-brand-primary text-white shadow-[0_0_15px_rgba(132,5,5,0.4)]' 
-                    : 'bg-[#1A1A1A] border-white/10 text-[#7C7C7C] hover:border-brand-primary/50 hover:text-white'
+                    : 'bg-[#1A1A1A] border-white/10 text-[#EDF2F4]/40 hover:border-brand-primary/50 hover:text-white font-medium'
                   }`}
                 >
                   <span className="text-xl">{lang.flag}</span>
@@ -121,7 +121,7 @@ export default function LanguageSelectorModal() {
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
 
-            <div className="mt-6 flex items-center justify-center gap-2 text-[#7C7C7C] text-xs">
+            <div className="mt-6 flex items-center justify-center gap-2 text-[#EDF2F4]/30 text-[10px] font-bold uppercase tracking-widest">
               <ShieldCheck className="w-4 h-4" />
               <span>ARKDAR Digital Sovereignty Protected</span>
             </div>

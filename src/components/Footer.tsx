@@ -7,7 +7,7 @@ export default async function Footer() {
   const navT = await getTranslations('Navigation');
 
   return (
-    <footer className="mt-24 relative z-20 bg-[#140D0E]">
+    <footer className="mt-24 relative z-20 bg-[#050505] border-t border-white/5">
 
       {/* ── Top Brand Accent Line ── */}
       <div className="h-1 w-full gradient-brand-bar" />
@@ -27,7 +27,7 @@ export default async function Footer() {
               />
               <h2 className="text-2xl font-serif font-bold tracking-wider text-white">ARKDAR</h2>
             </div>
-            <p className="text-sm leading-relaxed max-w-sm text-footer-muted">
+            <p className="text-sm leading-relaxed max-w-sm text-[#EDF2F4]/60 font-medium">
               {t('about')}
             </p>
 
@@ -37,7 +37,7 @@ export default async function Footer() {
                 <Link
                   key={s}
                   href="/"
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold uppercase transition-all duration-200 hover:opacity-80 bg-footer-icon text-footer-icon"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-[10px] font-bold uppercase transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(132,5,5,0.4)] bg-gradient-to-br from-[#911010] to-[#660000] text-white"
                 >
                   {s}
                 </Link>
@@ -47,36 +47,36 @@ export default async function Footer() {
 
           {/* ── Quick Links ── */}
           <div className="md:col-span-3">
-            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-white/40">
+            <h3 className="text-[10px] font-bold uppercase tracking-[3px] mb-6 text-brand-primary">
               {t('links')}
             </h3>
-            <ul className="space-y-3 text-sm">
-              <li><Link href="/" className="text-footer-link transition-colors hover:text-white">{navT('home')}</Link></li>
-              <li><Link href="/heritage" className="text-footer-link transition-colors hover:text-white">{navT('heritage')}</Link></li>
-              <li><Link href="/arenas" className="text-footer-link transition-colors hover:text-white">{navT('arenas')}</Link></li>
-              <li><Link href="/gearup" className="text-footer-link transition-colors hover:text-white">{navT('gearup')}</Link></li>
-              <li><Link href="/gathering" className="text-footer-link transition-colors hover:text-white">{navT('gathering')}</Link></li>
+            <ul className="space-y-3 text-sm font-medium">
+              <li><Link href="/" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('home')}</Link></li>
+              <li><Link href="/heritage" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('heritage')}</Link></li>
+              <li><Link href="/arenas" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('arenas')}</Link></li>
+              <li><Link href="/gearup" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('gearup')}</Link></li>
+              <li><Link href="/gathering" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('gathering')}</Link></li>
             </ul>
           </div>
 
           {/* ── Contact Info ── */}
           <div className="md:col-span-4">
-            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-white/40">
+            <h3 className="text-[10px] font-bold uppercase tracking-[3px] mb-6 text-brand-primary">
               {t('contact')}
             </h3>
-            <ul className="space-y-3 text-sm text-footer-link">
-              <li className="flex items-start gap-2">
+            <ul className="space-y-3 text-sm font-medium text-[#EDF2F4]/60">
+              <li className="flex items-start gap-2 hover:text-[#EDF2F4] transition-colors cursor-default">
                 <span className="mt-0.5">🇨🇭</span> Switzerland — Geneva Region
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 hover:text-[#EDF2F4] transition-colors cursor-default">
                 <span className="mt-0.5">🇪🇬</span> Egypt — Cairo
               </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 hover:text-[#EDF2F4] transition-colors cursor-default">
                 <span className="mt-0.5">🇪🇸</span> Spain
               </li>
               <li className="pt-3">
-                <a href="mailto:info@arkdar.com" className="text-brand-secondary text-sm font-medium hover:underline transition-colors">
-                  ✉ info@arkdar.com
+                <a href="mailto:info@arkdar.com" className="text-brand-secondary text-sm font-bold hover:text-brand-primary transition-all duration-300 flex items-center gap-2">
+                  <span className="text-brand-primary">✉</span> info@arkdar.com
                 </a>
               </li>
             </ul>
@@ -84,11 +84,11 @@ export default async function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs border-t border-footer-subtle text-footer-subtle">
+        <div className="mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-medium border-t border-white/5 text-[#EDF2F4]/40">
           <p>{t('rights')}</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-brand-primary transition-colors uppercase tracking-widest">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-brand-primary transition-colors uppercase tracking-widest">Terms of Service</Link>
           </div>
         </div>
       </div>

@@ -163,7 +163,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
           className="object-cover transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
         
         {/* Type Badge */}
         <div className={`absolute top-4 ${locale === 'ar' ? 'right-4' : 'left-4'} flex items-center gap-1.5 px-3 py-1.5 rounded-xl border ${config.bg} ${config.border} backdrop-blur-sm`}>
@@ -186,16 +186,16 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       {/* Content */}
       <div className="flex flex-col flex-grow p-7">
         {/* Meta */}
-        <div className={`flex items-center gap-4 mb-4 text-white/30 text-[11px] font-medium ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
-          <span className="flex items-center gap-1.5">
-            <Calendar size={11} />
+        <div className={`flex items-center gap-4 mb-4 text-[#EDF2F4]/40 text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+          <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
+            <Calendar size={11} className="text-brand-primary/60" />
             {formattedDate}
           </span>
           {post.author && (
             <>
               <span className="w-1 h-1 rounded-full bg-white/20" />
-              <span className="flex items-center gap-1.5">
-                <User size={11} />
+              <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
+                <User size={11} className="text-brand-primary/60" />
                 {post.author}
               </span>
             </>
@@ -208,7 +208,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-sm text-white/50 leading-relaxed flex-grow line-clamp-3 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <p className={`text-sm text-[#EDF2F4]/60 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-sans' : 'text-left font-sans'}`}>
           {excerpt}
         </p>
 
@@ -217,14 +217,14 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
 
         {/* CTA */}
         <div
-          className={`flex items-center gap-2 text-[11px] font-bold uppercase tracking-[2px] text-white/40 group-hover:text-brand-secondary transition-colors duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
+          className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2px] text-[#EDF2F4]/40 group-hover:text-brand-secondary transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
             ? (locale === 'ar' ? 'تحميل' : 'Download')
             : post.type === 'press' && isExternalOnly
               ? (locale === 'ar' ? 'قراءة الخبر' : 'Read Article')
               : (locale === 'ar' ? 'اكتشف أكثر' : 'Read More')}
-          {isExternalOnly ? <ExternalLink size={13} /> : <ArrowUpRight size={13} />}
+          {isExternalOnly ? <ExternalLink size={13} strokeWidth={2.5} /> : <ArrowUpRight size={13} strokeWidth={2.5} />}
         </div>
       </div>
     </motion.article>
