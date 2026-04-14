@@ -7,7 +7,7 @@ export default async function Footer() {
   const navT = await getTranslations('Navigation');
 
   return (
-    <footer className="mt-24 relative z-20 bg-[#050505] border-t border-white/5">
+    <footer className="mt-24 relative z-20 glass border-t border-white/5">
 
       {/* ── Top Brand Accent Line ── */}
       <div className="h-1 w-full gradient-brand-bar" />
@@ -27,7 +27,7 @@ export default async function Footer() {
               />
               <h2 className="text-2xl font-serif font-bold tracking-wider text-white">ARKDAR</h2>
             </div>
-            <p className="text-sm leading-relaxed max-w-sm text-[#EDF2F4]/60 font-medium">
+            <p className="text-sm leading-relaxed max-w-sm text-[#EDF2F4]/80 font-medium">
               {t('about')}
             </p>
 
@@ -51,11 +51,11 @@ export default async function Footer() {
               {t('links')}
             </h3>
             <ul className="space-y-3 text-sm font-medium">
-              <li><Link href="/" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('home')}</Link></li>
-              <li><Link href="/heritage" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('heritage')}</Link></li>
-              <li><Link href="/arenas" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('arenas')}</Link></li>
-              <li><Link href="/gearup" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('gearup')}</Link></li>
-              <li><Link href="/gathering" className="text-[#EDF2F4]/80 transition-all duration-300 hover:text-[#840505]">{navT('gathering')}</Link></li>
+              <li><Link href="/" className="text-[#EDF2F4] transition-all duration-300 hover:text-[#840505]">{navT('home')}</Link></li>
+              <li><Link href="/heritage" className="text-[#EDF2F4] transition-all duration-300 hover:text-[#840505]">{navT('heritage')}</Link></li>
+              <li><Link href="/arenas" className="text-[#EDF2F4] transition-all duration-300 hover:text-[#840505]">{navT('arenas')}</Link></li>
+              <li><Link href="/gearup" className="text-[#EDF2F4] transition-all duration-300 hover:text-[#840505]">{navT('gearup')}</Link></li>
+              <li><Link href="/gathering" className="text-[#EDF2F4] transition-all duration-300 hover:text-[#840505]">{navT('gathering')}</Link></li>
             </ul>
           </div>
 
@@ -64,7 +64,7 @@ export default async function Footer() {
             <h3 className="text-[10px] font-bold uppercase tracking-[3px] mb-6 text-brand-primary">
               {t('contact')}
             </h3>
-            <ul className="space-y-3 text-sm font-medium text-[#EDF2F4]/60">
+            <ul className="space-y-3 text-sm font-medium text-[#EDF2F4]/80">
               <li className="flex items-start gap-2 hover:text-[#EDF2F4] transition-colors cursor-default">
                 <span className="mt-0.5">🇨🇭</span> Switzerland — Geneva Region
               </li>
@@ -84,7 +84,7 @@ export default async function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-medium border-t border-white/5 text-[#EDF2F4]/40">
+        <div className="mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-medium border-t border-white/5 text-[#EDF2F4]/60">
           <p>{t('rights')}</p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="hover:text-brand-primary transition-colors uppercase tracking-widest">Privacy Policy</Link>

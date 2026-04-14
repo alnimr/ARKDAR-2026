@@ -95,16 +95,18 @@
 
   /* ── Glassmorphism Surfaces (Pure White Contrast Layer) ── */
   .glass {
-    background-color: rgba(255, 255, 255, 0.97); /* Pure White - High Contrast */
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(124, 124, 124, 0.2); /* Minimalist Grey Border (#7C7C7C) */
-    box-shadow: 0 8px 32px 0 rgba(132, 5, 5, 0.05);
+    background-color: rgba(255, 255, 255, 0.98); /* Ultra High Contrast */
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(124, 124, 124, 0.25);
+    box-shadow: 0 10px 40px -10px rgba(132, 5, 5, 0.1);
   }
   .dark .glass {
-    background-color: rgba(10, 10, 10, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    background-color: rgba(5, 5, 5, 0.75);
+    -webkit-backdrop-filter: blur(28px);
+    backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 50px -12px rgba(0, 0, 0, 0.6);
   }
   .glass-dark {
     background-color: rgba(10, 10, 10, 0.88);
@@ -164,6 +166,29 @@
   pointer-events: none;
 }
 
+/* 4. The Reading Sanctuary (Luxury Container) */
+.reading-sanctuary {
+  background-color: #f8f9fa;
+  border: 1px solid rgba(132, 5, 5, 0.2);
+  border-radius: 2.5rem;
+  padding: 2.5rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .reading-sanctuary {
+  background-color: #0c0c0c; /* Charcoal gray - slightly lighter than #050505 */
+  border: 1px solid rgba(132, 5, 5, 0.35);
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 768px) {
+  .reading-sanctuary {
+    padding: 4.5rem;
+  }
+}
+
 /* ══════════════════════════════
    ARKDAR READABILITY ENGINE (The Golden Rules)
    ══════════════════════════════ */
@@ -184,14 +209,15 @@
 .arkdar-article-body h3 {
   color: #911010 !important;
   font-weight: 700 !important;
-  font-size: 2.25rem !important; /* Double the size of impact text */
-  margin-top: 4rem !important;
-  margin-bottom: 2rem !important;
-  line-height: 1.2 !important;
+  font-family: var(--font-serif) !important;
+  font-size: 2.5rem !important; 
+  margin-top: 4.5rem !important;
+  margin-bottom: 2.5rem !important;
+  line-height: 1.25 !important;
 }
 
 .arkdar-article-body h3 {
-  font-size: 1.75rem !important;
+  font-size: 2rem !important;
 }
 
 .dark .arkdar-article-body p,

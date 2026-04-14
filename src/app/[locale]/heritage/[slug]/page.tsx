@@ -197,75 +197,77 @@ export default async function JournalArticlePage({
 
             {/* Content Column */}
             <div className="flex-1 max-w-3xl">
-              <StaggerItem delay={0.1}>
-                {/* Hero Image */}
-                <div className="relative w-full aspect-[16/8] rounded-3xl overflow-hidden mb-12 border border-brand-secondary/10 shadow-2xl">
-                  <NextImage
-                    src={post.image}
-                    alt={title}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 896px) 100vw, 896px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-                </div>
-              </StaggerItem>
-
-              <StaggerItem delay={0.2}>
-                <header className="mb-12">
-                  <div className={`flex items-center gap-2 mb-5 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-secondary/5 border border-brand-secondary/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest">
-                      <TypeIcon size={12} />
-                      {post.type === 'article'
-                        ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
-                        : post.type === 'media' || post.type === 'video'
-                        ? (t?.('typeVideo') || (locale === 'ar' ? 'فيديو' : 'Video'))
-                        : post.type === 'download'
-                        ? (t?.('typeDownload') || (locale === 'ar' ? 'تحميل' : 'Download'))
-                        : (t?.('typeNews') || (locale === 'ar' ? 'أخبار' : 'News'))}
-                    </span>
+              <div className="reading-sanctuary">
+                <StaggerItem delay={0.1}>
+                  {/* Hero Image */}
+                  <div className="relative w-full aspect-[16/8] rounded-[2rem] overflow-hidden mb-12 border border-brand-secondary/10 shadow-2xl">
+                    <NextImage
+                      src={post.image}
+                      alt={title}
+                      fill
+                      priority
+                      className="object-cover"
+                      sizes="(max-width: 896px) 100vw, 896px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                   </div>
+                </StaggerItem>
 
-                  <h1 className={`text-3xl md:text-5xl font-serif font-bold text-text-primary leading-tight mb-6 ${isRtl ? 'text-right overflow-wrap-anywhere' : 'text-left'}`}>
-                    {title}
-                  </h1>
-
-                  {/* Mobile Metadata (Hidden on Desktop) */}
-                  <div className={`flex lg:hidden flex-wrap items-center gap-x-6 gap-y-2 text-text-muted text-sm mb-8 ${isRtl ? 'flex-row-reverse justify-end' : ''}`}>
-                    <span className="flex items-center gap-2">
-                      <Calendar size={13} />
-                      {formattedDate}
-                    </span>
-                    {post.author && (
-                      <span className="flex items-center gap-2">
-                        <User size={13} />
-                        {post.author}
+                <StaggerItem delay={0.2}>
+                  <header className="mb-12">
+                    <div className={`flex items-center gap-2 mb-5 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-secondary/5 border border-brand-secondary/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest">
+                        <TypeIcon size={12} />
+                        {post.type === 'article'
+                          ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
+                          : post.type === 'media' || post.type === 'video'
+                          ? (t?.('typeVideo') || (locale === 'ar' ? 'فيديو' : 'Video'))
+                          : post.type === 'download'
+                          ? (t?.('typeDownload') || (locale === 'ar' ? 'تحميل' : 'Download'))
+                          : (t?.('typeNews') || (locale === 'ar' ? 'أخبار' : 'News'))}
                       </span>
-                    )}
-                  </div>
-                  
-                  <div className="brand-sep-bow w-full opacity-50" />
-                </header>
-              </StaggerItem>
+                    </div>
 
-              <StaggerItem delay={0.3}>
-                {/* Excerpt Blockquote */}
-                <blockquote className={`relative px-8 py-6 mb-12 rounded-2xl bg-brand-secondary/5 border-l-2 border-brand-primary shadow-lg ${isRtl ? 'border-l-0 border-r-2 text-right pl-0 pr-8' : ''}`}>
-                  <p className="text-lg md:text-2xl font-serif text-text-primary italic leading-relaxed">
-                    &quot;{excerpt}&quot;
-                  </p>
-                </blockquote>
-              </StaggerItem>
+                    <h1 className={`text-3xl md:text-5xl font-serif font-bold text-text-primary leading-tight mb-8 ${isRtl ? 'text-right overflow-wrap-anywhere' : 'text-left'}`}>
+                      {title}
+                    </h1>
 
-              <StaggerItem delay={0.4}>
-                {/* Main Content */}
-                <article
-                  className={`arkdar-article-body prose dark:prose-invert prose-lg max-w-none 
-                    ${isRtl ? 'text-right prose-p:text-right prose-headings:text-right' : 'text-left'}`}
-                  dangerouslySetInnerHTML={{ __html: content }}
-                />
-              </StaggerItem>
+                    {/* Mobile Metadata (Hidden on Desktop) */}
+                    <div className={`flex lg:hidden flex-wrap items-center gap-x-6 gap-y-2 text-text-muted text-sm mb-8 ${isRtl ? 'flex-row-reverse justify-end' : ''}`}>
+                      <span className="flex items-center gap-2">
+                        <Calendar size={13} />
+                        {formattedDate}
+                      </span>
+                      {post.author && (
+                        <span className="flex items-center gap-2">
+                          <User size={13} />
+                          {post.author}
+                        </span>
+                      )}
+                    </div>
+                    
+                    <div className="brand-sep-bow w-full opacity-30" />
+                  </header>
+                </StaggerItem>
+
+                <StaggerItem delay={0.3}>
+                  {/* Excerpt Blockquote */}
+                  <blockquote className={`relative px-8 py-6 mb-16 rounded-2xl bg-brand-secondary/5 border-l-2 border-brand-primary shadow-sm ${isRtl ? 'border-l-0 border-r-2 text-right pl-0 pr-8' : ''}`}>
+                    <p className="text-lg md:text-2xl font-serif text-text-primary italic leading-relaxed">
+                      &quot;{excerpt}&quot;
+                    </p>
+                  </blockquote>
+                </StaggerItem>
+
+                <StaggerItem delay={0.4}>
+                  {/* Main Content */}
+                  <article
+                    className={`arkdar-article-body prose dark:prose-invert prose-lg max-w-none 
+                      ${isRtl ? 'text-right prose-p:text-right prose-headings:text-right' : 'text-left'}`}
+                    dangerouslySetInnerHTML={{ __html: content }}
+                  />
+                </StaggerItem>
+              </div>
 
         {/* Download Section */}
         {post.downloadUrl && (
