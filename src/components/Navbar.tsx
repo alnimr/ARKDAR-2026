@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const LOCALES: { code: string; label: string }[] = [
   { code: 'ar', label: 'العربية' },
@@ -73,6 +74,7 @@ export default function Navbar() {
 
         {/* ── Actions ── */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
 
           {/* Language Switcher */}
           <div className="relative">
@@ -137,6 +139,9 @@ export default function Navbar() {
           >
             {t('mountUp')}
           </Link>
+          <div className="flex justify-center pt-2">
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </nav>
