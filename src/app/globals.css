@@ -164,6 +164,57 @@
   pointer-events: none;
 }
 
+/* ══════════════════════════════
+   ARKDAR READABILITY ENGINE (The Golden Rules)
+   ══════════════════════════════ */
+.arkdar-article-body {
+  max-width: 720px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.arkdar-article-body p {
+  line-height: 1.8 !important;
+  margin-bottom: 3.5rem !important; /* Doubled from standard luxury spacing */
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.arkdar-article-body h2, 
+.arkdar-article-body h3 {
+  color: #911010 !important;
+  font-weight: 700 !important;
+  font-size: 2.25rem !important; /* Double the size of impact text */
+  margin-top: 4rem !important;
+  margin-bottom: 2rem !important;
+  line-height: 1.2 !important;
+}
+
+.arkdar-article-body h3 {
+  font-size: 1.75rem !important;
+}
+
+.dark .arkdar-article-body p,
+.dark .arkdar-article-body li {
+  opacity: 0.9 !important;
+  color: #EDF2F4 !important;
+}
+
+.arkdar-article-body blockquote p {
+  line-height: 1.6 !important;
+  margin-bottom: 0 !important;
+}
+
+.arkdar-article-body ul, 
+.arkdar-article-body ol {
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.arkdar-article-body li {
+  margin-bottom: 1rem;
+}
+
   /* ── Typography Fixes ── */
   .text-balance {
     /* text-wrap: balance fallback */

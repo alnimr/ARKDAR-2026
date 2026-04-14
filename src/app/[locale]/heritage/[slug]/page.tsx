@@ -261,16 +261,7 @@ export default async function JournalArticlePage({
               <StaggerItem delay={0.4}>
                 {/* Main Content */}
                 <article
-                  className={`prose dark:prose-invert prose-lg max-w-none 
-                    prose-p:text-text-primary prose-p:leading-loose prose-p:mb-8
-                    prose-headings:font-serif prose-headings:text-text-primary prose-headings:font-bold
-                    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8
-                    prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-5
-                    prose-strong:text-brand-primary prose-strong:font-bold
-                    prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline transition-all
-                    prose-blockquote:border-brand-primary prose-blockquote:bg-brand-secondary/5 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:not-italic
-                    prose-li:text-text-primary prose-li:mb-2
-                    prose-img:rounded-3xl prose-img:border prose-img:border-brand-secondary/10
+                  className={`arkdar-article-body prose dark:prose-invert prose-lg max-w-none 
                     ${isRtl ? 'text-right prose-p:text-right prose-headings:text-right' : 'text-left'}`}
                   dangerouslySetInnerHTML={{ __html: content }}
                 />
