@@ -3,11 +3,14 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-brand-primary: #A0061C;
+  --color-brand-primary: var(--brand-primary-dynamic);
+  --color-brand-crimson: #840505;
+  --color-brand-oxblood: #660000;
+  --color-brand-carmine: #911010;
   --color-brand-secondary: #7C7C7C;
   --color-brand-background: #EDF2F4;
 
-  --color-surface-dark: #141414; /* Deep Charcoal */
+  --color-surface-dark: #141414;
   --color-surface-light: #EDF2F4;
 
   --color-text-primary: #141414;
@@ -24,12 +27,16 @@
     --background: #EDF2F4;
     --foreground: #141414;
     --primary-glow: 0 0 0px transparent;
+    --brand-text: #911010;
+    --brand-primary-dynamic: #911010; /* Burnt Carmine for Light Mode */
   }
 
   .dark {
-    --background: #0A0A0A; /* Very dark charcoal */
+    --background: #0A0A0A;
     --foreground: #EDF2F4;
-    --primary-glow: 0 0 15px rgba(160, 6, 28, 0.4);
+    --primary-glow: 0 0 25px rgba(132, 5, 5, 0.45);
+    --brand-text: #EDF2F4;
+    --brand-primary-dynamic: #840505; /* Royal Crimson for Dark Mode */
   }
 
   body {
@@ -42,6 +49,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
+    color: var(--brand-text);
   }
   
   /* Ensure prose text is visible on dark background */
@@ -49,18 +57,18 @@
     --tw-prose-body: #F8FAFC !important; /* Slate 50 - Brighter */
     --tw-prose-headings: #FFFFFF !important;
     --tw-prose-lead: #CBD5E1 !important;
-    --tw-prose-links: #F87171 !important; /* Brighter red for links */
+    --tw-prose-links: #911010 !important;
     --tw-prose-bold: #FFFFFF !important;
     --tw-prose-counters: #CBD5E1 !important;
-    --tw-prose-bullets: #D90429 !important;
-    --tw-prose-hr: #A0061C !important;
+    --tw-prose-bullets: #911010 !important;
+    --tw-prose-hr: #840505 !important;
     --tw-prose-quotes: #F8FAFC !important;
-    --tw-prose-quote-borders: #A0061C !important;
+    --tw-prose-quote-borders: #840505 !important;
     --tw-prose-captions: #94A3B8 !important;
     --tw-prose-code: #FFFFFF !important;
     --tw-prose-pre-code: #F8FAFC !important;
     --tw-prose-pre-bg: #1A1A1A !important;
-    --tw-prose-th-borders: #A0061C !important;
+    --tw-prose-th-borders: #840505 !important;
     --tw-prose-td-borders: #334155 !important;
     color: #F8FAFC !important; /* Fallback direct color */
   }
@@ -77,18 +85,19 @@
 
   /* ── Glassmorphism Surfaces ── */
   .glass {
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.65);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(132, 5, 5, 0.15); /* Royal Crimson subtle border */
+    box-shadow: 0 8px 32px 0 rgba(132, 5, 5, 0.05);
   }
   .glass-dark {
-    background-color: rgba(20, 13, 14, 0.90);
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.35);
+    background-color: rgba(10, 10, 10, 0.85);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(132, 5, 5, 0.2); /* Royal Crimson border */
+    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient(circle at top right, rgba(132, 5, 5, 0.05), transparent);
   }
 
   /* ── Brand Color Helpers ── */
@@ -113,7 +122,7 @@
 /* 2. The Crimson Bow (Separator & Accent) */
 .brand-sep-bow {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #A0061C, transparent);
+  background: linear-gradient(90deg, transparent, #840505, transparent);
   position: relative;
   display: flex;
   align-items: center;
@@ -124,9 +133,9 @@
   content: '';
   width: 12px;
   height: 12px;
-  background-color: #A0061C;
+  background-color: #840505;
   transform: rotate(45deg);
-  box-shadow: 0 0 15px #A0061C;
+  box-shadow: 0 0 15px #840505;
 }
 
 /* 3. The Horse Watermark (Soul/Presence) */
@@ -157,12 +166,14 @@
 
   /* ── Buttons ── */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white bg-brand-primary transition-all shadow-lg hover:translate-y-[-2px] hover:opacity-90;
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white transition-all shadow-lg hover:translate-y-[-2px] hover:scale-[1.02] active:scale-[0.98];
+    background: linear-gradient(135deg, #911010 0%, #660000 100%);
     box-shadow: var(--primary-glow);
   }
   
   .btn-nav {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-brand-primary transition-all shadow-md hover:translate-y-[-1px] hover:opacity-90;
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all shadow-md hover:translate-y-[-1px] hover:scale-[1.02];
+    background: linear-gradient(135deg, #911010 0%, #660000 100%);
     box-shadow: var(--primary-glow);
   }
 }

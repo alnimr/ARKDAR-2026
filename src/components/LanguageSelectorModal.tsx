@@ -70,15 +70,15 @@ export default function LanguageSelectorModal() {
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative w-full max-w-lg overflow-hidden bg-[#141414] border-2 border-[#A0061C] rounded-2xl shadow-[0_0_50px_rgba(160,6,28,0.3)]"
+          className="relative w-full max-w-lg overflow-hidden bg-[#141414] border-2 border-brand-crimson rounded-2xl shadow-[0_0_50px_rgba(132,5,5,0.3)]"
         >
           {/* Decorative Pattern Background */}
           <div className="absolute inset-0 opacity-10 pointer-events-none brand-pattern-waves" />
           
           <div className="relative p-8 md:p-12 text-center text-[#EDF2F4]">
             {/* Header Icon */}
-            <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-[#A0061C]/20 border border-[#A0061C]/50">
-              <Globe className="w-8 h-8 text-[#A0061C]" />
+            <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-brand-primary/20 border border-brand-primary/50">
+              <Globe className="w-8 h-8 text-brand-primary" />
             </div>
 
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 tracking-tight">
@@ -97,8 +97,8 @@ export default function LanguageSelectorModal() {
                   onClick={() => handleLanguageChange(lang.code)}
                   className={`flex items-center gap-3 p-4 rounded-xl border transition-all duration-300 ${
                     selectedLocale === lang.code 
-                    ? 'bg-[#A0061C] border-[#A0061C] text-white shadow-[0_0_15px_rgba(160,6,28,0.4)]' 
-                    : 'bg-[#1A1A1A] border-white/10 text-[#7C7C7C] hover:border-[#A0061C]/50 hover:text-white'
+                    ? 'bg-brand-primary border-brand-primary text-white shadow-[0_0_15px_rgba(132,5,5,0.4)]' 
+                    : 'bg-[#1A1A1A] border-white/10 text-[#7C7C7C] hover:border-brand-primary/50 hover:text-white'
                   }`}
                 >
                   <span className="text-xl">{lang.flag}</span>
@@ -110,7 +110,7 @@ export default function LanguageSelectorModal() {
             {/* Confirm Button */}
             <button
               onClick={handleConfirm}
-              className="group relative w-full py-4 bg-[#A0061C] text-white font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg overflow-hidden"
+              className="btn-primary w-full py-4 justify-center"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 {t('confirm')}
