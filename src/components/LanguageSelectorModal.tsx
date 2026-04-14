@@ -36,9 +36,11 @@ export default function LanguageSelectorModal() {
   };
 
   const handleConfirm = () => {
-    // Set cookie to dismiss modal
-    document.cookie = 'arkdar_modal_dismissed=true; path=/; max-age=' + (60 * 60 * 24 * 365);
-    document.cookie = 'arkdar_lang_detected=true; path=/; max-age=' + (60 * 60 * 24 * 365);
+    // Set cookie to dismiss modal with strict settings
+    const farFuture = 60 * 60 * 24 * 365;
+    document.cookie = `arkdar_modal_dismissed=true; path=/; max-age=${farFuture}; SameSite=Lax`;
+    document.cookie = `arkdar_lang_detected=true; path=/; max-age=${farFuture}; SameSite=Lax`;
+    document.cookie = `NEXT_LOCALE=${selectedLocale}; path=/; max-age=${farFuture}; SameSite=Lax`;
     
     // Redirect to the new locale
     router.push(pathname, { locale: selectedLocale });
@@ -62,7 +64,7 @@ export default function LanguageSelectorModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/60 backdrop-blur-xl"
         />
 
         {/* Modal Container */}
@@ -70,7 +72,7 @@ export default function LanguageSelectorModal() {
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative w-full max-w-lg overflow-hidden bg-[#141414] border-2 border-brand-crimson rounded-2xl shadow-[0_0_50px_rgba(132,5,5,0.3)]"
+          className="relative w-full max-w-lg overflow-hidden bg-[#141414]/90 backdrop-blur-2xl border-2 border-arkdar-crimson/50 rounded-2xl shadow-[0_0_80px_rgba(132,5,5,0.4)]"
         >
           {/* Decorative Pattern Background */}
           <div className="absolute inset-0 opacity-10 pointer-events-none brand-pattern-waves" />

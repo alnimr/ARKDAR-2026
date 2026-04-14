@@ -4,7 +4,10 @@
 
 @theme {
   --color-brand-primary: var(--brand-primary-dynamic);
-  --color-brand-crimson: #840505;
+  --color-arkdar-crimson: #840505;
+  --color-arkdar-oxblood: #660000;
+  --color-arkdar-carmine: #911010;
+  --color-brand-crimson: #840505; /* Fallback */
   --color-brand-oxblood: #660000;
   --color-brand-carmine: #911010;
   --color-brand-secondary: #7C7C7C;
@@ -50,6 +53,13 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
     color: var(--brand-text);
+    transition: color 0.3s ease;
+  }
+  
+  /* Global Text Rule: Light Gray for long texts in Dark Mode */
+  .dark p, .dark span:not(.text-arkdar-crimson), .dark li {
+    color: #EDF2F4;
+    opacity: 0.9;
   }
   
   /* Ensure prose text is visible on dark background */
@@ -167,13 +177,13 @@
   /* ── Buttons ── */
   .btn-primary {
     @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white transition-all shadow-lg hover:translate-y-[-2px] hover:scale-[1.02] active:scale-[0.98];
-    background: linear-gradient(135deg, #911010 0%, #660000 100%);
+    background: linear-gradient(135deg, var(--color-arkdar-carmine) 0%, var(--color-arkdar-oxblood) 100%);
     box-shadow: var(--primary-glow);
   }
   
   .btn-nav {
     @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all shadow-md hover:translate-y-[-1px] hover:scale-[1.02];
-    background: linear-gradient(135deg, #911010 0%, #660000 100%);
+    background: linear-gradient(135deg, var(--color-arkdar-carmine) 0%, var(--color-arkdar-oxblood) 100%);
     box-shadow: var(--primary-glow);
   }
 }
