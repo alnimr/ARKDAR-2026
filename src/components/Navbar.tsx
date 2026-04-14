@@ -63,11 +63,11 @@ export default function Navbar() {
               alt="ARKDAR Logo"
               width={40}
               height={40}
-              className="object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+              className="object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-300 dark:brightness-110 dark:contrast-110"
               priority
             />
           </div>
-          <span className="text-xl font-serif font-bold tracking-wider text-brand-primary">
+          <span className="text-xl font-serif font-bold tracking-wider text-[#911010] dark:text-[#EDF2F4]">
             ARKDAR
           </span>
         </Link>

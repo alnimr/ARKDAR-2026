@@ -3,17 +3,17 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-brand-primary: var(--brand-primary-dynamic);
+  --color-brand-primary: #911010; /* Burnt Carmine - The Anchor */
   --color-arkdar-royal: #840505;
   --color-arkdar-oxblood: #660000;
-  --color-arkdar-carmine: #D90429; /* Vibrant Crimson for Contrast */
+  --color-arkdar-carmine: #D90429;
   --color-brand-crimson: #D90429;
   --color-brand-deep: #A0061C;
   --color-brand-secondary: #7C7C7C;
   --color-brand-background: #EDF2F4;
 
-  --color-surface-dark: #141414;
-  --color-surface-light: #EDF2F4;
+  --color-surface-dark: #050505; /* Black Charcoal */
+  --color-surface-light: #EDF2F4; /* Marble Paper */
 
   --color-text-primary: #141414;
   --color-text-muted: #7C7C7C;
@@ -26,66 +26,70 @@
 
 @layer base {
   :root {
-    --background: #EDF2F4;
-    --foreground: #111827; 
+    --background: #EDF2F4; /* Marble */
+    --foreground: #141414; /* Charcoal */
+    --brand-text: #911010; /* Fixed Burnt Carmine Header */
     --primary-glow: 0 0 0px transparent;
-    --brand-text: #A0061C; /* Deep Red for Light Mode Headers */
-    --brand-primary-dynamic: #A0061C; 
+    --border-accent: rgba(132, 5, 5, 0.15);
   }
 
   .dark {
-    --background: #050505;
-    --foreground: #EDF2F4;
-    --primary-glow: 0 0 35px rgba(217, 4, 41, 0.35);
-    --brand-text: #EDF2F4;
-    --brand-primary-dynamic: #D90429; 
+    --background: #050505; /* Deep Black */
+    --foreground: #EDF2F4; /* Light Grey */
+    --brand-text: #911010; /* Fixed Burnt Carmine Header */
+    --primary-glow: 0 0 35px rgba(217, 4, 41, 0.25);
+    --border-accent: rgba(132, 5, 5, 0.4);
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
+    font-weight: 400; /* Regular for body text */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    color: var(--brand-text);
+    color: #911010 !important; /* Fixed Burnt Carmine */
+    font-weight: 700; /* Bold for headings */
     transition: color 0.3s ease;
   }
   
-  /* Global Text Rule: High Opacity for Contrast */
+  /* Global Text Rule: Clean Contrast */
   .dark p, .dark span:not(.text-arkdar-royal), .dark li {
     color: #EDF2F4;
-    opacity: 1 !important; /* Forces transparency rescue */
-  }
-  
-  /* Ensure prose text is visible on dark background */
-  .prose-invert {
-    --tw-prose-body: #F8FAFC !important; /* Slate 50 - Brighter */
-    --tw-prose-headings: #FFFFFF !important;
-    --tw-prose-lead: #CBD5E1 !important;
-    --tw-prose-links: #D90429 !important;
-    --tw-prose-bold: #FFFFFF !important;
-    --tw-prose-counters: #CBD5E1 !important;
-    --tw-prose-bullets: #D90429 !important;
-    --tw-prose-hr: #A0061C !important;
-    --tw-prose-quotes: #F8FAFC !important;
-    --tw-prose-quote-borders: #A0061C !important;
-    --tw-prose-captions: #94A3B8 !important;
-    --tw-prose-code: #FFFFFF !important;
-    --tw-prose-pre-code: #F8FAFC !important;
-    --tw-prose-pre-bg: #1A1A1A !important;
-    --tw-prose-th-borders: #840505 !important;
-    --tw-prose-td-borders: #334155 !important;
-    color: #F8FAFC !important; /* Fallback direct color */
+    opacity: 1 !important;
   }
 
-  /* Specific fix for transparency issues */
-  .prose-invert p, .prose-invert span, .prose-invert li {
-    opacity: 1 !important;
-    color: #F8FAFC !important;
+  p {
+    font-weight: 400; /* Regular */
+  }
+
+  /* Light Mode Specific Body Contrast Improvement */
+  :root:not(.dark) p, :root:not(.dark) span:not(.text-arkdar-royal), :root:not(.dark) li {
+    color: #7C7C7C;
+    font-weight: 500; /* Medium for Light Mode Sharpness */
+  }
+  
+  /* Ensure prose content respects Royal DNA */
+  .prose {
+    --tw-prose-headings: #911010 !important;
+    --tw-prose-links: #D90429 !important;
+    --tw-prose-bullets: #D90429 !important;
+    --tw-prose-bold: #141414 !important;
+  }
+
+  .prose-invert {
+    --tw-prose-body: #EDF2F4 !important;
+    --tw-prose-headings: #911010 !important;
+    --tw-prose-links: #D90429 !important;
+    --tw-prose-bold: #EDF2F4 !important;
+    --tw-prose-bullets: #D90429 !important;
+    --tw-prose-hr: #840505 !important;
+    --tw-prose-quotes: #EDF2F4 !important;
+    --tw-prose-quote-borders: #840505 !important;
   }
 }
 
@@ -100,12 +104,12 @@
   .navbar-solid {
     background-color: #EDF2F4 !important;
     border-radius: 0 !important;
-    border-bottom: 1px solid rgba(160, 6, 28, 0.1);
+    border-bottom: 2px solid #840505; /* Royal Crimson Border */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   }
   .dark .navbar-solid {
     background-color: #050505 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid #840505; /* Royal Crimson Border */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
   .glass-dark {
@@ -205,7 +209,7 @@
 
 .arkdar-article-body h2, 
 .arkdar-article-body h3 {
-  color: #A0061C !important; /* Deep Red for Visual Anchor */
+  color: #911010 !important; /* Burnt Carmine Permanent Anchor */
   font-weight: 700 !important;
   font-family: var(--font-serif) !important;
   font-size: 2.5rem !important; 
@@ -256,14 +260,12 @@
 
   /* ── Buttons ── */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-white transition-all shadow-lg hover:translate-y-[-2px] hover:scale-[1.02] active:scale-[0.98];
-    background: linear-gradient(135deg, var(--color-arkdar-carmine) 0%, var(--color-arkdar-oxblood) 100%);
-    box-shadow: var(--primary-glow);
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:translate-y-[-2px] hover:shadow-[0_0_20px_rgba(132,5,5,0.3)];
+    background: linear-gradient(135deg, #840505 0%, #660000 100%);
   }
   
   .btn-nav {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all shadow-md hover:translate-y-[-1px] hover:scale-[1.02];
-    background: linear-gradient(135deg, var(--color-arkdar-carmine) 0%, var(--color-arkdar-oxblood) 100%);
-    box-shadow: var(--primary-glow);
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-md hover:translate-y-[-1px];
+    background: linear-gradient(135deg, #840505 0%, #660000 100%);
   }
 }
