@@ -75,10 +75,12 @@
   
   /* Ensure prose content respects Royal DNA */
   .prose {
+    --tw-prose-body: #7C7C7C !important;
     --tw-prose-headings: #911010 !important;
     --tw-prose-links: #D90429 !important;
     --tw-prose-bullets: #D90429 !important;
     --tw-prose-bold: #141414 !important;
+    font-family: var(--font-sans);
   }
 
   .prose-invert {
@@ -96,29 +98,44 @@
 
 @layer utilities {
 
-  /* ── Glassmorphism Surfaces (Pure White Contrast Layer) ── */
-  /* ── Solid Header Classes (Contrast Rescue) ── */
-  .navbar-floating {
-    @apply transition-all duration-500 ease-in-out;
+  /* ── Glassmorphism Surfaces (Refined Luxury) ── */
+  .glass {
+    background: rgba(237, 242, 244, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(132, 5, 5, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
   }
-  .navbar-solid {
-    background-color: #EDF2F4 !important;
-    border-radius: 0 !important;
-    border-bottom: 2px solid #840505; /* Royal Crimson Border */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  }
-  .dark .navbar-solid {
-    background-color: #050505 !important;
-    border-bottom: 2px solid #840505; /* Royal Crimson Border */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  }
+
   .glass-dark {
-    background-color: rgba(10, 10, 10, 0.88);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(132, 5, 5, 0.25); /* Royal Crimson border */
     box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
     background-image: radial-gradient(circle at top right, rgba(132, 5, 5, 0.05), transparent);
+  }
+
+  /* ── Animated Navbar Surfaces ── */
+  .navbar-floating {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  .navbar-solid {
+    background-color: rgba(237, 242, 244, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0 !important;
+    border-bottom: 2px solid #840505;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .navbar-solid {
+    background-color: rgba(5, 5, 5, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid #840505;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   /* ── Brand Color Helpers ── */
@@ -170,18 +187,16 @@
   pointer-events: none;
 }
 
-/* 4. The Reading Sanctuary (Luxury Container) */
+/* 4. The Reading Sanctuary (Luxury Glass Container) */
 .reading-sanctuary {
-  background-color: #EDF2F4; /* Solid Contrast for Light Mode */
-  border: 1px solid rgba(160, 6, 28, 0.2);
-  border-radius: 2.5rem;
-  padding: 2.5rem;
-  margin-bottom: 4rem;
+  @apply glass px-10 py-10 md:px-20 md:py-20 rounded-[2.5rem] mb-16;
+  border: 1px solid rgba(132, 5, 5, 0.15);
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
 }
 
 .dark .reading-sanctuary {
-  background-color: #0d0d0d; /* Pure Charcoal */
+  @apply glass-dark;
+  background-color: rgba(5, 5, 5, 0.8) !important;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 

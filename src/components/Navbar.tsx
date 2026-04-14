@@ -67,7 +67,7 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span className="text-xl font-serif font-bold tracking-wider text-[#911010] dark:text-[#EDF2F4]">
+          <span className="text-xl font-serif font-bold tracking-wider text-[#911010]">
             ARKDAR
           </span>
         </Link>

@@ -186,7 +186,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       {/* Content */}
       <div className="flex flex-col flex-grow p-7">
         {/* Meta */}
-        <div className={`flex items-center gap-4 mb-4 text-[#EDF2F4] text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+        <div className={`flex items-center gap-4 mb-4 text-text-primary dark:text-[#EDF2F4] text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
           <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
             <Calendar size={11} className="text-brand-primary" />
             {formattedDate}
@@ -203,12 +203,12 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </div>
 
         {/* Title */}
-        <h3 className={`text-lg font-serif font-bold text-[#EDF2F4] leading-snug mb-3 group-hover:text-brand-primary transition-colors duration-300 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-lg font-serif font-bold text-brand-primary leading-snug mb-3 transition-colors duration-300 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-sm text-[#EDF2F4]/90 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-sans' : 'text-left font-sans'}`}>
+        <p className={`text-sm text-text-primary dark:text-[#EDF2F4]/90 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-sans' : 'text-left font-sans'}`}>
           {excerpt}
         </p>
 

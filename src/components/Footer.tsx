@@ -7,7 +7,7 @@ export default async function Footer() {
   const navT = await getTranslations('Navigation');
 
   return (
-    <footer className="mt-24 relative z-20 bg-[#EDF2F4] dark:bg-[#050505] border-t-2 border-[#840505]">
+    <footer className="mt-24 relative z-20 glass dark:glass-dark border-t-2 border-[#840505]">
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
