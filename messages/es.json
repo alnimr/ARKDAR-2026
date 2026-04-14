@@ -214,5 +214,28 @@
     "activeSessions": "Sesiones activas",
     "syncing": "Sincronizando nodos IoT",
     "uplink": "Esperando enlace ascendente de alta velocidad de la instalación de entrenamiento de Guiza..."
+  },
+  "Journal": {
+    "categories": {
+      "all": "Todos",
+      "heritage": "Patrimonio",
+      "craftsmanship": "Artesanía",
+      "lifestyle": "Estilo de vida",
+      "equestrian": "Ecuestre"
+    },
+    "filter": "Filtrar por",
+    "search": "Buscar en el diario...",
+    "noResults": "No hay artículos que coincidan con tu búsqueda.",
+    "readMore": "Leer más",
+    "share": "Compartir historia"
+  },
+  "LanguageModal": {
+    "title": "Bienvenido a ARKDAR",
+    "subtitle": "Elija su idioma preferido para explorar el mundo del patrimonio ecuestre de élite.",
+    "ar": "العربية",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "confirm": "Entrar en la Arena"
   }
 }

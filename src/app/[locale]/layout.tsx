@@ -10,6 +10,9 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
 
+import {ThemeProvider} from '@/components/ThemeProvider';
+import LanguageSelectorModal from '@/components/LanguageSelectorModal';
+
 export default async function LocaleLayout({
   children,
   params
@@ -29,23 +32,33 @@ export default async function LocaleLayout({
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={direction}>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <head>
         <title>ARKDAR</title>
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <div className="flex flex-col min-h-screen">
-            {/* Header / Navbar Component */}
-            <Navbar />
-            
-            {/* Main Content Area */}
-            <main className="flex-grow relative z-10">{children}</main>
-            
-            {/* Enterprise Footer Component */}
-            <Footer />
-          </div>
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            <div className="flex flex-col min-h-screen">
+              {/* Header / Navbar Component */}
+              <Navbar />
+              
+              {/* Main Content Area */}
+              <main className="flex-grow relative z-10">{children}</main>
+              
+              {/* Enterprise Footer Component */}
+              <Footer />
+
+              {/* Advanced Language Selector */}
+              <LanguageSelectorModal />
+            </div>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

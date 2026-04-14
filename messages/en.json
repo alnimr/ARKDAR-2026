@@ -228,5 +228,14 @@
     "noResults": "No articles match your search.",
     "readMore": "Read More",
     "share": "Share Story"
+  },
+  "LanguageModal": {
+    "title": "Welcome to ARKDAR",
+    "subtitle": "Choose your preferred language to explore the world of elite equestrian heritage.",
+    "ar": "العربية",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "confirm": "Enter the Arena"
   }
 }

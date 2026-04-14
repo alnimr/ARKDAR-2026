@@ -214,5 +214,28 @@
     "activeSessions": "Aktive Sitzungen",
     "syncing": "Synchronisierung der IoT-Knoten",
     "uplink": "Warten auf Hochgeschwindigkeits-Uplink von der Gizeh-Trainingsanlage..."
+  },
+  "Journal": {
+    "categories": {
+      "all": "Alle",
+      "heritage": "Kulturerbe",
+      "craftsmanship": "Handwerkskunst",
+      "lifestyle": "Lebensstil",
+      "equestrian": "Reitsport"
+    },
+    "filter": "Filtern nach",
+    "search": "Journal durchsuchen...",
+    "noResults": "Keine Artikel entsprechen Ihrer Suche.",
+    "readMore": "Weiterlesen",
+    "share": "Geschichte teilen"
+  },
+  "LanguageModal": {
+    "title": "Willkommen bei ARKDAR",
+    "subtitle": "Wählen Sie Ihre bevorzugte Sprache, um die Welt des erstklassigen Reiter-Erbes zu erkunden.",
+    "ar": "العربية",
+    "en": "English",
+    "de": "Deutsch",
+    "es": "Español",
+    "confirm": "Die Arena betreten"
   }
 }
