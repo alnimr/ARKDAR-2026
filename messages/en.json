@@ -214,5 +214,19 @@
     "activeSessions": "Active Sessions",
     "syncing": "Syncing Biometrics",
     "uplink": "Waiting for high-speed uplink from Giza training facility..."
+  },
+  "Journal": {
+    "categories": {
+      "all": "All",
+      "heritage": "Heritage",
+      "craftsmanship": "Craftsmanship",
+      "lifestyle": "Lifestyle",
+      "equestrian": "Equestrian"
+    },
+    "filter": "Filter by",
+    "search": "Search Journal...",
+    "noResults": "No articles match your search.",
+    "readMore": "Read More",
+    "share": "Share Story"
   }
 }
