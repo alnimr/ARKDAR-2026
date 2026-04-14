@@ -138,7 +138,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.05] hover:border-white/10 transition-all duration-500"
+      className="glass group relative flex flex-col overflow-hidden rounded-3xl transition-all duration-500"
     >
       {/* Ambient glow on hover */}
       <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"

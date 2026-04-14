@@ -238,7 +238,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.details')}</h2>
             </div>
             
-            <div className="glass p-8 rounded-3xl space-y-6 max-w-2xl mx-auto border-2 border-arkdar-royal/20 shadow-xl">
+            <div className="glass p-8 rounded-3xl space-y-6 max-w-2xl mx-auto shadow-xl">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <label className="text-sm text-white/70 flex items-center gap-2">
@@ -305,7 +305,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.profile')}</h2>
             </div>
 
-            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-3xl border-2 border-arkdar-royal/20 shadow-xl">
+            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-3xl shadow-xl">
               <div className="space-y-2">
                 <label className="text-sm text-white/70 flex items-center gap-2"><User className="w-3 h-3 text-brand-primary" /> {t('fields.name')}</label>
                 <input 

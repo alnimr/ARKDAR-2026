@@ -46,9 +46,8 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest border transition-all cursor-pointer
-                  ${isActive
-                    ? 'bg-brand-primary/20 border-brand-primary/40 text-brand-secondary z-10 scale-105'
-                    : 'bg-white/[0.03] border-white/10 text-white/30 hover:text-white/60 hover:border-white/20 hover:scale-105'}`}
+                    ? 'bg-brand-primary border-brand-primary text-white z-10 scale-105'
+                    : 'bg-brand-secondary/5 border-brand-secondary/10 text-text-muted hover:text-brand-primary hover:border-brand-primary/20 hover:scale-105'}`}
               >
                 {tab[locale as 'ar' | 'en' | 'de' | 'es'] ?? tab.en}
               </button>
@@ -66,7 +65,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
             placeholder={locale === 'ar' ? 'بحث...' : locale === 'en' ? 'Search...' : locale === 'de' ? 'Suche...' : 'Buscar...'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={`w-full bg-white/[0.02] border border-white/10 rounded-full py-3 ${isRtl ? 'pr-11 pl-4 text-right' : 'pl-11 pr-4 text-left'} text-white placeholder-white/30 focus:outline-none focus:border-brand-primary/50 focus:bg-white/[0.05] transition-all`}
+            className={`w-full bg-brand-secondary/5 border border-brand-secondary/10 rounded-full py-3 ${isRtl ? 'pr-11 pl-4 text-right' : 'pl-11 pr-4 text-left'} text-text-primary placeholder-text-muted/50 focus:outline-none focus:border-brand-primary/50 focus:bg-brand-secondary/10 transition-all`}
             dir={isRtl ? 'rtl' : 'ltr'}
           />
         </div>

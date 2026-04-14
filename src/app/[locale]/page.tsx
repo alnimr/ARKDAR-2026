@@ -30,7 +30,7 @@ export default async function HomePage({
 
         <div className="absolute inset-0 -z-10 pointer-events-none brand-pattern-waves opacity-[0.08]" />
 
-        <div className="glass p-10 md:p-20 rounded-3xl text-center max-w-4xl relative overflow-hidden group animate-fade-up border-2 border-arkdar-royal/20 shadow-[0_0_40px_rgba(132,5,5,0.1)]">
+        <div className="glass p-10 md:p-20 rounded-3xl text-center max-w-4xl relative overflow-hidden group animate-fade-up shadow-[0_0_40px_rgba(132,5,5,0.05)] border-white/50">
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {['Precision', 'Heritage', 'Performance'].map(v => (
               <span key={v} className="bg-brand-primary/10 text-brand-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
@@ -71,7 +71,7 @@ export default async function HomePage({
             <Link 
               key={title} 
               href="/arenas"
-              className="glass p-8 rounded-2xl group hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative overflow-hidden border border-arkdar-royal/20"
+              className="glass p-8 rounded-2xl group hover:-translate-y-2 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
             >
               <div className="w-14 h-14 bg-brand-primary/10 text-brand-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Icon size={26} strokeWidth={1.5} />
@@ -141,7 +141,7 @@ export default async function HomePage({
             ].map(r => (
               <div
                 key={r.country}
-                className="glass p-10 rounded-3xl flex flex-col items-start gap-4 hover:-translate-y-2 transition-all duration-300 border border-arkdar-royal/20 shadow-sm hover:shadow-xl"
+                className="glass p-10 rounded-3xl flex flex-col items-start gap-4 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl"
               >
                 <div className="text-5xl mb-2">{r.flag}</div>
                 <div>

@@ -31,7 +31,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
   if (posts.length === 0) return null;
 
   return (
-    <section className="py-24 relative overflow-hidden bg-surface-dark/40 border-y border-white/5">
+    <section className="py-24 relative overflow-hidden bg-brand-secondary/5 border-y border-brand-secondary/10">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
@@ -45,7 +45,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
             <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight">
               {t('featuredTitle')}
             </h2>
-            <p className="text-white/40 max-w-xl text-lg font-light leading-relaxed">
+            <p className="text-text-muted max-w-xl text-lg font-light leading-relaxed">
               {t('featuredSubtitle')}
             </p>
           </div>
@@ -53,14 +53,14 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
           <div className="flex items-center gap-4">
             <button 
               onClick={() => scrollContainer(isRtl ? 'right' : 'left')}
-              className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
+              className="w-14 h-14 rounded-full border border-brand-secondary/20 flex items-center justify-center text-brand-secondary/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
               aria-label={isRtl ? "التمرير لليمين" : "Scroll Left"}
             >
               <ArrowLeft size={20} className={isRtl ? "rotate-180" : ""} />
             </button>
             <button 
               onClick={() => scrollContainer(isRtl ? 'left' : 'right')}
-              className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
+              className="w-14 h-14 rounded-full border border-brand-secondary/20 flex items-center justify-center text-brand-secondary/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
               aria-label={isRtl ? "التمرير لليسار" : "Scroll Right"}
             >
               <ArrowRight size={20} className={isRtl ? "rotate-180" : ""} />
@@ -85,7 +85,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
           >
             <Link 
               href={`/${locale}/heritage/${post.slug}`}
-              className="group relative block aspect-[16/10] rounded-[40px] overflow-hidden border border-white/5 bg-surface-dark shadow-2xl"
+              className="group relative block aspect-[16/10] rounded-[40px] overflow-hidden border border-brand-secondary/10 bg-surface-dark shadow-2xl"
             >
               {/* Image with elite overlay */}
               <NextImage

@@ -49,7 +49,7 @@ export default async function HeritagePage({
 
   return (
     <main
-      className="flex flex-col w-full min-h-screen pt-24 bg-surface-dark relative overflow-x-hidden"
+      className="flex flex-col w-full min-h-screen pt-24 bg-background relative overflow-x-hidden transition-colors duration-500"
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       {/* ── Background Texture Layers ── */}
@@ -57,7 +57,7 @@ export default async function HeritagePage({
       <div className="absolute top-0 right-0 w-1/3 h-full brand-horse-bg opacity-[0.03] pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface-dark/60 backdrop-blur-xl border-y border-white/5 shadow-2xl">
+      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-background/60 backdrop-blur-xl border-y border-brand-secondary/20 shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-center gap-8 md:gap-16 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
