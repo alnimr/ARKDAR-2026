@@ -267,24 +267,24 @@ export default async function JournalArticlePage({
                     dangerouslySetInnerHTML={{ __html: content }}
                   />
                 </StaggerItem>
-              </div>
 
-        {/* Download Section */}
-        {post.downloadUrl && (
-          <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-brand-primary/10 to-white/5 border border-white/10 shadow-xl">
-            <p className="text-white/60 text-sm mb-4">
-              {t?.('downloadCaption') || (locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Attached high-quality file for later reading')}
-            </p>
-            <a
-              href={post.downloadUrl}
-              download
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-brand-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-brand-secondary hover:shadow-[0_0_20px_rgba(160,6,28,0.4)] transition-all duration-300"
-            >
-              <Download size={16} />
-              {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Journal (PDF)')}
-            </a>
-          </div>
-        )}
+                {/* Download Section (Integrated) */}
+                {post.downloadUrl && (
+                  <div className="mt-16 p-8 rounded-3xl bg-brand-primary/[0.03] dark:bg-white/[0.02] border border-brand-primary/10 shadow-sm">
+                    <p className="text-brand-secondary dark:text-[#EDF2F4]/60 text-sm mb-4">
+                      {t?.('downloadCaption') || (locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Attached high-quality file for later reading')}
+                    </p>
+                    <a
+                      href={post.downloadUrl}
+                      download
+                      className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-brand-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-[#A0061C] hover:shadow-[0_0_20px_rgba(160,6,28,0.4)] transition-all duration-300"
+                    >
+                      <Download size={16} />
+                      {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Journal (PDF)')}
+                    </a>
+                  </div>
+                )}
+              </div>
 
         {/* Interactions & Comments */}
         <ArticleInteractions 

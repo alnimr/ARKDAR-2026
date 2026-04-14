@@ -186,16 +186,16 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       {/* Content */}
       <div className="flex flex-col flex-grow p-7">
         {/* Meta */}
-        <div className={`flex items-center gap-4 mb-4 text-[#EDF2F4]/40 text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+        <div className={`flex items-center gap-4 mb-4 text-[#EDF2F4] text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
           <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
-            <Calendar size={11} className="text-brand-primary/60" />
+            <Calendar size={11} className="text-brand-primary" />
             {formattedDate}
           </span>
           {post.author && (
             <>
-              <span className="w-1 h-1 rounded-full bg-white/20" />
+              <span className="w-1 h-1 rounded-full bg-brand-primary/30" />
               <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
-                <User size={11} className="text-brand-primary/60" />
+                <User size={11} className="text-brand-primary" />
                 {post.author}
               </span>
             </>
@@ -203,21 +203,21 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </div>
 
         {/* Title */}
-        <h3 className={`text-lg font-serif font-semibold text-white leading-snug mb-3 group-hover:text-brand-secondary transition-colors duration-300 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-lg font-serif font-bold text-[#EDF2F4] leading-snug mb-3 group-hover:text-brand-primary transition-colors duration-300 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-sm text-[#EDF2F4]/60 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-sans' : 'text-left font-sans'}`}>
+        <p className={`text-sm text-[#EDF2F4]/90 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-sans' : 'text-left font-sans'}`}>
           {excerpt}
         </p>
 
         {/* Separator */}
-        <div className="my-5 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        <div className="my-5 h-px bg-brand-primary/10" />
 
         {/* CTA */}
         <div
-          className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2px] text-[#EDF2F4]/40 group-hover:text-brand-secondary transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
+          className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2px] text-brand-primary hover:text-brand-crimson transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
             ? (locale === 'ar' ? 'تحميل' : 'Download')

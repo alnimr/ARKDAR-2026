@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
@@ -22,6 +22,15 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const switchLocale = (newLocale: string) => {
     const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
@@ -39,8 +48,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 px-4 py-4 md:px-8">
-      <div className="glass max-w-7xl mx-auto rounded-2xl flex items-center justify-between px-6 py-4 transition-all duration-300">
+    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'navbar-solid py-0' : 'navbar-floating py-4 px-4 md:px-8'
+    }`}>
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-4 transition-all duration-300 ${
+        isScrolled ? '' : 'glass rounded-2xl'
+      }`}>
 
         {/* ── Brand Logo ── */}
         <Link href="/" className="flex items-center gap-3 group">
@@ -80,7 +93,9 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-text-primary transition-all duration-200 hover:bg-white/50"
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-text-primary transition-all duration-200 ${
+                isScrolled ? 'hover:bg-brand-primary/10' : 'hover:bg-white/50'
+              }`}
             >
               <Globe className="w-4 h-4" />
               <span className="hidden sm:inline uppercase">{locale}</span>
@@ -121,7 +136,9 @@ export default function Navbar() {
 
       {/* ── Mobile Menu ── */}
       {isMenuOpen && (
-        <div className="glass lg:hidden max-w-7xl mx-auto mt-2 rounded-2xl px-6 py-4 flex flex-col gap-2 animate-fade-up">
+        <div className={`lg:hidden max-w-7xl mx-auto mt-2 px-6 py-4 flex flex-col gap-2 animate-fade-up ${
+          isScrolled ? 'bg-background shadow-xl border-b border-brand-primary/10' : 'glass rounded-2xl'
+        }`}>
           {navLinks.map(link => (
             <Link
               key={link.href}
