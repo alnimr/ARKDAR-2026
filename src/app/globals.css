@@ -4,10 +4,10 @@
 
 @theme {
   --color-brand-primary: var(--brand-primary-dynamic);
-  --color-arkdar-crimson: #840505;
+  --color-arkdar-royal: #840505;
   --color-arkdar-oxblood: #660000;
   --color-arkdar-carmine: #911010;
-  --color-brand-crimson: #840505; /* Fallback */
+  --color-brand-crimson: #840505; /* Legacy Fallback */
   --color-brand-oxblood: #660000;
   --color-brand-carmine: #911010;
   --color-brand-secondary: #7C7C7C;
@@ -57,7 +57,7 @@
   }
   
   /* Global Text Rule: Light Gray for long texts in Dark Mode */
-  .dark p, .dark span:not(.text-arkdar-crimson), .dark li {
+  .dark p, .dark span:not(.text-arkdar-royal), .dark li {
     color: #EDF2F4;
     opacity: 0.9;
   }

@@ -164,7 +164,7 @@ export default function BookingForm() {
                   key={loc.id}
                   onClick={() => { setArena(loc.id as ArenaID); nextStep(); }}
                   className={`group relative overflow-hidden rounded-3xl h-64 transition-all duration-500 border-2 
-                    ${arena === loc.id ? 'border-arkdar-crimson ring-4 ring-arkdar-crimson/20' : 'border-white/10'}`}
+                    ${arena === loc.id ? 'border-arkdar-royal ring-4 ring-arkdar-royal/20' : 'border-white/10'}`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
                   <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-1000 bg-secondary-900" />
@@ -202,7 +202,7 @@ export default function BookingForm() {
                         onClick={() => toggleService(s.id)}
                         className={`p-4 rounded-2xl flex flex-col items-center gap-3 transition-all duration-300 border 
                           ${selectedServices.includes(s.id) 
-                            ? 'bg-arkdar-crimson/10 border-arkdar-crimson text-arkdar-crimson shadow-[0_0_20px_rgba(132,5,5,0.15)]' 
+                            ? 'bg-arkdar-royal/10 border-arkdar-royal text-arkdar-royal shadow-[0_0_20px_rgba(132,5,5,0.15)]' 
                             : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'}`}
                       >
                         <s.icon className={`w-8 h-8 transition-transform ${selectedServices.includes(s.id) ? 'scale-110' : ''}`} />
@@ -238,7 +238,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.details')}</h2>
             </div>
             
-            <div className="glass p-8 rounded-3xl space-y-6 max-w-2xl mx-auto border-2 border-arkdar-crimson/20 shadow-xl">
+            <div className="glass p-8 rounded-3xl space-y-6 max-w-2xl mx-auto border-2 border-arkdar-royal/20 shadow-xl">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <label className="text-sm text-white/70 flex items-center gap-2">
@@ -277,7 +277,7 @@ export default function BookingForm() {
                       onClick={() => setFormData({...formData, experience: level})}
                       className={`p-4 rounded-xl border text-xs font-medium transition-all text-center
                         ${formData.experience === level 
-                          ? 'border-arkdar-crimson bg-arkdar-crimson/10 text-arkdar-crimson shadow-md' 
+                          ? 'border-arkdar-royal bg-arkdar-royal/10 text-arkdar-royal shadow-md' 
                           : 'border-white/10 bg-white/5 text-white/50 hover:bg-white/10'}`}
                     >
                       {t(`experienceLevels.${level}`)}
@@ -305,7 +305,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.profile')}</h2>
             </div>
 
-            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-3xl border-2 border-arkdar-crimson/20 shadow-xl">
+            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-3xl border-2 border-arkdar-royal/20 shadow-xl">
               <div className="space-y-2">
                 <label className="text-sm text-white/70 flex items-center gap-2"><User className="w-3 h-3 text-brand-primary" /> {t('fields.name')}</label>
                 <input 

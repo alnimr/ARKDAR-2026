@@ -72,7 +72,7 @@ export default function LanguageSelectorModal() {
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative w-full max-w-lg overflow-hidden bg-[#141414]/90 backdrop-blur-2xl border-2 border-arkdar-crimson/50 rounded-2xl shadow-[0_0_80px_rgba(132,5,5,0.4)]"
+          className="relative w-full max-w-lg overflow-hidden bg-[#141414]/90 backdrop-blur-2xl border-2 border-arkdar-royal/50 rounded-2xl shadow-[0_0_80px_rgba(132,5,5,0.4)]"
         >
           {/* Decorative Pattern Background */}
           <div className="absolute inset-0 opacity-10 pointer-events-none brand-pattern-waves" />
