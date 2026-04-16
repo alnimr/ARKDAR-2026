@@ -38,9 +38,9 @@ const typeConfig = {
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
-    color: 'text-blue-400',
-    bg: 'bg-blue-400/10',
-    border: 'border-blue-400/20',
+    color: 'text-brand-secondary',
+    bg: 'bg-brand-secondary/10',
+    border: 'border-brand-secondary/20',
   },
   video: {
     icon: Video,
@@ -48,9 +48,9 @@ const typeConfig = {
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
-    color: 'text-blue-400',
-    bg: 'bg-blue-400/10',
-    border: 'border-blue-400/20',
+    color: 'text-brand-secondary',
+    bg: 'bg-brand-secondary/10',
+    border: 'border-brand-secondary/20',
   },
   download: {
     icon: Download,
@@ -58,9 +58,9 @@ const typeConfig = {
     labelEn: 'Download',
     labelDe: 'Download',
     labelEs: 'Descarga',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-400/10',
-    border: 'border-emerald-400/20',
+    color: 'text-brand-secondary',
+    bg: 'bg-brand-secondary/10',
+    border: 'border-brand-secondary/20',
   },
   press: {
     icon: Newspaper,
@@ -108,9 +108,9 @@ const typeConfig = {
     labelEn: 'Lifestyle',
     labelDe: 'Lifestyle',
     labelEs: 'Estilo de vida',
-    color: 'text-blue-400',
-    bg: 'bg-blue-400/10',
-    border: 'border-blue-400/20',
+    color: 'text-brand-secondary',
+    bg: 'bg-brand-secondary/10',
+    border: 'border-brand-secondary/20',
   },
 };
 
@@ -138,10 +138,10 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="glass group relative flex flex-col overflow-hidden rounded-3xl transition-all duration-500"
+      className="glass group relative flex flex-col overflow-hidden rounded-sovereign transition-all duration-300 hover-lift"
     >
       {/* Ambient glow on hover */}
-      <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+      <div className="absolute inset-0 rounded-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(160,6,28,0.08) 0%, transparent 70%)' }}
       />
       
@@ -155,7 +155,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       />
 
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-56 overflow-hidden cinema-lut">
         <NextImage
           src={post.image}
           alt={title}
@@ -166,7 +166,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
         
         {/* Type Badge */}
-        <div className={`absolute top-4 ${locale === 'ar' ? 'right-4' : 'left-4'} flex items-center gap-1.5 px-3 py-1.5 rounded-xl border ${config.bg} ${config.border} backdrop-blur-sm`}>
+        <div className={`absolute top-4 ${locale === 'ar' ? 'right-4' : 'left-4'} flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] border ${config.bg} ${config.border} backdrop-blur-sm`}>
           <TypeIcon size={13} className={config.color} />
           <span className={`text-[10px] font-bold uppercase tracking-widest ${config.color}`}>
             {typeLabel}
@@ -176,7 +176,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         {/* Media/Download overlay icon */}
         {(post.type === 'media' || post.type === 'download') && (
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center">
+            <div className="w-14 h-14 rounded-[6px] bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center">
               <TypeIcon size={22} className="text-white" />
             </div>
           </div>
@@ -186,16 +186,16 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       {/* Content */}
       <div className="flex flex-col flex-grow p-7">
         {/* Meta */}
-        <div className={`flex items-center gap-4 mb-4 text-text-primary dark:text-[#EDF2F4] text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
-          <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
-            <Calendar size={11} className="text-brand-primary" />
+        <div className={`flex items-center gap-4 mb-4 text-[#EDF2F4]/60 text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+          <span className="flex items-center gap-1.5 font-numbers hover:text-brand-primary transition-colors cursor-default">
+            <Calendar size={11} className="text-brand-secondary" />
             {formattedDate}
           </span>
           {post.author && (
             <>
-              <span className="w-1 h-1 rounded-full bg-brand-primary/30" />
+              <span className="w-1 h-1 rounded-[1px] bg-brand-primary/30" />
               <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
-                <User size={11} className="text-brand-primary" />
+                <User size={11} className="text-brand-secondary" />
                 {post.author}
               </span>
             </>
@@ -208,7 +208,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-sm text-text-primary dark:text-[#EDF2F4]/90 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-sans' : 'text-left font-sans'}`}>
+        <p className={`text-sm text-[#EDF2F4]/80 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-body' : 'text-left font-body'}`}>
           {excerpt}
         </p>
 

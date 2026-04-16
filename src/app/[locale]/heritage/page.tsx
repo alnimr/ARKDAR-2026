@@ -49,7 +49,7 @@ export default async function HeritagePage({
 
   return (
     <main
-      className="flex flex-col w-full min-h-screen pt-24 bg-background relative overflow-x-hidden transition-colors duration-500"
+      className="flex flex-col w-full min-h-screen pt-24 bg-surface relative overflow-x-hidden transition-colors duration-500"
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       {/* ── Background Texture Layers ── */}
@@ -57,7 +57,7 @@ export default async function HeritagePage({
       <div className="absolute top-0 right-0 w-1/3 h-full brand-horse-bg opacity-[0.03] pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-background/60 backdrop-blur-xl border-y border-brand-secondary/20 shadow-2xl">
+      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface/60 backdrop-blur-xl border-y border-brand-secondary/20 shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-center gap-8 md:gap-16 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
@@ -79,7 +79,7 @@ export default async function HeritagePage({
       {featuredPost && (
         <section className="relative h-[90vh] flex flex-col justify-end section-padding overflow-hidden group">
           {/* Background Image with Parallax-like effect */}
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 cinema-lut">
             <NextImage
               src={featuredPost.image}
               alt={featuredPost.title[locale as keyof typeof featuredPost.title]}
@@ -96,30 +96,30 @@ export default async function HeritagePage({
           <div className="max-w-6xl px-6 relative z-10 animate-fade-up pb-20">
             <Link href={`/${locale}/heritage/${featuredPost.slug}`} className="block group/link">
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block py-1 px-4 border border-brand-primary/40 rounded-full text-[10px] font-black uppercase tracking-[5px] text-brand-primary backdrop-blur-md">
+                <span className="inline-block py-1 px-4 border border-brand-primary/40 rounded-sovereign text-[10px] font-bold uppercase tracking-[5px] text-brand-primary backdrop-blur-md">
                   {t('heroTag')} • {t('navJournal')}
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 font-serif leading-[1.1] transition-all duration-700 group-hover/link:text-brand-secondary tracking-tight">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-title font-bold text-white mb-8 leading-[1.1] transition-all duration-300 group-hover/link:text-brand-secondary tracking-tight">
                 {featuredPost.title[locale as keyof typeof featuredPost.title]}
               </h1>
               
-              <p className="text-xl md:text-2xl text-white/70 font-light leading-relaxed max-w-3xl mb-10 line-clamp-2 md:line-clamp-3">
+              <p className="text-xl md:text-2xl text-white/70 font-body leading-relaxed max-w-3xl mb-10 line-clamp-2 md:line-clamp-3">
                 {featuredPost.excerpt[locale as keyof typeof featuredPost.excerpt] || featuredPost.excerpt.en}
               </p>
               
               <div className="flex items-center gap-6">
                 {featuredPost.author && (
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center overflow-hidden">
-                       <span className="text-brand-primary font-serif italic">{featuredPost.author?.[0] || 'A'}</span>
+                    <div className="w-10 h-10 rounded-sovereign bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center overflow-hidden">
+                       <span className="text-brand-primary font-title italic">{featuredPost.author?.[0] || 'A'}</span>
                     </div>
-                    <span className="text-white/80 font-medium text-sm">{featuredPost.author}</span>
+                    <span className="text-white/80 font-body font-medium text-sm">{featuredPost.author}</span>
                   </div>
                 )}
                 <div className="h-px w-12 bg-white/10" />
-                <time className="text-white/40 text-sm uppercase tracking-widest" dateTime={featuredPost.date}>
+                <time className="text-white/40 text-sm uppercase tracking-widest font-numbers" dateTime={featuredPost.date}>
                   {new Date(featuredPost.date).toLocaleDateString(locale, {
                     year: 'numeric', month: 'long',
                   })}
@@ -143,15 +143,15 @@ export default async function HeritagePage({
             {t('navVision')}
           </h2>
           
-          <h3 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-16 leading-tight">
+          <h3 className="text-4xl md:text-6xl lg:text-7xl font-title text-white mb-16 leading-tight">
              {t('philosophyTitle')}
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-left items-start">
-            <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed italic border-l-2 border-brand-primary/30 pl-8">
+          <div className="grid-sovereign text-left items-start">
+            <p className="col-span-12 lg:col-span-6 text-xl md:text-2xl text-white/60 font-body leading-relaxed italic border-l-2 border-brand-primary/30 pl-8">
                {t('philosophyP1')}
             </p>
-            <p className="text-lg text-white/50 leading-loose">
+            <p className="col-span-12 lg:col-span-6 text-lg text-white/50 font-body leading-loose">
                {t('philosophyP2')}
             </p>
           </div>
@@ -167,13 +167,13 @@ export default async function HeritagePage({
             <h4 className="text-brand-secondary font-bold tracking-[8px] uppercase text-xs mb-4">
               {t('originTitle')}
             </h4>
-            <h2 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-8">
+            <h2 className="text-5xl md:text-7xl font-title text-white leading-tight mb-8">
               {t('pillarsTitle')}
             </h2>
             <div className="w-24 h-1 bg-brand-primary/40 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid-sovereign">
             {[
               { title: t('pillar1Title'), desc: t('pillar1Desc'), icon: '📜' },
               { title: t('pillar2Title'), desc: t('pillar2Desc'), icon: '🦾' },
@@ -181,14 +181,14 @@ export default async function HeritagePage({
             ].map((pillar, i) => (
               <div 
                 key={i}
-                className="glass-dark p-12 rounded-[40px] border border-white/5 hover:border-brand-primary/30 transition-all duration-700 group relative overflow-hidden flex flex-col items-center text-center"
+                className="col-span-12 md:col-span-4 glass p-12 rounded-sovereign border border-white/5 hover-lift group relative overflow-hidden flex flex-col items-center text-center"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="text-6xl mb-8 transform group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
-                <h3 className="text-2xl font-serif text-white mb-6 group-hover:text-brand-primary transition-colors">{pillar.title}</h3>
-                <p className="text-white/50 leading-relaxed font-light">{pillar.desc}</p>
+                <h3 className="text-2xl font-title text-white mb-6 group-hover:text-brand-primary transition-colors">{pillar.title}</h3>
+                <p className="text-[#EDF2F4]/60 leading-relaxed font-body">{pillar.desc}</p>
                 <div className="mt-auto pt-8">
-                   <div className="w-12 h-0.5 bg-brand-primary/20 group-hover:w-24 group-hover:bg-brand-primary/60 transition-all duration-700" />
+                   <div className="w-12 h-0.5 bg-brand-primary/20 group-hover:w-24 group-hover:bg-brand-primary/60 transition-all duration-300" />
                 </div>
               </div>
             ))}
@@ -198,43 +198,43 @@ export default async function HeritagePage({
 
       {/* ── Founder's Message & Mission ── */}
       <section className="py-32 px-6 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <div className="relative aspect-square lg:aspect-[4/5] rounded-[60px] overflow-hidden group">
+        <div className="max-w-7xl mx-auto grid-sovereign items-center">
+          <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] rounded-sovereign overflow-hidden group cinema-lut">
             <NextImage
               src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?q=80&w=800"
               alt="Founder's Path"
               fill
               className="object-cover transition-transform duration-[15s] group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
             <div className="absolute bottom-12 left-12">
-               <span className="text-white/20 text-7xl font-serif italic tracking-tighter">AL-NIMR</span>
+               <span className="text-white/20 text-7xl font-title italic tracking-tighter uppercase">AL-NIMR</span>
             </div>
           </div>
 
-          <div className="space-y-12">
+          <div className="col-span-12 lg:col-span-7 space-y-12">
             <div className="space-y-6">
-              <span className="text-brand-primary text-xs font-black tracking-[6px] uppercase">{t('foundersMessageTitle')}</span>
-              <h2 className="text-4xl md:text-6xl font-serif text-white leading-[1.2]">
+              <span className="text-brand-primary text-xs font-bold tracking-[6px] uppercase">{t('foundersMessageTitle')}</span>
+              <h2 className="text-4xl md:text-6xl font-title text-white leading-[1.2]">
                 {t('missionTitle')}
               </h2>
             </div>
             
-            <p className="text-xl text-white/70 leading-[1.8] font-light">
+            <p className="text-xl text-[#EDF2F4]/70 leading-[1.8] font-body">
               &quot;{t('foundersMessage')}&quot;
             </p>
 
-            <div className="p-8 border-l-4 border-brand-primary/40 bg-white/5 rounded-r-3xl">
-               <p className="text-white/60 italic leading-relaxed text-lg">
+            <div className="p-8 border-l-4 border-brand-primary/40 bg-white/5 rounded-r-sovereign">
+               <p className="text-[#EDF2F4]/60 italic leading-relaxed text-lg font-body">
                  {t('missionDesc')}
                </p>
             </div>
 
             <div className="flex flex-wrap gap-6 pt-4">
-              <Link href={`/${locale}/mountup`} className="btn-brand-primary px-10 py-5 rounded-full text-sm font-bold tracking-widest uppercase hover:scale-105 transition-all">
+              <Link href={`/${locale}/mountup`} className="btn-primary px-10 py-5">
                 {t('ctaJoinJourney')}
               </Link>
-              <button className="px-10 py-5 border border-white/10 rounded-full text-white/80 text-sm font-bold tracking-widest uppercase hover:bg-white/5 hover:border-brand-primary/20 transition-all">
+              <button className="px-10 py-5 border border-white/10 rounded-sovereign text-white/80 text-sm font-bold tracking-widest uppercase hover:bg-white/5 hover:border-brand-primary/20 transition-all font-body">
                 {t('ctaExploreStory')}
               </button>
             </div>
@@ -254,11 +254,11 @@ export default async function HeritagePage({
           <span className="text-xs font-bold uppercase tracking-[8px] text-brand-primary mb-4 block">
             {locale === 'ar' ? 'مستجدات أركدار' : 'ARKDAR Pulse'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-title text-white mb-6">
             {journalHeading}
           </h2>
           <div className="w-16 h-px bg-brand-primary/40 mx-auto mb-6" />
-          <p className="text-white/50 max-w-xl mx-auto text-lg leading-relaxed">
+          <p className="text-[#EDF2F4]/50 max-w-xl mx-auto text-lg leading-relaxed font-body">
             {journalSubheading}
           </p>
         </div>
@@ -269,9 +269,9 @@ export default async function HeritagePage({
 
       {/* ── Closing Signature ── */}
       <section className="py-40 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[120px] rounded-sovereign pointer-events-none" />
         <div className="brand-sep-bow mb-12 opacity-40 mx-auto max-w-2xl" />
-        <h3 className="text-2xl md:text-3xl font-serif text-brand-secondary italic px-6 z-10 relative">
+        <h3 className="text-2xl md:text-3xl font-title text-brand-secondary italic px-6 z-10 relative">
           &quot;{t('quote')}&quot;
         </h3>
       </section>

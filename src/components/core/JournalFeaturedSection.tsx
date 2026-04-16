@@ -53,14 +53,14 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
           <div className="flex items-center gap-4">
             <button 
               onClick={() => scrollContainer(isRtl ? 'right' : 'left')}
-              className="w-14 h-14 rounded-full border border-brand-secondary/20 flex items-center justify-center text-brand-secondary/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
+              className="w-14 h-14 rounded-[6px] border border-brand-secondary/20 flex items-center justify-center text-brand-secondary/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
               aria-label={isRtl ? "التمرير لليمين" : "Scroll Left"}
             >
               <ArrowLeft size={20} className={isRtl ? "rotate-180" : ""} />
             </button>
             <button 
               onClick={() => scrollContainer(isRtl ? 'left' : 'right')}
-              className="w-14 h-14 rounded-full border border-brand-secondary/20 flex items-center justify-center text-brand-secondary/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
+              className="w-14 h-14 rounded-[6px] border border-brand-secondary/20 flex items-center justify-center text-brand-secondary/40 hover:text-brand-primary hover:border-brand-primary/40 hover:bg-brand-primary/5 transition-all group active:scale-95"
               aria-label={isRtl ? "التمرير لليسار" : "Scroll Right"}
             >
               <ArrowRight size={20} className={isRtl ? "rotate-180" : ""} />
@@ -85,7 +85,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
           >
             <Link 
               href={`/${locale}/heritage/${post.slug}`}
-              className="group relative block aspect-[16/10] rounded-[40px] overflow-hidden border border-brand-secondary/10 bg-surface-dark shadow-2xl"
+              className="group relative block aspect-[16/10] rounded-[6px] overflow-hidden border border-brand-secondary/10 bg-surface-dark shadow-2xl cinema-lut"
             >
               {/* Image with elite overlay */}
               <NextImage
@@ -98,10 +98,10 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
               
               {/* Floating Labels */}
               <div className="absolute top-6 left-6 flex gap-2">
-                <span className="px-3 py-1 bg-brand-primary/20 border border-brand-primary/30 backdrop-blur-md text-brand-primary text-[10px] font-black uppercase tracking-widest rounded-lg">
+                <span className="px-3 py-1 bg-brand-primary/20 border border-brand-primary/30 backdrop-blur-md text-brand-primary text-[10px] font-black uppercase tracking-widest rounded-[4px]">
                   {(post.categoryId || 'Heritage').toUpperCase()}
                 </span>
-                <span className="px-3 py-1 bg-white/5 border border-white/10 backdrop-blur-md text-white/50 text-[10px] font-bold uppercase tracking-widest rounded-lg">
+                <span className="px-3 py-1 bg-white/5 border border-white/10 backdrop-blur-md text-white/50 text-[10px] font-bold uppercase tracking-widest rounded-[4px]">
                   {(post.type || 'Article').toUpperCase()}
                 </span>
               </div>

@@ -45,9 +45,11 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest border transition-all cursor-pointer
+                className={`px-5 py-2 rounded-[6px] text-[11px] font-bold uppercase tracking-widest border transition-all cursor-pointer ${
+                  isActive
                     ? 'bg-brand-primary border-brand-primary text-white z-10 scale-105'
-                    : 'bg-brand-secondary/5 border-brand-secondary/10 text-text-muted hover:text-brand-primary hover:border-brand-primary/20 hover:scale-105'}`}
+                    : 'bg-brand-secondary/5 border-brand-secondary/10 text-text-muted hover:text-brand-primary hover:border-brand-primary/20 hover:scale-105'
+                }`}
               >
                 {tab[locale as 'ar' | 'en' | 'de' | 'es'] ?? tab.en}
               </button>
@@ -65,7 +67,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
             placeholder={locale === 'ar' ? 'بحث...' : locale === 'en' ? 'Search...' : locale === 'de' ? 'Suche...' : 'Buscar...'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={`w-full bg-brand-secondary/5 border border-brand-secondary/10 rounded-full py-3 ${isRtl ? 'pr-11 pl-4 text-right' : 'pl-11 pr-4 text-left'} text-text-primary placeholder-text-muted/50 focus:outline-none focus:border-brand-primary/50 focus:bg-brand-secondary/10 transition-all`}
+            className={`w-full bg-brand-secondary/5 border border-brand-secondary/10 rounded-[6px] py-3 ${isRtl ? 'pr-11 pl-4 text-right' : 'pl-11 pr-4 text-left'} text-text-primary placeholder-text-muted/50 focus:outline-none focus:border-brand-primary/50 focus:bg-brand-secondary/10 transition-all`}
             dir={isRtl ? 'rtl' : 'ltr'}
           />
         </div>
@@ -73,7 +75,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
 
       <div className="min-h-[500px]">
         {filteredPosts.length === 0 ? (
-           <div className="text-center text-white/40 py-20 font-serif text-xl border border-white/5 rounded-3xl bg-white/[0.02]">
+           <div className="text-center text-white/40 py-20 font-serif text-xl border border-white/5 rounded-[6px] bg-white/[0.02]">
              {locale === 'ar' ? 'لا توجد مقالات تطابق بحثك.' : 'No articles match your search.'}
            </div>
         ) : (

@@ -1,286 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Inter:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* ══════════════════════════════════════════════════════════════
+   ARKDAR SOVEREIGN DESIGN SYSTEM (Royal DNA 2026)
+   ROOT CONSTITUTION - DO NOT DEVIATE
+   ══════════════════════════════════════════════════════════════ */
+
 @theme {
-  --color-brand-primary: #911010; /* Burnt Carmine - The Anchor */
-  --color-arkdar-royal: #840505;
-  --color-arkdar-oxblood: #660000;
-  --color-arkdar-carmine: #D90429;
-  --color-brand-crimson: #D90429;
-  --color-brand-deep: #A0061C;
-  --color-brand-secondary: #7C7C7C;
-  --color-brand-background: #EDF2F4;
+  /* Sovereign Color Palette */
+  --color-brand-primary: #911010;   /* Burnt Carmine - The Anchor */
+  --color-brand-accent: #840505;    /* Royal Crimson */
+  --color-brand-deep: #660000;      /* Blood Oak */
+  
+  --color-surface-base: #121212;    /* Dark Void */
+  --color-text-sovereign: #EDF2F4;  /* Bone White */
+  --color-text-muted: #8E9196;      /* Slate Shadow */
 
-  --color-surface-dark: #050505; /* Black Charcoal */
-  --color-surface-light: #EDF2F4; /* Marble Paper */
-
-  --color-text-primary: #141414;
-  --color-text-muted: #7C7C7C;
-  --color-text-on-brand: #EDF2F4;
-
-  --font-serif: "El Messiri", serif;
-  --font-sans: "Tajawal", system-ui, sans-serif;
-  --font-dashboard: "Inter", system-ui, sans-serif;
+  /* Sovereign Typography */
+  --font-serif: var(--font-el-messiri), serif;
+  --font-sans: var(--font-cairo), system-ui, sans-serif;
+  --font-numbers: var(--font-montserrat), sans-serif;
+  
+  /* Sovereign Geometry & Motion */
+  --radius-sovereign: 6px;
+  --motion-duration: 300ms;
+  --motion-curve: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @layer base {
   :root {
-    --background: #EDF2F4; /* Marble */
-    --foreground: #141414; /* Charcoal */
-    --brand-text: #911010; /* Fixed Burnt Carmine Header */
-    --primary-glow: 0 0 0px transparent;
-    --border-accent: rgba(132, 5, 5, 0.15);
+    --background: #121212;
+    --foreground: #EDF2F4;
+    --radius: 6px;
   }
 
-  .dark {
-    --background: #050505; /* Deep Black */
-    --foreground: #EDF2F4; /* Light Grey */
-    --brand-text: #911010; /* Fixed Burnt Carmine Header */
-    --primary-glow: 0 0 35px rgba(217, 4, 41, 0.25);
-    --border-accent: rgba(132, 5, 5, 0.4);
-  }
-
+  /* Force Sovereign Background with Noise */
   body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--color-surface-base);
+    color: var(--color-text-sovereign);
     font-family: var(--font-sans);
-    font-weight: 400; /* Regular for body text */
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  h1, h2, h3, h4, .font-serif {
     font-family: var(--font-serif);
-    color: #911010 !important; /* Fixed Burnt Carmine */
-    font-weight: 700; /* Bold for headings */
-    transition: color 0.3s ease;
-  }
-  
-  /* Global Text Rule: Clean Contrast */
-  .dark p, .dark span:not(.text-arkdar-royal), .dark li {
-    color: #EDF2F4;
-    opacity: 1 !important;
+    font-weight: 700;
   }
 
-  p {
-    font-weight: 400; /* Regular */
-  }
-
-  /* Light Mode Specific Body Contrast Improvement */
-  :root:not(.dark) p, :root:not(.dark) span:not(.text-arkdar-royal), :root:not(.dark) li {
-    color: #7C7C7C;
-    font-weight: 500; /* Medium for Light Mode Sharpness */
-  }
-  
-  /* Ensure prose content respects Royal DNA */
-  .prose {
-    --tw-prose-body: #7C7C7C !important;
-    --tw-prose-headings: #911010 !important;
-    --tw-prose-links: #D90429 !important;
-    --tw-prose-bullets: #D90429 !important;
-    --tw-prose-bold: #141414 !important;
-    font-family: var(--font-sans);
-  }
-
-  .prose-invert {
-    --tw-prose-body: #EDF2F4 !important;
-    --tw-prose-headings: #911010 !important;
-    --tw-prose-links: #D90429 !important;
-    --tw-prose-bold: #EDF2F4 !important;
-    --tw-prose-bullets: #D90429 !important;
-    --tw-prose-hr: #840505 !important;
-    --tw-prose-quotes: #EDF2F4 !important;
-    --tw-prose-quote-borders: #840505 !important;
+  /* Montserrat Enforcement for Numbers */
+  .font-numbers, [dir="ltr"] {
+    font-family: var(--font-numbers);
   }
 }
-
 
 @layer utilities {
-
-  /* ── Glassmorphism Surfaces (Refined Luxury) ── */
+  /* ── Physical Geometry ── */
+  .rounded-sovereign { border-radius: 6px !important; }
+  
+  /* ── Glassmorphism (Sovereign Spec) ── */
   .glass {
-    background: rgba(237, 242, 244, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(132, 5, 5, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-  }
-
-  .glass-dark {
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(132, 5, 5, 0.25); /* Royal Crimson border */
-    box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
-    background-image: radial-gradient(circle at top right, rgba(132, 5, 5, 0.05), transparent);
-  }
-
-  /* ── Animated Navbar Surfaces ── */
-  .navbar-floating {
-    @apply transition-all duration-500 ease-in-out;
-  }
-
-  .navbar-solid {
-    background-color: rgba(237, 242, 244, 0.85) !important;
+    background: rgba(18, 18, 18, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: 0 !important;
-    border-bottom: 2px solid #840505;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(145, 16, 16, 0.2);
+    border-radius: 6px;
   }
 
-  .dark .navbar-solid {
-    background-color: rgba(5, 5, 5, 0.85) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 2px solid #840505;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* ── Cinema LUT Image Processing ── */
+  .cinema-lut {
+    filter: sepia(0.15) contrast(1.1) brightness(0.85) saturate(1.1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
   }
 
-  /* ── Brand Color Helpers ── */
-  .text-brand-primary   { color: var(--color-brand-primary); }
-  .text-brand-secondary { color: var(--color-brand-secondary); }
-  .bg-brand-primary     { background-color: var(--color-brand-primary); }
-  .bg-surface-dark      { background-color: var(--color-surface-dark); }
-
-  /* ══════════════════════════════
-    BRAND VISUAL IDENTITY SYSTEM (Elite)
-   ══════════════════════════════ */
-
-/* 1. The Waves (Background Texture) */
-.brand-pattern-waves {
-  background-image: url('/images/brand/brand-waves.png');
-  background-repeat: repeat;
-  background-size: 400px;
-  mix-blend-mode: soft-light;
-  pointer-events: none;
-}
-
-/* 2. The Crimson Bow (Separator & Accent) */
-.brand-sep-bow {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #840505, transparent);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.brand-sep-bow::after {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background-color: #840505;
-  transform: rotate(45deg);
-  box-shadow: 0 0 15px #840505;
-}
-
-/* 3. The Horse Watermark (Soul/Presence) */
-.brand-horse-bg {
-  background-image: url('/images/brand/brand-horse.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-}
-
-/* 4. The Reading Sanctuary (Luxury Glass Container) */
-.reading-sanctuary {
-  @apply glass px-10 py-10 md:px-20 md:py-20 rounded-[2.5rem] mb-16;
-  border: 1px solid rgba(132, 5, 5, 0.15);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-}
-
-.dark .reading-sanctuary {
-  @apply glass-dark;
-  background-color: rgba(5, 5, 5, 0.8) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-@media (min-width: 768px) {
-  .reading-sanctuary {
-    padding: 4.5rem;
-  }
-}
-
-/* ══════════════════════════════
-   ARKDAR READABILITY ENGINE (The Golden Rules)
-   ══════════════════════════════ */
-.arkdar-article-body {
-  max-width: 720px !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.arkdar-article-body p {
-  line-height: 1.8 !important;
-  margin-bottom: 3.5rem !important; /* Doubled from standard luxury spacing */
-  color: var(--foreground);
-  font-family: var(--font-sans);
-}
-
-.arkdar-article-body h2, 
-.arkdar-article-body h3 {
-  color: #911010 !important; /* Burnt Carmine Permanent Anchor */
-  font-weight: 700 !important;
-  font-family: var(--font-serif) !important;
-  font-size: 2.5rem !important; 
-  margin-top: 4.5rem !important;
-  margin-bottom: 2.5rem !important;
-  line-height: 1.25 !important;
-}
-
-.arkdar-article-body h3 {
-  font-size: 2rem !important;
-}
-
-.dark .arkdar-article-body p,
-.dark .arkdar-article-body li {
-  opacity: 0.9 !important;
-  color: #EDF2F4 !important;
-}
-
-.arkdar-article-body blockquote p {
-  line-height: 1.6 !important;
-  margin-bottom: 0 !important;
-}
-
-.arkdar-article-body ul, 
-.arkdar-article-body ol {
-  margin-bottom: 3rem;
-  line-height: 1.8;
-}
-
-.arkdar-article-body li {
-  margin-bottom: 1rem;
-}
-
-  /* ── Typography Fixes ── */
-  .text-balance {
-    /* text-wrap: balance fallback */
-    overflow-wrap: break-word;
+  .cinema-lut::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.6) 0%, transparent 40%);
+    pointer-events: none;
   }
 
-  /* ── Animations ── */
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
+  /* ── Sovereign Asymmetrical Grid ── */
+  .grid-sovereign {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+
+  .col-content-wide { grid-column: span 12; }
+  @media (min-width: 1024px) {
+    .col-content-primary { grid-column: span 7; }
+    .col-content-secondary { grid-column: span 5; }
+    .col-content-asym-left { grid-column: 2 / span 6; }
+    .col-content-asym-right { grid-column: 8 / span 4; }
+  }
+
+  /* ── Sovereign Motion ── */
+  .hover-lift {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px -10px rgba(145, 16, 16, 0.3);
+  }
+
+  /* ── Sovereign Scroll Reveal ── */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 600ms ease;
+  }
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ── Buttons ── */
-  .btn-primary {
-    @apply inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white transition-all shadow-lg hover:translate-y-[-2px] hover:shadow-[0_0_20px_rgba(132,5,5,0.3)];
-    background: linear-gradient(135deg, #840505 0%, #660000 100%);
+  .btn-sovereign {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold transition-all rounded-[6px] relative overflow-hidden;
+    background: linear-gradient(135deg, #911010 0%, #660000 100%);
+    color: #EDF2F4;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
-  .btn-nav {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-md hover:translate-y-[-1px];
-    background: linear-gradient(135deg, #840505 0%, #660000 100%);
+
+  .btn-sovereign:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(145, 16, 16, 0.4);
+  }
+
+  .btn-outline-sovereign {
+    @apply inline-flex items-center justify-center px-8 py-4 font-bold transition-all rounded-[6px] border border-brand-primary;
+    background: transparent;
+    color: var(--color-brand-primary);
+  }
+
+  .btn-outline-sovereign:hover {
+    background: rgba(145, 16, 16, 0.05);
+    border-color: var(--color-brand-accent);
   }
 }

@@ -7,7 +7,7 @@ import { fallbackServices } from '@/data/mockServices';
 
 export default function ServiceGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid-sovereign gap-y-12">
       {fallbackServices.map((service, index) => (
         <motion.div
           key={service.id}

@@ -27,10 +27,10 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -10 }}
-      className="group relative h-full overflow-hidden rounded-[32px] glass-dark border border-white/5 hover:border-brand-primary/30 transition-all duration-500"
+      className="group relative h-full overflow-hidden rounded-sovereign glass border border-white/5 hover-lift"
     >
       {/* Target Image with Gradient Overlay */}
-      <div className="relative h-64 w-full overflow-hidden">
+      <div className="relative h-64 w-full overflow-hidden cinema-lut">
         <Image
           src={service.image}
           alt={service.title}
@@ -41,8 +41,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         
         {/* Category/Price Tag */}
         <div className="absolute top-6 right-6">
-          <div className="px-4 py-2 rounded-full glass-dark border border-white/10 backdrop-blur-md">
-            <span className="text-brand-primary font-bold text-sm tracking-widest">${service.price}</span>
+          <div className="px-4 py-2 rounded-sovereign glass border border-white/10">
+            <span className="text-brand-primary font-bold text-sm tracking-widest font-numbers">${service.price}</span>
           </div>
         </div>
       </div>
@@ -77,12 +77,12 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* CTA */}
         <div className="flex items-center justify-between mt-auto">
           <div className="flex -space-x-2">
-            <div className="w-8 h-8 rounded-full border-2 border-secondary-900 overflow-hidden relative">
+            <div className="w-8 h-8 rounded-[4px] border border-white/10 overflow-hidden relative">
               <Image 
                 src={service.expert.image} 
                 alt={service.expert.name}
                 fill
-                className="object-cover"
+                className="object-cover cinema-lut"
               />
             </div>
             <span className="ps-4 text-[10px] text-white/40 self-center uppercase tracking-widest">
@@ -92,7 +92,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           
           <button 
             onClick={handleBookNow}
-            className="p-3 rounded-full bg-brand-primary/10 text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300"
+            className="p-3 rounded-sovereign bg-brand-primary/10 text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 border border-brand-primary/20"
             aria-label={`Book ${service.title}`}
             title={`Book ${service.title}`}
           >
@@ -101,8 +101,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         </div>
       </div>
 
-      {/* Decorative Corner Element */}
-      <div className="absolute bottom-0 right-0 w-16 h-16 bg-brand-primary/5 rounded-tl-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
+      {/* Decorative Sovereign Corner */}
+      <div className="absolute bottom-0 right-0 w-16 h-16 bg-brand-primary/5 rounded-tl-sovereign border-t border-l border-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
     </motion.div>
   );
 }

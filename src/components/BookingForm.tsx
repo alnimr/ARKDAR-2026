@@ -138,7 +138,7 @@ export default function BookingForm() {
       <div className="mb-12 flex justify-between items-center px-4">
         {[1, 2, 3, 4, 5].map((s) => (
           <div key={s} className="flex items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 border-2 
+            <div className={`w-10 h-10 rounded-[6px] flex items-center justify-center transition-all duration-300 border-2 
               ${step >= s ? 'bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20' : 'border-white/20 text-white/40'}`}>
               {step > s ? <CheckCircle2 className="w-6 h-6" /> : s}
             </div>
@@ -163,7 +163,7 @@ export default function BookingForm() {
                 <button
                   key={loc.id}
                   onClick={() => { setArena(loc.id as ArenaID); nextStep(); }}
-                  className={`group relative overflow-hidden rounded-3xl h-64 transition-all duration-500 border-2 
+                  className={`group relative overflow-hidden rounded-[6px] h-64 transition-all duration-300 border-2 
                     ${arena === loc.id ? 'border-arkdar-royal ring-4 ring-arkdar-royal/20' : 'border-white/10'}`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
@@ -200,7 +200,7 @@ export default function BookingForm() {
                       <button
                         key={s.id}
                         onClick={() => toggleService(s.id)}
-                        className={`p-4 rounded-2xl flex flex-col items-center gap-3 transition-all duration-300 border 
+                        className={`p-4 rounded-[6px] flex flex-col items-center gap-3 transition-all duration-300 border 
                           ${selectedServices.includes(s.id) 
                             ? 'bg-arkdar-royal/10 border-arkdar-royal text-arkdar-royal shadow-[0_0_20px_rgba(132,5,5,0.15)]' 
                             : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'}`}
@@ -216,7 +216,7 @@ export default function BookingForm() {
               ))}
             </div>
 
-            <div className="flex justify-between mt-12 bg-secondary-950/50 p-6 rounded-3xl backdrop-blur-md sticky bottom-4 border border-white/5">
+            <div className="flex justify-between mt-12 bg-secondary-950/50 p-6 rounded-[6px] backdrop-blur-md sticky bottom-4 border border-white/5">
               <button onClick={prevStep} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
                 <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
               </button>
@@ -238,7 +238,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.details')}</h2>
             </div>
             
-            <div className="glass p-8 rounded-3xl space-y-6 max-w-2xl mx-auto shadow-xl">
+            <div className="glass p-8 rounded-[6px] space-y-6 max-w-2xl mx-auto shadow-xl">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <label className="text-sm text-white/70 flex items-center gap-2">
@@ -249,7 +249,7 @@ export default function BookingForm() {
                     aria-label={t('fields.date')}
                     value={formData.date}
                     onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all" 
+                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-3 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all" 
                   />
                 </div>
                 <div className="space-y-3">
@@ -263,7 +263,7 @@ export default function BookingForm() {
                     title={t('fields.count')}
                     value={formData.count}
                     onChange={(e) => setFormData({...formData, count: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all placeholder:text-white/20" 
+                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-3 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all placeholder:text-white/20" 
                   />
                 </div>
               </div>
@@ -275,7 +275,7 @@ export default function BookingForm() {
                     <button
                       key={level}
                       onClick={() => setFormData({...formData, experience: level})}
-                      className={`p-4 rounded-xl border text-xs font-medium transition-all text-center
+                      className={`p-4 rounded-[6px] border text-xs font-medium transition-all text-center
                         ${formData.experience === level 
                           ? 'border-arkdar-royal bg-arkdar-royal/10 text-arkdar-royal shadow-md' 
                           : 'border-white/10 bg-white/5 text-white/50 hover:bg-white/10'}`}
@@ -305,7 +305,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.profile')}</h2>
             </div>
 
-            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-3xl shadow-xl">
+            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-[6px] shadow-xl">
               <div className="space-y-2">
                 <label className="text-sm text-white/70 flex items-center gap-2"><User className="w-3 h-3 text-brand-primary" /> {t('fields.name')}</label>
                 <input 
@@ -313,7 +313,7 @@ export default function BookingForm() {
                   title={t('fields.name')}
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-brand-primary outline-none transition-all" 
+                  className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-4 text-white focus:border-brand-primary outline-none transition-all" 
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-6">
@@ -324,7 +324,7 @@ export default function BookingForm() {
                     title={t('fields.email')}
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-brand-primary outline-none transition-all" 
+                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-4 text-white focus:border-brand-primary outline-none transition-all" 
                   />
                 </div>
                 <div className="space-y-2">
@@ -334,7 +334,7 @@ export default function BookingForm() {
                     title={t('fields.phone')}
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:border-brand-primary outline-none transition-all placeholder:text-ltr" 
+                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-4 text-white focus:border-brand-primary outline-none transition-all placeholder:text-ltr" 
                   />
                 </div>
               </div>
@@ -358,7 +358,7 @@ export default function BookingForm() {
         {/* Step 5: Success/Processing */}
         {step === 5 && (
           <div className="animate-fade-in text-center space-y-8 py-12">
-            <div className="w-24 h-24 bg-brand-primary/20 rounded-full flex items-center justify-center mx-auto ring-8 ring-brand-primary/5 animate-pulse">
+            <div className="w-24 h-24 bg-brand-primary/20 rounded-[6px] flex items-center justify-center mx-auto ring-8 ring-brand-primary/5 animate-pulse">
               <CheckCircle2 className="w-12 h-12 text-brand-primary" />
             </div>
             <div className="space-y-4">
@@ -368,7 +368,7 @@ export default function BookingForm() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-               <button onClick={() => setStep(1)} className="px-8 py-4 rounded-xl border border-white/10 text-white hover:bg-white/5 transition-all">
+               <button onClick={() => setStep(1)} className="px-8 py-4 rounded-[6px] border border-white/10 text-white hover:bg-white/5 transition-all">
                   {t('home')}
                </button>
             </div>

@@ -89,14 +89,6 @@ const typeIconMap = {
   news: Newspaper,
 };
 
-const typeColorMap = {
-  article: 'text-brand-secondary',
-  media: 'text-blue-400',
-  video: 'text-blue-400',
-  download: 'text-emerald-400',
-  press: 'text-brand-primary',
-  news: 'text-brand-primary',
-};
 
 export default async function JournalArticlePage({
   params,
@@ -117,7 +109,6 @@ export default async function JournalArticlePage({
   const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
 
   const TypeIcon = typeIconMap[post.type as keyof typeof typeIconMap];
-  const typeColor = typeColorMap[post.type as keyof typeof typeColorMap];
 
   const t = await getTranslations('Heritage').catch(() => null);
   const isRtl = locale === 'ar';
@@ -144,7 +135,7 @@ export default async function JournalArticlePage({
 
   return (
     <main
-      className="min-h-screen bg-background pt-24 pb-32 relative overflow-x-hidden"
+      className="min-h-screen bg-surface pt-24 pb-32 relative overflow-x-hidden"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       <ArticleReadingProgress />
@@ -168,14 +159,14 @@ export default async function JournalArticlePage({
       />
 
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-primary/4 blur-[140px] rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-primary/4 blur-[140px] rounded-sovereign" />
       </div>
 
       <ArticleWrapper>
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <Link
             href={`/${locale}/heritage`}
-            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[3px] text-text-muted hover:text-brand-primary transition-colors duration-300 mb-12 group"
+            className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[3px] text-[#EDF2F4]/50 hover:text-brand-primary transition-colors duration-300 mb-12 group"
           >
             <BackIcon size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
             {t?.('backToJournal') || (locale === 'ar' ? 'العودة للديوان' : 'Back to Journal')}
@@ -200,7 +191,7 @@ export default async function JournalArticlePage({
               <div className="reading-sanctuary">
                 <StaggerItem delay={0.1}>
                   {/* Hero Image */}
-                  <div className="relative w-full aspect-[16/8] rounded-[2rem] overflow-hidden mb-12 border border-brand-secondary/10 shadow-2xl">
+                  <div className="relative w-full aspect-[16/8] rounded-sovereign overflow-hidden mb-12 border border-brand-secondary/10 shadow-2xl cinema-lut">
                     <NextImage
                       src={post.image}
                       alt={title}
@@ -209,14 +200,14 @@ export default async function JournalArticlePage({
                       className="object-cover"
                       sizes="(max-width: 896px) 100vw, 896px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   </div>
                 </StaggerItem>
 
                 <StaggerItem delay={0.2}>
                   <header className="mb-12">
                     <div className={`flex items-center gap-2 mb-5 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-secondary/5 border border-brand-secondary/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sovereign glass border border-brand-secondary/10 text-brand-secondary text-[10px] font-bold uppercase tracking-widest">
                         <TypeIcon size={12} />
                         {post.type === 'article'
                           ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
@@ -228,7 +219,7 @@ export default async function JournalArticlePage({
                       </span>
                     </div>
 
-                    <h1 className={`text-3xl md:text-5xl font-serif font-bold text-text-primary leading-tight mb-8 ${isRtl ? 'text-right overflow-wrap-anywhere' : 'text-left'}`}>
+                    <h1 className={`text-4xl md:text-6xl font-title font-bold text-white leading-tight mb-8 ${isRtl ? 'text-right' : 'text-left'}`}>
                       {title}
                     </h1>
 
@@ -239,7 +230,7 @@ export default async function JournalArticlePage({
                         {formattedDate}
                       </span>
                       {post.author && (
-                        <span className="flex items-center gap-2">
+                        <span className="flex items-center gap-2 font-numbers">
                           <User size={13} />
                           {post.author}
                         </span>
@@ -252,8 +243,8 @@ export default async function JournalArticlePage({
 
                 <StaggerItem delay={0.3}>
                   {/* Excerpt Blockquote */}
-                  <blockquote className={`relative px-8 py-6 mb-16 rounded-2xl bg-brand-secondary/5 border-l-2 border-brand-primary shadow-sm ${isRtl ? 'border-l-0 border-r-2 text-right pl-0 pr-8' : ''}`}>
-                    <p className="text-lg md:text-2xl font-serif text-text-primary italic leading-relaxed">
+                  <blockquote className={`relative px-8 py-6 mb-16 rounded-sovereign glass border-l-2 border-brand-primary shadow-sm ${isRtl ? 'border-l-0 border-r-2 text-right pl-0 pr-8' : ''}`}>
+                    <p className="text-xl md:text-3xl font-title text-[#EDF2F4] italic leading-relaxed">
                       &quot;{excerpt}&quot;
                     </p>
                   </blockquote>
@@ -270,14 +261,14 @@ export default async function JournalArticlePage({
 
                 {/* Download Section (Integrated) */}
                 {post.downloadUrl && (
-                  <div className="mt-16 p-8 rounded-3xl bg-brand-primary/[0.03] dark:bg-white/[0.02] border border-brand-primary/10 shadow-sm">
-                    <p className="text-brand-secondary dark:text-[#EDF2F4]/60 text-sm mb-4">
+                  <div className="mt-16 p-8 rounded-sovereign glass border border-brand-primary/10 shadow-sm">
+                    <p className="text-brand-secondary dark:text-[#EDF2F4]/60 text-sm mb-4 font-body">
                       {t?.('downloadCaption') || (locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Attached high-quality file for later reading')}
                     </p>
                     <a
                       href={post.downloadUrl}
                       download
-                      className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-brand-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-[#A0061C] hover:shadow-[0_0_20px_rgba(160,6,28,0.4)] transition-all duration-300"
+                      className="inline-flex items-center gap-3 px-8 py-4 rounded-sovereign bg-brand-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-[#A0061C] hover:shadow-[0_0_20px_rgba(160,6,28,0.4)] transition-all duration-300 font-body"
                     >
                       <Download size={16} />
                       {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Journal (PDF)')}
@@ -299,13 +290,13 @@ export default async function JournalArticlePage({
 
         {/* Media / Video Section */}
         {post.mediaUrl && (
-          <div className="mt-16 aspect-video rounded-3xl overflow-hidden bg-black/60 border border-brand-secondary/10 flex items-center justify-center relative group">
+          <div className="mt-16 aspect-video rounded-sovereign overflow-hidden bg-black/60 border border-brand-secondary/10 flex items-center justify-center relative group cinema-lut">
             <div className="absolute inset-0 bg-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="text-center relative z-10 transition-transform duration-500 group-hover:scale-105">
-              <div className="w-20 h-20 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 rounded-sovereign glass border border-white/20 flex items-center justify-center mx-auto mb-6">
                 <Video size={32} className="text-white" />
               </div>
-              <p className="text-white/50 text-sm mb-4">
+              <p className="text-white/50 text-sm mb-4 font-body">
                 {t?.('relatedDocumentary') || (locale === 'ar' ? 'فيلم وثائقي مرتبط' : 'Related documentary film')}
               </p>
               <a
@@ -325,8 +316,8 @@ export default async function JournalArticlePage({
 
               {/* Related Posts */}
               {related.length > 0 && (
-                <section className="bg-brand-secondary/5 backdrop-blur-sm p-8 rounded-[40px] border border-brand-secondary/10">
-                  <h2 className={`text-2xl font-serif font-bold text-text-primary mb-10 ${isRtl ? 'text-right' : 'text-left'}`}>
+                <section className="glass p-8 rounded-sovereign border border-brand-secondary/10">
+                  <h2 className={`text-2xl font-title font-bold text-white mb-10 ${isRtl ? 'text-right' : 'text-left'}`}>
                     {t?.('relatedTitle') || (locale === 'ar' ? 'قد يهمك أيضاً' : 'Related Posts')}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -337,16 +328,16 @@ export default async function JournalArticlePage({
                         <Link
                           key={relPost.id || relPost.slug}
                           href={`/${locale}/heritage/${relPost.slug}`}
-                          className="group flex flex-col sm:flex-row gap-5 p-5 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
+                          className="group flex flex-col sm:flex-row gap-5 p-5 rounded-sovereign glass border border-white/5 hover-lift"
                         >
-                          <div className="relative w-full sm:w-28 aspect-square sm:h-28 rounded-2xl overflow-hidden flex-shrink-0">
+                          <div className="relative w-full sm:w-28 aspect-square sm:h-28 rounded-sovereign overflow-hidden flex-shrink-0 cinema-lut">
                             <NextImage src={relPost.image} alt={relTitle} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                           </div>
                           <div className={`flex flex-col justify-center ${isRtl ? 'text-right' : 'text-left'}`}>
-                            <h3 className="text-base font-serif font-semibold text-text-primary leading-snug mb-2 group-hover:text-brand-primary transition-colors line-clamp-2">
+                            <h3 className="text-base font-title font-semibold text-white leading-snug mb-2 group-hover:text-brand-primary transition-colors line-clamp-2">
                               {relTitle}
                             </h3>
-                            <p className="text-sm text-text-muted line-clamp-2 leading-relaxed">{relExcerpt}</p>
+                            <p className="text-sm text-[#EDF2F4]/60 line-clamp-2 leading-relaxed font-body">{relExcerpt}</p>
                           </div>
                         </Link>
                       );

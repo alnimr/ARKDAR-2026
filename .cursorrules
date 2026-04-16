@@ -1,15 +1,26 @@
-# ARKDAR Project Rules - تعليمات المشروع
+# ARKDAR Coding Rules
 
-## اللغة والتواصل (Language & Communication)
-- **قاعدة أساسية**: يجب أن تكون جميع المخرجات الموجهة للمستخدم باللغة العربية الفصحى بشكل تلقائي ودائم.
-- **المستندات المشمولة**: 
-  - خطط التنفيذ (Implementation Plans)
-  - قوائم المهام (Task Lists)
-  - ملخصات الإنجاز (Summaries)
-  - تقارير الأخطاء (Error Reports)
-- **الاستثناء**: لا تقدم أي خطة عمل بالإنجليزية إلا إذا طُلب منك ذلك صراحة وبشكل مباشر.
+## قواعد التواصل (Communication Rules)
+- يجب أن تكون جميع المخرجات الموجهة للمستخدم، بما في ذلك خطط التنفيذ، قوائم المهام، ملخصات الإنجاز، وتقارير الأخطاء، مكتوبة باللغة العربية الفصحى بشكل تلقائي ودائم.
+- لا تقدم أي خطة عمل بالإنجليزية أو Walkthrough إلا إذا طُلِب منك ذلك صراحة.
 
-## المعايير التقنية (Technical Standards)
-- اتبع فلسفة التصميم "Hybrid Elite" الخاصة بأركدار.
-- حافظ على سلامة البيانات في ملف `src/data/articles.json`.
-- تأكد من أن جميع الروابط (Slugs) تستخدم أحرف ASCII الإنجليزية لتجنب مشاكل البناء في Vercel.
+## دستور السيادة البصرية (Visual Sovereignty Charter)
+1. **النظام اللوني (Color Engine)**
+   - الخلفية: `#121212` مع 2% Monochromatic Noise.
+   - الثلاثية الحمراء: `#911010` (H1-H3)، `#840505` (Buttons)، `#660000` (Gradients).
+   - التباين: `#EDF2F4` نصوص.
+2. **الهندسة الفيزيائية (Geometry)**
+   - Border Radius: `6px`.
+   - Glassmorphism: `12px` blur، `1px` border (10-15% transparency).
+3. **الطبوغرافيا (Typography)**
+   - Headings: El Messiri (Bold).
+   - Body/Interface: Cairo (Regular/Medium).
+   - Numbers/Latin: Montserrat.
+4. **الحركة (Motion)**
+   - Duration: `300ms`.
+   - Curve: `ease-in-out`.
+5. **بروتوكول التطهير والهيكلة (Purge & Structure)**
+   - يُمنع استخدام أي بكسل انحراف عن`6px border-radius`.
+   - تطبيق نظام `12-column grid` غير المتناظر في التوزيع البصري.
+   - استخدام فئة `cinema-lut` على كافة الصور الفوتوغرافية.
+   - البدء دائماً بتنظيف الأنماط الوراثية (Legacy styles) قبل كتابة كود سيادي جديد.

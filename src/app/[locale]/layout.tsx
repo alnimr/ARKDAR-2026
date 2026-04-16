@@ -4,7 +4,26 @@ import {routing} from '@/i18n/routing';
 import {notFound} from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { El_Messiri, Cairo, Montserrat } from 'next/font/google';
 import '../globals.css';
+
+const elMessiri = El_Messiri({
+  subsets: ['arabic'],
+  weight: ['700'],
+  variable: '--font-el-messiri',
+});
+
+const cairo = Cairo({
+  subsets: ['arabic'],
+  weight: ['400', '500', '700'],
+  variable: '--font-cairo',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-montserrat',
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -32,7 +51,12 @@ export default async function LocaleLayout({
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning>
+    <html 
+      lang={locale} 
+      dir={direction} 
+      suppressHydrationWarning
+      className={`${elMessiri.variable} ${cairo.variable} ${montserrat.variable}`}
+    >
       <head>
         <title>ARKDAR</title>
       </head>
