@@ -80,7 +80,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: index * 0.2 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
             className="flex-shrink-0 w-[520px] max-w-[90vw] snap-center"
           >
             <Link 
@@ -92,45 +92,45 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
                 src={post.image}
                 alt={post.title[locale as keyof typeof post.title]}
                 fill
-                className="object-cover transition-transform duration-[3s] group-hover:scale-110"
+                className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
               
               {/* Floating Labels */}
               <div className="absolute top-8 left-8 flex gap-3">
-                <span className="px-5 py-2 glass-sovereign border border-brand-primary/30 text-brand-primary text-[10px] font-numbers font-black uppercase tracking-[0.2em] rounded-[4px]">
+                <span className="px-5 py-2 glass-sovereign border border-white/10 text-brand-primary text-[10px] font-numbers font-black uppercase tracking-[0.2em] rounded-sovereign">
                   {(post.categoryId || 'Heritage').toUpperCase()}
                 </span>
-                <span className="px-5 py-2 glass-sovereign border border-white/10 text-white/50 text-[10px] font-numbers font-black uppercase tracking-[0.2em] rounded-[4px]">
+                <span className="px-5 py-2 glass-sovereign border border-white/10 text-white/50 text-[10px] font-numbers font-black uppercase tracking-[0.2em] rounded-sovereign">
                   {(post.type || 'Article').toUpperCase()}
                 </span>
               </div>
 
               {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 w-full p-10 md:p-12 transform transition-all duration-700 group-hover:-translate-y-2">
+              <div className="absolute bottom-0 left-0 w-full p-10 md:p-12 transform transition-all duration-300 group-hover:-translate-y-1">
                 <div className="space-y-6 text-start">
-                  <div className="flex items-center gap-6 text-foreground/40 text-[10px] uppercase tracking-[0.3em] font-numbers font-black">
+                  <div className="flex items-center gap-6 text-foreground/40 text-[9px] uppercase tracking-[0.2em] font-numbers font-black">
                     <span className="flex items-center gap-3">
                       <Calendar size={14} className="text-brand-primary/60" />
                       {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/30" />
+                    <span className="w-1 h-1 rounded-full bg-brand-primary/20" />
                     <span className="flex items-center gap-3">
                       <Clock size={14} className="text-brand-primary/60" />
-                      5 MIN READ
+                      {t('readTime', { minutes: 5 })}
                     </span>
                   </div>
 
-                  <h3 className="text-3xl md:text-4xl font-title font-bold text-white group-hover:text-brand-primary transition-colors duration-500 leading-[1.1] uppercase tracking-tighter">
+                  <h3 className="text-3xl md:text-4xl font-title font-bold text-white group-hover:text-brand-primary transition-colors duration-300 leading-[1.1] uppercase tracking-tighter">
                     {post.title[locale as keyof typeof post.title]}
                   </h3>
                   
-                  <div className="h-1 w-16 bg-brand-primary group-hover:w-32 transition-all duration-[800ms] rounded-full" />
+                  <div className="h-1 w-16 bg-brand-primary group-hover:w-32 transition-all duration-300 rounded-full" />
                 </div>
               </div>
 
               {/* Shine effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none bg-gradient-to-tr from-white/[0.07] via-transparent to-transparent" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent" />
             </Link>
           </motion.div>
         ))}

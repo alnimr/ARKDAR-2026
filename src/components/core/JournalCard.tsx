@@ -136,8 +136,8 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="glass-sovereign group relative flex flex-col overflow-hidden rounded-sovereign border border-brand-primary/5 transition-all duration-300 hover:border-brand-primary/20"
+      transition={{ duration: 0.3, delay: index * 0.05, ease: "easeInOut" }}
+      className="glass-sovereign group relative flex flex-col overflow-hidden rounded-sovereign border border-brand-primary/10 transition-all duration-300 hover-sovereign bg-surface"
     >
       {/* Brand Watermark Overlay */}
       <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-0 group-hover:opacity-[0.03] -mr-8 -mt-8 rotate-12 transition-opacity duration-700 pointer-events-none" />
@@ -157,10 +157,10 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
           src={post.image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+          className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-90" />
         
         {/* Type Badge */}
         <div className={`absolute top-6 ${locale === 'ar' ? 'right-6' : 'left-6'} flex items-center gap-2 px-4 py-2 rounded-sovereign border glass-sovereign ${config.border} backdrop-blur-md`}>
@@ -191,7 +191,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </div>
 
         {/* Title */}
-        <h3 className={`text-xl md:text-2xl font-title font-bold text-brand-primary leading-tight mb-4 transition-colors duration-500 group-hover:text-brand-secondary ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-xl md:text-2xl font-title font-bold text-white leading-tight mb-4 transition-colors duration-300 group-hover:text-brand-primary ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 
@@ -205,14 +205,14 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
 
         {/* CTA */}
         <div
-          className={`flex items-center gap-3 text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary group-hover:text-brand-secondary transition-all duration-500 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
+          className={`flex items-center gap-3 text-[9px] font-numbers font-black uppercase tracking-[0.2em] text-brand-primary/80 group-hover:text-brand-primary transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
             ? (locale === 'ar' ? 'تحميل السجل' : 'Download Record')
             : post.type === 'press' && isExternalOnly
               ? (locale === 'ar' ? 'البيان الصحفي' : 'Press Release')
               : (locale === 'ar' ? 'اكتشف المزيد' : 'Discovery')}
-          <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={2.5} />
+          <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={2.5} />
         </div>
       </div>
     </motion.article>

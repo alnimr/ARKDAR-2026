@@ -21,9 +21,10 @@ export default function ArticleReadingProgress() {
     <div className="fixed top-0 left-0 w-full h-[3px] z-[100] pointer-events-none">
       <div 
         className="h-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary transition-all duration-300 ease-out"
-        style={{ width: `${progress}%` }}
+        style={{ '--progress-width': `${progress}%` } as React.CSSProperties}
       >
-        <div className="absolute top-0 right-0 w-24 h-full bg-white/20 blur-sm animate-pulse" />
+        <div className="absolute inset-0 w-[var(--progress-width)] bg-inherit h-full" />
+        <div className="absolute top-0 right-[calc(100%-var(--progress-width))] w-24 h-full bg-white/20 blur-sm animate-pulse" />
       </div>
     </div>
   );
