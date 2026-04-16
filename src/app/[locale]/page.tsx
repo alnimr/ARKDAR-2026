@@ -37,28 +37,28 @@ export default async function HomePage({
         <div className="absolute inset-0 -z-10 pointer-events-none brand-pattern-waves opacity-[0.05]" />
 
         <div className="grid-sovereign h-full items-center">
-          <div className="col-content-primary glass p-8 md:p-16 rounded-sovereign relative overflow-hidden animate-fade-up">
+          <div className="col-content-primary glass-sovereign p-8 md:p-16 rounded-sovereign relative overflow-hidden animate-fade-up">
             <div className="flex flex-wrap gap-2 mb-8">
               {['Precision', 'Heritage', 'Performance'].map(v => (
-                <span key={v} className="bg-brand-primary/10 text-brand-primary px-3 py-1 rounded-[4px] text-[10px] font-bold uppercase tracking-widest border border-brand-primary/20">
+                <span key={v} className="bg-brand-primary/10 text-brand-primary px-3 py-1 rounded-[4px] text-[10px] font-numbers font-black uppercase tracking-widest border border-brand-primary/20">
                   {v}
                 </span>
               ))}
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 font-bold leading-none text-brand-primary">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 font-title font-bold leading-none text-brand-primary uppercase tracking-tighter">
               {t('title')}
             </h1>
 
-            <p className="text-xl md:text-2xl font-light max-w-xl leading-relaxed text-text-sovereign/80 font-sans">
+            <p className="text-xl md:text-2xl font-body font-light max-w-xl leading-relaxed text-foreground/80">
               {t('subtitle')}
             </p>
 
             <div className="mt-12 flex flex-col sm:flex-row gap-6">
-              <Link href="/arenas" className="btn-sovereign group">
-                {t('explore')} <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Link href="/arenas" className="btn-primary px-10 py-4 flex items-center justify-center gap-3 group">
+                {t('explore')} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/heritage" className="btn-outline-sovereign">
+              <Link href="/heritage" className="px-10 py-4 rounded-sovereign border border-white/10 text-white font-body font-bold uppercase tracking-widest text-xs hover:bg-white/5 transition-all text-center">
                 Our Legacy
               </Link>
             </div>
@@ -66,47 +66,45 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 2. SERVICES - The Sovereign Grid */}
       <section className="w-full max-w-7xl mx-auto px-6 py-32 relative">
         <div className="brand-sep-bow mb-16 opacity-30 mx-auto" />
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-brand-primary">{t('servicesTitle')}</h2>
-          <p className="text-xl text-text-muted max-w-2xl mx-auto">{t('servicesSubtitle')}</p>
+          <h2 className="text-4xl md:text-6xl font-title font-bold mb-6 text-brand-primary uppercase tracking-widest">{t('servicesTitle')}</h2>
+          <p className="text-xl text-foreground/60 max-w-2xl mx-auto font-body">{t('servicesSubtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map(({ icon: Icon, title, desc }) => (
             <Link 
               key={title} 
               href="/arenas"
-              className="glass p-10 hover-lift group relative overflow-hidden"
+              className="glass-sovereign p-10 hover:border-brand-primary/30 transition-all group relative overflow-hidden rounded-sovereign"
             >
               <div className="w-16 h-16 bg-brand-primary/10 text-brand-primary rounded-sovereign flex items-center justify-center mb-8 group-hover:scale-105 transition-transform border border-brand-primary/10">
                 <Icon size={30} strokeWidth={1.2} />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-brand-primary">{title}</h3>
-              <p className="text-text-muted leading-relaxed font-sans">{desc}</p>
+              <h3 className="text-2xl font-title font-bold mb-4 text-brand-primary uppercase tracking-wide">{title}</h3>
+              <p className="text-foreground/60 leading-relaxed font-body">{desc}</p>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* 3. PRODUCTS - Asymmetrical Balance */}
-      <section className="w-full py-32 relative overflow-hidden bg-[#0D0D0D]">
+      <section className="w-full py-32 relative overflow-hidden bg-surface-dark">
         <div className="absolute inset-0 pointer-events-none brand-pattern-waves opacity-[0.03]" />
         
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid-sovereign items-center">
             <div className="col-span-12 lg:col-span-5 mb-12 lg:mb-0">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">{t('productsTitle')}</h2>
-              <p className="text-text-muted text-lg mb-8 max-w-md">Instruments of absolute precision, crafted for the elite horse-archer.</p>
-              <Link href="/gearup" className="btn-outline-sovereign border-white/20 text-white hover:bg-white/5">
-                View All Collection <ArrowRight className="w-4 h-4 ml-2" />
+              <h2 className="text-4xl md:text-6xl font-title font-bold mb-6 text-white uppercase tracking-widest">{t('productsTitle')}</h2>
+              <p className="text-foreground/60 text-lg mb-8 max-w-md font-body">Instruments of absolute precision, crafted for the elite horse-archer.</p>
+              <Link href="/gearup" className="px-8 py-4 rounded-sovereign border border-white/10 text-white font-body font-bold uppercase tracking-widest text-xs hover:bg-white/5 transition-all inline-flex items-center gap-2">
+                View All Collection <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
             <div className="col-span-12 lg:col-span-7">
-              <div className="glass p-8 md:p-12 rounded-sovereign bg-brand-primary/5 border-brand-primary/20 group relative overflow-hidden">
+              <div className="glass-sovereign p-8 md:p-12 rounded-sovereign bg-brand-primary/5 border-brand-primary/20 group relative overflow-hidden">
                 <div className="absolute inset-0 brand-horse-bg opacity-[0.03]" />
                 <div className="flex flex-col md:flex-row items-center gap-12">
                   <div className="w-full md:w-1/2 h-64 relative">
@@ -118,9 +116,9 @@ export default async function HomePage({
                     />
                   </div>
                   <div className="w-full md:w-1/2">
-                    <h3 className="text-3xl text-white font-bold mb-4">{t('product1')}</h3>
-                    <p className="text-text-muted mb-8 text-sm leading-relaxed">The flagship of ARKDAR engineering. Carbon-reinforced limbs with traditional aesthetics.</p>
-                    <Link href="/gearup" className="btn-sovereign w-full">
+                    <h3 className="text-3xl text-white font-title font-bold mb-4 uppercase tracking-wide">{t('product1')}</h3>
+                    <p className="text-foreground/60 mb-8 text-sm leading-relaxed font-body">The flagship of ARKDAR engineering. Carbon-reinforced limbs with traditional aesthetics.</p>
+                    <Link href="/gearup" className="btn-primary w-full py-5 flex items-center justify-center font-body font-bold uppercase tracking-[0.2em] text-xs">
                       Shop Now
                     </Link>
                   </div>
@@ -135,13 +133,13 @@ export default async function HomePage({
       <section className="w-full py-32 px-6 relative bg-surface-base">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-bold text-brand-primary">
+            <h2 className="text-4xl md:text-6xl font-title font-bold text-brand-primary uppercase tracking-widest">
               Global Presence
             </h2>
             <div className="brand-sep-bow mx-auto max-w-xs mt-8 opacity-20" />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { flag: '🇪🇬', country: 'Egypt',       city: 'Cairo',         desc: 'Home of the Mamluk Heritage and global training facility.' },
               { flag: '🇨🇭', country: 'Switzerland', city: 'Geneva Region', desc: 'European Excellence Hub for alpine horse-archery.' },
@@ -149,16 +147,16 @@ export default async function HomePage({
             ].map(r => (
               <div
                 key={r.country}
-                className="glass p-12 hover-lift flex flex-col items-start gap-4 border-white/5"
+                className="glass-sovereign p-10 flex flex-col items-start gap-4 border-white/5 rounded-sovereign group hover:border-brand-primary/20 transition-all"
               >
-                <div className="text-6xl mb-4 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all">{r.flag}</div>
+                <div className="text-6xl mb-4 grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">{r.flag}</div>
                 <div>
-                  <h3 className="text-2xl font-bold text-brand-primary">{r.country}</h3>
-                  <p className="text-sm flex items-center gap-2 mt-2 text-text-muted font-numbers">
-                    <MapPin className="w-4 h-4 text-brand-primary/60" /> {r.city}
+                  <h3 className="text-2xl font-title font-bold text-brand-primary uppercase tracking-wide">{r.country}</h3>
+                  <p className="text-sm flex items-center gap-2 mt-2 text-foreground/40 font-numbers font-medium tracking-widest">
+                    <MapPin className="w-4 h-4 text-brand-primary/60" /> {r.city.toUpperCase()}
                   </p>
                 </div>
-                <p className="text-base leading-relaxed text-text-muted/80 mt-6 font-sans">{r.desc}</p>
+                <p className="text-base leading-relaxed text-foreground/60 mt-6 font-body">{r.desc}</p>
               </div>
             ))}
           </div>

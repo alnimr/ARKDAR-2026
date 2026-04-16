@@ -67,49 +67,49 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
   const readTime = Math.ceil((post.content[locale as keyof typeof post.content] || post.content.en || '').split(' ').length / 200) || 5;
 
   return (
-    <aside className={`hidden lg:block w-64 flex-shrink-0 sticky top-32 h-fit ${isRtl ? 'ml-12' : 'mr-12'}`}>
+    <aside className={`hidden lg:block w-64 flex-shrink-0 sticky top-40 h-fit ${isRtl ? 'ml-16' : 'mr-16'}`}>
       {/* Metadata Section */}
-      <div className="mb-12 space-y-6">
-        <div className={`flex flex-col gap-1 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-secondary/60">
+      <div className="mb-16 space-y-8">
+        <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
+          <span className="text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/40">
             {translations.date}
           </span>
-          <span className="text-white/80 text-sm flex items-center gap-2">
-            <Calendar size={14} className="text-brand-primary/50" />
+          <span className="text-foreground/80 text-xs font-numbers font-bold flex items-center gap-3">
+            <Calendar size={14} className="text-brand-primary/40" strokeWidth={1.5} />
             {formattedDate}
           </span>
         </div>
 
         {post.author && (
-          <div className={`flex flex-col gap-1 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-            <span className="text-[10px] font-bold uppercase tracking-widest text-brand-secondary/60">
+          <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
+            <span className="text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/40">
               {translations.author}
             </span>
-            <span className="text-white/80 text-sm flex items-center gap-2">
-              <User size={14} className="text-brand-primary/50" />
+            <span className="text-foreground/80 text-xs font-body font-bold flex items-center gap-3">
+              <User size={14} className="text-brand-primary/40" strokeWidth={1.5} />
               {post.author}
             </span>
           </div>
         )}
 
-        <div className={`flex flex-col gap-1 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-secondary/60">
+        <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
+          <span className="text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/40">
             {translations.readTime}
           </span>
-          <span className="text-white/80 text-sm flex items-center gap-2">
-            <Clock size={14} className="text-brand-primary/50" />
-            {readTime} {locale === 'ar' ? 'دقائق قراءة' : 'min read'}
+          <span className="text-foreground/80 text-xs font-numbers font-bold flex items-center gap-3">
+            <Clock size={14} className="text-brand-primary/40" strokeWidth={1.5} />
+            {readTime} {locale === 'ar' ? 'دقائق قراءة' : 'MIN READ'}
           </span>
         </div>
       </div>
 
       {/* Table of Contents Section */}
       {headings.length > 0 && (
-        <nav className="border-t border-white/5 pt-10">
-          <h4 className={`text-[11px] font-bold uppercase tracking-[3px] text-white/30 mb-6 ${isRtl ? 'text-right' : 'text-left'}`}>
+        <nav className="border-t border-brand-primary/5 pt-12">
+          <h4 className={`text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/30 mb-8 ${isRtl ? 'text-right' : 'text-left'}`}>
             {translations.toc}
           </h4>
-          <ul className="space-y-4">
+          <ul className="space-y-5">
             {headings.map((heading) => (
               <li 
                 key={heading.id}
@@ -117,10 +117,10 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
               >
                 <a
                   href={`#${heading.id}`}
-                  className={`text-sm transition-all duration-300 block hover:text-brand-secondary ${
+                  className={`text-[13px] font-body transition-all duration-300 block hover:text-brand-primary ${
                     activeId === heading.id 
-                      ? 'text-brand-secondary font-semibold translate-x-1' 
-                      : 'text-white/40'
+                      ? 'text-brand-primary font-bold translate-x-1' 
+                      : 'text-foreground/30'
                   }`}
                   onClick={(e) => {
                     e.preventDefault();

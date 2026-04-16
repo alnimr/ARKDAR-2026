@@ -38,17 +38,17 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
     <>
       <div className="max-w-7xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Category Tabs */}
-        <div className={`flex flex-wrap justify-center gap-3 ${isRtl ? 'md:justify-start' : 'md:justify-start'}`}>
+        <div className={`flex flex-wrap justify-center gap-4 ${isRtl ? 'md:justify-start' : 'md:justify-start'}`}>
           {CATEGORIES.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-5 py-2 rounded-[6px] text-[11px] font-bold uppercase tracking-widest border transition-all cursor-pointer ${
+                className={`px-6 py-3 rounded-sovereign text-[10px] font-numbers font-black uppercase tracking-[0.2em] border transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-brand-primary border-brand-primary text-white z-10 scale-105'
-                    : 'bg-brand-secondary/5 border-brand-secondary/10 text-text-muted hover:text-brand-primary hover:border-brand-primary/20 hover:scale-105'
+                    ? 'bg-brand-primary border-brand-primary text-white scale-105 shadow-lg'
+                    : 'glass-sovereign border-brand-primary/10 text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 hover:scale-105'
                 }`}
               >
                 {tab[locale as 'ar' | 'en' | 'de' | 'es'] ?? tab.en}
@@ -58,16 +58,16 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
         </div>
 
         {/* Search Bar */}
-        <div className="relative w-full md:w-80 group">
-          <div className={`absolute inset-y-0 ${isRtl ? 'right-4' : 'left-4'} flex items-center pointer-events-none text-white/30 group-focus-within:text-brand-secondary transition-colors`}>
-            <Search size={16} />
+        <div className="relative w-full md:w-96 group">
+          <div className={`absolute inset-y-0 ${isRtl ? 'right-5' : 'left-5'} flex items-center pointer-events-none text-brand-primary/30 group-focus-within:text-brand-primary transition-colors`}>
+            <Search size={18} strokeWidth={1.5} />
           </div>
           <input
             type="text"
-            placeholder={locale === 'ar' ? 'بحث...' : locale === 'en' ? 'Search...' : locale === 'de' ? 'Suche...' : 'Buscar...'}
+            placeholder={locale === 'ar' ? 'ابحث في التراث...' : locale === 'en' ? 'Search Heritage...' : locale === 'de' ? 'Erbe durchsuchen...' : 'Buscar Herencia...'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={`w-full bg-brand-secondary/5 border border-brand-secondary/10 rounded-[6px] py-3 ${isRtl ? 'pr-11 pl-4 text-right' : 'pl-11 pr-4 text-left'} text-text-primary placeholder-text-muted/50 focus:outline-none focus:border-brand-primary/50 focus:bg-brand-secondary/10 transition-all`}
+            className={`w-full glass-sovereign border-brand-primary/10 rounded-sovereign py-4 ${isRtl ? 'pr-14 pl-6 text-right' : 'pl-14 pr-6 text-left'} text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-brand-primary/40 focus:bg-brand-primary/[0.03] transition-all font-body text-sm`}
             dir={isRtl ? 'rtl' : 'ltr'}
           />
         </div>
@@ -75,8 +75,11 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
 
       <div className="min-h-[500px]">
         {filteredPosts.length === 0 ? (
-           <div className="text-center text-white/40 py-20 font-serif text-xl border border-white/5 rounded-[6px] bg-white/[0.02]">
-             {locale === 'ar' ? 'لا توجد مقالات تطابق بحثك.' : 'No articles match your search.'}
+           <div className="text-center py-32 rounded-sovereign glass-sovereign border-brand-primary/10 relative overflow-hidden">
+             <div className="absolute inset-0 brand-horse-bg opacity-[0.03] grayscale" />
+             <p className="text-xl md:text-2xl font-title text-brand-primary/40 uppercase tracking-widest relative">
+               {locale === 'ar' ? 'عذراً.. لا توجد سجلات تطابق بحثك' : 'No records match your legacy search'}
+             </p>
            </div>
         ) : (
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

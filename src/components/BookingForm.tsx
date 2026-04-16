@@ -14,14 +14,13 @@ import {
   MapPin,
   User,
   Mail,
-  Phone,
-  ArrowRight,
-  LucideIcon
+  Phone
 } from 'lucide-react';
 import { db } from '@/lib/arena/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import NextImage from 'next/image';
 
-// --- Types & Data ---
+type LucideIcon = typeof Target;
 
 type ArenaID = 'interlaken' | 'cairo' | 'other';
 
@@ -29,7 +28,7 @@ interface Service {
   id: string;
   category: string;
   labelKey: string;
-  icon: LucideIcon;
+  icon: typeof Target;
   arenas?: ArenaID[]; // If empty, available in all
 }
 
@@ -138,11 +137,11 @@ export default function BookingForm() {
       <div className="mb-12 flex justify-between items-center px-4">
         {[1, 2, 3, 4, 5].map((s) => (
           <div key={s} className="flex items-center">
-            <div className={`w-10 h-10 rounded-[6px] flex items-center justify-center transition-all duration-300 border-2 
-              ${step >= s ? 'bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20' : 'border-white/20 text-white/40'}`}>
+            <div className={`w-12 h-12 rounded-sovereign flex items-center justify-center transition-all duration-300 border-2 font-numbers font-bold 
+              ${step >= s ? 'bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-110' : 'border-white/10 text-white/20'}`}>
               {step > s ? <CheckCircle2 className="w-6 h-6" /> : s}
             </div>
-            {s < 5 && <div className={`w-8 h-px mx-2 md:w-16 ${step > s ? 'bg-brand-primary' : 'bg-white/10'}`} />}
+            {s < 5 && <div className={`w-8 h-px mx-2 md:w-16 transition-colors duration-300 ${step > s ? 'bg-brand-primary' : 'bg-white/10'}`} />}
           </div>
         ))}
       </div>
@@ -152,8 +151,8 @@ export default function BookingForm() {
         {step === 1 && (
           <div className="animate-fade-in space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('arenas.label')}</h2>
-              <p className="text-white/60">{t('arenas.description')}</p>
+              <h2 className="text-3xl font-title font-bold text-white mb-4 uppercase tracking-widest">{t('arenas.label')}</h2>
+              <p className="text-foreground/60 font-body">{t('arenas.description')}</p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               {[
@@ -163,16 +162,24 @@ export default function BookingForm() {
                 <button
                   key={loc.id}
                   onClick={() => { setArena(loc.id as ArenaID); nextStep(); }}
-                  className={`group relative overflow-hidden rounded-[6px] h-64 transition-all duration-300 border-2 
-                    ${arena === loc.id ? 'border-arkdar-royal ring-4 ring-arkdar-royal/20' : 'border-white/10'}`}
+                  className={`group relative overflow-hidden rounded-sovereign h-72 transition-all duration-[400ms] border 
+                    ${arena === loc.id ? 'border-brand-primary ring-4 ring-brand-primary/20' : 'border-white/10'}`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
-                  <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-1000 bg-secondary-900" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+                  <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-[1200ms] bg-surface-base cinema-lut">
+                    <NextImage 
+                      src={loc.image} 
+                      alt={loc.label} 
+                      fill 
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                   <div className="absolute inset-0 flex flex-col justify-end p-8 z-20 text-start">
-                    <span className="text-white/60 text-sm mb-2 flex items-center gap-2">
-                       <MapPin className="w-4 h-4" /> ARKDAR ARENA
+                    <span className="text-white/60 text-[10px] font-bold uppercase tracking-[3px] mb-2 flex items-center gap-2 font-body">
+                       <MapPin className="w-3 h-3 text-brand-primary" /> ARKDAR ARENA
                     </span>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-brand-primary transition-colors">{loc.label}</h3>
+                    <h3 className="text-2xl font-title font-bold text-white group-hover:text-brand-primary transition-colors">{loc.label}</h3>
                   </div>
                 </button>
               ))}
@@ -184,14 +191,14 @@ export default function BookingForm() {
         {step === 2 && (
           <div className="animate-fade-in space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.passion')}</h2>
-              <p className="text-white/60">{t('subtitle')}</p>
+              <h2 className="text-3xl font-title font-bold text-white mb-4 uppercase tracking-widest">{t('steps.passion')}</h2>
+              <p className="text-foreground/60 font-body">{t('subtitle')}</p>
             </div>
 
             <div className="space-y-10">
               {categories.map((cat) => (
                 <div key={cat} className="space-y-4">
-                  <h4 className="text-brand-primary font-bold tracking-widest text-xs uppercase flex items-center gap-2">
+                  <h4 className="text-brand-primary font-bold tracking-[4px] text-[10px] uppercase flex items-center gap-2 font-body">
                     <span className="w-8 h-px bg-brand-primary/30" />
                     {t(`services.${cat}.title`)}
                   </h4>
@@ -200,13 +207,13 @@ export default function BookingForm() {
                       <button
                         key={s.id}
                         onClick={() => toggleService(s.id)}
-                        className={`p-4 rounded-[6px] flex flex-col items-center gap-3 transition-all duration-300 border 
+                        className={`p-6 rounded-sovereign flex flex-col items-center gap-3 transition-all duration-300 border backdrop-blur-sm
                           ${selectedServices.includes(s.id) 
-                            ? 'bg-arkdar-royal/10 border-arkdar-royal text-arkdar-royal shadow-[0_0_20px_rgba(132,5,5,0.15)]' 
-                            : 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:border-white/20'}`}
+                            ? 'bg-brand-primary/10 border-brand-primary text-brand-primary shadow-[0_0_20px_rgba(145,16,16,0.15)]' 
+                            : 'bg-white/5 border-white/10 text-white/40 hover:bg-white/10 hover:border-white/20'}`}
                       >
-                        <s.icon className={`w-8 h-8 transition-transform ${selectedServices.includes(s.id) ? 'scale-110' : ''}`} />
-                        <span className="text-xs font-medium text-center leading-tight">
+                        <s.icon className={`w-8 h-8 transition-transform ${selectedServices.includes(s.id) ? 'scale-110' : 'grayscale opacity-50'}`} />
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-center leading-tight font-body">
                           {t(`services.${cat}.${s.labelKey}`)}
                         </span>
                       </button>
@@ -216,16 +223,16 @@ export default function BookingForm() {
               ))}
             </div>
 
-            <div className="flex justify-between mt-12 bg-secondary-950/50 p-6 rounded-[6px] backdrop-blur-md sticky bottom-4 border border-white/5">
-              <button onClick={prevStep} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
-                <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
+            <div className="flex justify-between items-center mt-12 glass p-6 rounded-sovereign sticky bottom-4 border border-brand-primary/10 z-50">
+              <button onClick={prevStep} className="flex items-center gap-2 text-white/40 font-bold uppercase tracking-widest text-[10px] hover:text-brand-primary transition-colors font-body">
+                <ChevronLeft className="w-4 h-4" /> {t('actions.back')}
               </button>
               <button 
                 disabled={selectedServices.length === 0}
                 onClick={nextStep} 
-                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed group"
+                className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed px-10 py-4"
               >
-                {t('actions.next')} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {t('actions.next')}
               </button>
             </div>
           </div>
@@ -235,26 +242,26 @@ export default function BookingForm() {
         {step === 3 && (
           <div className="animate-fade-in space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.details')}</h2>
+              <h2 className="text-3xl font-title font-bold text-white mb-4 uppercase tracking-widest">{t('steps.details')}</h2>
             </div>
             
-            <div className="glass p-8 rounded-[6px] space-y-6 max-w-2xl mx-auto shadow-xl">
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="glass p-10 rounded-sovereign space-y-8 max-w-2xl mx-auto border border-brand-primary/10">
+              <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-sm text-white/70 flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-brand-primary" /> {t('fields.date')}
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-2 font-body">
+                    <Calendar className="w-3 h-3 text-brand-primary" /> {t('fields.date')}
                   </label>
                    <input 
                     type="date" 
                     aria-label={t('fields.date')}
                     value={formData.date}
                     onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-3 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all" 
+                    className="w-full bg-black/40 border border-white/10 rounded-sovereign px-5 py-4 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all font-numbers" 
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-sm text-white/70 flex items-center gap-2">
-                    <Users className="w-4 h-4 text-brand-primary" /> {t('fields.count')}
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-2 font-body">
+                    <Users className="w-3 h-3 text-brand-primary" /> {t('fields.count')}
                   </label>
                   <input 
                     type="number" 
@@ -263,22 +270,22 @@ export default function BookingForm() {
                     title={t('fields.count')}
                     value={formData.count}
                     onChange={(e) => setFormData({...formData, count: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-3 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all placeholder:text-white/20" 
+                    className="w-full bg-black/40 border border-white/10 rounded-sovereign px-5 py-4 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 outline-none transition-all placeholder:text-white/10 font-numbers" 
                   />
                 </div>
               </div>
 
               <div className="space-y-4">
-                <label className="text-sm text-white/70 block">{t('fields.experience')}</label>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 block font-body">{t('fields.experience')}</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {['beginner', 'amateur', 'professional'].map((level) => (
                     <button
                       key={level}
                       onClick={() => setFormData({...formData, experience: level})}
-                      className={`p-4 rounded-[6px] border text-xs font-medium transition-all text-center
+                      className={`py-4 rounded-sovereign border text-[10px] font-bold uppercase tracking-widest transition-all duration-300 font-body
                         ${formData.experience === level 
-                          ? 'border-arkdar-royal bg-arkdar-royal/10 text-arkdar-royal shadow-md' 
-                          : 'border-white/10 bg-white/5 text-white/50 hover:bg-white/10'}`}
+                          ? 'border-brand-primary bg-brand-primary text-white shadow-lg shadow-brand-primary/20' 
+                          : 'border-white/10 bg-white/5 text-white/40 hover:bg-white/10'}`}
                     >
                       {t(`experienceLevels.${level}`)}
                     </button>
@@ -287,12 +294,12 @@ export default function BookingForm() {
               </div>
             </div>
 
-            <div className="flex justify-between pt-8">
-              <button onClick={prevStep} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
-                <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
+            <div className="flex justify-between items-center max-w-2xl mx-auto pt-8">
+              <button onClick={prevStep} className="flex items-center gap-2 text-white/40 font-bold uppercase tracking-widest text-[10px] hover:text-brand-primary transition-colors font-body">
+                <ChevronLeft className="w-4 h-4" /> {t('actions.back')}
               </button>
-              <button onClick={nextStep} className="btn-primary group">
-                 {t('actions.next')} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <button onClick={nextStep} className="btn-primary px-10 py-4">
+                 {t('actions.next')}
               </button>
             </div>
           </div>
@@ -302,54 +309,54 @@ export default function BookingForm() {
         {step === 4 && (
           <div className="animate-fade-in space-y-8">
             <div className="text-center">
-              <h2 className="text-3xl font-serif font-bold text-white mb-4">{t('steps.profile')}</h2>
+              <h2 className="text-3xl font-title font-bold text-white mb-4 uppercase tracking-widest">{t('steps.profile')}</h2>
             </div>
 
-            <div className="grid gap-6 max-w-2xl mx-auto glass p-8 rounded-[6px] shadow-xl">
-              <div className="space-y-2">
-                <label className="text-sm text-white/70 flex items-center gap-2"><User className="w-3 h-3 text-brand-primary" /> {t('fields.name')}</label>
+            <div className="grid gap-8 max-w-2xl mx-auto glass p-10 rounded-sovereign border border-brand-primary/10">
+              <div className="space-y-3">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-2 font-body"><User className="w-3 h-3 text-brand-primary" /> {t('fields.name')}</label>
                 <input 
                   type="text" 
                   title={t('fields.name')}
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-4 text-white focus:border-brand-primary outline-none transition-all" 
+                  className="w-full bg-black/40 border border-white/10 rounded-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all font-body" 
                 />
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm text-white/70 flex items-center gap-2"><Mail className="w-3 h-3 text-brand-primary" /> {t('fields.email')}</label>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-2 font-body"><Mail className="w-3 h-3 text-brand-primary" /> {t('fields.email')}</label>
                   <input 
                     type="email" 
                     title={t('fields.email')}
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-4 text-white focus:border-brand-primary outline-none transition-all" 
+                    className="w-full bg-black/40 border border-white/10 rounded-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all font-body" 
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm text-white/70 flex items-center gap-2"><Phone className="w-3 h-3 text-brand-primary" /> {t('fields.phone')}</label>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-white/40 flex items-center gap-2 font-body"><Phone className="w-3 h-3 text-brand-primary" /> {t('fields.phone')}</label>
                   <input 
                     type="tel" 
                     title={t('fields.phone')}
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-[6px] px-4 py-4 text-white focus:border-brand-primary outline-none transition-all placeholder:text-ltr" 
+                    className="w-full bg-black/40 border border-white/10 rounded-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all font-numbers" 
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-between pt-8">
-              <button onClick={prevStep} className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
-                <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
+            <div className="flex justify-between items-center max-w-2xl mx-auto pt-8">
+              <button onClick={prevStep} className="flex items-center gap-2 text-white/40 font-bold uppercase tracking-widest text-[10px] hover:text-brand-primary transition-colors font-body">
+                <ChevronLeft className="w-4 h-4" /> {t('actions.back')}
               </button>
               <button 
                 disabled={isSubmitting}
                 onClick={handleBookingSubmit} 
-                className="btn-primary group disabled:opacity-50"
+                className={`btn-primary px-12 py-5 disabled:opacity-50 ${isSubmitting ? 'animate-pulse' : ''}`}
               >
-                 {isSubmitting ? '...' : t('steps.confirm')} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                 {isSubmitting ? '...' : t('steps.confirm')}
               </button>
             </div>
           </div>
@@ -357,18 +364,18 @@ export default function BookingForm() {
 
         {/* Step 5: Success/Processing */}
         {step === 5 && (
-          <div className="animate-fade-in text-center space-y-8 py-12">
-            <div className="w-24 h-24 bg-brand-primary/20 rounded-[6px] flex items-center justify-center mx-auto ring-8 ring-brand-primary/5 animate-pulse">
+          <div className="animate-fade-in text-center space-y-10 py-16">
+            <div className="w-24 h-24 bg-brand-primary/20 rounded-sovereign flex items-center justify-center mx-auto ring-8 ring-brand-primary/5 animate-pulse border border-brand-primary/20">
               <CheckCircle2 className="w-12 h-12 text-brand-primary" />
             </div>
-            <div className="space-y-4">
-              <h2 className="text-4xl font-serif font-bold text-white">{t('home')}</h2>
-              <p className="text-white/60 max-w-md mx-auto leading-relaxed">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-title font-bold text-brand-primary uppercase tracking-[0.2em]">{t('home')}</h2>
+              <p className="text-foreground/60 max-w-md mx-auto leading-relaxed font-body">
                 {t('messages.confirmation')}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-               <button onClick={() => setStep(1)} className="px-8 py-4 rounded-[6px] border border-white/10 text-white hover:bg-white/5 transition-all">
+               <button onClick={() => setStep(1)} className="px-12 py-4 rounded-sovereign border border-brand-primary/10 text-white hover:bg-brand-primary/5 transition-all font-bold uppercase tracking-widest text-xs font-body">
                   {t('home')}
                </button>
             </div>

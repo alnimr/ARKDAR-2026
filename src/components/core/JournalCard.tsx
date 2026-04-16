@@ -10,7 +10,6 @@ import {
   Download, 
   Newspaper, 
   ArrowUpRight, 
-  ExternalLink,
   Calendar,
   User
 } from 'lucide-react';
@@ -28,9 +27,9 @@ const typeConfig = {
     labelEn: 'Article',
     labelDe: 'Artikel',
     labelEs: 'Artículo',
-    color: 'text-brand-secondary',
-    bg: 'bg-brand-secondary/10',
-    border: 'border-brand-secondary/20',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/20',
   },
   media: {
     icon: Video,
@@ -38,9 +37,9 @@ const typeConfig = {
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
-    color: 'text-brand-secondary',
-    bg: 'bg-brand-secondary/10',
-    border: 'border-brand-secondary/20',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/10',
   },
   video: {
     icon: Video,
@@ -48,9 +47,9 @@ const typeConfig = {
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
-    color: 'text-brand-secondary',
-    bg: 'bg-brand-secondary/10',
-    border: 'border-brand-secondary/20',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/10',
   },
   download: {
     icon: Download,
@@ -58,9 +57,9 @@ const typeConfig = {
     labelEn: 'Download',
     labelDe: 'Download',
     labelEs: 'Descarga',
-    color: 'text-brand-secondary',
-    bg: 'bg-brand-secondary/10',
-    border: 'border-brand-secondary/20',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/10',
   },
   press: {
     icon: Newspaper,
@@ -98,9 +97,9 @@ const typeConfig = {
     labelEn: 'Craftsmanship',
     labelDe: 'Handwerk',
     labelEs: 'Artesanía',
-    color: 'text-brand-secondary',
-    bg: 'bg-brand-secondary/10',
-    border: 'border-brand-secondary/20',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/10',
   },
   lifestyle: {
     icon: FileText,
@@ -108,9 +107,9 @@ const typeConfig = {
     labelEn: 'Lifestyle',
     labelDe: 'Lifestyle',
     labelEs: 'Estilo de vida',
-    color: 'text-brand-secondary',
-    bg: 'bg-brand-secondary/10',
-    border: 'border-brand-secondary/20',
+    color: 'text-brand-primary',
+    bg: 'bg-brand-primary/10',
+    border: 'border-brand-primary/10',
   },
 };
 
@@ -138,12 +137,10 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="glass group relative flex flex-col overflow-hidden rounded-sovereign transition-all duration-300 hover-lift"
+      className="glass-sovereign group relative flex flex-col overflow-hidden rounded-sovereign border border-brand-primary/5 transition-all duration-300 hover:border-brand-primary/20"
     >
-      {/* Ambient glow on hover */}
-      <div className="absolute inset-0 rounded-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(160,6,28,0.08) 0%, transparent 70%)' }}
-      />
+      {/* Brand Watermark Overlay */}
+      <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-0 group-hover:opacity-[0.03] -mr-8 -mt-8 rotate-12 transition-opacity duration-700 pointer-events-none" />
       
       {/* Full Card Clickable Link */}
       <Link 
@@ -155,47 +152,38 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       />
 
       {/* Image */}
-      <div className="relative h-56 overflow-hidden cinema-lut">
+      <div className="relative h-64 overflow-hidden cinema-lut">
         <NextImage
           src={post.image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-cover transition-transform duration-[1200ms] group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
         
         {/* Type Badge */}
-        <div className={`absolute top-4 ${locale === 'ar' ? 'right-4' : 'left-4'} flex items-center gap-1.5 px-3 py-1.5 rounded-[6px] border ${config.bg} ${config.border} backdrop-blur-sm`}>
-          <TypeIcon size={13} className={config.color} />
-          <span className={`text-[10px] font-bold uppercase tracking-widest ${config.color}`}>
+        <div className={`absolute top-6 ${locale === 'ar' ? 'right-6' : 'left-6'} flex items-center gap-2 px-4 py-2 rounded-sovereign border glass-sovereign ${config.border} backdrop-blur-md`}>
+          <TypeIcon size={12} className="text-brand-primary" />
+          <span className="text-[9px] font-numbers font-black uppercase tracking-[0.2em] text-brand-primary">
             {typeLabel}
           </span>
         </div>
-
-        {/* Media/Download overlay icon */}
-        {(post.type === 'media' || post.type === 'download') && (
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="w-14 h-14 rounded-[6px] bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center">
-              <TypeIcon size={22} className="text-white" />
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow p-7">
+      <div className="flex flex-col flex-grow p-8 relative">
         {/* Meta */}
-        <div className={`flex items-center gap-4 mb-4 text-[#EDF2F4]/60 text-[10px] font-bold uppercase tracking-widest ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
-          <span className="flex items-center gap-1.5 font-numbers hover:text-brand-primary transition-colors cursor-default">
-            <Calendar size={11} className="text-brand-secondary" />
+        <div className={`flex items-center gap-5 mb-6 text-foreground/40 text-[9px] font-numbers font-black uppercase tracking-[0.2em] ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+          <span className="flex items-center gap-2">
+            <Calendar size={12} className="text-brand-primary/40" strokeWidth={1.5} />
             {formattedDate}
           </span>
           {post.author && (
             <>
-              <span className="w-1 h-1 rounded-[1px] bg-brand-primary/30" />
-              <span className="flex items-center gap-1.5 hover:text-brand-primary transition-colors cursor-default">
-                <User size={11} className="text-brand-secondary" />
+              <span className="w-1 h-1 rounded-full bg-brand-primary/10" />
+              <span className="flex items-center gap-2 font-body font-bold text-foreground/30">
+                <User size={12} className="text-brand-primary/40" strokeWidth={1.5} />
                 {post.author}
               </span>
             </>
@@ -203,28 +191,28 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </div>
 
         {/* Title */}
-        <h3 className={`text-lg font-serif font-bold text-brand-primary leading-snug mb-3 transition-colors duration-300 ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-xl md:text-2xl font-title font-bold text-brand-primary leading-tight mb-4 transition-colors duration-500 group-hover:text-brand-secondary ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-sm text-[#EDF2F4]/80 leading-relaxed flex-grow line-clamp-3 font-medium ${locale === 'ar' ? 'text-right font-body' : 'text-left font-body'}`}>
+        <p className={`text-sm text-foreground/50 leading-relaxed flex-grow line-clamp-3 font-body ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
           {excerpt}
         </p>
 
         {/* Separator */}
-        <div className="my-5 h-px bg-brand-primary/10" />
+        <div className="mt-8 mb-6 h-px bg-brand-primary/5 w-12" />
 
         {/* CTA */}
         <div
-          className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-[2px] text-brand-primary hover:text-brand-crimson transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
+          className={`flex items-center gap-3 text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary group-hover:text-brand-secondary transition-all duration-500 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
-            ? (locale === 'ar' ? 'تحميل' : 'Download')
+            ? (locale === 'ar' ? 'تحميل السجل' : 'Download Record')
             : post.type === 'press' && isExternalOnly
-              ? (locale === 'ar' ? 'قراءة الخبر' : 'Read Article')
-              : (locale === 'ar' ? 'اكتشف أكثر' : 'Read More')}
-          {isExternalOnly ? <ExternalLink size={13} strokeWidth={2.5} /> : <ArrowUpRight size={13} strokeWidth={2.5} />}
+              ? (locale === 'ar' ? 'البيان الصحفي' : 'Press Release')
+              : (locale === 'ar' ? 'اكتشف المزيد' : 'Discovery')}
+          <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={2.5} />
         </div>
       </div>
     </motion.article>

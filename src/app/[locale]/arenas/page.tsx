@@ -23,14 +23,14 @@ export default async function ArenaPage({
       <div className="absolute inset-0 brand-pattern-waves opacity-10 pointer-events-none" />
 
       {/* ── Header ── */}
-      <section className="py-20 px-6 text-center relative z-10">
-        <span className="text-xs font-bold uppercase tracking-[8px] text-brand-secondary mb-4 block animate-fade-in">
+      <section className="py-24 px-6 text-center relative z-10 px-6">
+        <span className="text-[10px] font-numbers font-black uppercase tracking-[0.4em] text-brand-primary mb-6 block animate-fade-in">
           {t('heroTag')}
         </span>
-        <h1 className="text-5xl md:text-8xl font-title font-bold text-white mb-8 leading-tight">
+        <h1 className="text-5xl md:text-8xl font-title font-bold text-brand-primary mb-8 leading-none uppercase tracking-tighter">
           {t('title')}
         </h1>
-        <div className="brand-sep-bow mx-auto max-w-md opacity-60" />
+        <div className="brand-sep-bow mx-auto max-w-md opacity-40" />
       </section>
 
       {/* ── Experience & Hubs ── */}
@@ -38,63 +38,63 @@ export default async function ArenaPage({
         <div className="grid-sovereign">
           
           {/* Main Experience Card (Training) */}
-          <div className="col-span-12 lg:col-span-8 glass p-12 rounded-sovereign border border-white/5 group hover-lift relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-64 h-64 border-brand-primary/10 border-t-2 border-r-2 rounded-sovereign -mr-20 -mt-20 group-hover:scale-110 transition-transform" />
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full brand-horse-bg opacity-[0.03] group-hover:opacity-[0.07] transition-opacity" />
+          <div className="col-span-12 lg:col-span-8 glass-sovereign p-10 md:p-14 rounded-sovereign border border-brand-primary/10 group relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-64 h-64 border-brand-primary/5 border-t-2 border-r-2 rounded-sovereign -mr-20 -mt-20 group-hover:scale-110 transition-transform" />
+             <div className="absolute inset-0 brand-horse-bg opacity-[0.02] group-hover:opacity-[0.05] transition-opacity" />
              
-             <div className="flex items-center gap-4 mb-10">
-                <div className="p-4 bg-brand-primary/10 rounded-sovereign">
-                   <Target size={32} className="text-brand-primary" />
+             <div className="flex items-center gap-6 mb-10 relative">
+                <div className="w-16 h-16 bg-brand-primary/10 rounded-sovereign flex items-center justify-center border border-brand-primary/20">
+                   <Target size={30} className="text-brand-primary" strokeWidth={1.2} />
                 </div>
-                <h2 className="text-4xl font-title text-white">{t('masterclassTitle')}</h2>
+                <h2 className="text-3xl md:text-5xl font-title text-brand-primary uppercase tracking-wide">{t('masterclassTitle')}</h2>
              </div>
 
-             <p className="text-xl text-[#EDF2F4]/70 font-body leading-relaxed mb-12 max-w-2xl">
+             <p className="text-xl text-foreground/60 font-body leading-relaxed mb-12 max-w-2xl relative">
                 {t('masterclassDesc')}
              </p>
 
-             <div className="flex flex-wrap gap-6">
-                <button className="btn-primary">
+             <div className="flex flex-wrap gap-6 relative">
+                <button className="btn-primary px-10 py-5">
                    {t('bookSession')} <ArrowRight size={18} />
                 </button>
              </div>
           </div>
 
           {/* Tourism Tours Card (Refined) */}
-          <div className="col-span-12 lg:col-span-7 glass p-12 rounded-sovereign border border-white/5 group hover-lift relative overflow-hidden order-last lg:order-none">
-             <div className="absolute bottom-0 left-0 w-64 h-64 border-brand-secondary/10 border-b-2 border-l-2 rounded-sovereign -ml-20 -mb-20 group-hover:scale-110 transition-transform" />
+          <div className="col-span-12 lg:col-span-7 glass-sovereign p-10 md:p-14 rounded-sovereign border border-brand-secondary/10 group relative overflow-hidden order-last lg:order-none">
+             <div className="absolute bottom-0 left-0 w-64 h-64 border-brand-secondary/5 border-b-2 border-l-2 rounded-sovereign -ml-20 -mb-20 group-hover:scale-110 transition-transform" />
              
-             <div className="flex items-center gap-4 mb-8">
-                <div className="p-4 bg-brand-secondary/10 rounded-sovereign">
-                   <Compass size={32} className="text-brand-secondary" />
+             <div className="flex items-center gap-6 mb-10">
+                <div className="w-16 h-16 bg-brand-secondary/10 rounded-sovereign flex items-center justify-center border border-brand-secondary/20">
+                   <Compass size={30} className="text-brand-secondary" strokeWidth={1.2} />
                 </div>
-                <h2 className="text-4xl font-title text-white">{t('toursTitle')}</h2>
+                <h2 className="text-3xl md:text-5xl font-title text-brand-primary uppercase tracking-wide">{t('toursTitle')}</h2>
              </div>
 
              <div className="space-y-8 mb-12">
                 <div className="flex gap-6 items-start">
-                   <div className="p-3 glass rounded-sovereign mt-1 self-start">
-                      <Globe size={20} className="text-brand-secondary" />
+                   <div className="w-10 h-10 glass-sovereign rounded-sovereign flex items-center justify-center shrink-0">
+                      <Globe size={18} className="text-brand-secondary" />
                    </div>
                    <div>
-                      <h4 className="text-white font-title font-bold mb-1">Interlaken</h4>
-                      <p className="text-[#EDF2F4]/60 text-sm font-body leading-relaxed">{t('swissTours')}</p>
+                      <h4 className="text-brand-primary font-title font-bold text-lg mb-1 uppercase tracking-widest">{t('swissHub') || 'Interlaken'}</h4>
+                      <p className="text-foreground/50 text-sm font-body leading-relaxed">{t('swissTours')}</p>
                    </div>
                 </div>
 
                 <div className="flex gap-6 items-start">
-                   <div className="p-3 glass rounded-sovereign mt-1 self-start">
-                      <Globe size={20} className="text-brand-secondary" />
+                   <div className="w-10 h-10 glass-sovereign rounded-sovereign flex items-center justify-center shrink-0">
+                      <Globe size={18} className="text-brand-secondary" />
                    </div>
                    <div>
-                      <h4 className="text-white font-title font-bold mb-1">{t('hubCairo')}</h4>
-                      <p className="text-[#EDF2F4]/60 text-sm font-body leading-relaxed">{t('egyptTours')}</p>
+                      <h4 className="text-brand-primary font-title font-bold text-lg mb-1 uppercase tracking-widest">{t('hubCairo')}</h4>
+                      <p className="text-foreground/50 text-sm font-body leading-relaxed">{t('egyptTours')}</p>
                    </div>
                 </div>
              </div>
 
              <div className="flex flex-wrap gap-6">
-                <button className="px-8 py-4 rounded-sovereign border border-brand-secondary text-brand-secondary font-bold uppercase tracking-widest text-xs hover:bg-brand-secondary hover:text-white transition-all flex items-center gap-3">
+                <button className="px-10 py-5 rounded-sovereign border border-brand-secondary/30 text-brand-secondary font-body font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-secondary/5 transition-all flex items-center gap-3">
                    {t('bookTour')} <ArrowRight size={18} />
                 </button>
              </div>
@@ -102,20 +102,21 @@ export default async function ArenaPage({
 
           {/* Secondary Stats/Info */}
           <div className="col-span-12 lg:col-span-5 space-y-8">
-             <div className="glass p-10 rounded-sovereign border border-white/5 group hover:bg-white/[0.02] transition-colors">
-                <Shield size={24} className="text-brand-secondary mb-4" />
-                <h3 className="text-white font-title font-bold mb-2">{t('safetyTitle')}</h3>
-                <p className="text-sm text-white/50 font-body leading-relaxed">{t('safetyDesc')}</p>
+             <div className="glass-sovereign p-10 rounded-sovereign border border-brand-secondary/10 group transition-all">
+                <Shield size={24} className="text-brand-secondary mb-4" strokeWidth={1.5} />
+                <h3 className="text-brand-primary font-title font-bold text-xl mb-4 uppercase tracking-widest">{t('safetyTitle')}</h3>
+                <p className="text-sm text-foreground/50 font-body leading-relaxed">{t('safetyDesc')}</p>
              </div>
              
-             <div className="glass p-10 rounded-sovereign border border-white/5 bg-gradient-to-br from-brand-primary/5 to-transparent">
-                <h3 className="text-white font-title font-bold mb-4">{t('expansionTitle')}</h3>
-                <div className="space-y-4">
-                   <div className="flex justify-between items-center text-xs text-brand-primary font-numbers font-bold tracking-widest border-b border-white/5 pb-2">
+             <div className="glass-sovereign p-10 rounded-sovereign border border-brand-primary/10 bg-gradient-to-br from-brand-primary/[0.03] to-transparent relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-[0.05] -mr-8 -mt-8 rotate-12" />
+                <h3 className="text-brand-primary font-title font-bold text-xl mb-6 uppercase tracking-widest">{t('expansionTitle')}</h3>
+                <div className="space-y-6">
+                   <div className="flex justify-between items-center text-[10px] text-brand-primary font-numbers font-black tracking-[0.3em] border-b border-brand-primary/10 pb-3 uppercase">
                       <span>{t('switzerland')}</span>
                       <span>Q3 2026</span>
                    </div>
-                   <div className="flex justify-between items-center text-xs text-white/30 font-numbers tracking-widest">
+                   <div className="flex justify-between items-center text-[10px] text-foreground/30 font-numbers font-bold tracking-[0.3em] uppercase">
                       <span>{t('spain')}</span>
                       <span>Q1 2027</span>
                    </div>
@@ -127,17 +128,17 @@ export default async function ArenaPage({
       </section>
       {/* ── Services Showcase (The Highlight) ── */}
       <section className="py-10 px-6 max-w-7xl mx-auto z-10 relative">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 px-4">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 px-4">
           <div className="max-w-2xl">
-            <h3 className="text-brand-secondary font-bold tracking-[6px] text-xs uppercase mb-4">
+            <h3 className="text-brand-primary font-numbers font-black tracking-[0.4em] text-[10px] uppercase mb-6 opacity-60">
                {t('ourServices')}
             </h3>
-            <h2 className="text-4xl md:text-6xl font-title text-white">
+            <h2 className="text-4xl md:text-7xl font-title text-brand-primary uppercase tracking-tighter leading-none">
                Explore Ancient Passions
             </h2>
           </div>
           <div className="hidden md:block">
-             <div className="w-24 h-px bg-brand-primary/30 mb-8" />
+             <div className="w-24 h-px bg-brand-primary/20 mb-10" />
           </div>
         </div>
 
@@ -145,15 +146,15 @@ export default async function ArenaPage({
       </section>
 
       {/* ── Image Showcase (The Environment) ── */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
+      <section className="py-32 px-6 max-w-7xl mx-auto">
          <div className="grid-sovereign">
             {[1, 2, 3, 4].map(i => (
-               <div key={i} className="col-span-6 md:col-span-3 relative aspect-square rounded-sovereign overflow-hidden glass border border-white/5 cinema-lut">
+               <div key={i} className="col-span-6 md:col-span-3 relative aspect-square rounded-sovereign overflow-hidden glass-sovereign border border-brand-primary/10 cinema-lut hover:border-brand-primary/30 transition-all p-1">
                   <NextImage 
                      src={`/images/brand/brand-bow${i === 2 ? '2' : ''}.png`} 
                      alt={`Arena Detail ${i}`}
                      fill
-                     className="object-contain p-4 opacity-50 hover:scale-105 hover:opacity-100 transition-all duration-500"
+                     className="object-contain p-8 opacity-40 grayscale hover:grayscale-0 hover:scale-105 hover:opacity-100 transition-all duration-1000"
                   />
                </div>
             ))}
@@ -161,13 +162,14 @@ export default async function ArenaPage({
       </section>
       
       {/* ── Booking Section (The Portal) ── */}
-      <section id="booking" className="py-32 px-6 bg-secondary-950/30 relative">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 px-4">
-            <h2 className="text-4xl md:text-7xl font-title text-white mb-6">
+      <section id="booking" className="py-40 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 brand-horse-bg opacity-[0.01] grayscale" />
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center mb-24 px-4">
+            <h2 className="text-4xl md:text-8xl font-title text-brand-primary mb-8 leading-none uppercase tracking-tighter">
               Secure Your Place in History
             </h2>
-            <div className="w-24 h-px bg-brand-primary/30 mx-auto" />
+            <div className="w-24 h-px bg-brand-primary/20 mx-auto" />
           </div>
           
           <Suspense fallback={<div className="text-white text-center py-20">Loading Booking Portal...</div>}>
