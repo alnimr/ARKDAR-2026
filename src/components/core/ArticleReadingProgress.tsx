@@ -18,14 +18,16 @@ export default function ArticleReadingProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[3px] z-[100] pointer-events-none">
+    <div className="fixed top-0 left-0 w-full h-[2px] z-[100] pointer-events-none">
       <div 
-        className="h-full bg-gradient-to-r from-brand-primary via-brand-secondary to-brand-primary transition-all duration-300 ease-out"
-        style={{ '--progress-width': `${progress}%` } as React.CSSProperties}
-      >
-        <div className="absolute inset-0 w-[var(--progress-width)] bg-inherit h-full" />
-        <div className="absolute top-0 right-[calc(100%-var(--progress-width))] w-24 h-full bg-white/20 blur-sm animate-pulse" />
-      </div>
+        className="h-full bg-brand-primary transition-all duration-300 ease-out shadow-[0_0_10px_rgba(145,16,16,0.6)]"
+        style={{ width: `${progress}%` }}
+      />
+      {/* Decorative trailing light */}
+      <div 
+        className="absolute top-0 h-full w-20 bg-gradient-to-r from-transparent to-brand-secondary/40 blur-[2px] transition-all duration-300 ease-out"
+        style={{ left: `calc(${progress}% - 80px)` }}
+      />
     </div>
   );
 }

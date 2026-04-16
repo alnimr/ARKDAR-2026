@@ -49,7 +49,7 @@ export default async function HeritagePage({
 
   return (
     <main
-      className="flex flex-col w-full min-h-screen pt-24 bg-surface relative overflow-x-hidden transition-colors duration-500"
+      className="flex flex-col w-full min-h-screen pt-24 bg-surface-dark relative overflow-x-hidden transition-colors duration-500"
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       {/* ── Background Texture Layers ── */}
@@ -57,7 +57,7 @@ export default async function HeritagePage({
       <div className="absolute top-0 right-0 w-1/3 h-full brand-horse-bg opacity-[0.03] pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface/60 backdrop-blur-xl border-y border-brand-secondary/20 shadow-2xl">
+      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface-dark/80 backdrop-blur-[12px] border-y border-brand-primary/10 shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-center gap-8 md:gap-16 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
@@ -134,10 +134,10 @@ export default async function HeritagePage({
       )}
 
       {/* ── The Vision Section (Philosophy) ── */}
-      <section id="vision" className="py-40 px-6 relative overflow-hidden bg-secondary-950/20">
+      <section id="vision" className="py-40 px-6 relative overflow-hidden bg-brand-primary/5">
         <div className="absolute top-0 left-0 w-full h-full brand-pattern-waves opacity-5 pointer-events-none" />
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <Quote className="text-brand-primary mx-auto mb-12 opacity-40" size={64} strokeWidth={1} />
+          <Quote className="text-brand-primary mx-auto mb-12 opacity-80" size={64} strokeWidth={1} />
           
           <h2 className="text-xs font-black uppercase tracking-[10px] text-brand-primary mb-6">
             {t('navVision')}
@@ -181,12 +181,12 @@ export default async function HeritagePage({
             ].map((pillar, i) => (
               <div 
                 key={i}
-                className="col-span-12 md:col-span-4 glass p-12 rounded-sovereign border border-white/5 hover-lift group relative overflow-hidden flex flex-col items-center text-center"
+                className="col-span-12 md:col-span-4 glass-sovereign p-12 hover-lift group relative overflow-hidden flex flex-col items-center text-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="text-6xl mb-8 transform group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
                 <h3 className="text-2xl font-title text-white mb-6 group-hover:text-brand-primary transition-colors">{pillar.title}</h3>
-                <p className="text-[#EDF2F4]/60 leading-relaxed font-body">{pillar.desc}</p>
+                <p className="text-white/60 leading-relaxed font-body">{pillar.desc}</p>
                 <div className="mt-auto pt-8">
                    <div className="w-12 h-0.5 bg-brand-primary/20 group-hover:w-24 group-hover:bg-brand-primary/60 transition-all duration-300" />
                 </div>
@@ -220,12 +220,12 @@ export default async function HeritagePage({
               </h2>
             </div>
             
-            <p className="text-xl text-[#EDF2F4]/70 leading-[1.8] font-body">
+            <p className="text-xl text-white/70 leading-[1.8] font-body">
               &quot;{t('foundersMessage')}&quot;
             </p>
 
             <div className="p-8 border-l-4 border-brand-primary/40 bg-white/5 rounded-r-sovereign">
-               <p className="text-[#EDF2F4]/60 italic leading-relaxed text-lg font-body">
+               <p className="text-white/60 italic leading-relaxed text-lg font-body">
                  {t('missionDesc')}
                </p>
             </div>
@@ -258,7 +258,7 @@ export default async function HeritagePage({
             {journalHeading}
           </h2>
           <div className="w-16 h-px bg-brand-primary/40 mx-auto mb-6" />
-          <p className="text-[#EDF2F4]/50 max-w-xl mx-auto text-lg leading-relaxed font-body">
+          <p className="text-white/50 max-w-xl mx-auto text-lg leading-relaxed font-body">
             {journalSubheading}
           </p>
         </div>

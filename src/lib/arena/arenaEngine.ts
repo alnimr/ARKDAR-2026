@@ -168,13 +168,13 @@ export function evaluateFrameMetrics(
 
     if (typeof torsoAngle === 'number') {
         if (torsoAngle >= torsoT.min && torsoAngle <= torsoT.max) {
-            evalResults.torso = { level: isAr ? 'ممتاز' : 'Excellent', color: '#10b981' };
+            evalResults.torso = { level: isAr ? 'ممتاز' : 'Excellent', color: 'var(--color-brand-primary)' };
             evalResults.feedback = isAr ? "وضعية رائعة! زاوية الجذع مثالية لهذه المرحلة." : "Great posture! Your trunk angle is well-balanced for this phase.";
         } else if (torsoAngle >= torsoT.min - 10 && torsoAngle <= torsoT.max + 15) {
-            evalResults.torso = { level: isAr ? 'جيد' : 'Good', color: '#f59e0b' };
+            evalResults.torso = { level: isAr ? 'جيد' : 'Good', color: 'var(--color-brand-secondary)' };
             evalResults.feedback = isAr ? "وضعية جيدة، حاول ضبط زاوية الجذع لزيادة الثبات." : "Good posture, but try to refine your trunk angle for better stability.";
         } else {
-            evalResults.torso = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: '#ef4444' };
+            evalResults.torso = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: 'var(--color-brand-tertiary)' };
             evalResults.feedback = isAr ? "الجذع مائل جداً. حاول موازنة مركز الثقل بشكل أفضل." : "Your trunk is leaning too far. Try to adjust your center of gravity.";
         }
         
@@ -191,12 +191,12 @@ export function evaluateFrameMetrics(
 
     if (cogBalance && typeof cogBalance.verticalAngle === 'number') {
         const absAngle = Math.abs(cogBalance.verticalAngle);
-        if (absAngle <= cogT.excellent) evalResults.cog = { level: isAr ? 'ممتاز' : 'Excellent', color: '#10b981' };
+        if (absAngle <= cogT.excellent) evalResults.cog = { level: isAr ? 'ممتاز' : 'Excellent', color: 'var(--color-brand-primary)' };
         else if (absAngle <= cogT.good) {
-            evalResults.cog = { level: isAr ? 'جيد' : 'Good', color: '#f59e0b' };
+            evalResults.cog = { level: isAr ? 'جيد' : 'Good', color: 'var(--color-brand-secondary)' };
         }
         else {
-            evalResults.cog = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: '#ef4444' };
+            evalResults.cog = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: 'var(--color-brand-tertiary)' };
             evalResults.feedback = isAr ? "مركز الثقل غير مستقر. ركز على محاذاة الأكتاف فوق الركبتين." : "Your center of gravity is shifting. Focus on aligning your shoulders over your knees.";
         }
     }

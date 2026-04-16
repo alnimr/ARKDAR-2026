@@ -44,27 +44,27 @@ function AdminLoginForm() {
       </div>
 
       <div className="flex-1 flex items-center justify-center p-6 relative z-10">
-        <div className="w-full max-w-md p-10 rounded-[32px] bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-2xl">
+        <div className="w-full max-w-md p-10 rounded-sovereign bg-surface-dark/90 backdrop-blur-xl border border-white/10 shadow-2xl">
           <div className="flex justify-center mb-10">
-            <div className="w-16 h-16 rounded-full bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center text-brand-primary">
+            <div className="w-16 h-16 rounded-sovereign bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center text-brand-primary">
               <Shield size={28} />
             </div>
           </div>
 
           <div className="text-center mb-10">
-            <h1 className="text-2xl font-serif text-white mb-2 uppercase tracking-[4px]">ARKDAR HQ</h1>
-            <p className="text-sm text-white/40">Authorized Personnel Only</p>
+            <h1 className="text-2xl font-title text-white mb-2 uppercase tracking-[6px]">ARKDAR HQ</h1>
+            <p className="text-[10px] font-bold uppercase tracking-[4px] text-white/30 font-body">Authorized Personnel Only</p>
           </div>
 
           {error && (
-            <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-semibold text-center">
+            <div className="mb-6 p-4 rounded-sovereign bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-widest text-center font-body">
               {error}
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label className="block text-xs font-bold text-white/50 uppercase tracking-widest mb-2">
+              <label className="block text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2 font-body">
                 {isRtl ? 'البريد الإلكتروني' : 'Email Address'}
               </label>
               <input
@@ -72,14 +72,14 @@ function AdminLoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary/50 transition-colors"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
                 placeholder="admin@arkdar.com"
                 dir="ltr"
               />
             </div>
             
             <div>
-              <label className="block text-xs font-bold text-white/50 uppercase tracking-widest mb-2">
+              <label className="block text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2 font-body">
                 {isRtl ? 'كلمة المرور' : 'Password'}
               </label>
               <input
@@ -87,7 +87,7 @@ function AdminLoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-primary/50 transition-colors"
+                className="w-full bg-white/[0.03] border border-white/10 rounded-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
                 placeholder="••••••••"
                 dir="ltr"
               />
@@ -96,13 +96,13 @@ function AdminLoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-4 bg-white text-[#050505] hover:bg-white/90 disabled:opacity-50 py-4 rounded-xl font-bold uppercase tracking-[2px] text-sm transition-all flex items-center justify-center gap-2"
+              className="w-full mt-8 bg-brand-primary text-white hover:bg-brand-secondary disabled:opacity-50 py-5 rounded-sovereign font-bold uppercase tracking-[4px] text-[10px] transition-all flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(145,16,16,0.3)] font-body"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-[#050505]/20 border-t-[#050505] rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
               ) : (
                 <>
-                  <Lock size={16} />
+                  <Lock size={14} />
                   {isRtl ? 'تسجيل الدخول للقيادة' : 'Login to HQ'}
                 </>
               )}

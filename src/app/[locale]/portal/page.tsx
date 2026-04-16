@@ -17,16 +17,16 @@ export default async function PortalPage({
   const t = await getTranslations('Portal');
 
   return (
-    <div className="flex h-screen bg-[#050505] overflow-hidden">
+    <div className="flex h-screen bg-surface-dark overflow-hidden">
       {/* Tactical Sidebar */}
-      <aside className="w-80 h-full border-r border-white/5 bg-[#080808] flex flex-col p-8 z-30">
+      <aside className="w-80 h-full border-r border-white/5 bg-surface-dark flex flex-col p-8 z-30">
          <div className="mb-12">
-            <h1 className="text-2xl font-serif text-white tracking-widest uppercase">
+            <h1 className="text-2xl font-title text-white tracking-[6px] uppercase">
                ARK-PORTAL <span className="text-brand-primary">v2.0</span>
             </h1>
          </div>
 
-         <nav className="flex-grow space-y-2">
+         <nav className="flex-grow space-y-3">
             {[
               { name: t('navOverview'), icon: LayoutDashboard, active: true, href: '/portal' },
               { name: t('navMetrics'), icon: Activity, href: '#' },
@@ -37,7 +37,7 @@ export default async function PortalPage({
               <Link 
                 href={item.href as '/'} 
                 key={item.name} 
-                className={`flex items-center gap-4 px-5 py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest transition-all ${item.active ? 'bg-brand-primary text-white shadow-[0_0_30px_rgba(160,6,28,0.2)]' : 'text-white/30 hover:bg-white/5 hover:text-white'}`}
+                className={`flex items-center gap-4 px-6 py-5 rounded-sovereign text-[10px] font-bold uppercase tracking-[3px] transition-all font-body ${item.active ? 'bg-brand-primary text-white shadow-[0_4px_20px_rgba(145,16,16,0.3)]' : 'text-white/30 hover:bg-white/5 hover:text-white'}`}
               >
                 <item.icon size={18} />
                 {item.name}
@@ -46,12 +46,12 @@ export default async function PortalPage({
          </nav>
 
          <div className="mt-auto">
-            <div className="bg-white/5 p-6 rounded-3xl border border-white/5">
+            <div className="glass-sovereign p-6">
                <div className="flex items-center justify-between mb-4">
-                  <p className="text-[10px] text-white/30 font-bold uppercase tracking-widest">{t('connectivity')}</p>
-                  <ShieldCheck size={14} className="text-emerald-400" />
+                  <p className="text-[10px] text-white/30 font-bold uppercase tracking-widest font-body">{t('connectivity')}</p>
+                  <ShieldCheck size={14} className="text-brand-primary" />
                </div>
-               <p className="text-xs text-white/60 font-medium leading-relaxed">
+               <p className="text-xs text-white/60 font-medium leading-relaxed font-body">
                   {t('uplink')}
                </p>
             </div>

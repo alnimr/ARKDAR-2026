@@ -73,7 +73,7 @@ export default function Navbar() {
         </Link>
 
         {/* ── Desktop Links ── */}
-        <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest font-body">
+        <div className="hidden lg:flex items-center gap-8 text-[11px] font-semibold uppercase tracking-widest font-body">
           {navLinks.map(link => (
             <Link
               key={link.href}
@@ -140,7 +140,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href as '/'}
               onClick={() => setIsMenuOpen(false)}
-              className="py-3 px-4 rounded-sovereign text-xs font-bold uppercase tracking-widest text-foreground hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
+              className="py-3 px-4 rounded-sovereign text-xs font-semibold uppercase tracking-widest text-foreground hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
             >
               {link.label}
             </Link>

@@ -20,14 +20,16 @@ export default async function AdminLayout({
       <AdminSidebar locale={locale} />
       
       {/* Main Content Area */}
-      <main className={`flex-1 min-h-screen ${isRtl ? 'mr-72' : 'ml-72'} bg-[#050505]`}>
+      <main className={`flex-1 min-h-screen ${isRtl ? 'mr-72' : 'ml-72'} bg-surface-dark`}>
         {/* Admin Header Context (optional) */}
-        <header className="h-20 border-b border-white/5 bg-[#0a0a0a]/50 backdrop-blur-md flex items-center px-8 sticky top-0 z-40">
-          <h1 className="text-white/70 font-semibold text-lg">بوابة التحكم الموحدة</h1>
+        <header className="h-24 border-b border-white/5 bg-surface-dark/80 backdrop-blur-[12px] flex items-center px-8 sticky top-0 z-40">
+          <h1 className="text-white/60 font-title text-xl uppercase tracking-widest leading-none pt-1">
+            {isRtl ? 'بوابة التحكم الموحدة' : 'Unified Command Center'}
+          </h1>
         </header>
 
         {/* Dynamic Content */}
-        <div className="p-8">
+        <div className="p-12 max-w-7xl mx-auto">
           {children}
         </div>
       </main>

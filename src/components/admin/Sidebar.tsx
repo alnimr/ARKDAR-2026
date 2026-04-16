@@ -37,16 +37,16 @@ export default function AdminSidebar({ locale }: { locale: string }) {
   ];
 
   return (
-    <aside className={`fixed top-0 bottom-0 ${isRtl ? 'right-0' : 'left-0'} w-72 bg-[#0a0a0a] border-${isRtl ? 'l' : 'r'} border-white/5 z-50 flex flex-col`}>
+    <aside className={`fixed top-0 bottom-0 ${isRtl ? 'right-0' : 'left-0'} w-72 bg-surface-dark border-${isRtl ? 'l' : 'r'} border-white/5 z-50 flex flex-col`}>
       {/* Brand */}
-      <div className="h-20 flex items-center px-8 border-b border-white/5">
-        <span className="text-xl font-serif text-white tracking-[5px] uppercase">
-          ARKDAR <span className="text-brand-primary text-xs ml-2">HQ</span>
+      <div className="h-24 flex items-center px-8 border-b border-white/5 bg-gradient-to-b from-brand-primary/5 to-transparent">
+        <span className="text-xl font-title text-white tracking-[5px] uppercase">
+          ARKDAR <span className="text-brand-primary text-[10px] ml-2 font-body font-bold">HQ</span>
         </span>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 overflow-y-auto py-8 px-4 space-y-2">
+      <nav className="flex-1 overflow-y-auto py-8 px-4 space-y-3">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -54,27 +54,29 @@ export default function AdminSidebar({ locale }: { locale: string }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 ${isRtl ? 'flex-row-reverse' : ''} ${
+              className={`flex items-center gap-4 px-5 py-4 rounded-sovereign transition-all duration-500 ${isRtl ? 'flex-row-reverse' : ''} ${
                 isActive 
-                ? 'bg-brand-primary/10 text-brand-secondary border border-brand-primary/20' 
-                : 'text-white/40 hover:bg-white/[0.02] hover:text-white/80'
+                ? 'bg-brand-primary text-white shadow-[0_4px_20px_rgba(145,16,16,0.3)] border border-brand-primary/20 scale-[1.02]' 
+                : 'text-white/40 hover:bg-white/[0.05] hover:text-white/80'
               }`}
             >
-              <Icon size={18} />
-              <span className="text-sm font-bold tracking-wider">{item.label}</span>
+              <Icon size={18} className={isActive ? 'text-white' : 'text-inherit'} />
+              <span className={`text-[11px] font-bold tracking-widest uppercase font-body ${isActive ? 'text-white' : 'text-inherit'}`}>
+                {item.label}
+              </span>
             </Link>
           );
         })}
       </nav>
 
       {/* Footer / User */}
-      <div className="p-4 border-t border-white/5">
+      <div className="p-6 border-t border-white/5 bg-surface-dark/50">
         <button 
           onClick={handleLogout}
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-white/40 hover:bg-red-500/10 hover:text-red-400 transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-4 py-4 rounded-sovereign text-white/40 hover:bg-brand-primary hover:text-white transition-all duration-300 font-body border border-transparent hover:border-brand-primary/30"
         >
           <LogOut size={16} />
-          <span className="text-xs font-bold uppercase tracking-widest">تسجيل الخروج</span>
+          <span className="text-[10px] font-bold uppercase tracking-[3px]">تسجيل الخروج</span>
         </button>
       </div>
     </aside>

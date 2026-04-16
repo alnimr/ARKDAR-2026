@@ -73,20 +73,20 @@ export default function CoachDashboard() {
       {/* Sessions List */}
       <div className="lg:col-span-7 space-y-4">
         <div className="flex items-center justify-between mb-6">
-           <h3 className="text-xl font-bold uppercase tracking-widest text-white/60 flex items-center gap-2">
-             <Users size={20} className="text-[#DAA520]" />
+           <h3 className="text-xl font-bold uppercase tracking-widest text-white/60 flex items-center gap-2 font-title">
+             <Users size={20} className="text-brand-primary" />
              طلبات مراجعة الأداء
            </h3>
            <div className="flex gap-2">
               <button 
                 title="Filter"
-                className="p-2 bg-white/5 rounded-lg border border-white/10 text-white/40 hover:text-white"
+                className="p-2 bg-white/5 rounded-sovereign border border-white/10 text-white/40 hover:text-white"
               >
                 <Filter size={18}/>
               </button>
               <button 
                 title="Search"
-                className="p-2 bg-white/5 rounded-lg border border-white/10 text-white/40 hover:text-white"
+                className="p-2 bg-white/5 rounded-sovereign border border-white/10 text-white/40 hover:text-white"
               >
                 <Search size={18}/>
               </button>
@@ -100,28 +100,28 @@ export default function CoachDashboard() {
             transition={{ delay: i * 0.05 }}
             key={session.id}
             onClick={() => setSelectedSession(session)}
-            className={`p-5 rounded-2xl border transition-all cursor-pointer group flex items-center justify-between ${
+            className={`p-5 rounded-sovereign border transition-all cursor-pointer group flex items-center justify-between ${
                 selectedSession?.id === session.id 
-                ? 'bg-[#DAA520]/10 border-[#DAA520]' 
-                : session.isReviewed ? 'bg-white/5 border-white/20 opacity-60' : 'bg-white/5 border-white/5 hover:border-white/20'
+                ? 'bg-brand-primary/10 border-brand-primary' 
+                : session.isReviewed ? 'bg-surface-dark border-white/20 opacity-60' : 'bg-surface-dark border-white/5 hover:border-white/20'
             }`}
           >
             <div className="flex items-center gap-4">
-               <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${session.sport === 'archery' ? 'bg-[#DAA520]/20 text-[#DAA520]' : 'bg-emerald-500/20 text-emerald-400'}`}>
+               <div className={`w-12 h-12 rounded-sovereign flex items-center justify-center ${session.sport === 'archery' ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-secondary/20 text-brand-secondary'}`}>
                   {session.sport === 'archery' ? <Target size={24} /> : <Activity size={24} />}
                </div>
                <div>
-                  <h4 className="font-bold text-white group-hover:text-[#DAA520] transition-colors">
+                  <h4 className="font-bold text-white group-hover:text-brand-primary transition-colors font-body">
                      {session.userId === 'anonymous-trainee' ? 'متدرب مجهول' : `متدرب: ${session.userId.substring(0, 8)}`}
                   </h4>
-                  <p className="text-[10px] text-white/40 font-mono tracking-widest mt-1">
+                  <p className="text-[10px] text-white/40 font-numbers tracking-widest mt-1">
                      {new Date(session.timestamp).toLocaleString('ar-EG')}
                   </p>
                </div>
             </div>
 
             <div className="flex items-center gap-4">
-               {!session.isReviewed && <span className="w-2 h-2 bg-[#DAA520] rounded-full animate-pulse" />}
+               {!session.isReviewed && <span className="w-2 h-2 bg-brand-primary rounded-full animate-pulse" />}
                <ChevronRight size={18} className="text-white/20 group-hover:text-white" />
             </div>
           </motion.div>
@@ -137,21 +137,21 @@ export default function CoachDashboard() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[35px] p-8 h-full sticky top-8"
+              className="glass-sovereign p-8 h-full sticky top-8"
             >
               <div className="flex items-center justify-between mb-8">
-                 <h4 className="text-2xl font-serif text-white">تفاصيل الجلسة</h4>
-                 <button onClick={() => setSelectedSession(null)} className="text-white/40 hover:text-white">إغلاق</button>
+                 <h4 className="text-2xl font-title text-white">تفاصيل الجلسة</h4>
+                 <button onClick={() => setSelectedSession(null)} className="text-white/40 hover:text-white font-body">إغلاق</button>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
-                 <div className="bg-black/30 p-4 rounded-2xl border border-white/5">
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">متوسط الجذع</p>
-                    <p className="text-2xl font-bold text-[#DAA520]">{selectedSession.metrics?.avgTrunkAngle?.toFixed(1)}°</p>
+                 <div className="bg-black/30 p-4 rounded-sovereign border border-white/5">
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-numbers">متوسط الجذع</p>
+                    <p className="text-2xl font-bold text-brand-primary font-numbers">{selectedSession.metrics?.avgTrunkAngle?.toFixed(1)}°</p>
                  </div>
-                 <div className="bg-black/30 p-4 rounded-2xl border border-white/5">
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">التوازن</p>
-                    <p className="text-2xl font-bold text-emerald-400">{selectedSession.metrics?.balanceScore?.toFixed(1)}°</p>
+                 <div className="bg-black/30 p-4 rounded-sovereign border border-white/5">
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-numbers">التوازن</p>
+                    <p className="text-2xl font-bold text-brand-secondary font-numbers">{selectedSession.metrics?.balanceScore?.toFixed(1)}°</p>
                  </div>
               </div>
 
@@ -163,20 +163,20 @@ export default function CoachDashboard() {
               </div>
 
               <div className="space-y-4">
-                 <label className="text-xs font-bold text-[#DAA520] uppercase tracking-widest flex items-center gap-2">
+                 <label className="text-xs font-bold text-brand-primary uppercase tracking-widest flex items-center gap-2 font-body">
                    <MessageSquare size={16} />
                    رأيك كمدرب محترف
                  </label>
                  <textarea 
                    value={feedbackText}
                    onChange={(e) => setFeedbackText(e.target.value)}
-                   className="w-full h-32 bg-black/40 border border-white/10 rounded-2xl p-4 text-white focus:border-[#DAA520] outline-none transition-all"
+                   className="w-full h-32 bg-black/40 border border-white/10 rounded-sovereign p-4 text-white focus:border-brand-primary outline-none transition-all font-body"
                    placeholder="اكتب توجيهاتك الفنية هنا للفارس..."
                  />
                  <button 
                    onClick={handleApplyFeedback}
                    disabled={isSubmitting || !feedbackText}
-                   className="w-full py-4 bg-[#DAA520] hover:bg-[#B8860B] disabled:opacity-50 text-black font-bold rounded-2xl transition-all shadow-[0_10px_30px_rgba(218,165,32,0.2)]"
+                   className="w-full py-4 bg-brand-secondary hover:bg-brand-primary disabled:opacity-50 text-white font-bold rounded-sovereign transition-all shadow-[0_10px_30px_rgba(145,16,16,0.2)] font-body"
                  >
                    {isSubmitting ? 'جاري الحفظ...' : 'إرسال التقييم للمتدرب'}
                  </button>

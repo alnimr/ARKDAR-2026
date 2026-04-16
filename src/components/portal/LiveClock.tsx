@@ -12,11 +12,11 @@ export default function LiveClock() {
   }, []);
 
   return (
-    <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-white/60 font-mono text-sm tracking-widest shadow-xl">
-      <Clock size={14} className="text-brand-primary animate-pulse" />
-      <span>{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
-      <span className="opacity-30">|</span>
-      <span>{time.toLocaleDateString([], { day: '2-digit', month: 'short' })}</span>
+    <div className="flex items-center gap-3 bg-white/5 backdrop-blur-[12px] border border-white/10 px-6 py-3 rounded-sovereign text-white/50 font-numbers text-xs tracking-[2px] shadow-2xl">
+      <Clock size={14} className="text-brand-primary/80 animate-pulse" />
+      <span className="font-bold">{time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
+      <span className="opacity-20">|</span>
+      <span className="uppercase">{time.toLocaleDateString([], { day: '2-digit', month: 'short' })}</span>
     </div>
   );
 }

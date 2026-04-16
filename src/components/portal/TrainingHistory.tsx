@@ -56,22 +56,22 @@ export default function TrainingHistory() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
               onClick={() => setExpandedId(expandedId === session.id ? null : session.id)}
-              className={`flex items-center justify-between p-5 bg-white/5 hover:bg-white/10 border transition-all cursor-pointer group ${expandedId === session.id ? 'border-brand-primary rounded-t-2xl' : 'border-white/10 rounded-2xl'}`}
+              className={`flex items-center justify-between p-5 bg-surface-dark border transition-all cursor-pointer group ${expandedId === session.id ? 'border-brand-primary rounded-t-sovereign' : 'border-white/10 rounded-sovereign'}`}
             >
               <div className="flex items-center gap-4">
-                <div className={`p-3 rounded-xl ${session.sport === 'archery' ? 'bg-[#DAA520]/20 text-[#DAA520]' : 'bg-emerald-500/20 text-emerald-400'}`}>
+                <div className={`p-3 rounded-sovereign ${session.sport === 'archery' ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-secondary/20 text-brand-secondary'}`}>
                   {session.sport === 'archery' ? <Target size={20} /> : <Activity size={20} />}
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm">
+                  <h4 className="font-bold text-sm font-title">
                     {session.sport === 'archery' ? 'رماية من على الخيل' : 'التقاط أوتاد'}
                     {session.isReviewed && (
-                      <span className="ms-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#DAA520]/20 text-[#DAA520] text-[8px] uppercase tracking-widest font-bold">
+                      <span className="ms-3 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-primary/20 text-brand-primary text-[8px] uppercase tracking-widest font-bold font-body">
                         <ShieldCheck size={10} /> تقييم المدرب
                       </span>
                     )}
                   </h4>
-                  <div className="flex items-center gap-3 mt-1 text-[10px] text-white/40 uppercase tracking-widest">
+                  <div className="flex items-center gap-3 mt-1 text-[10px] text-white/40 uppercase tracking-widest font-numbers">
                     <span className="flex items-center gap-1"><Calendar size={10} /> {new Date(session.timestamp).toLocaleDateString('ar-EG')}</span>
                     <span className="flex items-center gap-1"><Clock size={10} /> {new Date(session.timestamp).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
@@ -80,14 +80,14 @@ export default function TrainingHistory() {
               
               <div className="flex items-center gap-8">
                 <div className="hidden md:flex flex-col items-end">
-                  <span className="text-[10px] text-white/40 uppercase tracking-tighter">تقييم الجذع</span>
-                  <span className="font-bold text-[#DAA520]">{session.metrics?.avgTrunkAngle?.toFixed(1)}°</span>
+                  <span className="text-[10px] text-white/40 uppercase tracking-tighter font-body">تقييم الجذع</span>
+                  <span className="font-bold text-brand-primary font-numbers">{session.metrics?.avgTrunkAngle?.toFixed(1)}°</span>
                 </div>
                 <div className="hidden md:flex flex-col items-end">
-                  <span className="text-[10px] text-white/40 uppercase tracking-tighter">التوازن</span>
-                  <span className="font-bold text-emerald-400">{session.metrics?.balanceScore?.toFixed(1)}°</span>
+                  <span className="text-[10px] text-white/40 uppercase tracking-tighter font-body">التوازن</span>
+                  <span className="font-bold text-brand-secondary font-numbers">{session.metrics?.balanceScore?.toFixed(1)}°</span>
                 </div>
-                <ChevronRight size={20} className={`text-white/20 group-hover:text-white transition-transform ${expandedId === session.id ? 'rotate-90 text-[#DAA520]' : ''}`} />
+                <ChevronRight size={20} className={`text-white/20 group-hover:text-white transition-transform ${expandedId === session.id ? 'rotate-90 text-brand-primary' : ''}`} />
               </div>
             </motion.div>
 
@@ -100,29 +100,29 @@ export default function TrainingHistory() {
                   className="overflow-hidden bg-brand-primary/5 border-x border-b border-brand-primary/20 rounded-b-2xl"
                 >
                   <div className="p-6 space-y-4">
-                     <div className="bg-black/40 p-4 rounded-xl border border-white/5">
-                        <p className="text-[10px] text-white/30 uppercase tracking-[2px] font-bold mb-2">استنتاج الذكاء الاصطناعي</p>
-                        <p className="text-sm text-white/70 leading-relaxed italic">&quot;{session.summary}&quot;</p>
+                     <div className="bg-black/40 p-4 rounded-sovereign border border-white/5">
+                        <p className="text-[10px] text-white/30 uppercase tracking-[2px] font-bold mb-2 font-body">استنتاج السيادة الرقمية</p>
+                        <p className="text-sm text-white/70 leading-relaxed italic font-body">&quot;{session.summary}&quot;</p>
                      </div>
                      
                      {session.isReviewed ? (
-                       <div className="bg-[#DAA520]/10 p-5 rounded-2xl border border-[#DAA520]/20 relative overflow-hidden group">
+                       <div className="bg-brand-primary/5 p-5 rounded-sovereign border border-brand-primary/20 relative overflow-hidden group">
                           <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
-                             <GraduationCap size={48} className="text-[#DAA520]" />
+                             <GraduationCap size={48} className="text-brand-primary" />
                           </div>
                           <div className="flex items-start gap-4">
-                             <div className="w-10 h-10 rounded-full bg-[#DAA520] flex items-center justify-center text-black shrink-0">
+                             <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white shrink-0">
                                 <MessageSquare size={20} />
                              </div>
                              <div>
-                                <p className="text-[10px] text-[#DAA520] font-bold uppercase tracking-widest mb-1">نصيحة المدرب المحترف</p>
-                                <p className="text-sm text-white leading-relaxed">{session.coachFeedback}</p>
+                                <p className="text-[10px] text-brand-primary font-bold uppercase tracking-widest mb-1 font-body">نصيحة المدرب السيادي</p>
+                                <p className="text-sm text-white leading-relaxed font-body">{session.coachFeedback}</p>
                              </div>
                           </div>
                        </div>
                      ) : (
-                       <div className="p-4 border border-dashed border-white/10 rounded-xl text-center">
-                          <p className="text-[10px] text-white/40 uppercase tracking-widest italic">بانتظار مراجعة المدرب...</p>
+                       <div className="p-4 border border-dashed border-white/10 rounded-sovereign text-center">
+                          <p className="text-[10px] text-white/40 uppercase tracking-widest italic font-body">بانتظار مراجعة المدرب...</p>
                        </div>
                      )}
                   </div>

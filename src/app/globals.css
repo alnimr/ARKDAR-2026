@@ -153,6 +153,13 @@
     gap: 1.5rem;
   }
 
+  .col-content-primary {
+    grid-column: 2 / -2; /* Centered in 12-col grid (cols 2-11) */
+    @media (min-width: 1280px) {
+      grid-column: 3 / span 8; /* Narrower, more precise centering for luxury desktop */
+    }
+  }
+
   /* ── Motion & Hover ── */
   .hover-sovereign {
     transition: all 300ms ease-in-out;
