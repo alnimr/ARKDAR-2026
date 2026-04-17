@@ -38,17 +38,17 @@ const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, description
   <motion.div 
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
-    className="bg-black/40 border border-sovereign p-4"
+    className="layer-1 border border-quiet p-6 depth-card"
   >
-    <div className="flex justify-between items-start mb-2">
-      <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest font-body">{label}</span>
-      <div className={`w-2 h-2 ${statusColor.includes('brand') ? statusColor.replace('text-', 'bg-') : 'bg-white/20'}`} />
+    <div className="flex justify-between items-start mb-4">
+      <span className="text-ghost text-[9px] font-bold uppercase tracking-[0.2em] font-brand opacity-60">{label}</span>
+      <div className={`w-3 h-3 ${statusColor.includes('gold') || statusColor.includes('brand') ? 'bg-gold' : 'bg-ghost opacity-20'}`} />
     </div>
-    <div className="flex items-baseline gap-1">
-      <span className={`text-2xl font-bold font-latin ${statusColor}`}>{value ?? '--'}</span>
-      {unit && <span className="text-white/40 text-[10px] font-latin">{unit}</span>}
+    <div className="flex items-baseline gap-2">
+      <span className={`text-3xl font-brand font-bold tracking-tighter ${statusColor.includes('brand') ? 'text-gold' : statusColor}`}>{value ?? '--'}</span>
+      {unit && <span className="text-ghost text-[10px] font-brand font-bold opacity-40">{unit}</span>}
     </div>
-    {description && <p className="text-white/40 text-[10px] mt-1 leading-tight font-body">{description}</p>}
+    {description && <p className="text-ghost text-[10px] mt-3 leading-relaxed font-brand opacity-50">{description}</p>}
   </motion.div>
 );
 
@@ -92,9 +92,10 @@ export default function ArenaLab() {
   const drawSkeleton = useCallback((ctx: CanvasRenderingContext2D, landmarks: NormalizedLandmark[]) => {
     if (!landmarks) return;
     
-    // Draw connections
-    ctx.strokeStyle = '#911010'; // Sovereign Burnt Carmine
-    ctx.lineWidth = 3;
+    // Draw connections - ARKDAR GOLD
+    ctx.strokeStyle = '#D4AF37'; 
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'square';
     
     const connections = [
       [11, 12], [11, 23], [12, 24], [23, 24], // Torso
@@ -115,13 +116,11 @@ export default function ArenaLab() {
       }
     });
 
-    // Draw joints
-    ctx.fillStyle = '#EDF2F4'; // Marble Light
+    // Draw joints - WHITE
+    ctx.fillStyle = '#FFFFFF'; 
     landmarks.forEach((lm, i) => {
       if (i > 10) { // Only body joints
-        ctx.beginPath();
-        ctx.arc(lm.x * ctx.canvas.width, lm.y * ctx.canvas.height, 3, 0, 2 * Math.PI);
-        ctx.fill();
+        ctx.fillRect(lm.x * ctx.canvas.width - 3, lm.y * ctx.canvas.height - 3, 6, 6); // Square joints
       }
     });
   }, []);
@@ -136,7 +135,6 @@ export default function ArenaLab() {
       return;
     }
 
-    // Sync canvas dimensions with video for accurate skeleton overlay
     if (canvas.width !== video.videoWidth || canvas.height !== video.videoHeight) {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
@@ -154,7 +152,6 @@ export default function ArenaLab() {
       const landmarks = result.pose.landmarks[0];
       drawSkeleton(ctx, landmarks);
 
-      // Biomechanical Analysis
       const cameraAngle = ArenaEngine.detectCameraAngle(landmarks);
       const torsoAngle = ArenaEngine.computeTorsoAngle(landmarks, width, height, cameraAngle);
       const cog = ArenaEngine.computeCOGBalance(landmarks, width, height);
@@ -165,7 +162,6 @@ export default function ArenaLab() {
       setCurrentMetrics(metrics);
       setEvaluations(evals);
 
-      // Horse Analysis
       if (result.objects && result.objects.detections) {
         const horse = result.objects.detections.find(d => 
           d.categories[0].categoryName === 'horse'
@@ -235,22 +231,22 @@ export default function ArenaLab() {
   };
 
   return (
-    <div className="min-h-screen bg-surface-dark text-white p-6 md:p-10 font-body">
+    <div className="min-h-screen bg-black text-white p-12 md:p-16 font-brand selection:bg-gold selection:text-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl text-brand-primary font-title">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-8 border-b border-quiet pb-12">
+          <div className="space-y-3">
+            <h1 className="text-4xl font-brand font-bold tracking-tight md:text-6xl text-gold uppercase">
               ARKDAR Arena Lab
             </h1>
-            <p className="text-white/40 mt-2 text-lg font-body">تحليل الأداء الميكانيكي الحيوي للفرسان - المعيار السيادي للتدريب</p>
+            <p className="text-ghost mt-2 text-lg font-brand opacity-60 uppercase tracking-widest">المعيار السيادي للتدريب - تحليل الأداء الميكانيكي</p>
           </div>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               <label 
                 htmlFor="video-upload"
-                className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-sovereign flex items-center gap-2 transition-all cursor-pointer font-bold uppercase tracking-widest text-[10px]"
+                className="px-8 py-4 layer-1 border border-quiet flex items-center gap-3 transition-all duration-cine cursor-pointer font-bold uppercase tracking-[0.2em] text-[10px] hover:border-gold hover:text-gold"
               >
-                <Upload size={18} className="text-brand-primary" />
+                <Upload size={18} />
                 <span>رفع فيديو</span>
                 <input 
                   id="video-upload" 
@@ -261,7 +257,7 @@ export default function ArenaLab() {
                   title="Upload Video"
                 />
               </label>
-            <button className="btn-sovereign">
+            <button className="btn-sovereign px-8 py-4 flex items-center gap-3">
               <Camera size={18} />
               <span>الكاميرا المباشرة</span>
             </button>
@@ -269,15 +265,15 @@ export default function ArenaLab() {
         </div>
 
         {!isLoaded ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white/5 border border-sovereign border-dashed">
-            <Activity className="w-12 h-12 text-brand-primary animate-pulse mb-4" />
-            <p className="text-xl font-medium text-white/40 font-body">جاري تحميل نماذج السيادة الرقمية...</p>
+          <div className="flex flex-col items-center justify-center py-40 layer-1 border border-quiet border-dashed">
+            <Activity className="w-16 h-16 text-gold animate-pulse mb-8" />
+            <p className="text-xl font-brand font-bold text-ghost tracking-[0.3em] uppercase opacity-40">جاري تحميل نماذج السيادة الرقمية...</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Main Viewport */}
-            <div className="lg:col-span-8 flex flex-col gap-4">
-              <div className="relative aspect-video bg-black overflow-hidden border border-sovereign group">
+            <div className="lg:col-span-8 flex flex-col gap-6">
+              <div className="relative aspect-video bg-black overflow-hidden border border-quiet group depth-card">
                 {videoSrc ? (
                   <>
                     <video 
@@ -294,78 +290,78 @@ export default function ArenaLab() {
                     />
                   </>
                 ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white/20">
-                    <Activity size={64} className="mb-4 opacity-10" />
-                    <p className="font-body">قم برفع فيديو أو تشغيل الكاميرا لبدء التحليل</p>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-ghost/20">
+                    <Activity size={80} className="mb-8 opacity-5" />
+                    <p className="font-brand uppercase tracking-widest text-sm opacity-40">قم برفع فيديو أو تشغيل الكاميرا لبدء التحليل</p>
                   </div>
                 )}
                 
                 {/* HUD Overlay */}
                 {isAnalyzing && (
-                  <div className="absolute top-6 left-6 flex flex-col gap-2">
-                    <div className="bg-black/60 px-3 py-1 border border-white/20 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 animate-pulse" />
-                      <span className="text-[10px] font-bold tracking-widest uppercase">Live Analysis</span>
+                  <div className="absolute top-8 left-8 flex flex-col gap-4">
+                    <div className="bg-black/80 px-4 py-2 border border-gold/40 flex items-center gap-3">
+                      <span className="w-3 h-3 bg-gold shadow-[0_0_10px_rgba(212,175,55,0.5)] animate-pulse" />
+                      <span className="text-[10px] font-brand font-bold tracking-[0.3em] uppercase text-gold">Live Analysis</span>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Quick Actions */}
-              <div className="flex gap-4 p-4 bg-white/5 border border-sovereign">
+              <div className="flex gap-6 p-6 layer-1 border border-quiet depth-card">
                 <button 
                   onClick={() => setDiscipline('horseback_archery')}
-                  className={`flex-1 py-4 flex flex-col items-center gap-2 transition-all font-body ${discipline === 'horseback_archery' ? 'bg-brand-primary text-white shadow-lg' : 'hover:bg-white/5 text-white/40'}`}
+                  className={`flex-1 py-6 flex flex-col items-center gap-4 transition-all duration-cine font-brand border ${discipline === 'horseback_archery' ? 'bg-gold text-black border-gold shadow-lg' : 'layer-2 text-ghost border-quiet hover:border-gold/30 hover:text-white'}`}
                 >
-                  <Target size={20} />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">الرماية من الخيل</span>
+                  <Target size={24} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em]">الرماية من الخيل</span>
                 </button>
                 <button 
                   onClick={() => setDiscipline('tent_pegging')}
-                  className={`flex-1 py-4 flex flex-col items-center gap-2 transition-all font-body ${discipline === 'tent_pegging' ? 'bg-brand-primary text-white shadow-lg' : 'hover:bg-white/5 text-white/40'}`}
+                  className={`flex-1 py-6 flex flex-col items-center gap-4 transition-all duration-cine font-brand border ${discipline === 'tent_pegging' ? 'bg-gold text-black border-gold shadow-lg' : 'layer-2 text-ghost border-quiet hover:border-gold/30 hover:text-white'}`}
                 >
-                  <Activity size={20} />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">التقاط الأوتاد</span>
+                  <Activity size={24} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em]">التقاط الأوتاد</span>
                 </button>
               </div>
             </div>
 
             {/* Analysis Sidebar */}
-            <div className="lg:col-span-4 flex flex-col gap-6">
-              <div className="layer-1 p-6 flex flex-col h-full border border-sovereign">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-xl font-bold flex items-center gap-2 font-title">
-                    <Activity className="text-brand-primary" size={24} />
+            <div className="lg:col-span-4 flex flex-col gap-8">
+              <div className="layer-1 p-10 flex flex-col h-full border border-quiet depth-card">
+                <div className="flex items-center justify-between mb-12">
+                  <h3 className="text-2xl font-brand font-bold flex items-center gap-3 text-white uppercase tracking-widest">
+                    <Activity className="text-gold" size={28} />
                     لوحة البيانات
                   </h3>
-                  <div className="flex gap-2">
+                  <div className="flex gap-3">
                     <button 
                       title="Save Session"
                       onClick={handleSaveSession}
                       disabled={isSaving || !currentMetrics.torsoAngle}
-                      className={`p-2 transition-all border border-sovereign ${
-                        saveStatus === 'success' ? 'bg-brand-primary/20 text-brand-primary border-brand-primary' : 
-                        saveStatus === 'error' ? 'bg-brand-tertiary/20 text-brand-tertiary' :
-                        isSaving ? 'animate-pulse text-white/20' : 'hover:bg-white/10 text-white/40 hover:text-white'
+                      className={`p-3 transition-all duration-cine border ${
+                        saveStatus === 'success' ? 'bg-gold/20 text-gold border-gold' : 
+                        saveStatus === 'error' ? 'bg-red-900/20 text-red-500 border-red-500' :
+                        isSaving ? 'animate-pulse text-gold/20 border-gold/20' : 'layer-2 border-quiet text-ghost hover:text-white hover:border-gold/50'
                       }`}
                     >
-                      {saveStatus === 'success' ? <CheckCircle2 size={20} /> : <Save size={20} />}
+                      {saveStatus === 'success' ? <CheckCircle2 size={24} /> : <Save size={24} />}
                     </button>
                     <button 
                       title="Download Report"
-                      className="p-2 hover:bg-white/10 text-white/40 hover:text-white transition-colors border border-sovereign"
+                      className="p-3 layer-2 border border-quiet text-ghost hover:text-white hover:border-gold/50 transition-all duration-cine"
                     >
-                      <Download size={20} />
+                      <Download size={24} />
                     </button>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-2 gap-6 mb-10">
                   <MetricCard 
                     label="زاوية الجذع" 
                     value={currentMetrics.torsoAngle?.toFixed(1) ?? '--'} 
                     unit="°"
-                    statusColor={evaluations.torso?.color}
+                    statusColor={evaluations.torso?.color.includes('brand') ? 'text-gold' : evaluations.torso?.color}
                     description="الزاوية بين الكتف والحوض بالنسبة للعامود الفقري"
                   />
                   <MetricCard 
@@ -378,31 +374,32 @@ export default function ArenaLab() {
                     label="التوازن (COG)" 
                     value={currentMetrics.cogBalance?.verticalAngle?.toFixed(1) ?? '--'} 
                     unit="°"
-                    statusColor={evaluations.cog?.color}
+                    statusColor={evaluations.cog?.color.includes('brand') ? 'text-gold' : evaluations.cog?.color}
                     description="انحراف كتلة الجسم عن محور الركب"
                   />
                   <MetricCard 
                     label="ثبات المقعد" 
                     value="92" 
                     unit="%"
-                    statusColor="text-emerald-400"
+                    statusColor="text-gold"
                     description="مدى امتصاص الصدمات أثناء الحركة"
                   />
                 </div>
 
-                <div className="mt-auto space-y-4">
-                  <div className="bg-black/40 p-5 border border-brand-primary/20">
-                    <div className="flex items-center gap-2 mb-3 text-brand-primary">
-                      <Info size={16} />
-                      <span className="text-[10px] font-bold uppercase tracking-widest font-body">توجيه السيادة الرقمية</span>
+                <div className="mt-auto space-y-6">
+                  <div className="layer-2 p-8 border border-gold/20 relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-gold" />
+                    <div className="flex items-center gap-3 mb-4 text-gold">
+                      <Info size={18} />
+                      <span className="text-[10px] font-brand font-bold uppercase tracking-[0.3em]">توجيه السيادة الرقمية</span>
                     </div>
-                    <p className="text-sm text-white/80 leading-relaxed italic font-body">
+                    <p className="text-base text-ghost leading-relaxed italic font-brand group-hover:text-white transition-colors duration-cine">
                     &ldquo;{evaluations.feedback ?? "ابدأ التحليل للحصول على نصائح فورية لتحسين أدائك الرياضي وفق المعايير السيادية."}&rdquo;
                     </p>
                   </div>
 
-                  <button className="w-full py-4 bg-brand-secondary hover:bg-brand-primary text-white font-bold transition-all flex items-center justify-center gap-2 font-body uppercase tracking-[2px] text-[12px]">
-                    <Share2 size={20} />
+                  <button className="w-full py-6 bg-secondary hover:bg-gold text-black font-brand font-bold transition-all duration-cine flex items-center justify-center gap-3 uppercase tracking-[0.3em] text-[12px] depth-card">
+                    <Share2 size={24} />
                     مشاركة التقرير السيادي
                   </button>
                 </div>

@@ -31,39 +31,39 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
   if (posts.length === 0) return null;
 
   return (
-    <section className="py-32 relative overflow-hidden bg-surface-dark border-y border-brand-primary/5">
-      {/* Background Decor - Sovereign Red Glow */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-primary/[0.03] blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+    <section className="py-72 relative overflow-hidden layer-0 border-y border-quiet selection:bg-gold selection:text-black font-brand">
+      {/* Background Decor - Sovereign Atmosphere */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold/[0.05] to-transparent -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-          <div className="space-y-6">
-            <span className="text-brand-primary text-[10px] font-latin font-bold tracking-[0.3em] uppercase flex items-center gap-4">
-              <span className="w-12 h-px bg-brand-primary/30" />
+      <div className="max-w-7xl mx-auto px-12 mb-32 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-16">
+          <div className="space-y-8">
+            <span className="text-gold text-[12px] font-brand font-bold tracking-[0.8em] uppercase flex items-center gap-6">
+              <span className="w-16 h-px bg-gold/30" />
               {t('heroTag')}
             </span>
-            <h2 className="text-5xl md:text-7xl font-title font-bold text-white leading-[0.9] uppercase tracking-tighter">
+            <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] uppercase tracking-tighter foil-hero">
               {t('featuredTitle')}
             </h2>
-            <p className="text-foreground/50 max-w-2xl text-xl font-body leading-relaxed">
+            <p className="text-ghost max-w-3xl text-2xl font-brand font-light leading-relaxed opacity-70 italic">
               {t('featuredSubtitle')}
             </p>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-8">
             <button 
               onClick={() => scrollContainer(isRtl ? 'right' : 'left')}
-              className="w-16 h-16 border border-sovereign layer-2 flex items-center justify-center text-foreground/30 hover:text-brand-primary hover:bg-brand-primary/5 transition-all group active:scale-90"
+              className="w-24 h-24 border border-quiet layer-1 flex items-center justify-center text-gold/40 hover:bg-gold hover:text-black transition-all duration-cine group"
               aria-label={isRtl ? "التمرير لليمين" : "Scroll Left"}
             >
-              <ArrowLeft size={24} className={isRtl ? "rotate-180" : ""} strokeWidth={1.5} />
+              <ArrowLeft size={32} className={`${isRtl ? "rotate-180" : ""} group-hover:-translate-x-2 transition-transform duration-cine`} strokeWidth={1} />
             </button>
             <button 
               onClick={() => scrollContainer(isRtl ? 'left' : 'right')}
-              className="w-16 h-16 border border-sovereign layer-2 flex items-center justify-center text-foreground/30 hover:text-brand-primary hover:bg-brand-primary/5 transition-all group active:scale-90"
+              className="w-24 h-24 border border-quiet layer-1 flex items-center justify-center text-gold/40 hover:bg-gold hover:text-black transition-all duration-cine group"
               aria-label={isRtl ? "التمرير لليسار" : "Scroll Right"}
             >
-              <ArrowRight size={24} className={isRtl ? "rotate-180" : ""} strokeWidth={1.5} />
+              <ArrowRight size={32} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-2 transition-transform duration-cine`} strokeWidth={1} />
             </button>
           </div>
         </div>
@@ -72,72 +72,72 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
       {/* Featured Cards Container */}
       <div 
         ref={scrollRef}
-        className="flex gap-10 overflow-x-auto px-[5%] md:px-[calc((100vw-min(1280px,88vw))/2)] no-scrollbar pb-16 snap-x"
+        className="flex gap-16 overflow-x-auto px-[5%] md:px-[calc((100vw-min(1280px,88vw))/2)] no-scrollbar pb-32 snap-x"
       >
         {posts.map((post, index) => (
           <motion.div
             key={post.id}
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="flex-shrink-0 w-[520px] max-w-[90vw] snap-center"
+            transition={{ duration: 1, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex-shrink-0 w-[720px] max-w-[90vw] snap-center"
           >
             <Link 
               href={`/${locale}/heritage/${post.slug}`}
-              className="group relative block aspect-[16/10] overflow-hidden border border-sovereign layer-2 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] cinema-lut"
+              className="group relative block aspect-[16/9] overflow-hidden border border-quiet layer-1 depth-card cinema-lut"
             >
               {/* Image with elite overlay */}
               <NextImage
                 src={post.image}
                 alt={post.title[locale as keyof typeof post.title]}
                 fill
-                className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                className="object-cover transition-transform duration-[4000ms] ease-out group-hover:scale-110 opacity-60 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-95 transition-all duration-cine" />
               
               {/* Floating Labels */}
-              <div className="absolute top-8 left-8 flex gap-3">
-                <span className="px-5 py-2 layer-3 border border-sovereign text-brand-primary text-[10px] font-latin font-bold uppercase tracking-[0.2em]">
+              <div className="absolute top-12 left-12 flex gap-6">
+                <span className="px-8 py-3 layer-3 border border-quiet text-gold text-[10px] font-brand font-bold uppercase tracking-[0.5em] bg-black/80">
                   {(post.categoryId || 'Heritage').toUpperCase()}
                 </span>
-                <span className="px-5 py-2 layer-3 border border-sovereign text-white/50 text-[10px] font-latin font-bold uppercase tracking-[0.2em]">
+                <span className="px-8 py-3 layer-3 border border-quiet text-ghost text-[10px] font-brand font-bold uppercase tracking-[0.5em] bg-black/80 opacity-60">
                   {(post.type || 'Article').toUpperCase()}
                 </span>
               </div>
 
               {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 w-full p-10 md:p-12 transform transition-all duration-300 group-hover:-translate-y-1">
-                <div className="space-y-6 text-start">
-                  <div className="flex items-center gap-6 text-foreground/40 text-[9px] uppercase tracking-[0.15em] font-latin font-bold">
-                    <span className="flex items-center gap-3">
-                      <Calendar size={14} className="text-brand-primary/60" />
+              <div className="absolute bottom-0 left-0 w-full p-16 md:p-20">
+                <div className="space-y-10 text-start">
+                  <div className="flex items-center gap-10 text-ghost/40 text-[11px] uppercase tracking-[0.5em] font-brand font-bold">
+                    <span className="flex items-center gap-4">
+                      <Calendar size={16} className="text-gold/40" strokeWidth={1} />
                       {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-brand-primary/20" />
-                    <span className="flex items-center gap-3">
-                      <Clock size={14} className="text-brand-primary/60" />
+                    <span className="w-1 h-1 bg-gold/20" />
+                    <span className="flex items-center gap-4">
+                      <Clock size={16} className="text-gold/40" strokeWidth={1} />
                       {t('readTime', { minutes: 5 })}
                     </span>
                   </div>
 
-                  <h3 className="text-3xl md:text-4xl font-title font-bold text-white group-hover:text-brand-primary transition-colors duration-300 leading-[1.1] uppercase tracking-tighter">
+                  <h3 className="text-5xl md:text-6xl font-brand font-bold text-white group-hover:text-gold transition-all duration-cine leading-[0.9] uppercase tracking-tighter">
                     {post.title[locale as keyof typeof post.title]}
                   </h3>
                   
-                  <div className="h-1 w-16 bg-brand-primary group-hover:w-32 transition-all duration-300 rounded-full" />
+                  <div className="h-px w-24 bg-gold group-hover:w-48 transition-all duration-cine" />
                 </div>
               </div>
 
               {/* Shine effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-cine pointer-events-none bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent" />
             </Link>
           </motion.div>
         ))}
       </div>
 
-      {/* Decorative Brand Element */}
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10 brand-sep-bow pointer-events-none" />
+      {/* Decorative Brand Element - Sovereign Divider */}
+      <div className="absolute -bottom-px left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent pointer-events-none" />
     </section>
   );
 }

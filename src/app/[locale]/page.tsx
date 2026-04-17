@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
-import { Target, Hammer, TreePine, ArrowRight, MapPin } from 'lucide-react';
+import { Target, Hammer, TreePine, ArrowRight, MapPin, ShieldCheck, Crown, Sword } from 'lucide-react';
 
 export default async function HomePage({
   params
@@ -19,106 +19,140 @@ export default async function HomePage({
   ];
 
   return (
-    <div className="flex flex-col w-full overflow-x-hidden">
+    <div className="flex flex-col w-full overflow-x-hidden layer-0 selection:bg-gold selection:text-black font-brand">
 
-      {/* 1. HERO SECTION - Asymmetrical Layout */}
+      {/* 1. HERO SECTION - Sovereign Presence */}
       <section className="min-h-screen w-full pt-36 pb-24 px-6 md:px-12 flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 -z-20">
           <NextImage 
             src="/images/brand/hero.png" 
-            alt="ARKDAR" 
+            alt="ARKDAR Sovereign Hero" 
             fill 
-            className="object-cover opacity-80 cinema-lut" 
+            className="object-cover opacity-60 cinema-lut" 
             priority 
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-surface-base/60 via-surface-base/20 to-surface-base" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
         </div>
 
-        <div className="absolute inset-0 -z-10 pointer-events-none brand-pattern-waves opacity-[0.05]" />
+        <div className="absolute inset-0 -z-10 pointer-events-none opacity-[0.03] layer-0" />
 
-        <div className="grid-sovereign h-full items-center">
-          <div className="col-content-primary layer-1 p-8 md:p-16 lg:p-20 relative overflow-hidden animate-fade-up border border-sovereign shadow-2xl">
-            <div className="flex flex-wrap gap-2 mb-8">
-              {['Precision', 'Heritage', 'Performance'].map(v => (
-                <span key={v} className="layer-2 text-brand-primary px-3 py-1 text-[10px] font-latin font-bold uppercase tracking-widest border border-sovereign">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="max-w-4xl layer-1 p-10 md:p-20 relative overflow-hidden animate-fade-up border border-quiet depth-card">
+            <div className="flex flex-wrap gap-4 mb-10">
+              {['Sovereignty', 'Heritage', 'Elite Performance'].map(v => (
+                <span key={v} className="layer-2 text-gold px-5 py-2 text-[9px] font-brand font-bold uppercase tracking-[0.4em] border border-quiet">
                   {v}
                 </span>
               ))}
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl mb-6 font-title font-bold leading-none text-brand-primary uppercase tracking-tighter">
+            <h1 className="text-5xl md:text-8xl mb-10 font-brand font-bold leading-[0.9] foil-hero uppercase tracking-tighter">
               {t('title')}
             </h1>
 
-            <p className="text-xl md:text-2xl font-body font-light max-w-xl leading-relaxed text-white/80">
+            <p className="text-xl md:text-2xl font-brand font-light max-w-2xl leading-relaxed text-ghost opacity-70">
               {t('subtitle')}
             </p>
 
-            <div className="mt-12 flex flex-col sm:flex-row gap-6">
-              <Link href="/arenas" className="btn-sovereign px-10 py-5 flex items-center justify-center gap-3 group">
-                {t('explore')} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-20 flex flex-col sm:flex-row gap-8">
+              <Link href="/arenas" className="btn-sovereign group px-12 py-5 text-[11px] tracking-[0.3em]">
+                {t('explore')} <ArrowRight className="ms-4 w-5 h-5 group-hover:translate-x-1 transition-transform duration-cine" />
               </Link>
-              <Link href="/heritage" className="px-10 py-5 border border-sovereign layer-2 text-brand-primary font-body font-bold uppercase tracking-widest text-[11px] hover:bg-brand-primary/5 transition-all text-center">
-                Our Legacy
+              <Link href="/heritage" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em]">
+                ARKDAR DNA
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full max-w-7xl mx-auto px-6 py-32 relative">
-        <div className="brand-sep-bow mb-16 opacity-30 mx-auto" />
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-title font-bold mb-6 text-brand-primary uppercase tracking-[8px]">{t('servicesTitle')}</h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto font-body">{t('servicesSubtitle')}</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <Link 
-              key={title} 
-              href="/arenas"
-              className="layer-2 p-10 border border-sovereign hover:border-brand-primary/30 transition-all group relative overflow-hidden"
-            >
-              <div className="w-16 h-16 bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-8 group-hover:scale-105 transition-transform border border-sovereign">
-                <Icon size={30} strokeWidth={1.2} />
+      {/* 2. PHILOSOPHY & CREED - The Mamluk Litmus Test */}
+      <section className="w-full py-48 relative layer-0 border-y border-quiet">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-12 gap-16 items-center">
+            <div className="col-span-12 lg:col-span-7">
+              <h2 className="text-[10px] font-brand font-bold tracking-[0.5em] text-gold mb-8 uppercase opacity-50">The Sovereign Creed</h2>
+              <h3 className="text-4xl md:text-7xl font-brand font-bold text-white mb-12 leading-[0.9] uppercase tracking-tighter">
+                &quot;Heritage first. <br /><span className="text-gold">Performance serves it.&quot;</span>
+              </h3>
+              <div className="space-y-10 text-xl text-ghost font-brand font-light leading-relaxed max-w-2xl opacity-80">
+                <p>أركدار ليست مجرد منصة، بل هي وعاء يحفظ عظمة الماضي بدقة المستقبل. نحن لا نعيد تمثيل التاريخ، بل نعيد صياغته بأسلوب يحترم سيادة الفارس العربي.</p>
+                <p>كل سطر برمجي، وكل خوارزمية، وكل سهم نطلقه، يخضع لاختبار واحد: <span className="text-gold italic">&quot;هل كان الفارس المملوكي سيشعر بالفخر بهذا القرار البصري؟&quot;</span></p>
               </div>
-              <h3 className="text-2xl font-title font-bold mb-4 text-brand-primary uppercase tracking-widest">{title}</h3>
-              <p className="text-white/60 leading-relaxed font-body">{desc}</p>
-            </Link>
-          ))}
+            </div>
+            <div className="col-span-12 lg:col-span-5">
+              <div className="grid grid-cols-2 gap-8">
+                {[
+                  { icon: ShieldCheck, label: 'Sovereignty', desc: 'Absolute earned identity' },
+                  { icon: Sword,       label: 'Mastery',     desc: 'Precision in every strike' },
+                  { icon: Crown,       label: 'Elite',       desc: 'The Hybrid Elite standard' },
+                  { icon: Target,      label: 'Purpose',     desc: 'Preserving the art' }
+                ].map(({ icon: Icon, label, desc }) => (
+                  <div key={label} className="layer-1 p-10 border border-quiet depth-card text-center group hover:border-gold/30 transition-all duration-cine">
+                    <Icon className="w-12 h-12 text-gold mx-auto mb-8 group-hover:scale-110 transition-transform duration-cine" strokeWidth={1} />
+                    <h4 className="text-[10px] font-brand font-bold tracking-[0.3em] text-gold uppercase mb-4">{label}</h4>
+                    <p className="text-[11px] text-ghost font-brand opacity-40 uppercase tracking-widest leading-relaxed">{desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="w-full py-32 relative overflow-hidden bg-surface-dark">
-        <div className="absolute inset-0 pointer-events-none brand-pattern-waves opacity-[0.03]" />
-        
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="grid-sovereign items-center">
-            <div className="col-span-12 lg:col-span-5 mb-12 lg:mb-0">
-              <h2 className="text-4xl md:text-6xl font-title font-bold mb-6 text-white uppercase tracking-[8px]">{t('productsTitle')}</h2>
-              <p className="text-white/50 text-lg mb-8 max-w-md font-body">Instruments of absolute precision, crafted for the elite horse-archer.</p>
-              <Link href="/gearup" className="px-8 py-4 border border-sovereign layer-2 text-white font-body font-bold uppercase tracking-[3px] text-[10px] hover:bg-white/5 transition-all inline-flex items-center gap-2">
-                View All Collection <ArrowRight className="w-4 h-4" />
+      {/* 3. SERVICES - The Fields of Honor */}
+      <section className="w-full py-48 relative layer-0">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-32">
+            <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-gold uppercase tracking-tighter">{t('servicesTitle')}</h2>
+            <p className="text-2xl text-ghost max-w-3xl mx-auto font-brand font-light leading-relaxed opacity-60">{t('servicesSubtitle')}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {services.map(({ icon: Icon, title, desc }) => (
+              <Link 
+                key={title} 
+                href="/arenas"
+                className="layer-1 p-12 border border-quiet hover:border-gold/30 transition-all duration-cine group relative overflow-hidden depth-card"
+              >
+                <div className="w-24 h-24 layer-2 text-gold flex items-center justify-center mb-12 group-hover:bg-gold group-hover:text-black transition-all duration-cine border border-quiet">
+                  <Icon size={40} strokeWidth={1} />
+                </div>
+                <h3 className="text-3xl font-brand font-bold mb-8 text-gold uppercase tracking-tight">{title}</h3>
+                <p className="text-ghost leading-relaxed font-brand font-light text-lg opacity-70">{desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PRODUCTS - Royal Arsenal */}
+      <section className="w-full py-48 relative layer-1 border-t border-quiet overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 relative">
+          <div className="grid grid-cols-12 gap-16 items-center">
+            <div className="col-span-12 lg:col-span-5">
+              <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-white uppercase tracking-tighter leading-[0.85]">{t('productsTitle')}</h2>
+              <p className="text-ghost text-xl mb-16 max-w-md font-brand font-light leading-relaxed opacity-70">العتاد السيادي: أدوات مصممة بنخبوية هجينة تجمع بين عراقة الصناعة اليدوية وتكنولوجيا القرن الحادي والعشرين.</p>
+              <Link href="/gearup" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em]">
+                {t('viewAllCollection')} <ArrowRight className="ms-4 w-5 h-5" />
               </Link>
             </div>
 
             <div className="col-span-12 lg:col-span-7">
-              <div className="layer-2 p-8 md:p-12 border border-sovereign bg-brand-primary/5 group relative overflow-hidden">
-                <div className="absolute inset-0 brand-horse-bg opacity-[0.03]" />
-                <div className="flex flex-col md:flex-row items-center gap-12">
-                  <div className="w-full md:w-1/2 h-64 relative">
+              <div className="layer-2 p-16 border border-quiet group relative overflow-hidden depth-card">
+                <div className="flex flex-col md:flex-row items-center gap-20">
+                  <div className="w-full md:w-1/2 h-96 relative">
                     <NextImage 
                       src="/images/brand/brand-bow.png" 
                       alt="Guardian Bow" 
                       fill 
-                      className="object-contain cinema-lut scale-110 group-hover:scale-125 transition-all duration-1000" 
+                      className="object-contain cinema-lut scale-110 group-hover:scale-125 transition-all duration-cine" 
                     />
                   </div>
                   <div className="w-full md:w-1/2">
-                    <h3 className="text-3xl text-white font-title font-bold mb-4 uppercase tracking-wide">{t('product1')}</h3>
-                    <p className="text-foreground/60 mb-8 text-sm leading-relaxed font-body">The flagship of ARKDAR engineering. Carbon-reinforced limbs with traditional aesthetics.</p>
-                    <Link href="/gearup" className="btn-sovereign w-full py-5 flex items-center justify-center font-body font-bold uppercase tracking-[0.2em] text-xs">
+                    <h3 className="text-4xl text-gold font-brand font-bold mb-8 uppercase tracking-tight">{t('product1')}</h3>
+                    <p className="text-ghost mb-12 text-lg leading-relaxed font-brand font-light opacity-70">درة تاج المهندسين في أركدار. قوس معزز بالكربون بتصميم تراثي لا يُضاهى.</p>
+                    <Link href="/gearup" className="btn-sovereign w-full py-5 text-[11px] tracking-[0.3em]">
                       Shop Now
                     </Link>
                   </div>
@@ -129,34 +163,33 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 4. REGIONS - Spatial Clarity */}
-      <section className="w-full py-32 px-6 relative bg-surface-base">
+      {/* 5. REGIONS - Global Sovereignty */}
+      <section className="w-full py-48 px-8 relative layer-0">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-title font-bold text-brand-primary uppercase tracking-widest">
+          <div className="text-center mb-40">
+            <h2 className="text-5xl md:text-8xl font-brand font-bold text-gold uppercase tracking-tighter">
               Global Presence
             </h2>
-            <div className="brand-sep-bow mx-auto max-w-xs mt-8 opacity-20" />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { flag: '🇪🇬', country: 'Egypt',       city: 'Cairo',         desc: 'Home of the Mamluk Heritage and global training facility.' },
-              { flag: '🇨🇭', country: 'Switzerland', city: 'Geneva Region', desc: 'European Excellence Hub for alpine horse-archery.' },
-              { flag: '🇪🇸', country: 'Spain',       city: 'Andalusia',     desc: 'Iberian Expansion Centre for diverse terrain training.' },
+              { flag: '🇪🇬', country: 'Egypt',       city: 'Cairo',         desc: 'أصل الميراث المملوكي ومركز التدريب العالمي.' },
+              { flag: '🇨🇭', country: 'Switzerland', city: 'Interlaken',    desc: 'مركز التميز الأوروبي للرماية في الميادين الألبية.' },
+              { flag: '🇪🇸', country: 'Spain',       city: 'Andalusia',     desc: 'مركز التوسع الأندلسي للتدريب في الميادين المتنوعة.' },
             ].map(r => (
               <div
                 key={r.country}
-                className="layer-2 p-10 flex flex-col items-start gap-4 border border-sovereign group hover:border-brand-primary/20 transition-all"
+                className="layer-1 p-16 flex flex-col items-start gap-10 border border-quiet group hover:border-gold/30 transition-all duration-cine depth-card"
               >
-                <div className="text-6xl mb-4 grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700">{r.flag}</div>
+                <div className="text-8xl mb-8 grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-cine">{r.flag}</div>
                 <div>
-                  <h3 className="text-2xl font-title font-bold text-brand-primary uppercase tracking-widest">{r.country}</h3>
-                  <p className="text-[10px] flex items-center gap-2 mt-2 text-white/40 font-latin font-bold tracking-[2px]">
-                    <MapPin className="w-4 h-4 text-brand-primary/60" /> {r.city.toUpperCase()}
+                  <h3 className="text-3xl font-brand font-bold text-gold uppercase tracking-tight">{r.country}</h3>
+                  <p className="text-[10px] flex items-center gap-4 mt-4 text-ghost font-brand font-bold tracking-[0.4em] opacity-50">
+                    <MapPin className="w-5 h-5 text-gold" /> {r.city.toUpperCase()}
                   </p>
                 </div>
-                <p className="text-base leading-relaxed text-white/60 mt-6 font-body">{r.desc}</p>
+                <p className="text-lg leading-relaxed text-ghost mt-10 font-brand font-light opacity-70">{r.desc}</p>
               </div>
             ))}
           </div>
@@ -166,3 +199,4 @@ export default async function HomePage({
     </div>
   );
 }
+

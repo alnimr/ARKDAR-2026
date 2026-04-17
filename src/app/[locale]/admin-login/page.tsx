@@ -38,33 +38,38 @@ function AdminLoginForm() {
   };
 
   return (
-    <div className={`min-h-screen bg-surface-dark flex relative overflow-hidden ${isRtl ? 'dir-rtl text-right' : 'dir-ltr text-left'}`} dir={isRtl ? 'rtl' : 'ltr'}>
+    <div className={`min-h-screen bg-black flex relative overflow-hidden ${isRtl ? 'dir-rtl text-right' : 'dir-ltr text-left'}`} dir={isRtl ? 'rtl' : 'ltr'}>
+      {/* Sovereign Background Accents */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/10 blur-[150px]" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 blur-[200px] opacity-20" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 blur-[150px] opacity-10" />
       </div>
 
-      <div className="flex-1 flex items-center justify-center p-6 relative z-10">
-        <div className="w-full max-w-md p-10 bg-surface-dark border border-sovereign shadow-2xl">
-          <div className="flex justify-center mb-10">
-            <div className="w-16 h-16 bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center text-brand-primary">
-              <Shield size={28} />
+      <div className="flex-1 flex items-center justify-center p-8 relative z-10">
+        <div className="w-full max-w-md p-14 layer-1 border border-quiet depth-card relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-px bg-gold/30" />
+          <div className="absolute top-0 right-0 w-px h-24 bg-gold/30" />
+          
+          <div className="flex justify-center mb-12">
+            <div className="w-20 h-20 bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
+              <Shield size={32} strokeWidth={1.5} />
             </div>
           </div>
 
-          <div className="text-center mb-10">
-            <h1 className="text-2xl font-title text-white mb-2 uppercase tracking-[6px]">ARKDAR HQ</h1>
-            <p className="text-[10px] font-bold uppercase tracking-[4px] text-white/30 font-body">Authorized Personnel Only</p>
+          <div className="text-center mb-12">
+            <h1 className="text-2xl font-brand text-white mb-3 uppercase tracking-[0.4em]">ARKDAR HQ</h1>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-ghost font-latin">Authorized Personnel Only</p>
           </div>
 
           {error && (
-            <div className="mb-6 p-4 bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-widest text-center font-body">
+            <div className="mb-8 p-5 bg-gold/10 border border-gold/20 text-gold text-[10px] font-bold uppercase tracking-[0.2em] text-center font-latin">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-6">
-            <div>
-              <label className="block text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2 font-body">
+          <form onSubmit={handleLogin} className="space-y-8">
+            <div className="group">
+              <label className="block text-[10px] font-bold text-ghost uppercase tracking-[0.2em] mb-3 font-latin group-focus-within:text-gold transition-colors duration-cine">
                 {isRtl ? 'البريد الإلكتروني' : 'Email Address'}
               </label>
               <input
@@ -72,14 +77,14 @@ function AdminLoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white/[0.03] border border-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
+                className="w-full bg-white/[0.02] border border-quiet px-5 py-5 text-white focus:outline-none focus:border-gold/50 transition-all duration-cine font-body text-sm"
                 placeholder="admin@arkdar.com"
                 dir="ltr"
               />
             </div>
             
-            <div>
-              <label className="block text-[10px] font-bold text-white/50 uppercase tracking-widest mb-2 font-body">
+            <div className="group">
+              <label className="block text-[10px] font-bold text-ghost uppercase tracking-[0.2em] mb-3 font-latin group-focus-within:text-gold transition-colors duration-cine">
                 {isRtl ? 'كلمة المرور' : 'Password'}
               </label>
               <input
@@ -87,7 +92,7 @@ function AdminLoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-white/[0.03] border border-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
+                className="w-full bg-white/[0.02] border border-quiet px-5 py-5 text-white focus:outline-none focus:border-gold/50 transition-all duration-cine font-body text-sm"
                 placeholder="••••••••"
                 dir="ltr"
               />
@@ -96,10 +101,10 @@ function AdminLoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-8 bg-brand-primary text-white hover:bg-brand-secondary disabled:opacity-50 py-5 font-bold uppercase tracking-[4px] text-[10px] transition-all flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(145,16,16,0.3)] font-body"
+              className="w-full mt-10 bg-gold text-black hover:bg-white hover:text-black disabled:opacity-50 py-6 font-bold uppercase tracking-[0.4em] text-[10px] transition-all duration-cine flex items-center justify-center gap-4 depth-card font-latin"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white/20 border-t-white animate-spin" />
+                <div className="w-5 h-5 border-2 border-black/20 border-t-black animate-spin" />
               ) : (
                 <>
                   <Lock size={14} />
@@ -116,7 +121,7 @@ function AdminLoginForm() {
 
 export default function AdminLogin() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-surface-dark" />}>
+    <Suspense fallback={<div className="min-h-screen bg-black" />}>
       <AdminLoginForm />
     </Suspense>
   );

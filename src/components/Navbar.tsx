@@ -48,37 +48,37 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out ${
-      isScrolled ? 'py-2' : 'py-6 px-4 md:px-12'
-    }`}>
-      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-4 transition-all duration-300 layer-1 border-sovereign depth-card ${
-        isScrolled ? 'border-brand-primary/40' : ''
+    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-cine ease-feather ${
+      isScrolled ? 'py-0' : 'py-10 px-6 md:px-16'
+    } font-brand`}>
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-10 py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
+        isScrolled ? 'border-gold bg-layer-0' : ''
       }`}>
 
         {/* ── Brand Logo ── */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10">
+        <Link href="/" className="flex items-center gap-6 group">
+          <div className="relative w-12 h-12">
             <NextImage
               src="/images/brand/logo.png"
               alt="ARKDAR Logo"
-              width={40}
-              height={40}
-              className="object-contain cinema-lut group-hover:scale-105 transition-transform duration-300"
+              width={48}
+              height={48}
+              className="object-contain cinema-lut group-hover:rotate-12 transition-transform duration-cine"
               priority
             />
           </div>
-          <span className="text-xl font-title font-bold tracking-[0.2em] text-brand-primary">
-            ARKDAR
+          <span className="text-2xl font-brand font-bold tracking-[0.4em] text-gold uppercase">
+            {locale === 'ar' ? 'أركدار' : 'ARKDAR'}
           </span>
         </Link>
 
         {/* ── Desktop Links ── */}
-        <div className="hidden lg:flex items-center gap-8 text-[11px] font-semibold uppercase tracking-widest font-body">
+        <div className="hidden lg:flex items-center gap-12 text-[11px] font-brand font-bold tracking-[0.5em] uppercase">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href as '/'}
-              className="text-foreground/70 transition-all duration-300 hover:text-brand-primary hover:tracking-[0.25em]"
+              className="text-white/40 hover:text-gold transition-all duration-cine hover:tracking-[0.7em]"
             >
               {link.label}
             </Link>
@@ -86,28 +86,28 @@ export default function Navbar() {
         </div>
 
         {/* ── Actions ── */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <ThemeToggle />
 
           {/* Language Switcher */}
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-foreground/80 hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
+              className="flex items-center gap-4 px-6 py-4 text-[10px] font-brand font-bold tracking-[0.4em] text-white/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
             >
-              <Globe className="w-4 h-4 text-brand-primary" />
+              <Globe className="w-4 h-4" strokeWidth={1} />
               <span className="hidden sm:inline">{locale}</span>
-              <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`w-3 h-3 transition-transform duration-cine ${isLangOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {isLangOpen && (
-              <div className="absolute top-full mt-2 end-0 layer-2 border-sovereign overflow-hidden w-40 shadow-2xl z-50 animate-fade-up">
+              <div className="absolute top-full mt-4 end-0 layer-2 border border-quiet overflow-hidden w-64 depth-float z-50 rounded-none">
                 {LOCALES.map(l => (
                   <button
                     key={l.code}
                     onClick={() => switchLocale(l.code)}
-                    className={`w-full text-start px-5 py-3 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-brand-primary/20 text-foreground
-                      ${l.code === locale ? 'text-brand-primary bg-brand-primary/5' : ''}`}
+                    className={`w-full text-start px-8 py-5 text-[10px] font-brand font-bold tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-white/60 uppercase rounded-none
+                      ${l.code === locale ? 'text-gold layer-3' : ''}`}
                   >
                     {l.label}
                   </button>
@@ -117,30 +117,30 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <Link href="/mount-up" className="hidden md:inline-flex btn-sovereign px-6 py-2.5">
+          <Link href="/mount-up" className="hidden xl:inline-flex btn-sovereign py-4 px-10">
             {t('mountUp')}
           </Link>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-brand-primary hover:bg-brand-primary/10 transition-all"
+            className="lg:hidden p-3 text-gold hover:layer-2 transition-all duration-cine rounded-none"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-8 h-8" strokeWidth={1} /> : <Menu className="w-8 h-8" strokeWidth={1} />}
           </button>
         </div>
       </div>
 
       {/* ── Mobile Menu ── */}
       {isMenuOpen && (
-        <div className="lg:hidden mt-4 px-6 mx-4 layer-2 border-sovereign py-8 flex flex-col gap-4 animate-fade-up">
+        <div className="lg:hidden mt-6 px-10 mx-6 layer-2 border border-quiet py-12 flex flex-col gap-6 depth-float transition-all duration-cine animate-in fade-in slide-in-from-top-4 rounded-none">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href as '/'}
               onClick={() => setIsMenuOpen(false)}
-              className="py-3 px-4 text-xs font-semibold uppercase tracking-widest text-foreground hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
+              className="py-6 px-8 text-[11px] font-brand font-bold tracking-[0.5em] text-white/60 hover:text-gold hover:bg-layer-3 transition-all duration-cine border-b border-quiet/10 uppercase rounded-none"
             >
               {link.label}
             </Link>
@@ -148,7 +148,7 @@ export default function Navbar() {
           <Link
             href="/mount-up"
             onClick={() => setIsMenuOpen(false)}
-            className="btn-sovereign mt-4 justify-center"
+            className="btn-sovereign mt-6 justify-center py-7 text-[12px] tracking-[0.6em] rounded-none"
           >
             {t('mountUp')}
           </Link>

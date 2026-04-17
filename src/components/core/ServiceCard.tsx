@@ -21,71 +21,71 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="group relative h-full overflow-hidden layer-2 border border-sovereign hover-sovereign"
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative h-full overflow-hidden layer-1 border border-quiet hover:border-gold transition-all duration-cine depth-card font-brand selection:bg-gold selection:text-black"
     >
-      {/* Target Image with Gradient Overlay */}
-      <div className="relative h-[280px] w-full overflow-hidden cinema-lut safe-zone-right">
+      {/* Target Image with Sovereign Overlay */}
+      <div className="relative h-[320px] w-full overflow-hidden cinema-lut">
         <Image
           src={service.image}
           alt={service.title}
           fill
-          className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+          className="object-cover transition-transform duration-[4000ms] ease-out group-hover:scale-110 opacity-70 group-hover:opacity-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
         
         {/* Category/Price Tag */}
-        <div className="absolute top-6 right-6">
-          <div className="px-5 py-2 layer-3 border border-sovereign shadow-xl">
-            <span className="text-brand-primary font-bold text-sm tracking-[0.1em] font-latin">${service.price}</span>
+        <div className="absolute top-10 right-10">
+          <div className="px-8 py-4 layer-3 border border-quiet bg-black/80">
+            <span className="text-gold font-bold text-[13px] tracking-[0.4em] font-brand uppercase">${service.price}</span>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-8 flex flex-col h-[calc(100%-280px)]">
-        <div className="flex items-center gap-3 mb-4 text-[9px] font-latin font-bold tracking-[0.2em] text-brand-primary uppercase">
-          <MapPin size={14} className="text-brand-primary" strokeWidth={2} />
+      <div className="p-12 flex flex-col h-[calc(100%-320px)]">
+        <div className="flex items-center gap-4 mb-8 text-[10px] font-brand font-bold tracking-[0.5em] text-gold/60 uppercase">
+          <MapPin size={16} className="text-gold/60" strokeWidth={1} />
           {service.location}
         </div>
 
-        <h3 className="text-2xl font-title font-bold text-white mb-4 group-hover:text-brand-primary transition-colors duration-300 uppercase tracking-tight">
+        <h3 className="text-3xl md:text-4xl font-brand font-bold text-white mb-8 group-hover:text-gold transition-all duration-cine uppercase tracking-tighter leading-[0.9]">
           {service.title}
         </h3>
 
-        <div className="text-foreground/60 text-sm mb-8 line-clamp-3 leading-relaxed font-body">
+        <div className="text-ghost/60 text-lg mb-12 line-clamp-3 leading-relaxed font-brand font-light italic opacity-80">
           {typeof service.description === 'string' ? service.description : "Experience the elite traditions of equestrian arts."}
         </div>
 
         {/* Metadata Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-8">
-          <div className="flex items-center gap-2.5 text-foreground/40 text-[9px] font-latin font-bold uppercase tracking-[0.1em]">
-            <Clock size={14} className="text-brand-primary/60" strokeWidth={2} />
+        <div className="grid grid-cols-2 gap-8 mb-12">
+          <div className="flex items-center gap-4 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em]">
+            <Clock size={16} className="text-gold/40" strokeWidth={1} />
             <span>{service.duration}</span>
           </div>
-          <div className="flex items-center gap-2.5 text-foreground/40 text-[9px] font-latin font-bold uppercase tracking-[0.1em]">
-            <Gauge size={14} className="text-brand-primary/60" strokeWidth={2} />
+          <div className="flex items-center gap-4 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em]">
+            <Gauge size={16} className="text-gold/40" strokeWidth={1} />
             <span>{service.level}</span>
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center justify-between mt-auto pt-6 border-t border-sovereign">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 border border-sovereign overflow-hidden relative shadow-lg">
+        {/* CTA Section */}
+        <div className="flex items-center justify-between mt-auto pt-10 border-t border-quiet">
+          <div className="flex items-center gap-6">
+            <div className="w-14 h-14 border border-quiet overflow-hidden relative layer-2 group-hover:border-gold transition-all duration-cine">
               <Image 
                 src={service.expert.image} 
                 alt={service.expert.name}
                 fill
-                className="object-cover cinema-lut"
+                className="object-cover cinema-lut grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[2000ms]"
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-[8px] text-brand-primary uppercase tracking-[0.15em] font-latin font-bold mb-0.5">MAESTRO</span>
-              <span className="text-[10px] text-foreground/80 font-body font-bold uppercase">
+              <span className="text-[10px] text-gold/40 uppercase tracking-[0.4em] font-brand font-bold mb-1">MAESTRO</span>
+              <span className="text-[12px] text-white font-brand font-bold uppercase tracking-[0.3em]">
                 {service.expert.name}
               </span>
             </div>
@@ -93,16 +93,13 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           
           <button 
             onClick={handleBookNow}
-            className="w-12 h-12 layer-3 border border-sovereign text-brand-primary hover:bg-brand-primary hover:text-surface-dark transition-all duration-300 shadow-lg group-hover:scale-105 active:scale-95 flex items-center justify-center overflow-hidden"
+            className="w-16 h-16 layer-2 border border-quiet text-gold hover:bg-gold hover:text-black transition-all duration-cine flex items-center justify-center"
             aria-label={`Book ${service.title}`}
           >
-            <ArrowRight size={20} strokeWidth={2} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={24} strokeWidth={1} className="group-hover:translate-x-2 transition-transform duration-cine" />
           </button>
         </div>
       </div>
-
-      {/* Decorative Sovereign Corner */}
-      <div className="absolute bottom-0 right-0 w-12 h-12 bg-brand-primary/[0.05] border-t border-l border-sovereign opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none" />
     </motion.div>
   );
 }

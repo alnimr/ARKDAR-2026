@@ -40,54 +40,54 @@ export default function TrainingHistory() {
     return () => unsubscribe();
   }, []);
 
-  if (loading) return <div className="animate-pulse text-white/20">جاري تحميل سجل التدريبات...</div>;
+  if (loading) return <div className="animate-pulse text-gold/40 font-brand uppercase tracking-widest p-8 layer-1 border border-quiet">جاري تحميل سجل التدريبات...</div>;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {sessions.length === 0 ? (
-        <div className="p-8 text-center bg-white/5 border border-dashed border-sovereign">
-          <p className="text-white/40">لا توجد جلسات مسجلة حتى الآن.</p>
+        <div className="p-12 text-center layer-1 border border-dashed border-quiet">
+          <p className="text-ghost uppercase tracking-[0.2em] text-xs">لا توجد جلسات مسجلة حتى الآن.</p>
         </div>
       ) : (
         sessions.map((session, i) => (
-          <div key={session.id} className="space-y-2">
+          <div key={session.id} className="space-y-3">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => setExpandedId(expandedId === session.id ? null : session.id)}
-              className={`flex items-center justify-between p-5 bg-surface-dark border transition-all cursor-pointer group ${expandedId === session.id ? 'border-brand-primary' : 'border-sovereign'}`}
+              className={`flex items-center justify-between p-6 layer-2 border transition-all duration-cine cursor-pointer group hover:border-gold/40 ${expandedId === session.id ? 'border-gold' : 'border-quiet'}`}
             >
-              <div className="flex items-center gap-4">
-                <div className={`p-3 border border-sovereign ${session.sport === 'archery' ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-secondary/20 text-brand-secondary'}`}>
-                  {session.sport === 'archery' ? <Target size={20} /> : <Activity size={20} />}
+              <div className="flex items-center gap-6">
+                <div className={`p-4 border border-quiet layer-3 ${session.sport === 'archery' ? 'text-gold' : 'text-secondary'}`}>
+                  {session.sport === 'archery' ? <Target size={24} /> : <Activity size={24} />}
                 </div>
                 <div>
-                  <h4 className="font-bold text-sm font-title">
+                  <h4 className="font-bold text-lg font-brand text-white tracking-tight flex items-center gap-4">
                     {session.sport === 'archery' ? 'رماية من على الخيل' : 'التقاط أوتاد'}
                     {session.isReviewed && (
-                      <span className="ms-3 inline-flex items-center gap-1 px-2 py-0.5 bg-brand-primary/20 text-brand-primary text-[8px] uppercase tracking-widest font-bold font-body border border-brand-primary/20">
-                        <ShieldCheck size={10} /> تقييم المدرب
+                      <span className="inline-flex items-center gap-2 px-3 py-1 layer-3 border border-gold/30 text-gold text-[9px] uppercase tracking-[0.2em] font-bold font-latin">
+                        <ShieldCheck size={12} /> EVALUATED
                       </span>
                     )}
                   </h4>
-                  <div className="flex items-center gap-3 mt-1 text-[10px] text-white/40 uppercase tracking-widest font-latin font-bold">
-                    <span className="flex items-center gap-1"><Calendar size={10} /> {new Date(session.timestamp).toLocaleDateString('ar-EG')}</span>
-                    <span className="flex items-center gap-1"><Clock size={10} /> {new Date(session.timestamp).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+                  <div className="flex items-center gap-5 mt-2 text-[10px] text-ghost uppercase tracking-[0.2em] font-latin font-bold">
+                    <span className="flex items-center gap-2"><Calendar size={12} className="text-gold/40" /> {new Date(session.timestamp).toLocaleDateString('ar-EG')}</span>
+                    <span className="flex items-center gap-2"><Clock size={12} className="text-gold/40" /> {new Date(session.timestamp).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                 </div>
               </div>
               
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-10">
                 <div className="hidden md:flex flex-col items-end">
-                  <span className="text-[10px] text-white/40 uppercase tracking-tighter font-body">تقييم الجذع</span>
-                  <span className="font-bold text-brand-primary font-latin">{session.metrics?.avgTrunkAngle?.toFixed(1)}°</span>
+                  <span className="text-[9px] text-ghost uppercase tracking-[0.1em] font-body">زاوية الجذع</span>
+                  <span className="font-bold text-gold text-lg font-latin">{session.metrics?.avgTrunkAngle?.toFixed(1)}°</span>
                 </div>
                 <div className="hidden md:flex flex-col items-end">
-                  <span className="text-[10px] text-white/40 uppercase tracking-tighter font-body">التوازن</span>
-                  <span className="font-bold text-brand-secondary font-latin">{session.metrics?.balanceScore?.toFixed(1)}°</span>
+                  <span className="text-[9px] text-ghost uppercase tracking-[0.1em] font-body">التوازن</span>
+                  <span className="font-bold text-secondary text-lg font-latin">{session.metrics?.balanceScore?.toFixed(1)}°</span>
                 </div>
-                <ChevronRight size={20} className={`text-white/20 group-hover:text-white transition-transform ${expandedId === session.id ? 'rotate-90 text-brand-primary' : ''}`} />
+                <ChevronRight size={24} className={`text-ghost/20 group-hover:text-gold transition-all duration-cine ${expandedId === session.id ? 'rotate-90 text-gold' : ''}`} />
               </div>
             </motion.div>
 
@@ -97,32 +97,34 @@ export default function TrainingHistory() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden bg-brand-primary/5 border-x border-b border-brand-primary/20"
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden layer-1 border-x border-b border-quiet"
                 >
-                  <div className="p-6 space-y-4">
-                     <div className="bg-black/40 p-4 border border-sovereign">
-                        <p className="text-[10px] text-white/30 uppercase tracking-[2px] font-bold mb-2 font-body">استنتاج السيادة الرقمية</p>
-                        <p className="text-sm text-white/70 leading-relaxed italic font-body">&quot;{session.summary}&quot;</p>
+                  <div className="p-8 space-y-6">
+                     <div className="layer-3 p-6 border border-quiet relative">
+                        <div className="absolute top-0 right-0 w-24 h-24 opacity-[0.02] pointer-events-none layer-0" />
+                        <p className="text-[9px] text-gold/40 uppercase tracking-[0.3em] font-bold mb-4 font-latin">SOVEREIGN SYNTHESIS</p>
+                        <p className="text-sm text-secondary leading-relaxed italic font-body border-l-2 border-gold/20 pl-6">&quot;{session.summary}&quot;</p>
                      </div>
                      
                      {session.isReviewed ? (
-                       <div className="bg-brand-primary/5 p-5 border border-brand-primary/20 relative overflow-hidden group">
-                          <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
-                             <GraduationCap size={48} className="text-brand-primary" />
+                       <div className="layer-3 p-8 border border-gold/20 relative overflow-hidden group">
+                          <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-cine">
+                             <GraduationCap size={64} className="text-gold" />
                           </div>
-                          <div className="flex items-start gap-4">
-                             <div className="w-10 h-10 bg-brand-primary flex items-center justify-center text-white shrink-0">
-                                <MessageSquare size={20} />
+                          <div className="flex items-start gap-6">
+                             <div className="w-12 h-12 bg-gold flex items-center justify-center text-black shrink-0">
+                                <MessageSquare size={24} />
                              </div>
                              <div>
-                                <p className="text-[10px] text-brand-primary font-bold uppercase tracking-widest mb-1 font-body">نصيحة المدرب السيادي</p>
-                                <p className="text-sm text-white leading-relaxed font-body">{session.coachFeedback}</p>
+                                <p className="text-[10px] text-gold font-bold uppercase tracking-[0.3em] mb-3 font-latin">COACH FEEDBACK</p>
+                                <p className="text-base text-white leading-relaxed font-body">{session.coachFeedback}</p>
                              </div>
                           </div>
                        </div>
                      ) : (
-                       <div className="p-4 border border-dashed border-sovereign text-center">
-                          <p className="text-[10px] text-white/40 uppercase tracking-widest italic font-body">بانتظار مراجعة المدرب...</p>
+                       <div className="p-6 border border-dashed border-quiet text-center layer-2">
+                          <p className="text-[10px] text-ghost uppercase tracking-[0.3em] italic font-body">AWAITING SOVEREIGN REVIEW...</p>
                        </div>
                      )}
                   </div>

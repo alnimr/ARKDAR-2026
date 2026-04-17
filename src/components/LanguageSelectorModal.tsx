@@ -31,18 +31,12 @@ export default function LanguageSelectorModal() {
     checkCookie();
   }, []);
 
-  const handleLanguageChange = (newLocale: string) => {
-    setSelectedLocale(newLocale);
-  };
-
   const handleConfirm = () => {
-    // Set cookie to dismiss modal with strict settings
     const farFuture = 60 * 60 * 24 * 365;
     document.cookie = `arkdar_modal_dismissed=true; path=/; max-age=${farFuture}; SameSite=Lax`;
     document.cookie = `arkdar_lang_detected=true; path=/; max-age=${farFuture}; SameSite=Lax`;
     document.cookie = `NEXT_LOCALE=${selectedLocale}; path=/; max-age=${farFuture}; SameSite=Lax`;
     
-    // Redirect to the new locale
     router.push(pathname, { locale: selectedLocale });
     setIsOpen(false);
   };
@@ -64,47 +58,45 @@ export default function LanguageSelectorModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/80"
+          className="absolute inset-0 bg-black/95"
         />
 
         {/* Modal Container */}
         <motion.div 
-          initial={{ scale: 0.9, opacity: 0, y: 20 }}
+          initial={{ scale: 0.98, opacity: 0, y: 10 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative w-full max-w-lg overflow-hidden bg-surface-dark border border-sovereign shadow-[0_0_60px_rgba(0,0,0,0.5)]"
+          exit={{ scale: 0.98, opacity: 0, y: 10 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full max-w-xl layer-3 border border-quiet depth-card rounded-none"
         >
-          {/* Decorative Pattern Background */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none brand-pattern-waves" />
-          
-          <div className="relative p-8 md:p-12 text-center text-foreground-light">
+          <div className="relative p-12 md:p-20 text-center">
             {/* Header Icon */}
-            <div className="inline-flex items-center justify-center w-16 h-16 mb-6 bg-brand-primary/20 border border-brand-primary/50">
-              <Globe className="w-8 h-8 text-brand-primary" />
+            <div className="inline-flex items-center justify-center w-20 h-20 mb-10 layer-1 border border-gold">
+              <Globe className="w-10 h-10 text-gold" strokeWidth={1} />
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-title font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-brand font-bold mb-8 text-gold tracking-[0.2em] uppercase">
               {t('title')}
             </h2>
             
-            <p className="text-foreground/60 mb-8 text-lg font-body font-medium max-w-md mx-auto">
+            <p className="text-white/40 mb-12 text-lg font-brand font-light leading-relaxed max-w-sm mx-auto uppercase tracking-wide">
               {t('subtitle')}
             </p>
 
             {/* Language Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-10">
+            <div className="grid grid-cols-2 gap-4 mb-16">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
-                  onClick={() => handleLanguageChange(lang.code)}
-                  className={`flex items-center gap-3 p-4 border transition-all duration-300 ${
+                  onClick={() => setSelectedLocale(lang.code)}
+                  className={`flex items-center gap-4 p-6 border transition-all duration-cine rounded-none ${
                     selectedLocale === lang.code 
-                    ? 'bg-brand-primary border-brand-primary text-white shadow-[0_0_15px_rgba(145,16,16,0.4)]' 
-                    : 'bg-white/5 border-sovereign text-foreground/40 hover:border-brand-primary/50 hover:text-white font-medium font-body'
+                    ? 'bg-gold border-gold text-black depth-card' 
+                    : 'layer-1 border-quiet text-white/40 hover:text-gold hover:border-gold hover:tracking-widest font-bold'
                   }`}
                 >
-                  <span className="text-xl">{lang.flag}</span>
-                  <span className="font-semibold">{lang.name}</span>
+                  <span className="text-2xl cinema-lut">{lang.flag}</span>
+                  <span className="font-brand font-bold uppercase tracking-[0.4em] text-[10px]">{lang.name}</span>
                 </button>
               ))}
             </div>
@@ -112,18 +104,17 @@ export default function LanguageSelectorModal() {
             {/* Confirm Button */}
             <button
               onClick={handleConfirm}
-              className="btn-primary w-full py-4 justify-center"
+              className="btn-sovereign w-full py-6 text-[11px] uppercase tracking-[0.5em] rounded-none"
             >
-              <span className="relative z-10 flex items-center justify-center gap-2">
+              <span className="flex items-center justify-center gap-4">
                 {t('confirm')}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-cine" />
               </span>
-              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </button>
 
-            <div className="mt-6 flex items-center justify-center gap-2 text-[#EDF2F4]/30 text-[10px] font-bold uppercase tracking-widest">
-              <ShieldCheck className="w-4 h-4" />
-              <span>ARKDAR Digital Sovereignty Protected</span>
+            <div className="mt-12 flex items-center justify-center gap-4 text-white/10 text-[9px] font-brand font-bold uppercase tracking-[0.5em]">
+              <ShieldCheck className="w-4 h-4 text-gold/20" />
+              <span>ARKDAR DIGITAL SOVEREIGNTY PROTECTED</span>
             </div>
           </div>
         </motion.div>

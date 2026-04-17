@@ -27,9 +27,6 @@ const typeConfig = {
     labelEn: 'Article',
     labelDe: 'Artikel',
     labelEs: 'Artículo',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/20',
   },
   media: {
     icon: Video,
@@ -37,9 +34,6 @@ const typeConfig = {
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/10',
   },
   video: {
     icon: Video,
@@ -47,9 +41,6 @@ const typeConfig = {
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/10',
   },
   download: {
     icon: Download,
@@ -57,9 +48,6 @@ const typeConfig = {
     labelEn: 'Download',
     labelDe: 'Download',
     labelEs: 'Descarga',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/10',
   },
   press: {
     icon: Newspaper,
@@ -67,9 +55,6 @@ const typeConfig = {
     labelEn: 'Press Release',
     labelDe: 'Pressemitteilung',
     labelEs: 'Comunicado',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/20',
   },
   news: {
     icon: Newspaper,
@@ -77,9 +62,6 @@ const typeConfig = {
     labelEn: 'News',
     labelDe: 'Neuigkeiten',
     labelEs: 'Noticias',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/20',
   },
   heritage: {
     icon: FileText,
@@ -87,9 +69,6 @@ const typeConfig = {
     labelEn: 'Heritage',
     labelDe: 'Erbe',
     labelEs: 'Herencia',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/20',
   },
   craftsmanship: {
     icon: Newspaper,
@@ -97,9 +76,6 @@ const typeConfig = {
     labelEn: 'Craftsmanship',
     labelDe: 'Handwerk',
     labelEs: 'Artesanía',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/10',
   },
   lifestyle: {
     icon: FileText,
@@ -107,9 +83,6 @@ const typeConfig = {
     labelEn: 'Lifestyle',
     labelDe: 'Lifestyle',
     labelEs: 'Estilo de vida',
-    color: 'text-brand-primary',
-    bg: 'bg-brand-primary/10',
-    border: 'border-brand-primary/10',
   },
 };
 
@@ -131,16 +104,18 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
     { year: 'numeric', month: 'long', day: 'numeric' }
   );
 
+  const isRtl = locale === 'ar';
+
   return (
     <motion.article
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.3, delay: index * 0.05, ease: "easeInOut" }}
-      className="layer-2 group relative flex flex-col overflow-hidden border border-sovereign transition-all duration-300 hover-sovereign"
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="layer-1 group relative flex flex-col overflow-hidden border border-quiet transition-all duration-cine hover:border-gold depth-card selection:bg-gold selection:text-black font-brand"
     >
       {/* Brand Watermark Overlay */}
-      <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-0 group-hover:opacity-[0.03] -mr-8 -mt-8 rotate-12 transition-opacity duration-700 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-40 h-40 opacity-0 group-hover:opacity-[0.05] -mr-10 -mt-10 rotate-12 transition-all duration-cine pointer-events-none layer-0" />
       
       {/* Full Card Clickable Link */}
       <Link 
@@ -152,38 +127,38 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       />
 
       {/* Image */}
-      <div className="relative h-64 overflow-hidden cinema-lut">
+      <div className="relative h-72 overflow-hidden cinema-lut">
         <NextImage
           src={post.image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+          className="object-cover transition-transform duration-[4000ms] ease-out group-hover:scale-110 opacity-60 group-hover:opacity-100"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
         
         {/* Type Badge */}
-        <div className={`absolute top-6 ${locale === 'ar' ? 'right-6' : 'left-6'} flex items-center gap-2 px-4 py-2 border layer-3 ${config.border}`}>
-          <TypeIcon size={12} className="text-brand-primary" />
-          <span className="text-[9px] font-latin font-bold uppercase tracking-[0.2em] text-brand-primary">
+        <div className={`absolute top-8 ${isRtl ? 'right-8' : 'left-8'} flex items-center gap-4 px-6 py-3 border border-quiet layer-3 bg-black/80 z-30`}>
+          <TypeIcon size={14} className="text-gold" strokeWidth={1} />
+          <span className="text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-gold">
             {typeLabel}
           </span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow p-8 relative">
+      <div className="flex flex-col flex-grow p-12 relative">
         {/* Meta */}
-        <div className={`flex items-center gap-5 mb-6 text-foreground/40 text-[9px] font-latin font-bold uppercase tracking-[0.2em] ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
-          <span className="flex items-center gap-2">
-            <Calendar size={12} className="text-brand-primary/40" strokeWidth={1.5} />
+        <div className={`flex items-center gap-8 mb-10 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em] ${isRtl ? 'flex-row-reverse justify-end' : ''}`}>
+          <span className="flex items-center gap-3">
+            <Calendar size={14} className="text-gold/40" strokeWidth={1} />
             {formattedDate}
           </span>
           {post.author && (
             <>
-              <span className="w-1 h-1 rounded-full bg-brand-primary/10" />
-              <span className="flex items-center gap-2 font-body font-bold text-foreground/30">
-                <User size={12} className="text-brand-primary/40" strokeWidth={1.5} />
+              <span className="w-1 h-1 bg-gold/20" />
+              <span className="flex items-center gap-3">
+                <User size={14} className="text-gold/40" strokeWidth={1} />
                 {post.author}
               </span>
             </>
@@ -191,28 +166,28 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </div>
 
         {/* Title */}
-        <h3 className={`text-xl md:text-2xl font-title font-bold text-white leading-tight mb-4 transition-colors duration-300 group-hover:text-brand-primary ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-2xl md:text-3xl font-brand font-bold text-white leading-tight mb-8 transition-all duration-cine group-hover:text-gold group-hover:tracking-tight uppercase ${isRtl ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-sm text-foreground/50 leading-relaxed flex-grow line-clamp-3 font-body ${locale === 'ar' ? 'text-right' : 'text-left'}`}>
+        <p className={`text-lg text-ghost/60 leading-relaxed flex-grow line-clamp-3 font-brand font-light italic ${isRtl ? 'text-right' : 'text-left'}`}>
           {excerpt}
         </p>
 
         {/* Separator */}
-        <div className="mt-8 mb-6 h-px bg-brand-primary/5 w-12" />
+        <div className="mt-12 mb-10 h-px bg-quiet w-16 group-hover:w-32 group-hover:bg-gold transition-all duration-cine" />
 
         {/* CTA */}
         <div
-          className={`flex items-center gap-3 text-[9px] font-latin font-bold uppercase tracking-[0.2em] text-brand-primary/80 group-hover:text-brand-primary transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
+          className={`flex items-center gap-6 text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-gold group-hover:tracking-[0.8em] transition-all duration-cine relative z-30 ${isRtl ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
-            ? (locale === 'ar' ? 'تحميل السجل' : 'Download Record')
+            ? (isRtl ? 'تحميل السجل' : 'DOWNLOAD RECORD')
             : post.type === 'press' && isExternalOnly
-              ? (locale === 'ar' ? 'البيان الصحفي' : 'Press Release')
-              : (locale === 'ar' ? 'اكتشف المزيد' : 'Discovery')}
-          <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={2.5} />
+              ? (isRtl ? 'البيان الصحفي' : 'PRESS RELEASE')
+              : (isRtl ? 'اكتشف المزيد' : 'DISCOVERY')}
+          <ArrowUpRight size={16} className="transition-transform duration-cine group-hover:translate-x-2 group-hover:-translate-y-2" strokeWidth={1} />
         </div>
       </div>
     </motion.article>

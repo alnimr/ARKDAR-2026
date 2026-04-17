@@ -13,114 +13,113 @@ export default async function ArenaPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  console.log('--- DEBUG: ArenaPage rendering for locale:', locale);
   const t = await getTranslations('Arenas');
-  console.log('--- DEBUG: Translations loaded');
 
   return (
-    <main className="flex flex-col w-full min-h-screen pt-24 bg-surface relative overflow-x-hidden">
+    <main className="flex flex-col w-full min-h-screen pt-32 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
       
-      {/* Background Decor */}
-      <div className="absolute inset-0 brand-pattern-waves opacity-10 pointer-events-none" />
+      {/* Sovereign Atmosphere */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-gold/[0.02] to-transparent" />
+      </div>
 
       {/* ── Header ── */}
-      <section className="py-24 px-6 text-center relative z-10 px-6">
+      <section className="py-32 px-8 text-center relative z-10">
         <Link
           href={`/${locale}/heritage`}
-          className="inline-flex items-center gap-3 text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/50 hover:text-brand-primary transition-all duration-300 mb-16 group"
+          className="inline-flex items-center gap-6 text-[11px] font-brand font-bold uppercase tracking-[0.5em] text-gold/40 hover:text-gold transition-all duration-cine mb-20 group opacity-50"
         >
           {t('heroTag')}
         </Link>
-        <h1 className="text-5xl md:text-8xl font-title font-bold text-brand-primary mb-8 leading-none uppercase tracking-tighter">
+        <h1 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-12 leading-none uppercase tracking-tighter">
           {t('title')}
         </h1>
-        <div className="brand-sep-bow mx-auto max-w-md opacity-40" />
+        <div className="w-40 h-px bg-gold/20 mx-auto" />
       </section>
 
       {/* ── Experience & Hubs ── */}
-      <section className="py-20 px-6 max-w-7xl mx-auto z-10 relative">
-        <div className="grid-sovereign">
+      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative">
+        <div className="grid grid-cols-12 gap-12">
           
           {/* Main Experience Card (Training) */}
-          <div className="col-span-12 lg:col-span-8 layer-1 p-10 md:p-14 border border-sovereign group relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-64 h-64 border-brand-primary/5 border-t-2 border-r-2 -mr-20 -mt-20 group-hover:scale-110 transition-transform" />
-             <div className="absolute inset-0 brand-horse-bg opacity-[0.02] group-hover:opacity-[0.05] transition-opacity" />
+          <div className="col-span-12 lg:col-span-8 layer-1 p-12 md:p-20 border border-quiet group relative overflow-hidden depth-card transition-all duration-cine hover:border-gold/30">
+             <div className="absolute top-0 right-0 w-96 h-96 border-gold/5 border-t-2 border-r-2 -mr-24 -mt-24 group-hover:scale-110 transition-transform duration-cine" />
              
-             <div className="flex items-center gap-6 mb-10 relative">
-                <div className="w-16 h-16 layer-2 flex items-center justify-center border border-sovereign">
-                   <Target size={30} className="text-brand-primary" strokeWidth={1.2} />
+             <div className="flex items-center gap-10 mb-16 relative">
+                <div className="w-24 h-24 layer-2 flex items-center justify-center border border-quiet group-hover:bg-gold group-hover:text-black transition-all duration-cine">
+                   <Target size={40} strokeWidth={1} />
                 </div>
-                <h2 className="text-3xl md:text-5xl font-title text-brand-primary uppercase tracking-wide">{t('masterclassTitle')}</h2>
+                <h2 className="text-5xl md:text-7xl font-brand font-bold text-white uppercase tracking-tighter leading-none">{t('masterclassTitle')}</h2>
              </div>
 
-             <p className="text-xl text-foreground/60 font-body leading-relaxed mb-12 max-w-2xl relative">
+             <p className="text-2xl text-ghost font-brand font-light leading-relaxed mb-20 max-w-3xl relative opacity-70">
                 {t('masterclassDesc')}
              </p>
 
-             <div className="flex flex-wrap gap-6 relative">
-                <button className="btn-sovereign px-10 py-5">
-                   {t('bookSession')} <ArrowRight size={18} />
+             <div className="flex flex-wrap gap-10 relative">
+                <button className="btn-sovereign px-16 py-7 text-[11px] tracking-[0.4em] group-hover:translate-x-2 transition-transform duration-cine">
+                   {t('bookSession')} <ArrowRight size={22} className="ms-4" />
                 </button>
              </div>
           </div>
 
-          {/* Tourism Tours Card (Refined) */}
-          <div className="col-span-12 lg:col-span-7 layer-1 p-10 md:p-14 border border-sovereign group relative overflow-hidden order-last lg:order-none">
-             <div className="absolute bottom-0 left-0 w-64 h-64 border-brand-secondary/5 border-b-2 border-l-2 -ml-20 -mb-20 group-hover:scale-110 transition-transform" />
+          {/* Tourism Tours Card */}
+          <div className="col-span-12 lg:col-span-7 layer-1 p-12 md:p-20 border border-quiet group relative overflow-hidden order-last lg:order-none depth-card transition-all duration-cine hover:border-gold/30">
+             <div className="absolute bottom-0 left-0 w-96 h-96 border-gold/5 border-b-2 border-l-2 -ml-24 -mb-24 group-hover:scale-110 transition-transform duration-cine" />
              
-             <div className="flex items-center gap-6 mb-10">
-                <div className="w-16 h-16 layer-2 flex items-center justify-center border border-sovereign">
-                   <Compass size={30} className="text-brand-secondary" strokeWidth={1.2} />
+             <div className="flex items-center gap-10 mb-16">
+                <div className="w-24 h-24 layer-2 flex items-center justify-center border border-quiet group-hover:bg-gold group-hover:text-black transition-all duration-cine">
+                   <Compass size={40} strokeWidth={1} />
                 </div>
-                <h2 className="text-3xl md:text-5xl font-title text-brand-primary uppercase tracking-wide">{t('toursTitle')}</h2>
+                <h2 className="text-5xl md:text-7xl font-brand font-bold text-white uppercase tracking-tighter leading-none">{t('toursTitle')}</h2>
              </div>
 
-             <div className="space-y-8 mb-12">
-                <div className="flex gap-6 items-start">
-                   <div className="w-10 h-10 layer-2 border border-sovereign flex items-center justify-center shrink-0">
-                      <Globe size={18} className="text-brand-secondary" />
+             <div className="space-y-12 mb-20">
+                <div className="flex gap-10 items-start group/hub">
+                   <div className="w-14 h-14 layer-2 border border-quiet flex items-center justify-center shrink-0 group-hover/hub:border-gold transition-colors duration-cine">
+                      <Globe size={24} className="text-gold" />
                    </div>
                    <div>
-                      <h4 className="text-brand-primary font-title font-bold text-lg mb-1 uppercase tracking-widest">{t('swissHub') || 'Interlaken'}</h4>
-                      <p className="text-foreground/50 text-sm font-body leading-relaxed">{t('swissTours')}</p>
+                      <h4 className="text-gold font-brand font-bold text-2xl mb-3 uppercase tracking-tight">{t('swissHub') || 'INTERLAKEN'}</h4>
+                      <p className="text-ghost text-lg font-brand font-light leading-relaxed max-w-md opacity-60">{t('swissTours')}</p>
                    </div>
                 </div>
 
-                <div className="flex gap-6 items-start">
-                   <div className="w-10 h-10 layer-2 border border-sovereign flex items-center justify-center shrink-0">
-                      <Globe size={18} className="text-brand-secondary" />
+                <div className="flex gap-10 items-start group/hub">
+                   <div className="w-14 h-14 layer-2 border border-quiet flex items-center justify-center shrink-0 group-hover/hub:border-gold transition-colors duration-cine">
+                      <Globe size={24} className="text-gold" />
                    </div>
                    <div>
-                      <h4 className="text-brand-primary font-title font-bold text-lg mb-1 uppercase tracking-widest">{t('hubCairo')}</h4>
-                      <p className="text-foreground/50 text-sm font-body leading-relaxed">{t('egyptTours')}</p>
+                      <h4 className="text-gold font-brand font-bold text-2xl mb-3 uppercase tracking-tight">{t('hubCairo')}</h4>
+                      <p className="text-ghost text-lg font-brand font-light leading-relaxed max-w-md opacity-60">{t('egyptTours')}</p>
                    </div>
                 </div>
              </div>
 
-             <div className="flex flex-wrap gap-6">
-                <button className="px-10 py-5 border border-sovereign layer-2 text-brand-secondary font-body font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-secondary/5 transition-all flex items-center gap-3">
-                   {t('bookTour')} <ArrowRight size={18} />
+             <div className="flex flex-wrap gap-10">
+                <button className="px-14 py-7 border border-quiet layer-2 text-white font-brand font-bold uppercase tracking-[0.4em] text-[11px] hover:bg-gold hover:text-black transition-all duration-cine flex items-center gap-6">
+                   {t('bookTour')} <ArrowRight size={20} />
                 </button>
              </div>
           </div>
 
           {/* Secondary Stats/Info */}
-          <div className="col-span-12 lg:col-span-5 space-y-8">
-             <div className="layer-2 p-10 border border-sovereign group transition-all">
-                <Shield size={24} className="text-brand-secondary mb-4" strokeWidth={1.5} />
-                <h3 className="text-brand-primary font-title font-bold text-xl mb-4 uppercase tracking-widest">{t('safetyTitle')}</h3>
-                <p className="text-sm text-foreground/50 font-body leading-relaxed">{t('safetyDesc')}</p>
+          <div className="col-span-12 lg:col-span-5 space-y-12">
+             <div className="layer-2 p-12 border border-quiet group transition-all duration-cine hover:border-gold/30 depth-card">
+                <Shield size={40} className="text-gold mb-10 opacity-60" strokeWidth={1} />
+                <h3 className="text-gold font-brand font-bold text-3xl mb-8 uppercase tracking-tight">{t('safetyTitle')}</h3>
+                <p className="text-lg text-ghost font-brand font-light leading-relaxed opacity-60">{t('safetyDesc')}</p>
              </div>
              
-             <div className="layer-2 p-10 border border-sovereign bg-gradient-to-br from-brand-primary/[0.03] to-transparent relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-[0.05] -mr-8 -mt-8 rotate-12" />
-                <h3 className="text-brand-primary font-title font-bold text-xl mb-6 uppercase tracking-widest">{t('expansionTitle')}</h3>
-                <div className="space-y-6">
-                   <div className="flex justify-between items-center text-[10px] text-brand-primary font-latin font-bold tracking-[0.3em] border-b border-brand-primary/10 pb-3 uppercase">
+             <div className="layer-2 p-12 border border-quiet bg-gradient-to-br from-gold/[0.03] to-transparent relative overflow-hidden depth-card group transition-all duration-cine hover:border-gold/30">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 blur-[100px] -mr-24 -mt-24 group-hover:scale-125 transition-transform duration-cine" />
+                <h3 className="text-gold font-brand font-bold text-3xl mb-12 uppercase tracking-tight">{t('expansionTitle')}</h3>
+                <div className="space-y-10">
+                   <div className="flex justify-between items-center text-[12px] text-gold font-brand font-bold tracking-[0.4em] border-b border-quiet pb-6 uppercase">
                       <span>{t('switzerland')}</span>
                       <span>Q3 2026</span>
                    </div>
-                   <div className="flex justify-between items-center text-[10px] text-foreground/30 font-latin font-bold tracking-[0.3em] uppercase">
+                   <div className="flex justify-between items-center text-[12px] text-ghost font-brand font-bold tracking-[0.4em] uppercase opacity-40">
                       <span>{t('spain')}</span>
                       <span>Q1 2027</span>
                    </div>
@@ -130,53 +129,54 @@ export default async function ArenaPage({
 
         </div>
       </section>
-      {/* ── Services Showcase (The Highlight) ── */}
-      <section className="py-10 px-6 max-w-7xl mx-auto z-10 relative">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24 px-4">
-          <div className="max-w-2xl">
-            <h3 className="text-brand-primary font-latin font-bold tracking-[0.4em] text-[10px] uppercase mb-6 opacity-60">
+
+      {/* ── Services Showcase ── */}
+      <section className="py-48 px-8 max-w-7xl mx-auto z-10 relative">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-32">
+          <div className="max-w-4xl">
+            <h3 className="text-gold font-brand font-bold tracking-[0.8em] text-[11px] uppercase mb-12 opacity-50">
                {t('ourServices')}
             </h3>
-            <h2 className="text-4xl md:text-7xl font-title text-brand-primary uppercase tracking-tighter leading-none">
-               Explore Ancient Passions
+            <h2 className="text-5xl md:text-9xl font-brand font-bold text-white uppercase tracking-tighter leading-[0.85]">
+               EXPLORE ANCIENT<br/>PASSIONS
             </h2>
           </div>
           <div className="hidden md:block">
-             <div className="w-24 h-px bg-brand-primary/20 mb-10" />
+             <div className="w-40 h-px bg-gold/20 mb-16" />
           </div>
         </div>
 
         <ServiceGrid />
       </section>
 
-      {/* ── Image Showcase (The Environment) ── */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
-         <div className="grid-sovereign">
+      {/* ── Image Showcase ── */}
+      <section className="py-48 px-8 max-w-7xl mx-auto">
+         <div className="grid grid-cols-12 gap-10">
             {[1, 2, 3, 4].map(i => (
-               <div key={i} className="col-span-6 md:col-span-3 relative aspect-square overflow-hidden layer-2 border border-sovereign cinema-lut hover:border-brand-primary/30 transition-all p-1">
+               <div key={i} className="col-span-6 md:col-span-3 relative aspect-square overflow-hidden layer-2 border border-quiet hover:border-gold/30 transition-all duration-cine p-4 depth-card group">
                   <NextImage 
                      src={`/images/brand/brand-bow${i === 2 ? '2' : ''}.png`} 
                      alt={`Arena Detail ${i}`}
                      fill
-                     className="object-contain p-8 opacity-40 grayscale hover:grayscale-0 hover:scale-105 hover:opacity-100 transition-all duration-1000"
+                     className="object-contain p-12 opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-cine"
                   />
                </div>
             ))}
          </div>
       </section>
       
-      {/* ── Booking Section (The Portal) ── */}
-      <section id="booking" className="py-40 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 brand-horse-bg opacity-[0.01] grayscale" />
+      {/* ── Booking Section ── */}
+      <section id="booking" className="py-72 px-8 relative overflow-hidden layer-0 border-t border-quiet">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-24 px-4">
-            <h2 className="text-4xl md:text-8xl font-title text-brand-primary mb-8 leading-none uppercase tracking-tighter">
-              Secure Your Place in History
+          <div className="text-center mb-48">
+            <h2 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-16 leading-none uppercase tracking-tighter">
+              SECURE YOUR PLACE<br/>IN HISTORY
             </h2>
-            <div className="w-24 h-px bg-brand-primary/20 mx-auto" />
+            <div className="w-40 h-px bg-gold/20 mx-auto" />
           </div>
           
-          <Suspense fallback={<div className="text-white text-center py-20">Loading Booking Portal...</div>}>
+          <Suspense fallback={<div className="text-gold text-center py-32 font-brand font-bold uppercase tracking-[0.6em] text-[11px] opacity-50">Accessing Tactical Uplink...</div>}>
             <BookingForm />
           </Suspense>
         </div>

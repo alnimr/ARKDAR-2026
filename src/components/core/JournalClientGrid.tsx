@@ -18,9 +18,6 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
   const isRtl = locale === 'ar';
 
   const filteredPosts = posts.filter(post => {
-    // Only show published articles
-    // if (post.status !== 'published') return false;
-
     // Category filter
     const matchCategory = activeTab === 'all' || post.categoryId === activeTab;
     
@@ -36,19 +33,19 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
 
   return (
     <>
-      <div className="max-w-7xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Category Tabs */}
-        <div className={`flex flex-wrap justify-center gap-4 ${isRtl ? 'md:justify-start' : 'md:justify-start'}`}>
+        <div className={`flex flex-wrap justify-center gap-6 ${isRtl ? 'md:justify-start' : 'md:justify-start'}`}>
           {CATEGORIES.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 text-[10px] font-latin font-bold uppercase tracking-[0.2em] border transition-all cursor-pointer ${
+                className={`px-10 py-4 text-[11px] font-brand font-bold uppercase tracking-[0.4em] border transition-all duration-cine cursor-pointer ${
                   isActive
-                    ? 'bg-brand-primary border-brand-primary text-white scale-105 shadow-lg'
-                    : 'layer-2 border-sovereign text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 hover:scale-105'
+                    ? 'bg-gold border-gold text-black depth-card'
+                    : 'layer-1 border-quiet text-ghost/60 hover:text-gold hover:border-gold/40 hover:bg-gold/5'
                 }`}
               >
                 {tab[locale as 'ar' | 'en' | 'de' | 'es'] ?? tab.en}
@@ -58,31 +55,31 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
         </div>
 
         {/* Search Bar */}
-        <div className="relative w-full md:w-96 group">
-          <div className={`absolute inset-y-0 ${isRtl ? 'right-5' : 'left-5'} flex items-center pointer-events-none text-brand-primary/30 group-focus-within:text-brand-primary transition-colors`}>
-            <Search size={18} strokeWidth={1.5} />
+        <div className="relative w-full md:w-[400px] group">
+          <div className={`absolute inset-y-0 ${isRtl ? 'right-8' : 'left-8'} flex items-center pointer-events-none text-gold/30 group-focus-within:text-gold transition-colors duration-cine`}>
+            <Search size={20} strokeWidth={1} />
           </div>
           <input
             type="text"
-            placeholder={locale === 'ar' ? 'ابحث في التراث...' : locale === 'en' ? 'Search Heritage...' : locale === 'de' ? 'Erbe durchsuchen...' : 'Buscar Herencia...'}
+            placeholder={locale === 'ar' ? 'ابحث في السجل...' : locale === 'en' ? 'SEARCH THE ARCHIVES...' : locale === 'de' ? 'ARCHIVE DURCHSUCHEN...' : 'BUSCAR EN ARCHIVOS...'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={`w-full layer-2 border border-sovereign py-4 ${isRtl ? 'pr-14 pl-6 text-right' : 'pl-14 pr-6 text-left'} text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-brand-primary/40 focus:bg-brand-primary/[0.03] transition-all font-body text-sm`}
+            className={`w-full layer-1 border border-quiet py-6 ${isRtl ? 'pr-20 pl-8 text-right' : 'pl-20 pr-8 text-left'} text-white placeholder:text-ghost/30 focus:outline-none focus:border-gold/40 focus:layer-2 transition-all duration-cine font-brand text-lg tracking-tighter uppercase`}
             dir={isRtl ? 'rtl' : 'ltr'}
           />
         </div>
       </div>
 
-      <div className="min-h-[500px]">
+      <div className="min-h-[800px]">
         {filteredPosts.length === 0 ? (
-           <div className="text-center py-32 layer-2 border border-sovereign relative overflow-hidden">
-             <div className="absolute inset-0 brand-horse-bg opacity-[0.03] grayscale" />
-             <p className="text-xl md:text-2xl font-title text-brand-primary/40 uppercase tracking-widest relative">
-               {locale === 'ar' ? 'عذراً.. لا توجد سجلات تطابق بحثك' : 'No records match your legacy search'}
+           <div className="text-center py-64 layer-1 border border-quiet relative overflow-hidden">
+             <div className="absolute inset-0 opacity-[0.03] cinema-lut pointer-events-none" />
+             <p className="text-2xl md:text-3xl font-brand font-bold text-gold/30 uppercase tracking-[0.8em] relative">
+                {locale === 'ar' ? 'لا توجد سجلات تطابق بحثك' : 'NO RECORDS FOUND'}
              </p>
            </div>
         ) : (
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {filteredPosts.map((post, i) => (
               <JournalCard key={post.id || i} post={post} locale={locale} index={i} />
             ))}

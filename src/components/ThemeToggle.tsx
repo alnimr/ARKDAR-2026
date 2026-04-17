@@ -7,7 +7,7 @@ import { Sun, Moon } from "lucide-react";
 /**
  * ThemeToggle Component
  * Allows users to manually switch between Light and Dark modes.
- * Adheres to ARKDAR's glassmorphism and brand aesthetics.
+ * Adheres to ARKDAR's sovereign brand aesthetics.
  */
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
@@ -20,7 +20,7 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-white/10 opacity-30 animate-pulse" />
+      <div className="w-10 h-10 border border-quiet opacity-20 animate-pulse layer-0" />
     );
   }
 
@@ -29,28 +29,21 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative p-2.5 rounded-xl glass border border-white/5 hover:border-brand-primary/40 transition-all duration-300 group overflow-hidden"
+      className="relative w-12 h-12 flex items-center justify-center layer-1 border border-quiet hover:bg-gold hover:text-black transition-all duration-cine group overflow-hidden"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       <div className="relative z-10 w-5 h-5 flex items-center justify-center">
         <Sun 
-          className={`absolute inset-0 w-5 h-5 text-brand-primary transition-all duration-500 ${
+          className={`absolute inset-0 w-5 h-5 transition-all duration-cine ${
             isDark ? "scale-0 opacity-0 rotate-90" : "scale-100 opacity-100 rotate-0"
           }`} 
         />
         <Moon 
-          className={`absolute inset-0 w-5 h-5 text-brand-primary transition-all duration-500 ${
+          className={`absolute inset-0 w-5 h-5 transition-all duration-cine ${
             isDark ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 -rotate-90"
           }`} 
         />
       </div>
-      
-      {/* Dynamic Glow Effect for Dark Mode */}
-      <div 
-        className={`absolute inset-0 bg-brand-primary/10 opacity-0 transition-opacity duration-500 ${
-          isDark ? "group-hover:opacity-100" : ""
-        }`}
-      />
     </button>
   );
 }

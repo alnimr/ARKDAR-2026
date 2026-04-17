@@ -49,16 +49,15 @@ export default async function HeritagePage({
 
   return (
     <main
-      className="flex flex-col w-full min-h-screen pt-24 bg-surface-dark relative overflow-x-hidden transition-colors duration-500"
+      className="flex flex-col w-full min-h-screen pt-24 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand"
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       {/* ── Background Texture Layers ── */}
-      <div className="absolute inset-0 brand-pattern-waves opacity-20 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-1/3 h-full brand-horse-bg opacity-[0.03] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.03] layer-0 pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface-dark border-y border-sovereign shadow-2xl">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-center gap-8 md:gap-16 overflow-x-auto no-scrollbar">
+      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
+        <div className="max-w-7xl mx-auto px-10 h-16 flex items-center justify-center gap-16 md:gap-24 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
             { id: 'lineage', label: t('navHistory') },
@@ -67,7 +66,7 @@ export default async function HeritagePage({
             <a 
               key={item.id} 
               href={`#${item.id}`}
-              className="text-[10px] md:text-xs font-bold uppercase tracking-[4px] text-white/50 hover:text-brand-primary transition-colors whitespace-nowrap"
+              className="text-[11px] font-brand font-bold uppercase tracking-[0.5em] text-ghost/60 hover:text-gold transition-all duration-cine whitespace-nowrap hover:tracking-[0.6em]"
             >
               {item.label}
             </a>
@@ -77,49 +76,45 @@ export default async function HeritagePage({
 
       {/* ── Dynamic Featured Hero Section ── */}
       {featuredPost && (
-        <section className="relative h-[90vh] flex flex-col justify-end section-padding overflow-hidden group">
-          {/* Background Image with Parallax-like effect */}
+        <section className="relative h-[90vh] flex flex-col justify-end pb-40 px-8 overflow-hidden group layer-0">
           <div className="absolute inset-0 cinema-lut">
             <NextImage
               src={featuredPost.image}
               alt={featuredPost.title[locale as keyof typeof featuredPost.title]}
               fill
-              className="object-cover transform group-hover:scale-105 transition-transform duration-[20s] ease-out opacity-60"
+              className="object-cover transform group-hover:scale-105 transition-transform duration-[30s] ease-out opacity-50"
               priority
             />
-            {/* Elite Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/40 to-transparent" />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-surface-dark to-transparent opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
           </div>
           
-          <div className="max-w-6xl px-6 relative z-10 animate-fade-up pb-20">
+          <div className="max-w-7xl relative z-10 mx-auto w-full transition-all duration-cine">
             <Link href={`/${locale}/heritage/${featuredPost.slug}`} className="block group/link">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block py-1 px-4 border border-sovereign layer-2 text-[10px] font-bold uppercase tracking-[5px] text-brand-primary">
+              <div className="flex items-center gap-6 mb-12">
+                <span className="inline-block py-3 px-8 layer-2 border border-quiet text-[10px] font-brand font-bold uppercase tracking-[0.6em] text-gold">
                   {t('heroTag')} • {t('navJournal')}
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-title font-bold text-white mb-8 leading-[1.1] transition-all duration-300 group-hover/link:text-brand-secondary tracking-tight">
+              <h1 className="text-6xl md:text-9xl font-brand font-bold text-white mb-16 leading-[0.8] uppercase tracking-tighter foil-hero transition-all duration-cine group-hover/link:tracking-wider">
                 {featuredPost.title[locale as keyof typeof featuredPost.title]}
               </h1>
               
-              <p className="text-xl md:text-2xl text-white/70 font-body leading-relaxed max-w-3xl mb-10 line-clamp-2 md:line-clamp-3">
+              <p className="text-2xl md:text-3xl text-ghost font-brand font-light leading-relaxed max-w-5xl mb-20 line-clamp-2 opacity-80 italic">
                 {featuredPost.excerpt[locale as keyof typeof featuredPost.excerpt] || featuredPost.excerpt.en}
               </p>
               
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-12">
                 {featuredPost.author && (
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 layer-2 border border-sovereign flex items-center justify-center overflow-hidden">
-                       <span className="text-brand-primary font-title italic">{featuredPost.author?.[0] || 'A'}</span>
+                  <div className="flex items-center gap-8">
+                    <div className="w-16 h-16 layer-2 border border-quiet flex items-center justify-center overflow-hidden">
+                       <span className="text-gold font-brand font-bold text-2xl">{featuredPost.author?.[0] || 'A'}</span>
                     </div>
-                    <span className="text-white/80 font-body font-medium text-sm">{featuredPost.author}</span>
+                    <span className="text-ghost font-brand font-bold text-xl uppercase tracking-[0.3em] opacity-60">{featuredPost.author}</span>
                   </div>
                 )}
-                <div className="h-px w-12 bg-white/10" />
-                <time className="text-white/40 text-sm uppercase tracking-widest font-latin font-bold" dateTime={featuredPost.date}>
+                <div className="h-px w-24 bg-quiet" />
+                <time className="text-gold text-[11px] uppercase tracking-[0.5em] font-brand font-bold" dateTime={featuredPost.date}>
                   {new Date(featuredPost.date).toLocaleDateString(locale, {
                     year: 'numeric', month: 'long',
                   })}
@@ -127,53 +122,50 @@ export default async function HeritagePage({
               </div>
             </Link>
           </div>
-          
-          {/* Bottom highlight bar */}
-          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-primary/50 to-transparent z-20" />
+          <div className="absolute bottom-0 left-0 w-full h-px bg-quiet z-20" />
         </section>
       )}
 
       {/* ── The Vision Section (Philosophy) ── */}
-      <section id="vision" className="py-40 px-6 relative overflow-hidden bg-brand-primary/5">
-        <div className="absolute top-0 left-0 w-full h-full brand-pattern-waves opacity-5 pointer-events-none" />
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <Quote className="text-brand-primary mx-auto mb-12 opacity-80" size={64} strokeWidth={1} />
+      <section id="vision" className="py-72 px-8 relative overflow-hidden layer-1 border-b border-quiet">
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <Quote className="text-gold mx-auto mb-24 opacity-30" size={96} strokeWidth={0.5} />
           
-          <h2 className="text-xs font-black uppercase tracking-[10px] text-brand-primary mb-6">
+          <h2 className="text-[12px] font-brand font-bold uppercase tracking-[1em] text-gold mb-16 opacity-50">
             {t('navVision')}
           </h2>
           
-          <h3 className="text-4xl md:text-6xl lg:text-7xl font-title text-white mb-16 leading-tight">
+          <h3 className="text-6xl md:text-8xl lg:text-9xl font-brand font-bold text-white mb-32 leading-[0.85] uppercase tracking-tighter">
              {t('philosophyTitle')}
           </h3>
           
-          <div className="grid-sovereign text-left items-start">
-            <p className="col-span-12 lg:col-span-6 text-xl md:text-2xl text-white/60 font-body leading-relaxed italic border-l-2 border-brand-primary/30 pl-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 text-start">
+            <p className="text-3xl md:text-4xl text-ghost font-brand font-light leading-relaxed italic border-s-4 border-gold/40 ps-16 opacity-90">
                {t('philosophyP1')}
             </p>
-            <p className="col-span-12 lg:col-span-6 text-lg text-white/50 font-body leading-loose">
+            <p className="text-2xl text-ghost font-brand font-light leading-loose opacity-70">
                {t('philosophyP2')}
             </p>
           </div>
           
-          <div className="mt-24 brand-sep-bow mx-auto max-w-lg" />
+          <div className="mt-48 brand-sep-bow mx-auto max-w-2xl opacity-30" />
         </div>
       </section>
 
-      {/* ── Founding Pillars (The Three Pillars of ARKDAR) ── */}
-      <section id="lineage" className="py-40 px-6 relative z-10 bg-surface-dark overflow-hidden">
+      {/* ── Founding Pillars ── */}
+      <section id="lineage" className="py-72 px-8 relative z-10 layer-0 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24 animate-fade-up">
-            <h4 className="text-brand-secondary font-bold tracking-[8px] uppercase text-xs mb-4">
+          <div className="text-center mb-48">
+            <h4 className="text-gold font-brand font-bold tracking-[0.8em] uppercase text-[12px] mb-12 opacity-50">
               {t('originTitle')}
             </h4>
-            <h2 className="text-5xl md:text-7xl font-title text-white leading-tight mb-8">
+            <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] mb-16 uppercase tracking-tighter">
               {t('pillarsTitle')}
             </h2>
-            <div className="w-24 h-1 bg-brand-primary/40 mx-auto" />
+            <div className="w-48 h-px bg-gold/30 mx-auto" />
           </div>
 
-          <div className="grid-sovereign">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               { title: t('pillar1Title'), desc: t('pillar1Desc'), icon: '📜' },
               { title: t('pillar2Title'), desc: t('pillar2Desc'), icon: '🦾' },
@@ -181,14 +173,13 @@ export default async function HeritagePage({
             ].map((pillar, i) => (
               <div 
                 key={i}
-                className="col-span-12 md:col-span-4 layer-2 border border-sovereign p-12 hover-lift group relative overflow-hidden flex flex-col items-center text-center"
+                className="layer-1 border border-quiet p-20 hover:border-gold transition-all duration-cine group relative overflow-hidden flex flex-col items-center text-center depth-card"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="text-6xl mb-8 transform group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
-                <h3 className="text-2xl font-title text-white mb-6 group-hover:text-brand-primary transition-colors">{pillar.title}</h3>
-                <p className="text-white/60 leading-relaxed font-body">{pillar.desc}</p>
-                <div className="mt-auto pt-8">
-                   <div className="w-12 h-0.5 bg-brand-primary/20 group-hover:w-24 group-hover:bg-brand-primary/60 transition-all duration-300" />
+                <div className="text-9xl mb-16 transform group-hover:scale-110 transition-transform duration-cine cinema-lut opacity-30 group-hover:opacity-100">{pillar.icon}</div>
+                <h3 className="text-4xl font-brand font-bold text-white mb-10 group-hover:text-gold transition-all tracking-tight uppercase">{pillar.title}</h3>
+                <p className="text-ghost leading-relaxed font-brand font-light text-xl opacity-70">{pillar.desc}</p>
+                <div className="mt-20 pt-16 border-t border-quiet w-full flex justify-center">
+                   <div className="w-24 h-px bg-quiet group-hover:w-48 group-hover:bg-gold transition-all duration-cine" />
                 </div>
               </div>
             ))}
@@ -197,46 +188,46 @@ export default async function HeritagePage({
       </section>
 
       {/* ── Founder's Message & Mission ── */}
-      <section className="py-32 px-6 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid-sovereign items-center">
-          <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] overflow-hidden group cinema-lut border border-sovereign shadow-2xl">
+      <section className="py-72 px-8 relative z-10 layer-1 border-y border-quiet overflow-hidden">
+        <div className="max-w-7xl mx-auto grid grid-cols-12 gap-32 items-center">
+          <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] overflow-hidden group cinema-lut border border-quiet depth-card">
             <NextImage
               src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?q=80&w=800"
               alt="Founder's Path"
               fill
-              className="object-cover transition-transform duration-[15s] group-hover:scale-110"
+              className="object-cover transition-transform duration-[30s] group-hover:scale-110 ease-out grayscale hover:grayscale-0 transition-all duration-cine"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-            <div className="absolute bottom-12 left-12">
-               <span className="text-white/20 text-7xl font-title italic tracking-tighter uppercase">AL-NIMR</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
+            <div className="absolute bottom-20 left-20">
+               <span className="text-white/10 text-9xl font-brand font-bold italic tracking-tighter uppercase pointer-events-none">AL-NIMR</span>
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-7 space-y-12">
-            <div className="space-y-6">
-              <span className="text-brand-primary text-xs font-bold tracking-[6px] uppercase">{t('foundersMessageTitle')}</span>
-              <h2 className="text-4xl md:text-6xl font-title text-white leading-[1.2]">
+          <div className="col-span-12 lg:col-span-7 space-y-24">
+            <div className="space-y-12">
+              <span className="text-gold text-[12px] font-brand font-bold tracking-[1em] uppercase opacity-50">{t('foundersMessageTitle')}</span>
+              <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] uppercase tracking-tighter">
                 {t('missionTitle')}
               </h2>
             </div>
             
-            <p className="text-xl text-white/70 leading-[1.8] font-body">
+            <p className="text-3xl text-ghost leading-relaxed font-brand font-light italic opacity-90 border-s-4 border-gold/40 ps-16">
               &quot;{t('foundersMessage')}&quot;
             </p>
 
-            <div className="p-8 border-l-4 border-sovereign layer-2">
-               <p className="text-white/60 italic leading-relaxed text-lg font-body">
+            <div className="p-16 border border-quiet layer-2 depth-card">
+               <p className="text-ghost leading-relaxed text-2xl font-brand font-light opacity-70">
                  {t('missionDesc')}
                </p>
             </div>
 
-            <div className="flex flex-wrap gap-6 pt-4">
-              <Link href={`/${locale}/mountup`} className="btn-sovereign px-10 py-5">
+            <div className="flex flex-wrap gap-12 pt-12">
+              <Link href={`/${locale}/mount-up`} className="btn-sovereign px-16 py-7 text-[12px] tracking-[0.5em]">
                 {t('ctaJoinJourney')}
               </Link>
-              <button className="px-10 py-5 border border-sovereign layer-2 text-white/80 text-sm font-bold tracking-widest uppercase hover:bg-white/5 hover:border-brand-primary/20 transition-all font-body">
+              <Link href={`/${locale}/heritage`} className="flex items-center justify-center px-16 py-7 border border-quiet text-white hover:bg-white hover:text-black transition-all duration-cine text-[12px] tracking-[0.5em] font-brand font-bold uppercase">
                 {t('ctaExploreStory')}
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -248,33 +239,31 @@ export default async function HeritagePage({
       )}
 
       {/* ── The Digital Divan — Journal Grid ── */}
-      <section id="journal" className="py-32 px-6 relative z-10 border-t border-white/5">
-        {/* Section header */}
-        <div className="max-w-7xl mx-auto mb-16 text-center">
-          <span className="text-xs font-bold uppercase tracking-[8px] text-brand-primary mb-4 block">
+      <section id="journal" className="py-72 px-8 relative z-10 border-t border-quiet layer-0">
+        <div className="max-w-7xl mx-auto mb-40 text-center">
+          <span className="text-[12px] font-brand font-bold uppercase tracking-[1.2em] text-gold mb-12 block opacity-50">
             {locale === 'ar' ? 'مستجدات أركدار' : 'ARKDAR Pulse'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-title text-white mb-6">
+          <h2 className="text-6xl md:text-8xl font-brand font-bold text-white mb-16 uppercase tracking-tighter">
             {journalHeading}
           </h2>
-          <div className="w-16 h-px bg-brand-primary/40 mx-auto mb-6" />
-          <p className="text-white/50 max-w-xl mx-auto text-lg leading-relaxed font-body">
+          <div className="w-48 h-px bg-gold/30 mx-auto mb-16" />
+          <p className="text-ghost max-w-4xl mx-auto text-2xl leading-relaxed font-brand font-light opacity-70">
             {journalSubheading}
           </p>
         </div>
 
-        {/* Filter tabs & Interactive Grid */}
         <JournalClientGrid posts={posts} locale={locale} />
       </section>
 
       {/* ── Closing Signature ── */}
-       <section className="py-40 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[120px] pointer-events-none" />
-        <div className="brand-sep-bow mb-12 opacity-40 mx-auto max-w-2xl" />
-        <h3 className="text-2xl md:text-3xl font-display text-brand-secondary italic px-6 z-10 relative">
+       <section className="py-96 text-center relative overflow-hidden layer-0">
+        <div className="brand-sep-bow mb-32 opacity-30 mx-auto max-w-3xl" />
+        <h3 className="text-4xl md:text-6xl font-brand font-bold text-gold italic px-12 z-10 relative leading-tight tracking-tight uppercase">
           &quot;{t('quote')}&quot;
         </h3>
       </section>
     </main>
   );
 }
+

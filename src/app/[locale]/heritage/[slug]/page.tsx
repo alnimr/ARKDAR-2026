@@ -20,22 +20,6 @@ import { getTranslations } from 'next-intl/server';
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-// Generate static params
-/*
-export async function generateStaticParams() {
-  try {
-    return mockJournalPosts
-      .filter(post => post && post.slug)
-      .map((post) => ({
-        slug: String(post.slug),
-      }));
-  } catch (error) {
-    console.error('Error in generateStaticParams:', error);
-    return [];
-  }
-}
-*/
-
 export async function generateMetadata({
   params,
 }: {
@@ -111,28 +95,17 @@ export default async function JournalArticlePage({
   const isRtl = locale === 'ar';
   const BackIcon = isRtl ? ArrowRight : ArrowLeft;
 
-  // Safe date formatting
-  try {
-    const d = new Date(post.date);
-    if (!isNaN(d.getTime())) {
-      // Logic for date is handled in sidebar, but we keep the try/catch if needed for other metadata
-    }
-  } catch {
-    //
-  }
-
-
   const related = mockJournalPosts
     .filter((p) => p.id !== post.id && p.content)
     .slice(0, 2);
 
   return (
     <main
-      className="min-h-screen bg-background pt-32 pb-40 relative overflow-hidden"
+      className="min-h-screen layer-0 pt-32 pb-48 relative overflow-hidden transition-all duration-cine"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       <ArticleReadingProgress />
-      <div className="fixed inset-0 brand-horse-bg opacity-[0.02] grayscale pointer-events-none z-0" />
+      <div className="fixed inset-0 opacity-[0.02] layer-0 pointer-events-none z-0" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -151,22 +124,18 @@ export default async function JournalArticlePage({
         }}
       />
 
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-primary/4 blur-[140px]" />
-      </div>
-
-      <div className="relative z-10 container-sovereign mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
           <Link
             href={`/${locale}/heritage`}
-            className="inline-flex items-center gap-3 text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/50 hover:text-brand-primary transition-all duration-300 mb-16 group"
+            className="inline-flex items-center gap-4 text-[10px] font-latin font-bold uppercase tracking-[0.4em] text-ghost hover:text-gold transition-all duration-base mb-20 group"
           >
-            <BackIcon size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
+            <BackIcon size={14} className="group-hover:-translate-x-1 transition-transform duration-base ease-arrow" />
             {t?.('backToJournal') || (locale === 'ar' ? 'العودة للديوان' : 'Back to Journal')}
           </Link>
 
-          <div className={`flex flex-col lg:flex-row gap-12 ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
+          <div className={`flex flex-col lg:flex-row gap-16 ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
             {/* Sidebar Desktop */}
-            <div className="w-full lg:w-72 flex-shrink-0">
+            <div className="w-full lg:w-80 flex-shrink-0">
                <ArticleSidebar 
                  post={post} 
                  locale={locale} 
@@ -180,29 +149,29 @@ export default async function JournalArticlePage({
                />
             </div>
 
-            {/* Content Column - Strictly 720px via ArticleWrapper */}
+            {/* Content Column */}
             <div className="flex-1">
               <ArticleWrapper>
                 <div className="reading-sanctuary">
                   <StaggerItem delay={0.1}>
                     {/* Hero Image */}
-                    <div className="relative w-full aspect-[16/10] overflow-hidden mb-16 border border-sovereign shadow-sovereign cinema-lut">
+                    <div className="relative w-full aspect-[16/10] overflow-hidden mb-20 border border-sovereign depth-float cinema-lut">
                       <NextImage
                         src={post.image}
                         alt={title}
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover transform hover:scale-105 transition-transform duration-[10s] ease-out"
                         sizes="(max-width: 896px) 100vw, 896px"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                     </div>
                   </StaggerItem>
 
                   <StaggerItem delay={0.2}>
-                    <header className="mb-16">
-                      <div className={`flex items-center gap-3 mb-8 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                        <span className="inline-flex items-center gap-2 px-4 py-2 border border-sovereign layer-2 text-brand-primary text-[9px] font-latin font-bold uppercase tracking-[0.2em]">
+                    <header className="mb-20">
+                      <div className={`flex items-center gap-4 mb-10 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                        <span className="inline-flex items-center gap-3 px-6 py-2.5 layer-2 border border-quiet text-gold text-[9px] font-latin font-bold uppercase tracking-[0.4em]">
                           <TypeIcon size={12} />
                           {post.type === 'article'
                             ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
@@ -214,7 +183,7 @@ export default async function JournalArticlePage({
                         </span>
                       </div>
 
-                      <h1 className={`text-4xl md:text-7xl font-title font-bold text-brand-primary leading-[1.1] mb-12 uppercase tracking-tighter ${isRtl ? 'text-right' : 'text-left'}`}>
+                      <h1 className={`text-4xl md:text-7xl font-brand font-bold text-gold leading-tight mb-16 tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>
                         {title}
                       </h1>
                     </header>
@@ -222,8 +191,8 @@ export default async function JournalArticlePage({
 
                   <StaggerItem delay={0.3}>
                     {/* Excerpt Blockquote */}
-                    <blockquote className={`relative px-10 py-8 mb-20 layer-2 border-sovereign border-l-4 ${isRtl ? 'border-l-0 border-r-4 text-right' : 'text-left'}`}>
-                      <p className="text-xl md:text-3xl font-title text-foreground/80 leading-relaxed italic">
+                    <blockquote className={`relative px-12 py-10 mb-24 layer-1 border-quiet border-s-4 ${isRtl ? 'text-right' : 'text-left'} depth-card`}>
+                      <p className="text-xl md:text-3xl font-brand text-secondary leading-[1.8] italic">
                         &quot;{excerpt}&quot;
                       </p>
                     </blockquote>
@@ -233,22 +202,22 @@ export default async function JournalArticlePage({
                     {/* Main Content */}
                     <article
                       className={`arkdar-article-body prose-sovereign
-                        ${isRtl ? 'text-right' : 'text-left'}`}
+                        ${isRtl ? 'text-right font-body' : 'text-left font-body'}`}
                       dangerouslySetInnerHTML={{ __html: content }}
                     />
                   </StaggerItem>
 
-                  {/* Download Section (Integrated) */}
+                  {/* Download Section */}
                   {post.downloadUrl && (
-                    <div className="mt-24 p-12 layer-2 border border-sovereign relative overflow-hidden group">
-                      <div className="absolute inset-0 brand-horse-bg opacity-[0.02] -mr-10 -mb-10 rotate-12 transition-transform duration-700 group-hover:scale-110" />
-                      <p className="text-foreground/40 text-xs mb-6 font-latin font-bold uppercase tracking-widest relative">
+                    <div className="mt-32 p-16 layer-1 border border-quiet relative overflow-hidden group depth-card">
+                      <div className="absolute inset-0 opacity-[0.02] -mr-10 -mb-10 rotate-12 transition-transform duration-cine group-hover:scale-110" />
+                      <p className="text-ghost text-[10px] mb-8 font-latin font-bold uppercase tracking-[0.5em] relative">
                         {t?.('downloadCaption') || (locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Official Archive Record')}
                       </p>
                       <a
                         href={post.downloadUrl}
                         download
-                        className="inline-flex items-center gap-4 px-10 py-5 bg-brand-primary text-white font-latin font-bold text-xs uppercase tracking-[0.3em] hover:bg-brand-secondary transition-all duration-500 hover-lift relative"
+                        className="btn-sovereign w-fit"
                       >
                         <Download size={16} strokeWidth={2.5} />
                         {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Archive')}
@@ -269,24 +238,24 @@ export default async function JournalArticlePage({
 
                 {/* Related Posts */}
                 {related.length > 0 && (
-                  <section className="mt-32 pt-20 border-t border-brand-primary/5">
-                    <h2 className={`text-2xl font-title font-bold text-brand-primary mb-12 uppercase tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>
+                  <section className="mt-48 pt-24 border-t border-quiet">
+                    <h2 className={`text-2xl font-brand font-bold text-gold mb-16 uppercase tracking-widest ${isRtl ? 'text-right' : 'text-left'}`}>
                       {t?.('relatedTitle') || (locale === 'ar' ? 'سجلات ذات صلة' : 'Related Records')}
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                       {related.map((relPost) => {
                         const relTitle = relPost.title[locale as keyof typeof relPost.title] || relPost.title.en;
                         return (
                           <Link
                             key={relPost.id || relPost.slug}
                             href={`/${locale}/heritage/${relPost.slug}`}
-                            className="group flex flex-col gap-6"
+                            className="group flex flex-col gap-8"
                           >
-                            <div className="relative aspect-[16/9] overflow-hidden border border-sovereign layer-1 cinema-lut">
-                              <NextImage src={relPost.image} alt={relTitle} fill className="object-cover group-hover:scale-110 transition-transform duration-[1200ms]" />
+                            <div className="relative aspect-[16/9] overflow-hidden border border-quiet layer-1 depth-card cinema-lut">
+                              <NextImage src={relPost.image} alt={relTitle} fill className="object-cover group-hover:scale-110 transition-transform duration-[2000ms] ease-out" />
                             </div>
                             <div className={`${isRtl ? 'text-right' : 'text-left'}`}>
-                              <h3 className="text-xl font-latin font-bold text-brand-primary leading-snug group-hover:text-brand-secondary transition-colors line-clamp-2 uppercase">
+                              <h3 className="text-xl font-brand font-bold text-primary leading-snug group-hover:text-gold transition-colors line-clamp-2">
                                 {relTitle}
                               </h3>
                             </div>
@@ -303,3 +272,4 @@ export default async function JournalArticlePage({
     </main>
   );
 }
+

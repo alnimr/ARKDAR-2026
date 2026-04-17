@@ -3,19 +3,21 @@
 
 /* ══════════════════════════════════════════════════════════════ 
    ARKDAR SOVEREIGN DESIGN SYSTEM (Version 3.0 - 2025)
-   STRICT COMPLIANCE - SOVEREIGNTY OVER TRANSPARENCY
+   STRICT COMPLIANCE - ROYAL DNA ENFORCEMENT
    ══════════════════════════════════════════════════════════════ */
 
 @theme {
   /* Sovereign Colors */
-  --color-brand-primary: #B8922A;   /* Royal Gold */
-  --color-brand-secondary: #D4AF6A; /* Bright Gold */
-  --color-brand-tertiary: #6B5119;  /* Dim Gold */
-  --color-brand-crimson: #7A1515;   /* Deep Crimson */
-  --color-brand-lapis: #1B3D6E;     /* Mamluk Lapis */
-  
-  --color-surface-dark: #0D0B08;    /* Sovereign Black */
-  --color-surface-light: #EDF2F4;   /* Marble Gray */
+  --color-black:       #0D0B08;
+  --color-gold:        #B8922A;
+  --color-gold-light:  #D4AF6A;
+  --color-gold-dim:    #6B5119;
+  --color-ivory:       #F2EBD9;
+
+  /* Heritage */
+  --color-lapis:       #1B3D6E;
+  --color-crimson:     #7A1515;
+  --color-marble:      #EDF2F4;
   
   /* Depth Layers */
   --color-layer-0: #0D0B08;
@@ -25,36 +27,66 @@
   --color-layer-4: #222018;
 
   /* Typography */
-  --font-title: var(--font-el-messiri), serif;
-  --font-body: var(--font-scheherazade), serif;
-  --font-latin: var(--font-cinzel), serif;
+  --font-brand:  var(--font-el-messiri), serif;
+  --font-latin:  var(--font-cinzel), serif;
+  --font-body:   var(--font-scheherazade), serif;
   
   /* Motion - Arrow & Feather */
-  --ease-arrow: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-feather: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-arrow:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-feather:  cubic-bezier(0.16, 1, 0.3, 1);
   --duration-base: 250ms;
-  --duration-exp: 500ms;
+  --duration-exp:  500ms;
+  --duration-cine: 800ms;
 }
 
 @layer base {
   :root {
+    /* Base Colors */
     --background: #EDF2F4;
     --foreground: #0D0B08;
-    --text-ivory: #F2EBD9;
-    --border-gold: hsla(43, 64%, 45%, 0.22);
+    
+    /* Sovereign Borders */
+    --border-strong: hsla(43,64%,45%,0.35);
+    --border-quiet:  hsla(43,64%,45%,0.15);
+    --border-active: hsla(43,64%,45%,0.65);
+    
+    /* Text Hierarchy */
+    --text-primary:      #0D0B08;
+    --text-secondary:    rgba(13, 11, 8, 0.65);
+    --text-ghost:        rgba(13, 11, 8, 0.35);
+
+    /* Radius Reset - Absolute Sharpness */
+    --radius-base:  0px;
+    --radius-large: 0px;
   }
 
   .dark {
     --background: #0D0B08;
     --foreground: #F2EBD9;
-    --border-gold: hsla(43, 64%, 45%, 0.35);
+    
+    /* Text Hierarchy - Dark */
+    --text-primary:      #F2EBD9;
+    --text-secondary:    hsla(37,33%,91%,0.62);
+    --text-ghost:        hsla(37,33%,91%,0.35);
+  }
+
+  * {
+    border-color: var(--border-quiet);
+    /* Strict Sharpness Enforcement */
+    border-radius: 0 !important;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-black);
   }
 
   body {
     background-color: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-body);
-    line-height: 1.9;
+    color: var(--text-primary);
+    font-family: var(--font-brand);
+    line-height: 1.8;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -67,24 +99,33 @@
     pointer-events: none;
     z-index: 9999;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
-    opacity: 0.02;
+    opacity: 0.015;
   }
 
-  h1, h2, h3 {
-    font-family: var(--font-title);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-brand);
+    color: var(--color-gold);
     font-weight: 700;
-    color: var(--color-brand-primary);
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 
-  /* Latin Typography Rule */
-  .font-latin {
-    font-family: var(--font-latin);
-    letter-spacing: 0.1em;
+  /* Language Specific Line Heights */
+  :lang(ar) {
+    --lh-body: 1.8;
+    --lh-heading: 1.1;
+  }
+  
+  :lang(en) {
+    --lh-body: 1.6;
+    --lh-heading: 1.1;
   }
 }
 
 @layer utilities {
-  /* ── Depth Layering (Replaces Glassmorphism) ── */
+  /* ── Depth Layering (Total Replacement for Glassmorphism) ── */
   .layer-0 { background-color: var(--color-layer-0); }
   .layer-1 { background-color: var(--color-layer-1); }
   .layer-2 { background-color: var(--color-layer-2); }
@@ -92,49 +133,90 @@
   .layer-4 { background-color: var(--color-layer-4); }
 
   /* ── Sovereign Borders ── */
-  .border-sovereign {
-    border: 1px solid var(--border-gold);
-  }
+  .border-sovereign { border: 1px solid var(--border-strong); }
+  .border-quiet { border: 1px solid var(--border-quiet); }
+  .border-active { border: 1px solid var(--border-active); }
   
-  /* ── Shadow System (Depth over Blur) ── */
+  /* ── Shadows (Depth via Inset & High Black Point) ── */
   .depth-card {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  }
-  .depth-float {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    box-shadow: 
+      0 1px 0 hsla(43,64%,45%,0.08) inset,
+      0 -1px 0 hsla(0,0%,0%,0.35) inset,
+      0 12px 40px hsla(0,0%,0%,0.8);
   }
 
-  /* ── Cinema LUT (Updated for Version 3.0) ── */
+  .depth-float {
+    box-shadow: 
+      0 1px 0 hsla(43,64%,45%,0.12) inset,
+      0 -1px 0 hsla(0,0%,0%,0.4) inset,
+      0 24px 64px hsla(0,0%,0%,0.9);
+  }
+
+  /* ── Typography Utilities ── */
+  .font-brand { font-family: var(--font-brand); }
+  .font-latin { font-family: var(--font-latin); }
+  .font-body { font-family: var(--font-body); }
+  
+  .text-gold { color: var(--color-gold); }
+  .text-ivory { color: var(--color-ivory); }
+  .text-ghost { color: var(--text-ghost); }
+  
+  /* ── Cinema LUT ── */
   .cinema-lut {
-    filter: sepia(0.05) contrast(1.1) brightness(0.95);
+    filter: sepia(0.05) contrast(1.15) brightness(0.9);
     position: relative;
     overflow: hidden;
   }
 
-  /* ── Logical Properties (RTL/LTR Compliance) ── */
+  /* ── Hero Foil Gradient ── */
+  .foil-hero {
+    background: linear-gradient(
+      105deg,
+      #6B5119 0%, #D4AF6A 35%,
+      #B8922A 50%, #D4AF6A 65%,
+      #6B5119 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+  }
+
+  /* ── Logical Properties ── */
   .ms-auto { margin-inline-start: auto; }
   .me-auto { margin-inline-end: auto; }
   .ps-4 { padding-inline-start: 1rem; }
   .pe-4 { padding-inline-end: 1rem; }
 
-  /* ── Sovereign Buttons (No Gradients) ── */
+  /* ── Sovereign Utilities ── */
   .btn-sovereign {
-    @apply inline-flex items-center justify-center px-8 py-3 font-bold transition-all uppercase tracking-[1px] text-[13px];
-    font-family: var(--font-latin);
-    background-color: var(--color-brand-primary);
-    color: var(--color-surface-dark);
-    border: 1px solid var(--color-brand-secondary);
-  }
-  
-  .btn-sovereign:hover {
-    background-color: var(--color-brand-secondary);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(184, 146, 42, 0.2);
+    @apply inline-flex items-center justify-center gap-4 px-12 py-6 
+           bg-gold text-black font-brand font-bold text-[11px] uppercase tracking-[0.5em] 
+           transition-all duration-cine ease-out border-0 rounded-none;
+    box-shadow: 0 -1px 0 rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.1) inset;
   }
 
-  .btn-crimson {
-    @apply inline-flex items-center justify-center px-8 py-3 font-bold transition-all;
-    background-color: var(--color-brand-crimson);
-    color: white;
+  .btn-sovereign:hover {
+    @apply bg-white tracking-[0.7em];
+  }
+
+  .btn-outline-sovereign {
+    @apply inline-flex items-center justify-center gap-4 px-12 py-6 
+           bg-transparent text-gold font-brand font-bold text-[11px] uppercase tracking-[0.5em] 
+           transition-all duration-cine ease-out border border-gold rounded-none;
+  }
+
+  .btn-outline-sovereign:hover {
+    @apply bg-gold text-black tracking-[0.7em];
+  }
+
+  .reading-progress-bar {
+    @apply fixed top-0 left-0 h-[2px] z-[100] bg-gold 
+           transition-all duration-cine ease-out;
+    width: var(--reading-progress, 0%);
+  }
+
+  .selection-gold {
+    @apply selection:bg-gold selection:text-black;
   }
 }
+

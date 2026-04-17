@@ -44,7 +44,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
 
     const handleScroll = () => {
       const headingElements = Array.from(document.querySelectorAll('h2, h3'));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 120;
 
       for (let i = headingElements.length - 1; i >= 0; i--) {
         const el = headingElements[i] as HTMLElement;
@@ -67,37 +67,37 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
   const readTime = Math.ceil((post.content[locale as keyof typeof post.content] || post.content.en || '').split(' ').length / 200) || 5;
 
   return (
-    <aside className={`hidden lg:block w-64 flex-shrink-0 sticky top-40 h-fit ${isRtl ? 'ml-16' : 'mr-16'}`}>
+    <aside className={`hidden lg:block w-80 flex-shrink-0 sticky top-56 h-fit ${isRtl ? 'ml-16' : 'mr-16'} font-brand selection:bg-gold selection:text-black`}>
       {/* Metadata Section */}
-      <div className="mb-16 space-y-8">
-        <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-          <span className="text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/40">
+      <div className="mb-24 space-y-12">
+        <div className={`flex flex-col gap-4 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
+          <span className="text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-ghost/40">
             {translations.date}
           </span>
-          <span className="text-foreground/80 text-xs font-latin font-bold flex items-center gap-3">
-            <Calendar size={14} className="text-brand-primary/40" strokeWidth={1.5} />
+          <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
+            <Calendar size={16} className="text-gold/60" strokeWidth={1} />
             {formattedDate}
           </span>
         </div>
 
         {post.author && (
-          <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-            <span className="text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/40">
+          <div className={`flex flex-col gap-4 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
+            <span className="text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-ghost/40">
               {translations.author}
             </span>
-            <span className="text-foreground/80 text-xs font-body font-bold flex items-center gap-3">
-              <User size={14} className="text-brand-primary/40" strokeWidth={1.5} />
+            <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
+              <User size={16} className="text-gold/60" strokeWidth={1} />
               {post.author}
             </span>
           </div>
         )}
 
-        <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-          <span className="text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/40">
+        <div className={`flex flex-col gap-4 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
+          <span className="text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-ghost/40">
             {translations.readTime}
           </span>
-          <span className="text-foreground/80 text-xs font-latin font-bold flex items-center gap-3">
-            <Clock size={14} className="text-brand-primary/40" strokeWidth={1.5} />
+          <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
+            <Clock size={16} className="text-gold/60" strokeWidth={1} />
             {readTime} {locale === 'ar' ? 'دقائق قراءة' : 'MIN READ'}
           </span>
         </div>
@@ -105,22 +105,22 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
 
       {/* Table of Contents Section */}
       {headings.length > 0 && (
-        <nav className="border-t border-brand-primary/5 pt-12">
-          <h4 className={`text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/30 mb-8 ${isRtl ? 'text-right' : 'text-left'}`}>
+        <nav className="border-t border-quiet pt-20">
+          <h4 className={`text-[10px] font-brand font-bold uppercase tracking-[0.6em] text-gold mb-12 ${isRtl ? 'text-right' : 'text-left'}`}>
             {translations.toc}
           </h4>
-          <ul className="space-y-5">
+          <ul className="space-y-8">
             {headings.map((heading) => (
               <li 
                 key={heading.id}
-                className={`${isRtl ? 'text-right' : 'text-left'} ${heading.level === 3 ? 'ps-6' : ''}`}
+                className={`${isRtl ? 'text-right' : 'text-left'} ${heading.level === 3 ? (isRtl ? 'pe-8 border-r border-quiet/30' : 'ps-8 border-l border-quiet/30') : ''}`}
               >
                 <a
                   href={`#${heading.id}`}
-                  className={`text-[13px] font-body transition-all duration-300 block hover:text-brand-primary ${
+                  className={`text-[12px] font-brand transition-all duration-cine block uppercase tracking-widest ${
                     activeId === heading.id 
-                      ? 'text-brand-primary font-bold translate-x-1' 
-                      : 'text-foreground/30'
+                      ? 'text-gold opacity-100 translate-x-3 font-bold' 
+                      : 'text-ghost/40 hover:text-gold hover:opacity-100'
                   }`}
                   onClick={(e) => {
                     e.preventDefault();
