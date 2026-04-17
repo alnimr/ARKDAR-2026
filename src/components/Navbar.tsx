@@ -56,12 +56,11 @@ export default function Navbar() {
       }`}>
 
         <Link href="/" className="flex items-center gap-6 group">
-          <div className="relative w-14 h-14">
+          <div className="relative h-9 w-32">
             <NextImage
               src="/images/brand/logo/ARKDAR_Logo_Gold.png"
               alt="ARKDAR Logo"
-              width={56}
-              height={56}
+              fill
               className="object-contain cinema-lut group-hover:drop-shadow-[0_0_15px_rgba(184,146,42,0.4)] transition-all duration-cine"
               priority
             />

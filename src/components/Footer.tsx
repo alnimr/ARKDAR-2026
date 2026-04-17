@@ -9,8 +9,8 @@ export default async function Footer() {
 
   return (
     <footer className="mt-48 relative z-20 layer-1 border-t border-quiet font-brand overflow-hidden">
-      {/* ── Sovereign Watermark: Five Strands ── */}
-      <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none opacity-[0.03] select-none">
+      {/* ── Sovereign Watermark: Five Strands ── 4-8% Opacity */}
+      <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none opacity-[0.06] select-none">
         <NextImage
           src="/images/brand/strands/Value_Strands.svg"
           alt=""
@@ -25,13 +25,14 @@ export default async function Footer() {
           {/* ── Brand Info ── */}
           <div className="col-span-12 md:col-span-12 lg:col-span-5">
             <div className="flex items-center gap-8 mb-16">
-              <NextImage
-                src="/images/brand/logo/ARKDAR_Logo_Ivory.png"
-                alt="ARKDAR Logo"
-                width={64}
-                height={64}
-                className="object-contain cinema-lut"
-              />
+              <div className="relative h-9 w-32">
+                <NextImage
+                  src="/images/brand/logo/ARKDAR_Logo_Ivory.png"
+                  alt="ARKDAR Logo"
+                  fill
+                  className="object-contain cinema-lut"
+                />
+              </div>
               <h2 className="text-4xl font-brand font-bold tracking-[0.4em] text-gold uppercase">{locale === 'ar' ? 'أركدار' : 'ARKDAR'}</h2>
             </div>
             <p className="text-xl leading-relaxed max-w-sm text-white/40 font-brand font-light">

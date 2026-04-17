@@ -34,8 +34,8 @@ export default async function HomePage({
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
         </div>
 
-        {/* ── Decorative Crescent Watermark ── */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 opacity-[0.05] pointer-events-none">
+        {/* ── Decorative Crescent Watermark ── 60-80% Opacity per Constitution */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 opacity-70 pointer-events-none">
           <NextImage 
             src="/images/brand/crescent/Crescent_Vector.svg" 
             alt="" 
@@ -44,16 +44,8 @@ export default async function HomePage({
           />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="max-w-4xl layer-1 p-10 md:p-20 relative overflow-hidden animate-fade-up border border-quiet depth-card">
-            <div className="flex flex-wrap gap-4 mb-10">
-              {['Sovereignty', 'Heritage', 'Elite Performance'].map(v => (
-                <span key={v} className="layer-2 text-gold px-5 py-2 text-[9px] font-brand font-bold uppercase tracking-[0.4em] border border-quiet">
-                  {v}
-                </span>
-              ))}
-            </div>
-
             <h1 className="text-5xl md:text-8xl mb-10 font-brand font-bold leading-[0.9] foil-hero uppercase tracking-tighter">
               {t('title')}
             </h1>
@@ -63,13 +55,13 @@ export default async function HomePage({
             </p>
 
             <div className="mt-20 flex flex-col sm:flex-row gap-8">
-              <Link href="/arenas" className="btn-sovereign group px-12 py-5 text-[11px] tracking-[0.3em] flex items-center">
+              <Link href="/arenas" className="gold-sovereign-btn px-12 py-5 text-[11px] tracking-[0.3em] flex items-center justify-center">
                 {t('explore')} 
                 <div className="ms-4 relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
                   <NextImage src="/images/brand/arrow/Linear_Arrow_Dark.png" alt="" fill className="object-contain" />
                 </div>
               </Link>
-              <Link href="/heritage" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em]">
+              <Link href="/heritage" className="ivory-ghost-btn px-12 py-5 text-[11px] tracking-[0.3em] flex items-center justify-center">
                 ARKDAR DNA
               </Link>
             </div>
@@ -77,8 +69,14 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
+
       {/* 2. PHILOSOPHY & CREED - The Mamluk Litmus Test */}
-      <section className="w-full py-48 relative layer-0 border-y border-quiet">
+      <section className="w-full py-48 relative layer-0 border-y border-quiet overflow-hidden">
+        <div className="strands-bg-pattern" />
         {/* Five Strands Watermark */}
         <div className="absolute top-0 right-0 w-64 h-full pointer-events-none opacity-[0.02] select-none">
           <NextImage src="/images/brand/strands/Value_Strands.svg" alt="" fill className="object-contain object-right" />
@@ -116,8 +114,14 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
+
       {/* 3. SERVICES - The Fields of Honor */}
-      <section className="w-full py-48 relative layer-0">
+      <section className="w-full py-48 relative layer-0 overflow-hidden">
+        <div className="strands-bg-pattern" />
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-32">
             <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-gold uppercase tracking-tighter">{t('servicesTitle')}</h2>
@@ -141,6 +145,11 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
 
       {/* 4. PRODUCTS - Royal Arsenal */}
       <section className="w-full py-48 relative layer-1 border-t border-quiet overflow-hidden">
@@ -182,6 +191,11 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
+
       {/* 5. REGIONS - Global Sovereignty */}
       <section className="w-full py-48 px-8 relative layer-0">
         <div className="max-w-7xl mx-auto">
@@ -218,4 +232,3 @@ export default async function HomePage({
     </div>
   );
 }
-
