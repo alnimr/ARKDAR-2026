@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
-import { Target, Hammer, TreePine, ArrowRight, MapPin, ShieldCheck, Crown, Sword } from 'lucide-react';
+import { Target, Hammer, TreePine, MapPin, ShieldCheck, Crown, Sword } from 'lucide-react';
 
 export default async function HomePage({
   params
@@ -34,7 +34,15 @@ export default async function HomePage({
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
         </div>
 
-        <div className="absolute inset-0 -z-10 pointer-events-none opacity-[0.03] layer-0" />
+        {/* ── Decorative Crescent Watermark ── */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 opacity-[0.05] pointer-events-none">
+          <NextImage 
+            src="/images/brand/crescent/Crescent_Vector.svg" 
+            alt="" 
+            fill 
+            className="object-contain" 
+          />
+        </div>
 
         <div className="max-w-7xl mx-auto w-full">
           <div className="max-w-4xl layer-1 p-10 md:p-20 relative overflow-hidden animate-fade-up border border-quiet depth-card">
@@ -55,8 +63,11 @@ export default async function HomePage({
             </p>
 
             <div className="mt-20 flex flex-col sm:flex-row gap-8">
-              <Link href="/arenas" className="btn-sovereign group px-12 py-5 text-[11px] tracking-[0.3em]">
-                {t('explore')} <ArrowRight className="ms-4 w-5 h-5 group-hover:translate-x-1 transition-transform duration-cine" />
+              <Link href="/arenas" className="btn-sovereign group px-12 py-5 text-[11px] tracking-[0.3em] flex items-center">
+                {t('explore')} 
+                <div className="ms-4 relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+                  <NextImage src="/images/brand/arrow/Linear_Arrow_Dark.png" alt="" fill className="object-contain" />
+                </div>
               </Link>
               <Link href="/heritage" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em]">
                 ARKDAR DNA
@@ -68,6 +79,11 @@ export default async function HomePage({
 
       {/* 2. PHILOSOPHY & CREED - The Mamluk Litmus Test */}
       <section className="w-full py-48 relative layer-0 border-y border-quiet">
+        {/* Five Strands Watermark */}
+        <div className="absolute top-0 right-0 w-64 h-full pointer-events-none opacity-[0.02] select-none">
+          <NextImage src="/images/brand/strands/Value_Strands.svg" alt="" fill className="object-contain object-right" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-12 gap-16 items-center">
             <div className="col-span-12 lg:col-span-7">
@@ -133,8 +149,11 @@ export default async function HomePage({
             <div className="col-span-12 lg:col-span-5">
               <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-white uppercase tracking-tighter leading-[0.85]">{t('productsTitle')}</h2>
               <p className="text-ghost text-xl mb-16 max-w-md font-brand font-light leading-relaxed opacity-70">العتاد السيادي: أدوات مصممة بنخبوية هجينة تجمع بين عراقة الصناعة اليدوية وتكنولوجيا القرن الحادي والعشرين.</p>
-              <Link href="/gearup" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em]">
-                {t('viewAllCollection')} <ArrowRight className="ms-4 w-5 h-5" />
+              <Link href="/gearup" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em] flex items-center">
+                {t('viewAllCollection')} 
+                <div className="ms-4 relative w-10 h-3">
+                  <NextImage src="/images/brand/arrow/Linear_Arrow_Gold.png" alt="" fill className="object-contain" />
+                </div>
               </Link>
             </div>
 
@@ -143,7 +162,7 @@ export default async function HomePage({
                 <div className="flex flex-col md:flex-row items-center gap-20">
                   <div className="w-full md:w-1/2 h-96 relative">
                     <NextImage 
-                      src="/images/brand/brand-bow.png" 
+                      src="/images/brand/crescent/Crescent_Gold.png" 
                       alt="Guardian Bow" 
                       fill 
                       className="object-contain cinema-lut scale-110 group-hover:scale-125 transition-all duration-cine" 

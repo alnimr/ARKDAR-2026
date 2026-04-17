@@ -8,7 +8,16 @@ export default async function Footer() {
   const locale = await getLocale();
 
   return (
-    <footer className="mt-48 relative z-20 layer-1 border-t border-quiet font-brand">
+    <footer className="mt-48 relative z-20 layer-1 border-t border-quiet font-brand overflow-hidden">
+      {/* ── Sovereign Watermark: Five Strands ── */}
+      <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none opacity-[0.03] select-none">
+        <NextImage
+          src="/images/brand/strands/Value_Strands.svg"
+          alt=""
+          fill
+          className="object-contain object-right-top cinema-lut"
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto px-8 py-40">
         <div className="grid grid-cols-12 gap-24">
@@ -17,7 +26,7 @@ export default async function Footer() {
           <div className="col-span-12 md:col-span-12 lg:col-span-5">
             <div className="flex items-center gap-8 mb-16">
               <NextImage
-                src="/images/brand/logo.png"
+                src="/images/brand/logo/ARKDAR_Logo_Ivory.png"
                 alt="ARKDAR Logo"
                 width={64}
                 height={64}

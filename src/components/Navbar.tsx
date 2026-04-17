@@ -55,15 +55,14 @@ export default function Navbar() {
         isScrolled ? 'border-gold bg-layer-0' : ''
       }`}>
 
-        {/* ── Brand Logo ── */}
         <Link href="/" className="flex items-center gap-6 group">
-          <div className="relative w-12 h-12">
+          <div className="relative w-14 h-14">
             <NextImage
-              src="/images/brand/logo.png"
+              src="/images/brand/logo/ARKDAR_Logo_Gold.png"
               alt="ARKDAR Logo"
-              width={48}
-              height={48}
-              className="object-contain cinema-lut group-hover:rotate-12 transition-transform duration-cine"
+              width={56}
+              height={56}
+              className="object-contain cinema-lut group-hover:drop-shadow-[0_0_15px_rgba(184,146,42,0.4)] transition-all duration-cine"
               priority
             />
           </div>
