@@ -22,7 +22,7 @@ export default function PortalDashboardClient() {
           <h2 className="text-4xl md:text-6xl font-title text-white tracking-tight">
             {viewMode === 'trainee' ? t('navOverview') : t('coachDashboard')}
           </h2>
-          <div className="flex items-center gap-2 mt-4 text-brand-primary text-[10px] font-bold uppercase tracking-[4px] font-numbers">
+          <div className="flex items-center gap-2 mt-4 text-brand-primary text-[10px] font-bold uppercase tracking-[4px] font-latin">
             <span className="w-8 h-[1px] bg-brand-primary/40" />
             {viewMode === 'trainee' ? 'Tactical Unit: Trainee' : 'Tactical Unit: Senior Coach'}
           </div>
@@ -30,17 +30,17 @@ export default function PortalDashboardClient() {
 
         <div className="flex flex-col md:flex-row items-end md:items-center gap-4">
           <LiveClock />
-          <div className="flex bg-surface-dark p-1 rounded-sovereign border border-white/10 backdrop-blur-[12px]">
+          <div className="flex bg-surface-dark border border-sovereign layer-1">
             <button 
               onClick={() => setViewMode('trainee')}
-              className={`px-6 py-3 rounded-sovereign flex items-center gap-2 text-[10px] font-bold transition-all uppercase tracking-widest font-body ${viewMode === 'trainee' ? 'bg-brand-primary text-white shadow-lg' : 'text-white/40 hover:text-white'}`}
+              className={`px-6 py-3 flex items-center gap-2 text-[10px] font-bold transition-all uppercase tracking-widest font-body ${viewMode === 'trainee' ? 'bg-brand-primary text-white shadow-lg' : 'text-white/40 hover:text-white'}`}
             >
               <UserCircle size={16} />
               {t('viewAsTrainee')}
             </button>
             <button 
               onClick={() => setViewMode('coach')}
-              className={`px-6 py-3 rounded-sovereign flex items-center gap-2 text-[10px] font-bold transition-all uppercase tracking-widest font-body ${viewMode === 'coach' ? 'bg-brand-primary text-white shadow-lg' : 'text-white/40 hover:text-white'}`}
+              className={`px-6 py-3 flex items-center gap-2 text-[10px] font-bold transition-all uppercase tracking-widest font-body ${viewMode === 'coach' ? 'bg-brand-primary text-white shadow-lg' : 'text-white/40 hover:text-white'}`}
             >
               <GraduationCap size={16} />
               {t('viewAsCoach')}
@@ -53,7 +53,7 @@ export default function PortalDashboardClient() {
         <>
           {/* Laboratory Highlight */}
           <div className="grid grid-cols-1 gap-8">
-             <Link href="/portal/lab" className="glass-sovereign p-12 relative overflow-hidden group hover:border-brand-primary/40 transition-all block">
+             <Link href="/portal/lab" className="layer-1 p-12 relative overflow-hidden group border border-sovereign hover:border-brand-primary/40 transition-all block">
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
                    <div>
@@ -80,18 +80,18 @@ export default function PortalDashboardClient() {
 
             {/* Tactical Sidebar Stats */}
             <div className="lg:col-span-4 flex flex-col gap-6">
-               <div className="glass-sovereign p-8 h-full">
+               <div className="layer-1 p-8 h-full border border-sovereign">
                   <h3 className="text-lg font-bold mb-6 text-white/80 font-title">المؤشرات التراكمية</h3>
                   <div className="space-y-6">
-                     <div className="flex justify-between items-center bg-white/5 p-4 rounded-sovereign border border-white/5 hover:bg-white/10 transition-colors">
+                     <div className="flex justify-between items-center layer-2 p-4 border border-sovereign hover:bg-white/5 transition-colors">
                         <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest font-body">متوسط استقرار الجذع</span>
-                        <span className="text-2xl font-numbers text-brand-primary">88°</span>
+                        <span className="text-2xl font-latin font-bold text-brand-primary">88°</span>
                      </div>
-                     <div className="flex justify-between items-center bg-white/5 p-4 rounded-sovereign border border-white/5 hover:bg-white/10 transition-colors">
+                     <div className="flex justify-between items-center layer-2 p-4 border border-sovereign hover:bg-white/5 transition-colors">
                         <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest font-body">دقة التقاط الأوتاد</span>
-                        <span className="text-2xl font-numbers text-brand-secondary">92%</span>
+                        <span className="text-2xl font-latin font-bold text-brand-secondary">92%</span>
                      </div>
-                     <div className="p-6 bg-brand-primary/10 rounded-sovereign border border-brand-primary/20 mt-8">
+                     <div className="p-6 bg-brand-primary/10 border border-brand-primary/20 mt-8">
                         <p className="text-[10px] text-brand-primary font-bold uppercase tracking-widest mb-2 font-body">توصية القائد</p>
                         <p className="text-sm text-white/80 italic leading-relaxed font-body">
                           &quot;استمر في التركيز على ثبات الحوض أثناء الانتقال من الكانتر إلى الغالوب.&quot;

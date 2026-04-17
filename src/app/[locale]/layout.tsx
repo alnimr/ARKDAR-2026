@@ -4,25 +4,25 @@ import {routing} from '@/i18n/routing';
 import {notFound} from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { El_Messiri, Cairo, Montserrat } from 'next/font/google';
+import { El_Messiri, Scheherazade_New, Cinzel } from 'next/font/google';
 import '../globals.css';
 
 const elMessiri = El_Messiri({
   subsets: ['arabic'],
-  weight: ['700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-el-messiri',
 });
 
-const cairo = Cairo({
+const scheherazade = Scheherazade_New({
   subsets: ['arabic'],
-  weight: ['400', '500', '700'],
-  variable: '--font-cairo',
+  weight: ['400', '700'],
+  variable: '--font-scheherazade',
 });
 
-const montserrat = Montserrat({
+const cinzel = Cinzel({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-montserrat',
+  weight: ['400', '600', '700'],
+  variable: '--font-cinzel',
 });
 
 export function generateStaticParams() {
@@ -55,7 +55,7 @@ export default async function LocaleLayout({
       lang={locale} 
       dir={direction} 
       suppressHydrationWarning
-      className={`${elMessiri.variable} ${cairo.variable} ${montserrat.variable}`}
+      className={`${elMessiri.variable} ${scheherazade.variable} ${cinzel.variable}`}
     >
       <head>
         <title>ARKDAR</title>

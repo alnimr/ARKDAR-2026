@@ -71,10 +71,10 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
       {/* Metadata Section */}
       <div className="mb-16 space-y-8">
         <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-          <span className="text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/40">
+          <span className="text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/40">
             {translations.date}
           </span>
-          <span className="text-foreground/80 text-xs font-numbers font-bold flex items-center gap-3">
+          <span className="text-foreground/80 text-xs font-latin font-bold flex items-center gap-3">
             <Calendar size={14} className="text-brand-primary/40" strokeWidth={1.5} />
             {formattedDate}
           </span>
@@ -82,7 +82,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
 
         {post.author && (
           <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-            <span className="text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/40">
+            <span className="text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/40">
               {translations.author}
             </span>
             <span className="text-foreground/80 text-xs font-body font-bold flex items-center gap-3">
@@ -93,10 +93,10 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
         )}
 
         <div className={`flex flex-col gap-2 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>
-          <span className="text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/40">
+          <span className="text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/40">
             {translations.readTime}
           </span>
-          <span className="text-foreground/80 text-xs font-numbers font-bold flex items-center gap-3">
+          <span className="text-foreground/80 text-xs font-latin font-bold flex items-center gap-3">
             <Clock size={14} className="text-brand-primary/40" strokeWidth={1.5} />
             {readTime} {locale === 'ar' ? 'دقائق قراءة' : 'MIN READ'}
           </span>
@@ -106,7 +106,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
       {/* Table of Contents Section */}
       {headings.length > 0 && (
         <nav className="border-t border-brand-primary/5 pt-12">
-          <h4 className={`text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/30 mb-8 ${isRtl ? 'text-right' : 'text-left'}`}>
+          <h4 className={`text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/30 mb-8 ${isRtl ? 'text-right' : 'text-left'}`}>
             {translations.toc}
           </h4>
           <ul className="space-y-5">

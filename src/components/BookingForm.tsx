@@ -137,11 +137,11 @@ export default function BookingForm() {
       <div className="mb-12 flex justify-between items-center px-4">
         {[1, 2, 3, 4, 5].map((s) => (
           <div key={s} className="flex items-center">
-            <div className={`w-12 h-12 rounded-sovereign flex items-center justify-center transition-all duration-300 border font-numbers font-black 
-              ${step >= s ? 'bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20 scale-105' : 'border-white/10 text-white/20'}`}>
+            <div className={`w-12 h-12 flex items-center justify-center transition-all duration-300 border font-latin font-bold 
+              ${step >= s ? 'bg-brand-primary border-brand-primary text-surface-dark shadow-lg shadow-brand-primary/20 scale-105' : 'border-sovereign text-white/20'}`}>
               {step > s ? <CheckCircle2 className="w-5 h-5" /> : s}
             </div>
-            {s < 5 && <div className={`w-8 h-px mx-2 md:w-16 transition-colors duration-300 ${step > s ? 'bg-brand-primary' : 'bg-white/10'}`} />}
+            {s < 5 && <div className={`w-8 h-px mx-2 md:w-16 transition-colors duration-300 ${step > s ? 'bg-brand-primary' : 'border-sovereign'}`} />}
           </div>
         ))}
       </div>
@@ -162,8 +162,8 @@ export default function BookingForm() {
                 <button
                   key={loc.id}
                   onClick={() => { setArena(loc.id as ArenaID); nextStep(); }}
-                  className={`group relative overflow-hidden rounded-sovereign h-72 transition-all duration-300 border 
-                    ${arena === loc.id ? 'border-brand-primary ring-2 ring-brand-primary/20' : 'border-white/5'}`}
+                  className={`group relative overflow-hidden h-72 transition-all duration-300 border 
+                    ${arena === loc.id ? 'border-brand-primary ring-2 ring-brand-primary/20' : 'border-sovereign'}`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
                   <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-300 bg-surface cinema-lut">
@@ -176,7 +176,7 @@ export default function BookingForm() {
                     />
                   </div>
                   <div className="absolute inset-0 flex flex-col justify-end p-8 z-20 text-start">
-                    <span className="text-brand-primary text-[10px] font-numbers font-black uppercase tracking-[0.3em] mb-2 flex items-center gap-2">
+                    <span className="text-brand-primary text-[10px] font-latin font-bold uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
                        <MapPin className="w-3 h-3" strokeWidth={2} /> ARKDAR ARENA
                     </span>
                     <h3 className="text-2xl font-title font-bold text-white group-hover:text-brand-primary transition-colors duration-300">{loc.label}</h3>
@@ -198,7 +198,7 @@ export default function BookingForm() {
             <div className="space-y-10">
               {categories.map((cat) => (
                 <div key={cat} className="space-y-4">
-                  <h4 className="text-brand-primary font-numbers font-black tracking-[0.4em] text-[10px] uppercase flex items-center gap-2">
+                  <h4 className="text-brand-primary font-latin font-bold tracking-[0.3em] text-[10px] uppercase flex items-center gap-2">
                     <span className="w-8 h-px bg-brand-primary/30" />
                     {t(`services.${cat}.title`)}
                   </h4>
@@ -207,10 +207,10 @@ export default function BookingForm() {
                       <button
                         key={s.id}
                         onClick={() => toggleService(s.id)}
-                        className={`p-6 rounded-sovereign flex flex-col items-center gap-3 transition-all duration-300 border backdrop-blur-sm
+                        className={`p-6 flex flex-col items-center gap-3 transition-all duration-300 border 
                           ${selectedServices.includes(s.id) 
-                            ? 'bg-brand-primary/10 border-brand-primary text-brand-primary shadow-[0_0_20px_rgba(145,16,16,0.15)]' 
-                            : 'bg-white/[0.03] border-white/5 text-white/40 hover:bg-white/[0.08] hover:border-white/10'}`}
+                            ? 'bg-brand-primary/10 border-brand-primary text-brand-primary shadow-[0_0_20px_rgba(184,146,42,0.15)]' 
+                            : 'layer-2 border-sovereign text-white/40 hover:bg-white/[0.08] hover:border-white/10'}`}
                       >
                         <s.icon className={`w-8 h-8 transition-transform duration-300 ${selectedServices.includes(s.id) ? 'scale-110' : 'grayscale opacity-30'}`} />
                         <span className="text-[10px] font-body font-bold uppercase tracking-widest text-center leading-tight">
@@ -223,7 +223,7 @@ export default function BookingForm() {
               ))}
             </div>
 
-            <div className="flex justify-between items-center mt-12 glass-sovereign p-6 rounded-sovereign sticky bottom-4 border border-white/10 z-50">
+            <div className="flex justify-between items-center mt-12 layer-3 p-6 sticky bottom-4 border border-sovereign z-50">
               <button onClick={prevStep} className="flex items-center gap-2 text-white/40 font-body font-bold uppercase tracking-widest text-[10px] hover:text-brand-primary transition-colors duration-300">
                 <ChevronLeft className="w-4 h-4" /> {t('actions.back')}
               </button>
@@ -245,7 +245,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-title font-bold text-white mb-4 uppercase tracking-[0.2em]">{t('steps.details')}</h2>
             </div>
             
-            <div className="glass-sovereign p-10 rounded-sovereign space-y-8 max-w-2xl mx-auto border border-white/10">
+            <div className="layer-2 p-10 space-y-8 max-w-2xl mx-auto border border-sovereign">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <label className="text-[10px] font-body font-bold uppercase tracking-widest text-white/40 flex items-center gap-2">
@@ -256,7 +256,7 @@ export default function BookingForm() {
                     aria-label={t('fields.date')}
                     value={formData.date}
                     onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="w-full bg-black/20 border border-white/5 rounded-sovereign px-5 py-4 text-white focus:border-brand-primary outline-none transition-all duration-300 font-numbers" 
+                    className="w-full bg-black/20 border border-sovereign px-5 py-4 text-white focus:border-brand-primary outline-none transition-all duration-300 font-latin" 
                   />
                 </div>
                 <div className="space-y-3">
@@ -270,7 +270,7 @@ export default function BookingForm() {
                     title={t('fields.count')}
                     value={formData.count}
                     onChange={(e) => setFormData({...formData, count: e.target.value})}
-                    className="w-full bg-black/20 border border-white/5 rounded-sovereign px-5 py-4 text-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-white/5 font-numbers" 
+                    className="w-full bg-black/20 border border-sovereign px-5 py-4 text-white focus:border-brand-primary outline-none transition-all duration-300 placeholder:text-white/5 font-latin" 
                   />
                 </div>
               </div>
@@ -282,10 +282,10 @@ export default function BookingForm() {
                     <button
                       key={level}
                       onClick={() => setFormData({...formData, experience: level})}
-                      className={`py-4 rounded-sovereign border text-[10px] font-body font-bold uppercase tracking-widest transition-all duration-300
+                      className={`py-4 border text-[10px] font-body font-bold uppercase tracking-widest transition-all duration-300
                         ${formData.experience === level 
-                          ? 'border-brand-primary bg-brand-primary text-white shadow-lg shadow-brand-primary/20' 
-                          : 'border-white/5 bg-white/[0.02] text-white/40 hover:bg-white/[0.05]'}`}
+                          ? 'border-brand-primary bg-brand-primary text-surface-dark shadow-lg shadow-brand-primary/20' 
+                          : 'border-sovereign bg-white/[0.02] text-white/40 hover:bg-white/[0.05]'}`}
                     >
                       {t(`experienceLevels.${level}`)}
                     </button>
@@ -312,7 +312,7 @@ export default function BookingForm() {
               <h2 className="text-3xl font-title font-bold text-white mb-4 uppercase tracking-[0.2em]">{t('steps.profile')}</h2>
             </div>
 
-            <div className="grid gap-8 max-w-2xl mx-auto glass-sovereign p-10 rounded-sovereign border border-white/10">
+            <div className="grid gap-8 max-w-2xl mx-auto layer-2 p-10 border border-sovereign">
               <div className="space-y-3">
                 <label className="text-[10px] font-body font-bold uppercase tracking-widest text-white/40 flex items-center gap-2"><User className="w-3 h-3 text-brand-primary" /> {t('fields.name')}</label>
                 <input 
@@ -320,7 +320,7 @@ export default function BookingForm() {
                   title={t('fields.name')}
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-black/20 border border-white/5 rounded-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all duration-300 font-body" 
+                  className="w-full bg-black/20 border border-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all duration-300 font-body" 
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-8">
@@ -331,7 +331,7 @@ export default function BookingForm() {
                     title={t('fields.email')}
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-black/20 border border-white/5 rounded-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all duration-300 font-body" 
+                    className="w-full bg-black/20 border border-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all duration-300 font-body" 
                   />
                 </div>
                 <div className="space-y-3">
@@ -341,7 +341,7 @@ export default function BookingForm() {
                     title={t('fields.phone')}
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full bg-black/20 border border-white/5 rounded-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all duration-300 font-numbers" 
+                    className="w-full bg-black/20 border border-sovereign px-6 py-5 text-white focus:border-brand-primary outline-none transition-all duration-300 font-latin" 
                   />
                 </div>
               </div>
@@ -365,7 +365,7 @@ export default function BookingForm() {
         {/* Step 5: Success/Processing */}
         {step === 5 && (
           <div className="animate-fade-in text-center space-y-10 py-16">
-            <div className="w-24 h-24 bg-brand-primary/10 rounded-sovereign flex items-center justify-center mx-auto ring-8 ring-brand-primary/5 animate-pulse border border-brand-primary/20">
+            <div className="w-24 h-24 bg-brand-primary/10 flex items-center justify-center mx-auto ring-8 ring-brand-primary/5 animate-pulse border border-brand-primary/20">
               <CheckCircle2 className="w-12 h-12 text-brand-primary" />
             </div>
             <div className="space-y-6">

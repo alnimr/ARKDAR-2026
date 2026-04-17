@@ -38,15 +38,15 @@ const MetricCard: React.FC<MetricCardProps> = ({ label, value, unit, description
   <motion.div 
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
-    className="bg-black/40 backdrop-blur-[12px] border border-white/10 p-4 rounded-sovereign"
+    className="bg-black/40 border border-sovereign p-4"
   >
     <div className="flex justify-between items-start mb-2">
       <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest font-body">{label}</span>
-      <div className={`w-2 h-2 rounded-full ${statusColor.includes('brand') ? statusColor.replace('text-', 'bg-') : 'bg-white/20'}`} />
+      <div className={`w-2 h-2 ${statusColor.includes('brand') ? statusColor.replace('text-', 'bg-') : 'bg-white/20'}`} />
     </div>
     <div className="flex items-baseline gap-1">
-      <span className={`text-2xl font-bold font-numbers ${statusColor}`}>{value ?? '--'}</span>
-      {unit && <span className="text-white/40 text-[10px] font-numbers">{unit}</span>}
+      <span className={`text-2xl font-bold font-latin ${statusColor}`}>{value ?? '--'}</span>
+      {unit && <span className="text-white/40 text-[10px] font-latin">{unit}</span>}
     </div>
     {description && <p className="text-white/40 text-[10px] mt-1 leading-tight font-body">{description}</p>}
   </motion.div>
@@ -248,7 +248,7 @@ export default function ArenaLab() {
             <div className="flex gap-3">
               <label 
                 htmlFor="video-upload"
-                className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-sovereign flex items-center gap-2 transition-all cursor-pointer font-bold uppercase tracking-widest text-[10px]"
+                className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-sovereign flex items-center gap-2 transition-all cursor-pointer font-bold uppercase tracking-widest text-[10px]"
               >
                 <Upload size={18} className="text-brand-primary" />
                 <span>رفع فيديو</span>
@@ -269,7 +269,7 @@ export default function ArenaLab() {
         </div>
 
         {!isLoaded ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white/5 rounded-sovereign border border-white/10 border-dashed">
+          <div className="flex flex-col items-center justify-center py-20 bg-white/5 border border-sovereign border-dashed">
             <Activity className="w-12 h-12 text-brand-primary animate-pulse mb-4" />
             <p className="text-xl font-medium text-white/40 font-body">جاري تحميل نماذج السيادة الرقمية...</p>
           </div>
@@ -277,7 +277,7 @@ export default function ArenaLab() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Main Viewport */}
             <div className="lg:col-span-8 flex flex-col gap-4">
-              <div className="relative aspect-video bg-black rounded-sovereign overflow-hidden border border-white/10 group">
+              <div className="relative aspect-video bg-black overflow-hidden border border-sovereign group">
                 {videoSrc ? (
                   <>
                     <video 
@@ -303,8 +303,8 @@ export default function ArenaLab() {
                 {/* HUD Overlay */}
                 {isAnalyzing && (
                   <div className="absolute top-6 left-6 flex flex-col gap-2">
-                    <div className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                    <div className="bg-black/60 px-3 py-1 border border-white/20 flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-500 animate-pulse" />
                       <span className="text-[10px] font-bold tracking-widest uppercase">Live Analysis</span>
                     </div>
                   </div>
@@ -312,17 +312,17 @@ export default function ArenaLab() {
               </div>
 
               {/* Quick Actions */}
-              <div className="flex gap-4 p-4 bg-white/5 rounded-sovereign border border-white/10">
+              <div className="flex gap-4 p-4 bg-white/5 border border-sovereign">
                 <button 
                   onClick={() => setDiscipline('horseback_archery')}
-                  className={`flex-1 py-4 rounded-sovereign flex flex-col items-center gap-2 transition-all font-body ${discipline === 'horseback_archery' ? 'bg-brand-primary text-white shadow-lg' : 'hover:bg-white/5 text-white/40'}`}
+                  className={`flex-1 py-4 flex flex-col items-center gap-2 transition-all font-body ${discipline === 'horseback_archery' ? 'bg-brand-primary text-white shadow-lg' : 'hover:bg-white/5 text-white/40'}`}
                 >
                   <Target size={20} />
                   <span className="text-[10px] font-bold uppercase tracking-widest">الرماية من الخيل</span>
                 </button>
                 <button 
                   onClick={() => setDiscipline('tent_pegging')}
-                  className={`flex-1 py-4 rounded-sovereign flex flex-col items-center gap-2 transition-all font-body ${discipline === 'tent_pegging' ? 'bg-brand-primary text-white shadow-lg' : 'hover:bg-white/5 text-white/40'}`}
+                  className={`flex-1 py-4 flex flex-col items-center gap-2 transition-all font-body ${discipline === 'tent_pegging' ? 'bg-brand-primary text-white shadow-lg' : 'hover:bg-white/5 text-white/40'}`}
                 >
                   <Activity size={20} />
                   <span className="text-[10px] font-bold uppercase tracking-widest">التقاط الأوتاد</span>
@@ -332,7 +332,7 @@ export default function ArenaLab() {
 
             {/* Analysis Sidebar */}
             <div className="lg:col-span-4 flex flex-col gap-6">
-              <div className="glass-sovereign p-6 flex flex-col h-full">
+              <div className="layer-1 p-6 flex flex-col h-full border border-sovereign">
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-xl font-bold flex items-center gap-2 font-title">
                     <Activity className="text-brand-primary" size={24} />
@@ -343,7 +343,7 @@ export default function ArenaLab() {
                       title="Save Session"
                       onClick={handleSaveSession}
                       disabled={isSaving || !currentMetrics.torsoAngle}
-                      className={`p-2 rounded-sovereign transition-all border border-white/10 ${
+                      className={`p-2 transition-all border border-sovereign ${
                         saveStatus === 'success' ? 'bg-brand-primary/20 text-brand-primary border-brand-primary' : 
                         saveStatus === 'error' ? 'bg-brand-tertiary/20 text-brand-tertiary' :
                         isSaving ? 'animate-pulse text-white/20' : 'hover:bg-white/10 text-white/40 hover:text-white'
@@ -353,7 +353,7 @@ export default function ArenaLab() {
                     </button>
                     <button 
                       title="Download Report"
-                      className="p-2 hover:bg-white/10 rounded-sovereign text-white/40 hover:text-white transition-colors border border-white/10"
+                      className="p-2 hover:bg-white/10 text-white/40 hover:text-white transition-colors border border-sovereign"
                     >
                       <Download size={20} />
                     </button>
@@ -391,7 +391,7 @@ export default function ArenaLab() {
                 </div>
 
                 <div className="mt-auto space-y-4">
-                  <div className="bg-black/40 p-5 rounded-sovereign border border-brand-primary/20">
+                  <div className="bg-black/40 p-5 border border-brand-primary/20">
                     <div className="flex items-center gap-2 mb-3 text-brand-primary">
                       <Info size={16} />
                       <span className="text-[10px] font-bold uppercase tracking-widest font-body">توجيه السيادة الرقمية</span>
@@ -401,7 +401,7 @@ export default function ArenaLab() {
                     </p>
                   </div>
 
-                  <button className="w-full py-4 bg-brand-secondary hover:bg-brand-primary text-white font-bold rounded-sovereign transition-all flex items-center justify-center gap-2 font-body uppercase tracking-[2px] text-[12px]">
+                  <button className="w-full py-4 bg-brand-secondary hover:bg-brand-primary text-white font-bold transition-all flex items-center justify-center gap-2 font-body uppercase tracking-[2px] text-[12px]">
                     <Share2 size={20} />
                     مشاركة التقرير السيادي
                   </button>

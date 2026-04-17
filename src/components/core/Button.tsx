@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes, forwardRef } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'glass' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'crimson' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
 }
@@ -10,19 +10,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className = '', variant = 'primary', size = 'md', isLoading = false, children, ...props }, ref) => {
     
     // Sovereign Design Standards
-    const baseStyles = 'inline-flex items-center justify-center font-body font-bold uppercase tracking-widest transition-all duration-300 ease-out disabled:opacity-50 disabled:pointer-events-none rounded-sovereign active:scale-95';
+    const baseStyles = 'inline-flex items-center justify-center font-latin font-bold uppercase tracking-widest transition-all duration-300 ease-out disabled:opacity-50 disabled:pointer-events-none active:scale-95 border';
     
     const variants = {
-      primary: 'bg-brand-primary text-white hover:bg-brand-secondary shadow-[0_12px_24px_-8px_rgba(145,16,16,0.5)] border border-white/10',
-      secondary: 'glass-sovereign text-brand-primary hover:text-white hover:bg-brand-primary border border-brand-primary/30',
-      glass: 'glass-sovereign text-foreground hover:bg-brand-primary/10 border border-brand-primary/10',
-      ghost: 'bg-transparent text-foreground/40 hover:text-brand-primary transition-colors',
+      primary: 'bg-brand-primary text-surface-dark border-brand-secondary hover:bg-brand-secondary shadow-[0_8px_20px_rgba(184,146,42,0.2)]',
+      secondary: 'layer-1 text-brand-primary border-sovereign hover:bg-brand-primary/10',
+      crimson: 'bg-brand-crimson text-white border-white/10 hover:brightness-110 shadow-[0_8px_20px_rgba(122,21,21,0.3)]',
+      ghost: 'bg-transparent text-foreground/60 border-transparent hover:text-brand-primary transition-colors',
     };
     
     const sizes = {
-      sm: 'h-10 px-6 text-[9px] font-numbers font-black tracking-[0.2em]',
-      md: 'h-14 px-10 text-[10px] font-numbers font-black tracking-[0.3em]',
-      lg: 'h-20 px-16 text-xs font-numbers font-black tracking-[0.4em]',
+      sm: 'h-10 px-6 text-[10px] tracking-[0.15em]',
+      md: 'h-12 px-10 text-[11px] tracking-[0.2em]',
+      lg: 'h-16 px-14 text-xs tracking-[0.3em]',
     };
 
     return (

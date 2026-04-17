@@ -51,8 +51,8 @@ export default function Navbar() {
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-in-out ${
       isScrolled ? 'py-2' : 'py-6 px-4 md:px-12'
     }`}>
-      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-4 transition-all duration-300 glass-sovereign ${
-        isScrolled ? 'border-brand-primary/10' : ''
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-4 transition-all duration-300 layer-1 border-sovereign depth-card ${
+        isScrolled ? 'border-brand-primary/40' : ''
       }`}>
 
         {/* ── Brand Logo ── */}
@@ -93,7 +93,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-2 px-4 py-2 rounded-sovereign text-[10px] font-bold uppercase tracking-widest text-foreground/80 hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
+              className="flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-foreground/80 hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
             >
               <Globe className="w-4 h-4 text-brand-primary" />
               <span className="hidden sm:inline">{locale}</span>
@@ -101,7 +101,7 @@ export default function Navbar() {
             </button>
 
             {isLangOpen && (
-              <div className="absolute top-full mt-2 end-0 glass-sovereign border-brand-primary/10 overflow-hidden w-40 shadow-2xl z-50 animate-fade-up">
+              <div className="absolute top-full mt-2 end-0 layer-2 border-sovereign overflow-hidden w-40 shadow-2xl z-50 animate-fade-up">
                 {LOCALES.map(l => (
                   <button
                     key={l.code}
@@ -124,7 +124,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-sovereign text-brand-primary hover:bg-brand-primary/10 transition-all"
+            className="lg:hidden p-2 text-brand-primary hover:bg-brand-primary/10 transition-all"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -134,13 +134,13 @@ export default function Navbar() {
 
       {/* ── Mobile Menu ── */}
       {isMenuOpen && (
-        <div className="lg:hidden mt-4 px-6 mx-4 glass-sovereign border-brand-primary/10 py-8 flex flex-col gap-4 animate-fade-up">
+        <div className="lg:hidden mt-4 px-6 mx-4 layer-2 border-sovereign py-8 flex flex-col gap-4 animate-fade-up">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href as '/'}
               onClick={() => setIsMenuOpen(false)}
-              className="py-3 px-4 rounded-sovereign text-xs font-semibold uppercase tracking-widest text-foreground hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
+              className="py-3 px-4 text-xs font-semibold uppercase tracking-widest text-foreground hover:bg-brand-primary/10 transition-all border border-transparent hover:border-brand-primary/20 font-body"
             >
               {link.label}
             </Link>

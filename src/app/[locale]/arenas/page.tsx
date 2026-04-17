@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/routing';
 import { Target, ArrowRight, Shield, Compass, Globe } from 'lucide-react';
 import NextImage from 'next/image';
 import { Suspense } from 'react';
@@ -24,9 +25,12 @@ export default async function ArenaPage({
 
       {/* ── Header ── */}
       <section className="py-24 px-6 text-center relative z-10 px-6">
-        <span className="text-[10px] font-numbers font-black uppercase tracking-[0.4em] text-brand-primary mb-6 block animate-fade-in">
+        <Link
+          href={`/${locale}/heritage`}
+          className="inline-flex items-center gap-3 text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/50 hover:text-brand-primary transition-all duration-300 mb-16 group"
+        >
           {t('heroTag')}
-        </span>
+        </Link>
         <h1 className="text-5xl md:text-8xl font-title font-bold text-brand-primary mb-8 leading-none uppercase tracking-tighter">
           {t('title')}
         </h1>
@@ -38,12 +42,12 @@ export default async function ArenaPage({
         <div className="grid-sovereign">
           
           {/* Main Experience Card (Training) */}
-          <div className="col-span-12 lg:col-span-8 glass-sovereign p-10 md:p-14 rounded-sovereign border border-brand-primary/10 group relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-64 h-64 border-brand-primary/5 border-t-2 border-r-2 rounded-sovereign -mr-20 -mt-20 group-hover:scale-110 transition-transform" />
+          <div className="col-span-12 lg:col-span-8 layer-1 p-10 md:p-14 border border-sovereign group relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-64 h-64 border-brand-primary/5 border-t-2 border-r-2 -mr-20 -mt-20 group-hover:scale-110 transition-transform" />
              <div className="absolute inset-0 brand-horse-bg opacity-[0.02] group-hover:opacity-[0.05] transition-opacity" />
              
              <div className="flex items-center gap-6 mb-10 relative">
-                <div className="w-16 h-16 bg-brand-primary/10 rounded-sovereign flex items-center justify-center border border-brand-primary/20">
+                <div className="w-16 h-16 layer-2 flex items-center justify-center border border-sovereign">
                    <Target size={30} className="text-brand-primary" strokeWidth={1.2} />
                 </div>
                 <h2 className="text-3xl md:text-5xl font-title text-brand-primary uppercase tracking-wide">{t('masterclassTitle')}</h2>
@@ -54,18 +58,18 @@ export default async function ArenaPage({
              </p>
 
              <div className="flex flex-wrap gap-6 relative">
-                <button className="btn-primary px-10 py-5">
+                <button className="btn-sovereign px-10 py-5">
                    {t('bookSession')} <ArrowRight size={18} />
                 </button>
              </div>
           </div>
 
           {/* Tourism Tours Card (Refined) */}
-          <div className="col-span-12 lg:col-span-7 glass-sovereign p-10 md:p-14 rounded-sovereign border border-brand-secondary/10 group relative overflow-hidden order-last lg:order-none">
-             <div className="absolute bottom-0 left-0 w-64 h-64 border-brand-secondary/5 border-b-2 border-l-2 rounded-sovereign -ml-20 -mb-20 group-hover:scale-110 transition-transform" />
+          <div className="col-span-12 lg:col-span-7 layer-1 p-10 md:p-14 border border-sovereign group relative overflow-hidden order-last lg:order-none">
+             <div className="absolute bottom-0 left-0 w-64 h-64 border-brand-secondary/5 border-b-2 border-l-2 -ml-20 -mb-20 group-hover:scale-110 transition-transform" />
              
              <div className="flex items-center gap-6 mb-10">
-                <div className="w-16 h-16 bg-brand-secondary/10 rounded-sovereign flex items-center justify-center border border-brand-secondary/20">
+                <div className="w-16 h-16 layer-2 flex items-center justify-center border border-sovereign">
                    <Compass size={30} className="text-brand-secondary" strokeWidth={1.2} />
                 </div>
                 <h2 className="text-3xl md:text-5xl font-title text-brand-primary uppercase tracking-wide">{t('toursTitle')}</h2>
@@ -73,7 +77,7 @@ export default async function ArenaPage({
 
              <div className="space-y-8 mb-12">
                 <div className="flex gap-6 items-start">
-                   <div className="w-10 h-10 glass-sovereign rounded-sovereign flex items-center justify-center shrink-0">
+                   <div className="w-10 h-10 layer-2 border border-sovereign flex items-center justify-center shrink-0">
                       <Globe size={18} className="text-brand-secondary" />
                    </div>
                    <div>
@@ -83,7 +87,7 @@ export default async function ArenaPage({
                 </div>
 
                 <div className="flex gap-6 items-start">
-                   <div className="w-10 h-10 glass-sovereign rounded-sovereign flex items-center justify-center shrink-0">
+                   <div className="w-10 h-10 layer-2 border border-sovereign flex items-center justify-center shrink-0">
                       <Globe size={18} className="text-brand-secondary" />
                    </div>
                    <div>
@@ -94,7 +98,7 @@ export default async function ArenaPage({
              </div>
 
              <div className="flex flex-wrap gap-6">
-                <button className="px-10 py-5 rounded-sovereign border border-brand-secondary/30 text-brand-secondary font-body font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-secondary/5 transition-all flex items-center gap-3">
+                <button className="px-10 py-5 border border-sovereign layer-2 text-brand-secondary font-body font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-secondary/5 transition-all flex items-center gap-3">
                    {t('bookTour')} <ArrowRight size={18} />
                 </button>
              </div>
@@ -102,21 +106,21 @@ export default async function ArenaPage({
 
           {/* Secondary Stats/Info */}
           <div className="col-span-12 lg:col-span-5 space-y-8">
-             <div className="glass-sovereign p-10 rounded-sovereign border border-brand-secondary/10 group transition-all">
+             <div className="layer-2 p-10 border border-sovereign group transition-all">
                 <Shield size={24} className="text-brand-secondary mb-4" strokeWidth={1.5} />
                 <h3 className="text-brand-primary font-title font-bold text-xl mb-4 uppercase tracking-widest">{t('safetyTitle')}</h3>
                 <p className="text-sm text-foreground/50 font-body leading-relaxed">{t('safetyDesc')}</p>
              </div>
              
-             <div className="glass-sovereign p-10 rounded-sovereign border border-brand-primary/10 bg-gradient-to-br from-brand-primary/[0.03] to-transparent relative overflow-hidden">
+             <div className="layer-2 p-10 border border-sovereign bg-gradient-to-br from-brand-primary/[0.03] to-transparent relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-[0.05] -mr-8 -mt-8 rotate-12" />
                 <h3 className="text-brand-primary font-title font-bold text-xl mb-6 uppercase tracking-widest">{t('expansionTitle')}</h3>
                 <div className="space-y-6">
-                   <div className="flex justify-between items-center text-[10px] text-brand-primary font-numbers font-black tracking-[0.3em] border-b border-brand-primary/10 pb-3 uppercase">
+                   <div className="flex justify-between items-center text-[10px] text-brand-primary font-latin font-bold tracking-[0.3em] border-b border-brand-primary/10 pb-3 uppercase">
                       <span>{t('switzerland')}</span>
                       <span>Q3 2026</span>
                    </div>
-                   <div className="flex justify-between items-center text-[10px] text-foreground/30 font-numbers font-bold tracking-[0.3em] uppercase">
+                   <div className="flex justify-between items-center text-[10px] text-foreground/30 font-latin font-bold tracking-[0.3em] uppercase">
                       <span>{t('spain')}</span>
                       <span>Q1 2027</span>
                    </div>
@@ -130,7 +134,7 @@ export default async function ArenaPage({
       <section className="py-10 px-6 max-w-7xl mx-auto z-10 relative">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 px-4">
           <div className="max-w-2xl">
-            <h3 className="text-brand-primary font-numbers font-black tracking-[0.4em] text-[10px] uppercase mb-6 opacity-60">
+            <h3 className="text-brand-primary font-latin font-bold tracking-[0.4em] text-[10px] uppercase mb-6 opacity-60">
                {t('ourServices')}
             </h3>
             <h2 className="text-4xl md:text-7xl font-title text-brand-primary uppercase tracking-tighter leading-none">
@@ -149,7 +153,7 @@ export default async function ArenaPage({
       <section className="py-32 px-6 max-w-7xl mx-auto">
          <div className="grid-sovereign">
             {[1, 2, 3, 4].map(i => (
-               <div key={i} className="col-span-6 md:col-span-3 relative aspect-square rounded-sovereign overflow-hidden glass-sovereign border border-brand-primary/10 cinema-lut hover:border-brand-primary/30 transition-all p-1">
+               <div key={i} className="col-span-6 md:col-span-3 relative aspect-square overflow-hidden layer-2 border border-sovereign cinema-lut hover:border-brand-primary/30 transition-all p-1">
                   <NextImage 
                      src={`/images/brand/brand-bow${i === 2 ? '2' : ''}.png`} 
                      alt={`Arena Detail ${i}`}

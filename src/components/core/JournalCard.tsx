@@ -137,7 +137,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.3, delay: index * 0.05, ease: "easeInOut" }}
-      className="glass-sovereign group relative flex flex-col overflow-hidden rounded-sovereign border border-brand-primary/10 transition-all duration-300 hover-sovereign bg-surface"
+      className="layer-2 group relative flex flex-col overflow-hidden border border-sovereign transition-all duration-300 hover-sovereign"
     >
       {/* Brand Watermark Overlay */}
       <div className="absolute top-0 right-0 w-32 h-32 brand-horse-bg opacity-0 group-hover:opacity-[0.03] -mr-8 -mt-8 rotate-12 transition-opacity duration-700 pointer-events-none" />
@@ -163,9 +163,9 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-90" />
         
         {/* Type Badge */}
-        <div className={`absolute top-6 ${locale === 'ar' ? 'right-6' : 'left-6'} flex items-center gap-2 px-4 py-2 rounded-sovereign border glass-sovereign ${config.border} backdrop-blur-md`}>
+        <div className={`absolute top-6 ${locale === 'ar' ? 'right-6' : 'left-6'} flex items-center gap-2 px-4 py-2 border layer-3 ${config.border}`}>
           <TypeIcon size={12} className="text-brand-primary" />
-          <span className="text-[9px] font-numbers font-black uppercase tracking-[0.2em] text-brand-primary">
+          <span className="text-[9px] font-latin font-bold uppercase tracking-[0.2em] text-brand-primary">
             {typeLabel}
           </span>
         </div>
@@ -174,7 +174,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       {/* Content */}
       <div className="flex flex-col flex-grow p-8 relative">
         {/* Meta */}
-        <div className={`flex items-center gap-5 mb-6 text-foreground/40 text-[9px] font-numbers font-black uppercase tracking-[0.2em] ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
+        <div className={`flex items-center gap-5 mb-6 text-foreground/40 text-[9px] font-latin font-bold uppercase tracking-[0.2em] ${locale === 'ar' ? 'flex-row-reverse justify-end' : ''}`}>
           <span className="flex items-center gap-2">
             <Calendar size={12} className="text-brand-primary/40" strokeWidth={1.5} />
             {formattedDate}
@@ -205,7 +205,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
 
         {/* CTA */}
         <div
-          className={`flex items-center gap-3 text-[9px] font-numbers font-black uppercase tracking-[0.2em] text-brand-primary/80 group-hover:text-brand-primary transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
+          className={`flex items-center gap-3 text-[9px] font-latin font-bold uppercase tracking-[0.2em] text-brand-primary/80 group-hover:text-brand-primary transition-all duration-300 relative z-30 ${locale === 'ar' ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
             ? (locale === 'ar' ? 'تحميل السجل' : 'Download Record')

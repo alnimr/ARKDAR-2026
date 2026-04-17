@@ -64,7 +64,7 @@ export default function LanguageSelectorModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/60 backdrop-blur-xl"
+          className="absolute inset-0 bg-black/80"
         />
 
         {/* Modal Container */}
@@ -72,14 +72,14 @@ export default function LanguageSelectorModal() {
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative w-full max-w-lg overflow-hidden bg-surface-dark/95 backdrop-blur-[12px] border border-white/10 rounded-sovereign shadow-[0_0_60px_rgba(0,0,0,0.5)]"
+          className="relative w-full max-w-lg overflow-hidden bg-surface-dark border border-sovereign shadow-[0_0_60px_rgba(0,0,0,0.5)]"
         >
           {/* Decorative Pattern Background */}
           <div className="absolute inset-0 opacity-10 pointer-events-none brand-pattern-waves" />
           
           <div className="relative p-8 md:p-12 text-center text-foreground-light">
             {/* Header Icon */}
-            <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-sovereign bg-brand-primary/20 border border-brand-primary/50">
+            <div className="inline-flex items-center justify-center w-16 h-16 mb-6 bg-brand-primary/20 border border-brand-primary/50">
               <Globe className="w-8 h-8 text-brand-primary" />
             </div>
 
@@ -97,10 +97,10 @@ export default function LanguageSelectorModal() {
                 <button
                   key={lang.code}
                   onClick={() => handleLanguageChange(lang.code)}
-                  className={`flex items-center gap-3 p-4 rounded-sovereign border transition-all duration-300 ${
+                  className={`flex items-center gap-3 p-4 border transition-all duration-300 ${
                     selectedLocale === lang.code 
                     ? 'bg-brand-primary border-brand-primary text-white shadow-[0_0_15px_rgba(145,16,16,0.4)]' 
-                    : 'bg-white/5 border-white/10 text-foreground/40 hover:border-brand-primary/50 hover:text-white font-medium font-body'
+                    : 'bg-white/5 border-sovereign text-foreground/40 hover:border-brand-primary/50 hover:text-white font-medium font-body'
                   }`}
                 >
                   <span className="text-xl">{lang.flag}</span>

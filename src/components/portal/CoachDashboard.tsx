@@ -80,13 +80,13 @@ export default function CoachDashboard() {
            <div className="flex gap-2">
               <button 
                 title="Filter"
-                className="p-2 bg-white/5 rounded-sovereign border border-white/10 text-white/40 hover:text-white"
+                className="p-2 layer-1 border border-sovereign text-white/40 hover:text-white"
               >
                 <Filter size={18}/>
               </button>
               <button 
                 title="Search"
-                className="p-2 bg-white/5 rounded-sovereign border border-white/10 text-white/40 hover:text-white"
+                className="p-2 layer-1 border border-sovereign text-white/40 hover:text-white"
               >
                 <Search size={18}/>
               </button>
@@ -100,28 +100,28 @@ export default function CoachDashboard() {
             transition={{ delay: i * 0.05 }}
             key={session.id}
             onClick={() => setSelectedSession(session)}
-            className={`p-5 rounded-sovereign border transition-all cursor-pointer group flex items-center justify-between ${
+            className={`p-5 border transition-all cursor-pointer group flex items-center justify-between ${
                 selectedSession?.id === session.id 
                 ? 'bg-brand-primary/10 border-brand-primary' 
-                : session.isReviewed ? 'bg-surface-dark border-white/20 opacity-60' : 'bg-surface-dark border-white/5 hover:border-white/20'
+                : session.isReviewed ? 'bg-surface-dark border-sovereign opacity-60' : 'bg-surface-dark border-sovereign hover:border-brand-primary/40'
             }`}
           >
             <div className="flex items-center gap-4">
-               <div className={`w-12 h-12 rounded-sovereign flex items-center justify-center ${session.sport === 'archery' ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-secondary/20 text-brand-secondary'}`}>
+               <div className={`w-12 h-12 flex items-center justify-center border border-sovereign ${session.sport === 'archery' ? 'bg-brand-primary/20 text-brand-primary' : 'bg-brand-secondary/20 text-brand-secondary'}`}>
                   {session.sport === 'archery' ? <Target size={24} /> : <Activity size={24} />}
                </div>
                <div>
                   <h4 className="font-bold text-white group-hover:text-brand-primary transition-colors font-body">
                      {session.userId === 'anonymous-trainee' ? 'متدرب مجهول' : `متدرب: ${session.userId.substring(0, 8)}`}
                   </h4>
-                  <p className="text-[10px] text-white/40 font-numbers tracking-widest mt-1">
+                  <p className="text-[10px] text-white/40 font-latin font-bold tracking-widest mt-1">
                      {new Date(session.timestamp).toLocaleString('ar-EG')}
                   </p>
                </div>
             </div>
 
             <div className="flex items-center gap-4">
-               {!session.isReviewed && <span className="w-2 h-2 bg-brand-primary rounded-full animate-pulse" />}
+               {!session.isReviewed && <span className="w-2 h-2 bg-brand-primary animate-pulse" />}
                <ChevronRight size={18} className="text-white/20 group-hover:text-white" />
             </div>
           </motion.div>
@@ -137,7 +137,7 @@ export default function CoachDashboard() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              className="glass-sovereign p-8 h-full sticky top-8"
+              className="layer-1 p-8 h-full sticky top-8 border border-sovereign"
             >
               <div className="flex items-center justify-between mb-8">
                  <h4 className="text-2xl font-title text-white">تفاصيل الجلسة</h4>
@@ -145,19 +145,19 @@ export default function CoachDashboard() {
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
-                 <div className="bg-black/30 p-4 rounded-sovereign border border-white/5">
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-numbers">متوسط الجذع</p>
-                    <p className="text-2xl font-bold text-brand-primary font-numbers">{selectedSession.metrics?.avgTrunkAngle?.toFixed(1)}°</p>
+                 <div className="layer-2 p-4 border border-sovereign">
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-latin font-bold">متوسط الجذع</p>
+                    <p className="text-2xl font-bold text-brand-primary font-latin">{selectedSession.metrics?.avgTrunkAngle?.toFixed(1)}°</p>
                  </div>
-                 <div className="bg-black/30 p-4 rounded-sovereign border border-white/5">
-                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-numbers">التوازن</p>
-                    <p className="text-2xl font-bold text-brand-secondary font-numbers">{selectedSession.metrics?.balanceScore?.toFixed(1)}°</p>
+                 <div className="layer-2 p-4 border border-sovereign">
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1 font-latin font-bold">التوازن</p>
+                    <p className="text-2xl font-bold text-brand-secondary font-latin">{selectedSession.metrics?.balanceScore?.toFixed(1)}°</p>
                  </div>
               </div>
 
               <div className="mb-8">
                 <p className="text-xs font-bold text-white/60 mb-2 uppercase tracking-widest">توجيه الذكاء الاصطناعي</p>
-                <div className="p-4 bg-white/5 rounded-2xl italic text-sm text-white/60 leading-relaxed">
+                <div className="p-4 layer-2 border border-sovereign italic text-sm text-white/60 leading-relaxed">
                   &quot;{selectedSession.summary}&quot;
                 </div>
               </div>
@@ -170,20 +170,20 @@ export default function CoachDashboard() {
                  <textarea 
                    value={feedbackText}
                    onChange={(e) => setFeedbackText(e.target.value)}
-                   className="w-full h-32 bg-black/40 border border-white/10 rounded-sovereign p-4 text-white focus:border-brand-primary outline-none transition-all font-body"
+                   className="w-full h-32 layer-2 border border-sovereign p-4 text-white focus:border-brand-primary outline-none transition-all font-body"
                    placeholder="اكتب توجيهاتك الفنية هنا للفارس..."
                  />
                  <button 
                    onClick={handleApplyFeedback}
                    disabled={isSubmitting || !feedbackText}
-                   className="w-full py-4 bg-brand-secondary hover:bg-brand-primary disabled:opacity-50 text-white font-bold rounded-sovereign transition-all shadow-[0_10px_30px_rgba(145,16,16,0.2)] font-body"
+                   className="w-full py-4 bg-brand-secondary hover:bg-brand-primary disabled:opacity-50 text-white font-bold transition-all shadow-[0_10px_30px_rgba(145,16,16,0.2)] font-body border border-sovereign"
                  >
                    {isSubmitting ? 'جاري الحفظ...' : 'إرسال التقييم للمتدرب'}
                  </button>
               </div>
             </motion.div>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-white/5 border border-white/5 rounded-[35px] border-dashed">
+            <div className="h-full flex flex-col items-center justify-center text-center p-12 layer-1 border border-sovereign border-dashed">
                <Shield size={64} className="text-white/10 mb-6" />
                <h4 className="text-xl font-bold text-white/40">اختر جلسة من القائمة للبدء بالتقييم</h4>
                <p className="text-sm text-white/20 mt-2 max-w-xs">يمكنك هنا مراجعة أداء فرسانك وتقديم نصائح تكتيكية لهم مباشرة.</p>

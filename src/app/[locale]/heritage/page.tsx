@@ -57,7 +57,7 @@ export default async function HeritagePage({
       <div className="absolute top-0 right-0 w-1/3 h-full brand-horse-bg opacity-[0.03] pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface-dark/80 backdrop-blur-[12px] border-y border-brand-primary/10 shadow-2xl">
+      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full bg-surface-dark border-y border-sovereign shadow-2xl">
         <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-center gap-8 md:gap-16 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
@@ -96,7 +96,7 @@ export default async function HeritagePage({
           <div className="max-w-6xl px-6 relative z-10 animate-fade-up pb-20">
             <Link href={`/${locale}/heritage/${featuredPost.slug}`} className="block group/link">
               <div className="flex items-center gap-3 mb-6">
-                <span className="inline-block py-1 px-4 border border-brand-primary/40 rounded-sovereign text-[10px] font-bold uppercase tracking-[5px] text-brand-primary backdrop-blur-md">
+                <span className="inline-block py-1 px-4 border border-sovereign layer-2 text-[10px] font-bold uppercase tracking-[5px] text-brand-primary">
                   {t('heroTag')} • {t('navJournal')}
                 </span>
               </div>
@@ -112,14 +112,14 @@ export default async function HeritagePage({
               <div className="flex items-center gap-6">
                 {featuredPost.author && (
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-sovereign bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center overflow-hidden">
+                    <div className="w-10 h-10 layer-2 border border-sovereign flex items-center justify-center overflow-hidden">
                        <span className="text-brand-primary font-title italic">{featuredPost.author?.[0] || 'A'}</span>
                     </div>
                     <span className="text-white/80 font-body font-medium text-sm">{featuredPost.author}</span>
                   </div>
                 )}
                 <div className="h-px w-12 bg-white/10" />
-                <time className="text-white/40 text-sm uppercase tracking-widest font-numbers" dateTime={featuredPost.date}>
+                <time className="text-white/40 text-sm uppercase tracking-widest font-latin font-bold" dateTime={featuredPost.date}>
                   {new Date(featuredPost.date).toLocaleDateString(locale, {
                     year: 'numeric', month: 'long',
                   })}
@@ -181,7 +181,7 @@ export default async function HeritagePage({
             ].map((pillar, i) => (
               <div 
                 key={i}
-                className="col-span-12 md:col-span-4 glass-sovereign p-12 hover-lift group relative overflow-hidden flex flex-col items-center text-center"
+                className="col-span-12 md:col-span-4 layer-2 border border-sovereign p-12 hover-lift group relative overflow-hidden flex flex-col items-center text-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="text-6xl mb-8 transform group-hover:scale-110 transition-transform duration-500">{pillar.icon}</div>
@@ -199,7 +199,7 @@ export default async function HeritagePage({
       {/* ── Founder's Message & Mission ── */}
       <section className="py-32 px-6 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto grid-sovereign items-center">
-          <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] rounded-sovereign overflow-hidden group cinema-lut">
+          <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] overflow-hidden group cinema-lut border border-sovereign shadow-2xl">
             <NextImage
               src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?q=80&w=800"
               alt="Founder's Path"
@@ -224,17 +224,17 @@ export default async function HeritagePage({
               &quot;{t('foundersMessage')}&quot;
             </p>
 
-            <div className="p-8 border-l-4 border-brand-primary/40 bg-white/5 rounded-r-sovereign">
+            <div className="p-8 border-l-4 border-sovereign layer-2">
                <p className="text-white/60 italic leading-relaxed text-lg font-body">
                  {t('missionDesc')}
                </p>
             </div>
 
             <div className="flex flex-wrap gap-6 pt-4">
-              <Link href={`/${locale}/mountup`} className="btn-primary px-10 py-5">
+              <Link href={`/${locale}/mountup`} className="btn-sovereign px-10 py-5">
                 {t('ctaJoinJourney')}
               </Link>
-              <button className="px-10 py-5 border border-white/10 rounded-sovereign text-white/80 text-sm font-bold tracking-widest uppercase hover:bg-white/5 hover:border-brand-primary/20 transition-all font-body">
+              <button className="px-10 py-5 border border-sovereign layer-2 text-white/80 text-sm font-bold tracking-widest uppercase hover:bg-white/5 hover:border-brand-primary/20 transition-all font-body">
                 {t('ctaExploreStory')}
               </button>
             </div>
@@ -268,10 +268,10 @@ export default async function HeritagePage({
       </section>
 
       {/* ── Closing Signature ── */}
-      <section className="py-40 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[120px] rounded-sovereign pointer-events-none" />
+       <section className="py-40 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[120px] pointer-events-none" />
         <div className="brand-sep-bow mb-12 opacity-40 mx-auto max-w-2xl" />
-        <h3 className="text-2xl md:text-3xl font-title text-brand-secondary italic px-6 z-10 relative">
+        <h3 className="text-2xl md:text-3xl font-display text-brand-secondary italic px-6 z-10 relative">
           &quot;{t('quote')}&quot;
         </h3>
       </section>

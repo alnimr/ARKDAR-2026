@@ -7,7 +7,7 @@ export default async function Footer() {
   const navT = await getTranslations('Navigation');
 
   return (
-    <footer className="mt-32 relative z-20 glass-sovereign border-t border-brand-primary/10 transition-all duration-300">
+    <footer className="mt-32 relative z-20 layer-1 border-t border-sovereign transition-all duration-300">
 
       <div className="max-w-7xl mx-auto px-8 py-20">
         <div className="grid grid-cols-12 gap-16">
@@ -34,7 +34,7 @@ export default async function Footer() {
                 <Link
                   key={s}
                   href="/"
-                  className="w-10 h-10 rounded-sovereign flex items-center justify-center text-[10px] font-bold uppercase transition-all duration-300 hover:-translate-y-1 hover:bg-brand-primary/20 bg-brand-primary/5 border border-brand-primary/20 text-brand-primary"
+                  className="w-10 h-10 flex items-center justify-center text-[10px] font-bold uppercase transition-all duration-300 hover:-translate-y-1 hover:bg-brand-primary/20 bg-brand-primary/5 border border-brand-primary/20 text-brand-primary"
                 >
                   {s}
                 </Link>
@@ -63,18 +63,18 @@ export default async function Footer() {
             </h3>
             <ul className="space-y-5 text-sm font-medium text-foreground/60 font-body">
               <li className="flex items-center gap-3">
-                <span className="grayscale opacity-50">🇨🇭</span> <span className="font-numbers">Switzerland — Geneva Region</span>
+                <span className="grayscale opacity-50">🇨🇭</span> <span className="font-latin">Switzerland — Geneva Region</span>
               </li>
               <li className="flex items-center gap-3">
-                <span className="grayscale opacity-50">🇪🇬</span> <span className="font-numbers">Egypt — Cairo</span>
+                <span className="grayscale opacity-50">🇪🇬</span> <span className="font-latin">Egypt — Cairo</span>
               </li>
               <li className="flex items-center gap-3">
-                <span className="grayscale opacity-50">🇪🇸</span> <span className="font-numbers">Spain</span>
+                <span className="grayscale opacity-50">🇪🇸</span> <span className="font-latin">Spain</span>
               </li>
               <li className="pt-6">
                 <a href="mailto:info@arkdar.com" className="text-brand-primary text-base font-bold hover:opacity-80 transition-all flex items-center gap-3 group">
-                  <span className="w-10 h-10 rounded-sovereign bg-brand-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">✉</span> 
-                  <span className="font-numbers">info@arkdar.com</span>
+                  <span className="w-10 h-10 bg-brand-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">✉</span> 
+                  <span className="font-latin">info@arkdar.com</span>
                 </a>
               </li>
             </ul>
@@ -82,8 +82,8 @@ export default async function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="mt-24 pt-10 flex flex-col md:flex-row items-center justify-between gap-8 text-[11px] font-bold border-t border-brand-primary/10 text-foreground/40">
-          <p className="font-numbers">{t('rights')}</p>
+        <div className="mt-24 pt-10 flex flex-col md:flex-row items-center justify-between gap-8 text-[11px] font-bold border-t border-sovereign text-foreground/40">
+          <p className="font-latin">{t('rights')}</p>
           <div className="flex items-center gap-8">
             <Link href="/privacy" className="hover:text-brand-primary transition-all uppercase tracking-[0.2em] font-body">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-brand-primary transition-all uppercase tracking-[0.2em] font-body">Terms of Service</Link>

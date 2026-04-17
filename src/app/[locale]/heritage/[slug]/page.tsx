@@ -152,13 +152,13 @@ export default async function JournalArticlePage({
       />
 
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-primary/4 blur-[140px] rounded-sovereign" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-primary/4 blur-[140px]" />
       </div>
 
       <div className="relative z-10 container-sovereign mx-auto px-6">
           <Link
             href={`/${locale}/heritage`}
-            className="inline-flex items-center gap-3 text-[10px] font-numbers font-black uppercase tracking-[0.3em] text-brand-primary/50 hover:text-brand-primary transition-all duration-300 mb-16 group"
+            className="inline-flex items-center gap-3 text-[10px] font-latin font-bold uppercase tracking-[0.3em] text-brand-primary/50 hover:text-brand-primary transition-all duration-300 mb-16 group"
           >
             <BackIcon size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
             {t?.('backToJournal') || (locale === 'ar' ? 'العودة للديوان' : 'Back to Journal')}
@@ -186,7 +186,7 @@ export default async function JournalArticlePage({
                 <div className="reading-sanctuary">
                   <StaggerItem delay={0.1}>
                     {/* Hero Image */}
-                    <div className="relative w-full aspect-[16/10] rounded-sovereign overflow-hidden mb-16 border border-brand-primary/10 shadow-sovereign cinema-lut">
+                    <div className="relative w-full aspect-[16/10] overflow-hidden mb-16 border border-sovereign shadow-sovereign cinema-lut">
                       <NextImage
                         src={post.image}
                         alt={title}
@@ -202,7 +202,7 @@ export default async function JournalArticlePage({
                   <StaggerItem delay={0.2}>
                     <header className="mb-16">
                       <div className={`flex items-center gap-3 mb-8 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-sovereign glass-sovereign border border-brand-primary/10 text-brand-primary text-[9px] font-numbers font-black uppercase tracking-[0.2em]">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 border border-sovereign layer-2 text-brand-primary text-[9px] font-latin font-bold uppercase tracking-[0.2em]">
                           <TypeIcon size={12} />
                           {post.type === 'article'
                             ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
@@ -222,7 +222,7 @@ export default async function JournalArticlePage({
 
                   <StaggerItem delay={0.3}>
                     {/* Excerpt Blockquote */}
-                    <blockquote className={`relative px-10 py-8 mb-20 rounded-sovereign glass-sovereign border-brand-primary/20 border-l-4 ${isRtl ? 'border-l-0 border-r-4 text-right' : 'text-left'}`}>
+                    <blockquote className={`relative px-10 py-8 mb-20 layer-2 border-sovereign border-l-4 ${isRtl ? 'border-l-0 border-r-4 text-right' : 'text-left'}`}>
                       <p className="text-xl md:text-3xl font-title text-foreground/80 leading-relaxed italic">
                         &quot;{excerpt}&quot;
                       </p>
@@ -240,15 +240,15 @@ export default async function JournalArticlePage({
 
                   {/* Download Section (Integrated) */}
                   {post.downloadUrl && (
-                    <div className="mt-24 p-12 rounded-sovereign glass-sovereign border border-brand-primary/10 relative overflow-hidden group">
+                    <div className="mt-24 p-12 layer-2 border border-sovereign relative overflow-hidden group">
                       <div className="absolute inset-0 brand-horse-bg opacity-[0.02] -mr-10 -mb-10 rotate-12 transition-transform duration-700 group-hover:scale-110" />
-                      <p className="text-foreground/40 text-xs mb-6 font-numbers font-black uppercase tracking-widest relative">
+                      <p className="text-foreground/40 text-xs mb-6 font-latin font-bold uppercase tracking-widest relative">
                         {t?.('downloadCaption') || (locale === 'ar' ? 'مرفق ملف للقراءة لاحقاً بجودة عالية' : 'Official Archive Record')}
                       </p>
                       <a
                         href={post.downloadUrl}
                         download
-                        className="inline-flex items-center gap-4 px-10 py-5 rounded-sovereign bg-brand-primary text-white font-numbers font-black text-xs uppercase tracking-[0.3em] hover:bg-brand-secondary transition-all duration-500 hover-lift relative"
+                        className="inline-flex items-center gap-4 px-10 py-5 bg-brand-primary text-white font-latin font-bold text-xs uppercase tracking-[0.3em] hover:bg-brand-secondary transition-all duration-500 hover-lift relative"
                       >
                         <Download size={16} strokeWidth={2.5} />
                         {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Archive')}
@@ -282,11 +282,11 @@ export default async function JournalArticlePage({
                             href={`/${locale}/heritage/${relPost.slug}`}
                             className="group flex flex-col gap-6"
                           >
-                            <div className="relative aspect-[16/9] rounded-sovereign overflow-hidden border border-brand-primary/5 cinema-lut">
+                            <div className="relative aspect-[16/9] overflow-hidden border border-sovereign layer-1 cinema-lut">
                               <NextImage src={relPost.image} alt={relTitle} fill className="object-cover group-hover:scale-110 transition-transform duration-[1200ms]" />
                             </div>
                             <div className={`${isRtl ? 'text-right' : 'text-left'}`}>
-                              <h3 className="text-xl font-title font-bold text-brand-primary leading-snug group-hover:text-brand-secondary transition-colors line-clamp-2 uppercase">
+                              <h3 className="text-xl font-latin font-bold text-brand-primary leading-snug group-hover:text-brand-secondary transition-colors line-clamp-2 uppercase">
                                 {relTitle}
                               </h3>
                             </div>

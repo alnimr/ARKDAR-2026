@@ -40,13 +40,13 @@ function AdminLoginForm() {
   return (
     <div className={`min-h-screen bg-surface-dark flex relative overflow-hidden ${isRtl ? 'dir-rtl text-right' : 'dir-ltr text-left'}`} dir={isRtl ? 'rtl' : 'ltr'}>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/10 blur-[150px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/10 blur-[150px]" />
       </div>
 
       <div className="flex-1 flex items-center justify-center p-6 relative z-10">
-        <div className="w-full max-w-md p-10 rounded-sovereign bg-surface-dark/90 backdrop-blur-xl border border-white/10 shadow-2xl">
+        <div className="w-full max-w-md p-10 bg-surface-dark border border-sovereign shadow-2xl">
           <div className="flex justify-center mb-10">
-            <div className="w-16 h-16 rounded-sovereign bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center text-brand-primary">
+            <div className="w-16 h-16 bg-brand-primary/10 border border-brand-primary/30 flex items-center justify-center text-brand-primary">
               <Shield size={28} />
             </div>
           </div>
@@ -57,7 +57,7 @@ function AdminLoginForm() {
           </div>
 
           {error && (
-            <div className="mb-6 p-4 rounded-sovereign bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-widest text-center font-body">
+            <div className="mb-6 p-4 bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-widest text-center font-body">
               {error}
             </div>
           )}
@@ -72,7 +72,7 @@ function AdminLoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white/[0.03] border border-white/10 rounded-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
+                className="w-full bg-white/[0.03] border border-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
                 placeholder="admin@arkdar.com"
                 dir="ltr"
               />
@@ -87,7 +87,7 @@ function AdminLoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-white/[0.03] border border-white/10 rounded-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
+                className="w-full bg-white/[0.03] border border-sovereign px-4 py-4 text-white focus:outline-none focus:border-brand-primary/50 transition-all font-body"
                 placeholder="••••••••"
                 dir="ltr"
               />
@@ -96,10 +96,10 @@ function AdminLoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-8 bg-brand-primary text-white hover:bg-brand-secondary disabled:opacity-50 py-5 rounded-sovereign font-bold uppercase tracking-[4px] text-[10px] transition-all flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(145,16,16,0.3)] font-body"
+              className="w-full mt-8 bg-brand-primary text-white hover:bg-brand-secondary disabled:opacity-50 py-5 font-bold uppercase tracking-[4px] text-[10px] transition-all flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(145,16,16,0.3)] font-body"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-white/20 border-t-white animate-spin" />
               ) : (
                 <>
                   <Lock size={14} />

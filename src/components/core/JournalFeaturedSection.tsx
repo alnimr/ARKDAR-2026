@@ -38,7 +38,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
       <div className="max-w-7xl mx-auto px-6 mb-24 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
           <div className="space-y-6">
-            <span className="text-brand-primary text-[10px] font-numbers font-black tracking-[0.5em] uppercase flex items-center gap-4">
+            <span className="text-brand-primary text-[10px] font-latin font-bold tracking-[0.3em] uppercase flex items-center gap-4">
               <span className="w-12 h-px bg-brand-primary/30" />
               {t('heroTag')}
             </span>
@@ -53,14 +53,14 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
           <div className="flex items-center gap-5">
             <button 
               onClick={() => scrollContainer(isRtl ? 'right' : 'left')}
-              className="w-16 h-16 rounded-sovereign border border-brand-primary/10 glass-sovereign flex items-center justify-center text-foreground/30 hover:text-brand-primary hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all group active:scale-90"
+              className="w-16 h-16 border border-sovereign layer-2 flex items-center justify-center text-foreground/30 hover:text-brand-primary hover:bg-brand-primary/5 transition-all group active:scale-90"
               aria-label={isRtl ? "التمرير لليمين" : "Scroll Left"}
             >
               <ArrowLeft size={24} className={isRtl ? "rotate-180" : ""} strokeWidth={1.5} />
             </button>
             <button 
               onClick={() => scrollContainer(isRtl ? 'left' : 'right')}
-              className="w-16 h-16 rounded-sovereign border border-brand-primary/10 glass-sovereign flex items-center justify-center text-foreground/30 hover:text-brand-primary hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all group active:scale-90"
+              className="w-16 h-16 border border-sovereign layer-2 flex items-center justify-center text-foreground/30 hover:text-brand-primary hover:bg-brand-primary/5 transition-all group active:scale-90"
               aria-label={isRtl ? "التمرير لليسار" : "Scroll Right"}
             >
               <ArrowRight size={24} className={isRtl ? "rotate-180" : ""} strokeWidth={1.5} />
@@ -85,7 +85,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
           >
             <Link 
               href={`/${locale}/heritage/${post.slug}`}
-              className="group relative block aspect-[16/10] rounded-sovereign overflow-hidden border border-brand-primary/10 glass-sovereign shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] cinema-lut"
+              className="group relative block aspect-[16/10] overflow-hidden border border-sovereign layer-2 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] cinema-lut"
             >
               {/* Image with elite overlay */}
               <NextImage
@@ -98,10 +98,10 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
               
               {/* Floating Labels */}
               <div className="absolute top-8 left-8 flex gap-3">
-                <span className="px-5 py-2 glass-sovereign border border-white/10 text-brand-primary text-[10px] font-numbers font-black uppercase tracking-[0.2em] rounded-sovereign">
+                <span className="px-5 py-2 layer-3 border border-sovereign text-brand-primary text-[10px] font-latin font-bold uppercase tracking-[0.2em]">
                   {(post.categoryId || 'Heritage').toUpperCase()}
                 </span>
-                <span className="px-5 py-2 glass-sovereign border border-white/10 text-white/50 text-[10px] font-numbers font-black uppercase tracking-[0.2em] rounded-sovereign">
+                <span className="px-5 py-2 layer-3 border border-sovereign text-white/50 text-[10px] font-latin font-bold uppercase tracking-[0.2em]">
                   {(post.type || 'Article').toUpperCase()}
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
               {/* Content Overlay */}
               <div className="absolute bottom-0 left-0 w-full p-10 md:p-12 transform transition-all duration-300 group-hover:-translate-y-1">
                 <div className="space-y-6 text-start">
-                  <div className="flex items-center gap-6 text-foreground/40 text-[9px] uppercase tracking-[0.2em] font-numbers font-black">
+                  <div className="flex items-center gap-6 text-foreground/40 text-[9px] uppercase tracking-[0.15em] font-latin font-bold">
                     <span className="flex items-center gap-3">
                       <Calendar size={14} className="text-brand-primary/60" />
                       {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}

@@ -45,10 +45,10 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-sovereign text-[10px] font-numbers font-black uppercase tracking-[0.2em] border transition-all cursor-pointer ${
+                className={`px-6 py-3 text-[10px] font-latin font-bold uppercase tracking-[0.2em] border transition-all cursor-pointer ${
                   isActive
                     ? 'bg-brand-primary border-brand-primary text-white scale-105 shadow-lg'
-                    : 'glass-sovereign border-brand-primary/10 text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 hover:scale-105'
+                    : 'layer-2 border-sovereign text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 hover:scale-105'
                 }`}
               >
                 {tab[locale as 'ar' | 'en' | 'de' | 'es'] ?? tab.en}
@@ -67,7 +67,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
             placeholder={locale === 'ar' ? 'ابحث في التراث...' : locale === 'en' ? 'Search Heritage...' : locale === 'de' ? 'Erbe durchsuchen...' : 'Buscar Herencia...'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className={`w-full glass-sovereign border-brand-primary/10 rounded-sovereign py-4 ${isRtl ? 'pr-14 pl-6 text-right' : 'pl-14 pr-6 text-left'} text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-brand-primary/40 focus:bg-brand-primary/[0.03] transition-all font-body text-sm`}
+            className={`w-full layer-2 border border-sovereign py-4 ${isRtl ? 'pr-14 pl-6 text-right' : 'pl-14 pr-6 text-left'} text-foreground placeholder:text-foreground/20 focus:outline-none focus:border-brand-primary/40 focus:bg-brand-primary/[0.03] transition-all font-body text-sm`}
             dir={isRtl ? 'rtl' : 'ltr'}
           />
         </div>
@@ -75,7 +75,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
 
       <div className="min-h-[500px]">
         {filteredPosts.length === 0 ? (
-           <div className="text-center py-32 rounded-sovereign glass-sovereign border-brand-primary/10 relative overflow-hidden">
+           <div className="text-center py-32 layer-2 border border-sovereign relative overflow-hidden">
              <div className="absolute inset-0 brand-horse-bg opacity-[0.03] grayscale" />
              <p className="text-xl md:text-2xl font-title text-brand-primary/40 uppercase tracking-widest relative">
                {locale === 'ar' ? 'عذراً.. لا توجد سجلات تطابق بحثك' : 'No records match your legacy search'}

@@ -37,9 +37,9 @@ export default function AdminSidebar({ locale }: { locale: string }) {
   ];
 
   return (
-    <aside className={`fixed top-0 bottom-0 ${isRtl ? 'right-0' : 'left-0'} w-72 bg-surface-dark border-${isRtl ? 'l' : 'r'} border-white/5 z-50 flex flex-col`}>
+    <aside className={`fixed top-0 bottom-0 ${isRtl ? 'right-0' : 'left-0'} w-72 bg-surface-dark border-${isRtl ? 'l' : 'r'} border-sovereign z-50 flex flex-col`}>
       {/* Brand */}
-      <div className="h-24 flex items-center px-8 border-b border-white/5 bg-gradient-to-b from-brand-primary/5 to-transparent">
+      <div className="h-24 flex items-center px-8 border-b border-sovereign bg-gradient-to-b from-brand-primary/5 to-transparent">
         <span className="text-xl font-title text-white tracking-[5px] uppercase">
           ARKDAR <span className="text-brand-primary text-[10px] ml-2 font-body font-bold">HQ</span>
         </span>
@@ -54,7 +54,7 @@ export default function AdminSidebar({ locale }: { locale: string }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-4 px-5 py-4 rounded-sovereign transition-all duration-500 ${isRtl ? 'flex-row-reverse' : ''} ${
+              className={`flex items-center gap-4 px-5 py-4 transition-all duration-500 ${isRtl ? 'flex-row-reverse' : ''} ${
                 isActive 
                 ? 'bg-brand-primary text-white shadow-[0_4px_20px_rgba(145,16,16,0.3)] border border-brand-primary/20 scale-[1.02]' 
                 : 'text-white/40 hover:bg-white/[0.05] hover:text-white/80'
@@ -70,10 +70,10 @@ export default function AdminSidebar({ locale }: { locale: string }) {
       </nav>
 
       {/* Footer / User */}
-      <div className="p-6 border-t border-white/5 bg-surface-dark/50">
+      <div className="p-6 border-t border-sovereign bg-surface-dark/50">
         <button 
           onClick={handleLogout}
-          className="w-full flex items-center justify-center gap-2 px-4 py-4 rounded-sovereign text-white/40 hover:bg-brand-primary hover:text-white transition-all duration-300 font-body border border-transparent hover:border-brand-primary/30"
+          className="w-full flex items-center justify-center gap-2 px-4 py-4 text-white/40 hover:bg-brand-primary hover:text-white transition-all duration-300 font-body border border-transparent hover:border-brand-primary/30"
         >
           <LogOut size={16} />
           <span className="text-[10px] font-bold uppercase tracking-[3px]">تسجيل الخروج</span>
