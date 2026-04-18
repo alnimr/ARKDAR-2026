@@ -49,7 +49,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
       {/* Background Decor - Sovereign Atmosphere */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold/[0.05] to-transparent -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-12 mb-32 relative z-10">
+      <div className="max-w-7xl mx-auto px-sovereign mb-32 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-16">
           <div className="space-y-8">
             <span className="text-gold text-[12px] font-brand font-bold tracking-[0.8em] uppercase flex items-center gap-6">

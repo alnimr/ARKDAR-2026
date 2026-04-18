@@ -41,7 +41,7 @@ export default async function HomePage({
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 opacity-70 pointer-events-none">
+        <div className="absolute -bottom-10 -right-20 w-[500px] h-[500px] -z-10 opacity-15 pointer-events-none rotate-[15deg]">
           <NextImage 
             src="/images/brand/crescent/Crescent_Vector.svg" 
             alt="" 
@@ -81,9 +81,9 @@ export default async function HomePage({
       </div>
 
       {/* 2. PHILOSOPHY & CREED */}
-      <section className="w-full py-48 relative layer-0 border-y border-quiet overflow-hidden">
+      <section className="w-full py-64 relative layer-0 border-y border-quiet overflow-hidden">
         <div className="strands-bg-pattern" />
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-7xl mx-auto px-sovereign">
           <div className="grid grid-cols-12 gap-16 items-center">
             <div className="col-span-12 lg:col-span-7">
               <h2 className="text-[10px] font-brand font-bold tracking-[0.5em] text-gold mb-8 uppercase opacity-50">{t('creedTitle')}</h2>
@@ -96,7 +96,7 @@ export default async function HomePage({
               </div>
             </div>
             <div className="col-span-12 lg:col-span-5">
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {creedItems.map(({ icon, label, desc }) => (
                   <div key={label} className="layer-1 p-10 border border-quiet depth-card text-center group hover:border-gold/30 transition-all duration-cine">
                     <Icon name={icon} size={48} color="currentColor" className="text-gold mx-auto mb-8 group-hover:scale-110 transition-transform duration-cine" />
@@ -110,12 +110,11 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 3. SERVICES */}
-      <section className="w-full py-48 relative layer-0 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-32">
-            <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-gold uppercase tracking-tighter">{t('servicesTitle')}</h2>
-            <p className="text-2xl text-ghost max-w-3xl mx-auto font-brand font-light leading-relaxed opacity-60">{t('servicesSubtitle')}</p>
+      <section className="w-full py-64 relative layer-0 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-sovereign">
+          <div className="text-center mb-40">
+            <h2 className="text-eyebrow text-gold mb-8">{t('servicesSubtitle')}</h2>
+            <h3 className="text-5xl md:text-8xl font-brand font-bold text-primary uppercase tracking-tighter">{t('servicesTitle')}</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {services.map(({ icon, title, desc }) => (
@@ -124,11 +123,11 @@ export default async function HomePage({
                 href="/arenas"
                 className="layer-1 p-12 border border-quiet hover:border-gold/30 transition-all duration-cine group relative overflow-hidden depth-card"
               >
-                <div className="w-24 h-24 layer-2 text-gold flex items-center justify-center mb-12 group-hover:bg-gold group-hover:text-black transition-all duration-cine border border-quiet">
-                  <Icon name={icon} size={40} color="currentColor" />
+                <div className="w-20 h-20 layer-2 text-gold flex items-center justify-center mb-10 group-hover:bg-gold group-hover:text-black transition-all duration-cine border border-quiet">
+                  <Icon name={icon} size={32} color="currentColor" />
                 </div>
-                <h3 className="text-3xl font-brand font-bold mb-8 text-gold uppercase tracking-tight">{title}</h3>
-                <p className="text-ghost leading-relaxed font-brand font-light text-lg opacity-70 line-clamp-3">{desc}</p>
+                <h4 className="text-2xl font-brand font-bold mb-6 text-gold uppercase tracking-tight">{title}</h4>
+                <p className="text-ghost leading-relaxed font-brand font-light text-base opacity-70 line-clamp-3">{desc}</p>
               </Link>
             ))}
           </div>
@@ -136,8 +135,8 @@ export default async function HomePage({
       </section>
 
       {/* 4. PRODUCTS */}
-      <section className="w-full py-48 relative layer-1 border-t border-quiet overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <section className="w-full py-64 relative layer-1 border-t border-quiet overflow-hidden">
+        <div className="max-w-7xl mx-auto px-sovereign relative">
           <div className="grid grid-cols-12 gap-16 items-center">
             <div className="col-span-12 lg:col-span-5">
               <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-white uppercase tracking-tighter leading-[0.85]">{t('productsTitle')}</h2>
@@ -168,7 +167,7 @@ export default async function HomePage({
       </section>
 
       {/* 5. REGIONS */}
-      <section className="w-full py-48 px-6 md:px-12 relative layer-0">
+      <section className="w-full py-64 px-sovereign relative layer-0">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-40">
             <h2 className="text-5xl md:text-8xl font-brand font-bold text-gold uppercase tracking-tighter">{t('presenceTitle')}</h2>

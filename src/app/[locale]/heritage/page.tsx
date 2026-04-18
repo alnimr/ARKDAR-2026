@@ -59,7 +59,7 @@ export default async function HeritagePage({
       <div className="absolute inset-0 opacity-[0.03] layer-0 pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[120px] z-50 w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
+      <nav id="heritage-nav" className="sticky top-[80px] md:top-[var(--nav-h-scrolled)] z-50 w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
         <div className="max-w-7xl mx-auto px-10 h-16 flex items-center justify-center gap-16 md:gap-24 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
@@ -79,7 +79,7 @@ export default async function HeritagePage({
 
       {/* ── Dynamic Featured Hero Section ── */}
       {featuredPost && (
-        <section className="relative h-[90vh] flex flex-col justify-end pb-40 px-6 md:px-12 overflow-hidden group layer-0">
+        <section className="relative h-[90vh] flex flex-col justify-end pb-40 px-sovereign overflow-hidden group layer-0">
           <div className="strands-bg-pattern opacity-10" />
           <div className="absolute inset-0 cinema-lut">
             <NextImage
@@ -133,7 +133,7 @@ export default async function HeritagePage({
       )}
 
       {/* ── The Vision Section (Philosophy) ── */}
-      <section id="vision" className="py-72 px-6 md:px-12 relative overflow-hidden layer-1 border-b border-quiet">
+      <section id="vision" className="py-72 px-sovereign relative overflow-hidden layer-1 border-b border-quiet">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <Icon name="quote" className="text-gold mx-auto mb-24 opacity-30" size="l" style={{ width: 96, height: 96 }} />
@@ -160,7 +160,7 @@ export default async function HeritagePage({
       </section>
 
       {/* ── Founding Pillars ── */}
-      <section id="lineage" className="py-72 px-6 md:px-12 relative z-10 layer-0 overflow-hidden">
+      <section id="lineage" className="py-72 px-sovereign relative z-10 layer-0 overflow-hidden">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-48">
@@ -198,7 +198,7 @@ export default async function HeritagePage({
       </section>
 
       {/* ── Founder's Message & Mission ── */}
-      <section className="py-72 px-6 md:px-12 relative z-10 layer-1 border-y border-quiet overflow-hidden">
+      <section className="py-72 px-sovereign relative z-10 layer-1 border-y border-quiet overflow-hidden">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-32 items-center">
           <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] overflow-hidden group cinema-lut border border-quiet depth-card">
@@ -256,7 +256,7 @@ export default async function HeritagePage({
       )}
 
       {/* ── The Digital Divan — Journal Grid ── */}
-      <section id="journal" className="py-72 px-6 md:px-12 relative z-10 border-t border-quiet layer-0">
+      <section id="journal" className="py-72 px-sovereign relative z-10 border-t border-quiet layer-0">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto mb-40 text-center">
           <span className="text-[12px] font-brand font-bold uppercase tracking-[1.2em] text-gold mb-12 block opacity-50">
