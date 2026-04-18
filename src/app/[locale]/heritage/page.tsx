@@ -120,9 +120,11 @@ export default async function HeritagePage({
                 {featuredPost.author && (
                   <div className="flex items-center gap-8">
                     <div className="w-16 h-16 layer-2 border border-quiet flex items-center justify-center overflow-hidden">
-                       <span className="text-gold font-brand font-bold text-2xl">{featuredPost.author?.[0] || 'A'}</span>
+                       <span className="text-gold font-brand font-bold text-2xl">{(featuredPost.author?.[locale as keyof typeof featuredPost.author] || featuredPost.author?.ar)?.[0] || 'A'}</span>
                     </div>
-                    <span className="text-ghost font-brand font-bold text-xl uppercase tracking-[0.3em] opacity-60">{featuredPost.author}</span>
+                    <span className="text-ghost font-brand font-bold text-xl uppercase tracking-[0.3em] opacity-60">
+                      {featuredPost.author?.[locale as keyof typeof featuredPost.author] || featuredPost.author?.ar}
+                    </span>
                   </div>
                 )}
                 <div className="h-px w-24 bg-quiet" />

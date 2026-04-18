@@ -24,7 +24,12 @@ export interface JournalPost {
   };
   image: string;
   date: string;
-  author?: string;
+  author?: {
+    ar: string;
+    en: string;
+    de: string;
+    es: string;
+  };
   language: string;
   status: 'published' | 'draft';
   externalLink?: string;

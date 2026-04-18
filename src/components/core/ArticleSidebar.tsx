@@ -87,7 +87,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
             </span>
             <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
               <Icon name="warrior" size={16} color="var(--color-gold)" opacity="0.6" />
-              {post.author}
+              {post.author?.[locale as keyof typeof post.author] || post.author?.ar}
             </span>
           </div>
         )}
@@ -98,7 +98,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
           </span>
           <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
             <Icon name="clock" size={16} color="var(--color-gold)" opacity="0.6" />
-            {readTime} {locale === 'ar' ? 'دقائق قراءة' : 'MIN READ'}
+            {readTime} {locale === 'ar' ? 'دقائق قراءة' : locale === 'de' ? 'MIN. LESEZEIT' : locale === 'es' ? 'MIN. DE LECTURA' : 'MIN READ'}
           </span>
         </div>
       </div>

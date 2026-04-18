@@ -49,9 +49,9 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-cine ease-feather ${
-      isScrolled ? 'py-0' : 'py-10 px-6 md:px-16'
+      isScrolled ? 'py-0 px-4 md:px-0' : 'py-4 md:py-10 px-4 md:px-16'
     } font-brand`}>
-      <div className={`max-w-7xl mx-auto flex items-center justify-between px-10 py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4 md:py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
         isScrolled ? 'border-gold bg-layer-0' : ''
       }`}>
 
@@ -91,7 +91,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-4 px-6 py-4 text-[10px] font-brand font-bold tracking-[0.4em] text-primary/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
+              className="flex items-center gap-2 md:gap-4 px-3 md:px-6 py-3 md:py-4 text-[9px] md:text-[10px] font-brand font-bold tracking-[0.2em] md:tracking-[0.4em] text-primary/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
             >
               <Icon name="share" size="s" color="currentColor" className="rotate-90" />
               <span className="hidden sm:inline">{locale}</span>

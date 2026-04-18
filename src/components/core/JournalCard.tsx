@@ -146,7 +146,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-grow p-12 relative">
+      <div className="flex flex-col flex-grow p-8 md:p-12 relative">
         {/* Meta */}
         <div className={`flex items-center gap-8 mb-10 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em] ${isRtl ? 'flex-row-reverse justify-end' : ''}`}>
           <span className="flex items-center gap-3">
@@ -158,19 +158,19 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
               <span className="w-1 h-1 bg-gold/20" />
               <span className="flex items-center gap-3">
                 <Icon name="warrior" size={14} color="currentColor" opacity="0.4" />
-                {post.author}
+                {post.author?.[locale as keyof typeof post.author] || post.author?.ar}
               </span>
             </>
           )}
         </div>
 
         {/* Title */}
-        <h3 className={`text-2xl md:text-3xl font-brand font-bold text-primary leading-tight mb-8 transition-all duration-cine group-hover:text-gold group-hover:tracking-tight uppercase ${isRtl ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-xl md:text-3xl font-brand font-bold text-primary leading-tight mb-8 transition-all duration-cine group-hover:text-gold group-hover:tracking-tight uppercase ${isRtl ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 
         {/* Excerpt */}
-        <p className={`text-lg text-ghost/60 leading-relaxed flex-grow line-clamp-3 font-brand font-light italic ${isRtl ? 'text-right' : 'text-left'}`}>
+        <p className={`text-base md:text-lg text-ghost/60 leading-relaxed flex-grow line-clamp-3 font-brand font-light italic ${isRtl ? 'text-right' : 'text-left'}`}>
           {excerpt}
         </p>
 
@@ -182,10 +182,10 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
           className={`flex items-center gap-6 text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-gold group-hover:tracking-[0.8em] transition-all duration-cine relative z-30 ${isRtl ? 'flex-row-reverse self-end' : 'self-start'}`}
         >
           {post.type === 'download'
-            ? (isRtl ? 'تحميل السجل' : 'DOWNLOAD RECORD')
+            ? (locale === 'ar' ? 'تحميل السجل' : locale === 'de' ? 'REKORD HERUNTERLADEN' : locale === 'es' ? 'DESCARGAR REGISTRO' : 'DOWNLOAD RECORD')
             : post.type === 'press' && isExternalOnly
-              ? (isRtl ? 'البيان الصحفي' : 'PRESS RELEASE')
-              : (isRtl ? 'اكتشف المزيد' : 'DISCOVERY')}
+              ? (locale === 'ar' ? 'البيان الصحفي' : locale === 'de' ? 'PRESSEMITTEILUNG' : locale === 'es' ? 'COMUNICADO DE PRENSA' : 'PRESS RELEASE')
+              : (locale === 'ar' ? 'اكتشف المزيد' : locale === 'de' ? 'ENTDECKEN' : locale === 'es' ? 'DESCUBRIR' : 'DISCOVERY')}
           <div className="relative w-8 h-3 group-hover:translate-x-2 transition-transform duration-cine">
             <NextImage src="/images/brand/arrow/Linear_Arrow_Gold.png" alt="" fill className="object-contain" />
           </div>

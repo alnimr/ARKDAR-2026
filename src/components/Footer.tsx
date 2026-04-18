@@ -21,8 +21,8 @@ export default async function Footer() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 py-40">
-        <div className="grid grid-cols-12 gap-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-40">
+        <div className="grid grid-cols-12 gap-12 md:gap-24">
 
           {/* ── Brand Info ── */}
           <div className="col-span-12 md:col-span-12 lg:col-span-5">
