@@ -63,7 +63,7 @@ export default function TrainingHistory() {
                   {session.sport === 'archery' ? <Target size={24} /> : <Activity size={24} />}
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg font-brand text-white tracking-tight flex items-center gap-4">
+                  <h4 className="font-bold text-lg font-brand text-primary tracking-tight flex items-center gap-4">
                     {session.sport === 'archery' ? 'رماية من على الخيل' : 'التقاط أوتاد'}
                     {session.isReviewed && (
                       <span className="inline-flex items-center gap-2 px-3 py-1 layer-3 border border-gold/30 text-gold text-[9px] uppercase tracking-[0.2em] font-bold font-latin">
@@ -118,7 +118,7 @@ export default function TrainingHistory() {
                              </div>
                              <div>
                                 <p className="text-[10px] text-gold font-bold uppercase tracking-[0.3em] mb-3 font-latin">COACH FEEDBACK</p>
-                                <p className="text-base text-white leading-relaxed font-body">{session.coachFeedback}</p>
+                                <p className="text-base text-primary leading-relaxed font-body">{session.coachFeedback}</p>
                              </div>
                           </div>
                        </div>

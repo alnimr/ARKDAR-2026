@@ -76,7 +76,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href as '/'}
-              className="text-white/40 hover:text-gold transition-all duration-cine hover:tracking-[0.7em]"
+              className="text-ghost/60 hover:text-gold transition-all duration-cine hover:tracking-[0.7em]"
             >
               {link.label}
             </Link>
@@ -91,7 +91,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-4 px-6 py-4 text-[10px] font-brand font-bold tracking-[0.4em] text-white/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
+              className="flex items-center gap-4 px-6 py-4 text-[10px] font-brand font-bold tracking-[0.4em] text-ghost/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
             >
               <Globe className="w-4 h-4" strokeWidth={1} />
               <span className="hidden sm:inline">{locale}</span>
@@ -104,7 +104,7 @@ export default function Navbar() {
                   <button
                     key={l.code}
                     onClick={() => switchLocale(l.code)}
-                    className={`w-full text-start px-8 py-5 text-[10px] font-brand font-bold tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-white/60 uppercase rounded-none
+                    className={`w-full text-start px-8 py-5 text-[10px] font-brand font-bold tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-ghost/60 uppercase rounded-none
                       ${l.code === locale ? 'text-gold layer-3' : ''}`}
                   >
                     {l.label}
@@ -138,7 +138,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href as '/'}
               onClick={() => setIsMenuOpen(false)}
-              className="py-6 px-8 text-[11px] font-brand font-bold tracking-[0.5em] text-white/60 hover:text-gold hover:bg-layer-3 transition-all duration-cine border-b border-quiet/10 uppercase rounded-none"
+              className="py-6 px-8 text-[11px] font-brand font-bold tracking-[0.5em] text-ghost/60 hover:text-gold hover:bg-layer-3 transition-all duration-cine border-b border-quiet/10 uppercase rounded-none"
             >
               {link.label}
             </Link>

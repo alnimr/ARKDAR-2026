@@ -56,7 +56,7 @@ export default async function ArenaPage({
                 <div className="w-24 h-24 layer-2 flex items-center justify-center border border-quiet group-hover:bg-gold group-hover:text-black transition-all duration-cine">
                    <Target size={40} strokeWidth={1} />
                 </div>
-                <h2 className="text-5xl md:text-7xl font-brand font-bold text-white uppercase tracking-tighter leading-none">{t('masterclassTitle')}</h2>
+                <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary uppercase tracking-tighter leading-none">{t('masterclassTitle')}</h2>
              </div>
 
              <p className="text-2xl text-ghost font-brand font-light leading-relaxed mb-20 max-w-3xl relative opacity-70">
@@ -81,7 +81,7 @@ export default async function ArenaPage({
                 <div className="w-24 h-24 layer-2 flex items-center justify-center border border-quiet group-hover:bg-gold group-hover:text-black transition-all duration-cine">
                    <Compass size={40} strokeWidth={1} />
                 </div>
-                <h2 className="text-5xl md:text-7xl font-brand font-bold text-white uppercase tracking-tighter leading-none">{t('toursTitle')}</h2>
+                <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary uppercase tracking-tighter leading-none">{t('toursTitle')}</h2>
              </div>
 
              <div className="space-y-12 mb-20">
@@ -156,7 +156,7 @@ export default async function ArenaPage({
             <h3 className="text-gold font-brand font-bold tracking-[0.8em] text-[11px] uppercase mb-12 opacity-50">
                {t('ourServices')}
             </h3>
-            <h2 className="text-5xl md:text-9xl font-brand font-bold text-white uppercase tracking-tighter leading-[0.85]">
+            <h2 className="text-5xl md:text-9xl font-brand font-bold text-primary uppercase tracking-tighter leading-[0.85]">
                EXPLORE ANCIENT<br/>PASSIONS
             </h2>
           </div>

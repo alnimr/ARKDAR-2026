@@ -27,7 +27,7 @@ export default async function Footer() {
             <div className="flex items-center gap-8 mb-16">
               <div className="relative h-9 w-32">
                 <NextImage
-                  src="/images/brand/logo/ARKDAR_Logo_Ivory.png"
+                  src="/images/brand/logo/ARKDAR_Logo_Gold.png"
                   alt="ARKDAR Logo"
                   fill
                   className="object-contain cinema-lut"
@@ -35,7 +35,7 @@ export default async function Footer() {
               </div>
               <h2 className="text-4xl font-brand font-bold tracking-[0.4em] text-gold uppercase">{locale === 'ar' ? 'أركدار' : 'ARKDAR'}</h2>
             </div>
-            <p className="text-xl leading-relaxed max-w-sm text-white/40 font-brand font-light">
+            <p className="text-xl leading-relaxed max-w-sm text-ghost/60 font-brand font-light">
               {t('about')}
             </p>
 
@@ -59,11 +59,11 @@ export default async function Footer() {
               {t('links')}
             </h3>
             <ul className="space-y-8 text-[10px] font-brand font-bold tracking-[0.5em] uppercase">
-              <li><Link href="/" className="text-white/40 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('home')}</Link></li>
-              <li><Link href="/heritage" className="text-white/40 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('heritage')}</Link></li>
-              <li><Link href="/arenas" className="text-white/40 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('arenas')}</Link></li>
-              <li><Link href="/gearup" className="text-white/40 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('gearup')}</Link></li>
-              <li><Link href="/gathering" className="text-white/40 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('gathering')}</Link></li>
+              <li><Link href="/" className="text-ghost/60 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('home')}</Link></li>
+              <li><Link href="/heritage" className="text-ghost/60 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('heritage')}</Link></li>
+              <li><Link href="/arenas" className="text-ghost/60 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('arenas')}</Link></li>
+              <li><Link href="/gearup" className="text-ghost/60 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('gearup')}</Link></li>
+              <li><Link href="/gathering" className="text-ghost/60 transition-all duration-cine hover:text-gold hover:tracking-[0.7em] inline-block">{navT('gathering')}</Link></li>
             </ul>
           </div>
 
@@ -72,7 +72,7 @@ export default async function Footer() {
             <h3 className="text-[10px] font-brand font-bold tracking-[0.6em] mb-16 text-gold uppercase opacity-40">
               {t('contact')}
             </h3>
-            <ul className="space-y-8 text-xl font-brand font-bold text-white/60">
+            <ul className="space-y-8 text-xl font-brand font-bold text-ghost/80">
               <li className="flex items-center gap-6">
                 <span className="cinema-lut opacity-50 text-2xl">🇨🇭</span> <span className="tracking-[0.1em] uppercase">Interlaken</span>
               </li>
@@ -93,7 +93,7 @@ export default async function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="mt-40 pt-16 flex flex-col md:flex-row items-center justify-between gap-12 text-[10px] font-brand font-bold border-t border-quiet text-white/20 uppercase tracking-[0.6em]">
+        <div className="mt-40 pt-16 flex flex-col md:flex-row items-center justify-between gap-12 text-[10px] font-brand font-bold border-t border-quiet text-ghost/40 uppercase tracking-[0.6em]">
           <p>{t('rights')}</p>
           <div className="flex items-center gap-12">
             <Link href="/privacy" className="hover:text-gold transition-all duration-cine">Privacy Policy</Link>

@@ -108,7 +108,7 @@ export default async function HeritagePage({
                 </span>
               </div>
               
-              <h1 className="text-6xl md:text-9xl font-brand font-bold text-white mb-16 leading-[0.8] uppercase tracking-tighter foil-hero transition-all duration-cine group-hover/link:tracking-wider">
+              <h1 className="text-6xl md:text-9xl font-brand font-bold text-primary mb-16 leading-[0.8] uppercase tracking-tighter foil-hero transition-all duration-cine group-hover/link:tracking-wider">
                 {featuredPost.title[locale as keyof typeof featuredPost.title]}
               </h1>
               
@@ -148,7 +148,7 @@ export default async function HeritagePage({
             {t('navVision')}
           </h2>
           
-          <h3 className="text-6xl md:text-8xl lg:text-9xl font-brand font-bold text-white mb-32 leading-[0.85] uppercase tracking-tighter">
+          <h3 className="text-6xl md:text-8xl lg:text-9xl font-brand font-bold text-primary mb-32 leading-[0.85] uppercase tracking-tighter">
              {t('philosophyTitle')}
           </h3>
           
@@ -173,7 +173,7 @@ export default async function HeritagePage({
             <h4 className="text-gold font-brand font-bold tracking-[0.8em] uppercase text-[12px] mb-12 opacity-50">
               {t('originTitle')}
             </h4>
-            <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] mb-16 uppercase tracking-tighter">
+            <h2 className="text-6xl md:text-9xl font-brand font-bold text-primary leading-[0.8] mb-16 uppercase tracking-tighter">
               {t('pillarsTitle')}
             </h2>
             <div className="arrow-divider max-w-xs mx-auto opacity-30" />
@@ -192,7 +192,7 @@ export default async function HeritagePage({
                 <div className="w-32 h-32 mb-16 transform group-hover:scale-110 transition-transform duration-cine cinema-lut opacity-30 group-hover:opacity-100 relative">
                   <NextImage src={pillar.icon} alt="" fill className="object-contain" />
                 </div>
-                <h3 className="text-4xl font-brand font-bold text-white mb-10 group-hover:text-gold transition-all tracking-tight uppercase">{pillar.title}</h3>
+                <h3 className="text-4xl font-brand font-bold text-primary mb-10 group-hover:text-gold transition-all tracking-tight uppercase">{pillar.title}</h3>
                 <p className="text-ghost leading-relaxed font-brand font-light text-xl opacity-70">{pillar.desc}</p>
                 <div className="mt-20 pt-16 border-t border-quiet w-full flex justify-center">
                    <div className="w-24 h-px bg-quiet group-hover:w-48 group-hover:bg-gold transition-all duration-cine" />
@@ -223,7 +223,7 @@ export default async function HeritagePage({
           <div className="col-span-12 lg:col-span-7 space-y-24">
             <div className="space-y-12">
               <span className="text-gold text-[12px] font-brand font-bold tracking-[1em] uppercase opacity-50">{t('foundersMessageTitle')}</span>
-              <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] uppercase tracking-tighter">
+              <h2 className="text-6xl md:text-9xl font-brand font-bold text-primary leading-[0.8] uppercase tracking-tighter">
                 {t('missionTitle')}
               </h2>
             </div>
@@ -268,7 +268,7 @@ export default async function HeritagePage({
           <span className="text-[12px] font-brand font-bold uppercase tracking-[1.2em] text-gold mb-12 block opacity-50">
             {locale === 'ar' ? 'مستجدات أركدار' : 'ARKDAR Pulse'}
           </span>
-          <h2 className="text-6xl md:text-8xl font-brand font-bold text-white mb-16 uppercase tracking-tighter">
+          <h2 className="text-6xl md:text-8xl font-brand font-bold text-primary mb-16 uppercase tracking-tighter">
             {journalHeading}
           </h2>
           <div className="arrow-divider max-w-xs mx-auto mb-16 opacity-30" />

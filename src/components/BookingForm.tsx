@@ -253,7 +253,7 @@ export default function BookingForm() {
                     aria-label={t('fields.date')}
                     value={formData.date}
                     onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="w-full bg-black border border-quiet px-6 py-5 text-white focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
+                    className="w-full bg-layer-1 border border-quiet px-6 py-5 text-primary focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
                   />
                 </div>
                 <div className="space-y-4">
@@ -267,7 +267,7 @@ export default function BookingForm() {
                     title={t('fields.count')}
                     value={formData.count}
                     onChange={(e) => setFormData({...formData, count: e.target.value})}
-                    className="w-full bg-black border border-quiet px-6 py-5 text-white focus:border-gold outline-none transition-all duration-cine placeholder:text-white/5 font-body text-sm" 
+                    className="w-full bg-layer-1 border border-quiet px-6 py-5 text-primary focus:border-gold outline-none transition-all duration-cine placeholder:text-ghost/20 font-body text-sm" 
                   />
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function BookingForm() {
                       className={`py-5 border text-[10px] font-brand font-bold uppercase tracking-widest transition-all duration-cine depth-card
                         ${formData.experience === level 
                           ? 'border-gold bg-gold text-black' 
-                          : 'border-quiet bg-black text-ghost hover:border-gold/40'}`}
+                          : 'border-quiet bg-layer-1 text-ghost hover:border-gold/40'}`}
                     >
                       {t(`experienceLevels.${level}`)}
                     </button>
@@ -317,7 +317,7 @@ export default function BookingForm() {
                   title={t('fields.name')}
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full bg-black border border-quiet px-8 py-6 text-white focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
+                  className="w-full bg-layer-1 border border-quiet px-8 py-6 text-primary focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
                 />
               </div>
               <div className="grid md:grid-cols-2 gap-10">
@@ -328,7 +328,7 @@ export default function BookingForm() {
                     title={t('fields.email')}
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-black border border-quiet px-8 py-6 text-white focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
+                    className="w-full bg-layer-1 border border-quiet px-8 py-6 text-primary focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
                   />
                 </div>
                 <div className="space-y-4">
@@ -338,7 +338,7 @@ export default function BookingForm() {
                     title={t('fields.phone')}
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full bg-black border border-quiet px-8 py-6 text-white focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
+                    className="w-full bg-layer-1 border border-quiet px-8 py-6 text-primary focus:border-gold outline-none transition-all duration-cine font-body text-sm" 
                   />
                 </div>
               </div>

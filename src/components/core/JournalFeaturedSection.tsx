@@ -42,7 +42,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
               <span className="w-16 h-px bg-gold/30" />
               {t('heroTag')}
             </span>
-            <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] uppercase tracking-tighter foil-hero">
+            <h2 className="text-6xl md:text-9xl font-brand font-bold text-primary leading-[0.8] uppercase tracking-tighter foil-hero">
               {t('featuredTitle')}
             </h2>
             <p className="text-ghost max-w-3xl text-2xl font-brand font-light leading-relaxed opacity-70 italic">
@@ -94,14 +94,14 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
                 fill
                 className="object-cover transition-transform duration-[4000ms] ease-out group-hover:scale-110 opacity-60 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90 group-hover:opacity-95 transition-all duration-cine" />
+              <div className="absolute inset-0 bg-gradient-to-t from-layer-0 via-layer-0/60 to-transparent opacity-90 group-hover:opacity-95 transition-all duration-cine" />
               
               {/* Floating Labels */}
               <div className="absolute top-12 left-12 flex gap-6">
-                <span className="px-8 py-3 layer-3 border border-quiet text-gold text-[10px] font-brand font-bold uppercase tracking-[0.5em] bg-black/80">
+                <span className="px-8 py-3 layer-3 border border-quiet text-gold text-[10px] font-brand font-bold uppercase tracking-[0.5em] bg-layer-3/80">
                   {(post.categoryId || 'Heritage').toUpperCase()}
                 </span>
-                <span className="px-8 py-3 layer-3 border border-quiet text-ghost text-[10px] font-brand font-bold uppercase tracking-[0.5em] bg-black/80 opacity-60">
+                <span className="px-8 py-3 layer-3 border border-quiet text-ghost text-[10px] font-brand font-bold uppercase tracking-[0.5em] bg-layer-3/80 opacity-60">
                   {(post.type || 'Article').toUpperCase()}
                 </span>
               </div>
@@ -121,7 +121,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
                     </span>
                   </div>
 
-                  <h3 className="text-5xl md:text-6xl font-brand font-bold text-white group-hover:text-gold transition-all duration-cine leading-[0.9] uppercase tracking-tighter">
+                  <h3 className="text-5xl md:text-6xl font-brand font-bold text-primary group-hover:text-gold transition-all duration-cine leading-[0.9] uppercase tracking-tighter">
                     {post.title[locale as keyof typeof post.title]}
                   </h3>
                   

@@ -19,12 +19,12 @@
   --color-crimson:     #7A1515;
   --color-marble:      #EDF2F4;
   
-  /* Depth Layers */
-  --color-layer-0: #0D0B08;
-  --color-layer-1: #111009;
-  --color-layer-2: #161410;
-  --color-layer-3: #1C1914;
-  --color-layer-4: #222018;
+  /* Dynamic Depth Layers */
+  --color-layer-0: var(--layer-0);
+  --color-layer-1: var(--layer-1);
+  --color-layer-2: var(--layer-2);
+  --color-layer-3: var(--layer-3);
+  --color-layer-4: var(--layer-4);
 
   /* Typography */
   --font-brand:  var(--font-el-messiri), serif;
@@ -55,8 +55,15 @@
 
 @layer base {
   :root {
+    /* Sovereign Layers - Light (Ivory/Marble) */
+    --layer-0: #F2EBD9;
+    --layer-1: #EBE4D2;
+    --layer-2: #E4DDCB;
+    --layer-3: #DDD6C4;
+    --layer-4: #D6CFBD;
+
     /* Base Colors */
-    --background: #EDF2F4;
+    --background: var(--layer-0);
     --foreground: #0D0B08;
     
     /* Sovereign Borders */
@@ -75,13 +82,24 @@
   }
 
   .dark {
-    --background: #0D0B08;
+    /* Sovereign Layers - Dark (Charcoal/Gold-Dust) */
+    --layer-0: #0D0B08;
+    --layer-1: #111009;
+    --layer-2: #161410;
+    --layer-3: #1C1914;
+    --layer-4: #222018;
+
+    --background: var(--layer-0);
     --foreground: #F2EBD9;
     
     /* Text Hierarchy - Dark */
     --text-primary:      #F2EBD9;
     --text-secondary:    hsla(37,33%,91%,0.62);
     --text-ghost:        hsla(37,33%,91%,0.35);
+    
+    /* Adjust Borders for Dark */
+    --border-strong: hsla(43,64%,45%,0.25);
+    --border-quiet:  hsla(43,64%,45%,0.10);
   }
 
   * {

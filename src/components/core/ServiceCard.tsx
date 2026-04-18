@@ -39,7 +39,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         
         {/* Category/Price Tag */}
         <div className="absolute top-10 right-10">
-          <div className="px-8 py-4 layer-3 border border-quiet bg-black/80">
+          <div className="px-8 py-4 layer-3 border border-quiet bg-layer-2/80">
             <span className="text-gold font-bold text-[13px] tracking-[0.4em] font-brand uppercase">${service.price}</span>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           {service.location}
         </div>
 
-        <h3 className="text-3xl md:text-4xl font-brand font-bold text-white mb-8 group-hover:text-gold transition-all duration-cine uppercase tracking-tighter leading-[0.9]">
+        <h3 className="text-3xl md:text-4xl font-brand font-bold text-primary group-hover:text-gold transition-all duration-cine uppercase tracking-tighter leading-[0.9]">
           {service.title}
         </h3>
 
@@ -85,7 +85,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             </div>
             <div className="flex flex-col">
               <span className="text-[10px] text-gold/40 uppercase tracking-[0.4em] font-brand font-bold mb-1">MAESTRO</span>
-              <span className="text-[12px] text-white font-brand font-bold uppercase tracking-[0.3em]">
+              <span className="text-[12px] text-primary font-brand font-bold uppercase tracking-[0.3em]">
                 {service.expert.name}
               </span>
             </div>

@@ -70,7 +70,7 @@ export default async function CollectionPage({
               </div>
 
               <span className="text-[11px] font-brand font-bold uppercase tracking-[0.5em] text-gold/60 mb-4">{item.type}</span>
-              <h3 className="text-4xl font-brand font-bold text-white mb-6 transition-colors duration-cine group-hover:text-gold tracking-tighter uppercase">{item.name}</h3>
+              <h3 className="text-4xl font-brand font-bold text-primary mb-6 transition-colors duration-cine group-hover:text-gold tracking-tighter uppercase">{item.name}</h3>
               
               <div className="flex items-center gap-4 text-[11px] font-brand font-bold uppercase tracking-[0.3em] text-ghost mb-12 opacity-50">
                  <ShieldCheck size={18} className="text-gold" /> {t('certificate')}
@@ -108,7 +108,7 @@ export default async function CollectionPage({
                </div>
             </div>
             <div className="space-y-12">
-               <h2 className="text-5xl md:text-7xl font-brand font-bold text-white leading-none tracking-tighter uppercase">ENGINEERING<br/>ANCESTRAL POWER</h2>
+               <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary leading-none tracking-tighter uppercase">ENGINEERING<br/>ANCESTRAL POWER</h2>
                <p className="text-2xl text-ghost leading-relaxed font-brand font-light opacity-70">
                  Every bow in our collection is a result of years of research into historical composite construction, optimized for the modern archer without losing its soul.
                </p>
