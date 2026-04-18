@@ -4,14 +4,7 @@ import { motion } from 'framer-motion';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import { JournalPost } from '@/types/journal';
-import { 
-  FileText, 
-  Video, 
-  Download, 
-  Newspaper, 
-  Calendar,
-  User
-} from 'lucide-react';
+import Icon, { IconName } from './Icon';
 
 interface JournalCardProps {
   post: JournalPost;
@@ -21,63 +14,63 @@ interface JournalCardProps {
 
 const typeConfig = {
   article: {
-    icon: FileText,
+    icon: 'calendar' as IconName,
     labelAr: 'مقالة',
     labelEn: 'Article',
     labelDe: 'Artikel',
     labelEs: 'Artículo',
   },
   media: {
-    icon: Video,
+    icon: 'play' as IconName,
     labelAr: 'فيديو',
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
   },
   video: {
-    icon: Video,
+    icon: 'play' as IconName,
     labelAr: 'فيديو',
     labelEn: 'Video',
     labelDe: 'Video',
     labelEs: 'Video',
   },
   download: {
-    icon: Download,
+    icon: 'share' as IconName,
     labelAr: 'تحميل',
     labelEn: 'Download',
     labelDe: 'Download',
     labelEs: 'Descarga',
   },
   press: {
-    icon: Newspaper,
+    icon: 'notify' as IconName,
     labelAr: 'بيان صحفي',
     labelEn: 'Press Release',
     labelDe: 'Pressemitteilung',
     labelEs: 'Comunicado',
   },
   news: {
-    icon: Newspaper,
+    icon: 'notify' as IconName,
     labelAr: 'أخبار',
     labelEn: 'News',
     labelDe: 'Neuigkeiten',
     labelEs: 'Noticias',
   },
   heritage: {
-    icon: FileText,
+    icon: 'calendar' as IconName,
     labelAr: 'تراث',
     labelEn: 'Heritage',
     labelDe: 'Erbe',
     labelEs: 'Herencia',
   },
   craftsmanship: {
-    icon: Newspaper,
+    icon: 'filter' as IconName,
     labelAr: 'حرفية',
     labelEn: 'Craftsmanship',
     labelDe: 'Handwerk',
     labelEs: 'Artesanía',
   },
   lifestyle: {
-    icon: FileText,
+    icon: 'calendar' as IconName,
     labelAr: 'نمط حياة',
     labelEn: 'Lifestyle',
     labelDe: 'Lifestyle',
@@ -87,7 +80,6 @@ const typeConfig = {
 
 export default function JournalCard({ post, locale, index = 0 }: JournalCardProps) {
   const config = typeConfig[post.type as keyof typeof typeConfig] || typeConfig.article;
-  const TypeIcon = config.icon;
   
   const title = post.title?.[locale as keyof typeof post.title] || post.title?.ar || "";
   const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
@@ -141,7 +133,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         
         {/* Type Badge */}
         <div className={`absolute top-8 ${isRtl ? 'right-8' : 'left-8'} flex items-center gap-4 px-6 py-3 border border-quiet layer-3 bg-black/80 z-30`}>
-          <TypeIcon size={14} className="text-gold" strokeWidth={1} />
+          <Icon name={config.icon as IconName} size={14} color="var(--color-gold)" />
           <span className="text-[10px] font-brand font-bold uppercase tracking-[0.5em] text-gold">
             {typeLabel}
           </span>
@@ -153,14 +145,14 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         {/* Meta */}
         <div className={`flex items-center gap-8 mb-10 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em] ${isRtl ? 'flex-row-reverse justify-end' : ''}`}>
           <span className="flex items-center gap-3">
-            <Calendar size={14} className="text-gold/40" strokeWidth={1} />
+            <Icon name="calendar" size={14} color="currentColor" opacity="0.4" />
             {formattedDate}
           </span>
           {post.author && (
             <>
               <span className="w-1 h-1 bg-gold/20" />
               <span className="flex items-center gap-3">
-                <User size={14} className="text-gold/40" strokeWidth={1} />
+                <Icon name="warrior" size={14} color="currentColor" opacity="0.4" />
                 {post.author}
               </span>
             </>
@@ -168,7 +160,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </div>
 
         {/* Title */}
-        <h3 className={`text-2xl md:text-3xl font-brand font-bold text-white leading-tight mb-8 transition-all duration-cine group-hover:text-gold group-hover:tracking-tight uppercase ${isRtl ? 'text-right' : 'text-left'}`}>
+        <h3 className={`text-2xl md:text-3xl font-brand font-bold text-primary leading-tight mb-8 transition-all duration-cine group-hover:text-gold group-hover:tracking-tight uppercase ${isRtl ? 'text-right' : 'text-left'}`}>
           {title}
         </h3>
 

@@ -2,20 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
-import { 
-  ChevronLeft, 
-  Target, 
-  Sword, 
-  Shield, 
-  Compass, 
-  CheckCircle2,
-  Calendar,
-  Users,
-  MapPin,
-  User,
-  Mail,
-  Phone
-} from 'lucide-react';
+import Icon, { IconName } from './core/Icon';
 import { db } from '@/lib/arena/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import NextImage from 'next/image';
@@ -26,29 +13,29 @@ interface Service {
   id: string;
   category: string;
   labelKey: string;
-  icon: typeof Target;
+  icon: string;
   arenas?: ArenaID[]; // If empty, available in all
 }
 
 const SERVICES: Service[] = [
   // Archery
-  { id: 'archery_ground', category: 'archery', labelKey: 'ground', icon: Target },
-  { id: 'archery_mounted', category: 'archery', labelKey: 'mounted', icon: Target },
-  { id: 'air_rifle', category: 'archery', labelKey: 'air_rifle', icon: Target, arenas: ['cairo'] },
+  { id: 'archery_ground', category: 'archery', labelKey: 'ground', icon: 'filter' },
+  { id: 'archery_mounted', category: 'archery', labelKey: 'mounted', icon: 'filter' },
+  { id: 'air_rifle', category: 'archery', labelKey: 'air_rifle', icon: 'filter', arenas: ['cairo'] },
 
   // Combat
-  { id: 'sword_ground', category: 'combat', labelKey: 'sword_ground', icon: Sword },
-  { id: 'sword_mounted', category: 'combat', labelKey: 'sword_mounted', icon: Sword },
-  { id: 'spear_ground', category: 'combat', labelKey: 'spear_ground', icon: Shield },
-  { id: 'spear_mounted', category: 'combat', labelKey: 'spear_mounted', icon: Shield },
+  { id: 'sword_ground', category: 'combat', labelKey: 'sword_ground', icon: 'warrior' },
+  { id: 'sword_mounted', category: 'combat', labelKey: 'sword_mounted', icon: 'warrior' },
+  { id: 'spear_ground', category: 'combat', labelKey: 'spear_ground', icon: 'shield' },
+  { id: 'spear_mounted', category: 'combat', labelKey: 'spear_mounted', icon: 'shield' },
 
   // Heritage
-  { id: 'tent_pegging', category: 'heritage', labelKey: 'tent_pegging', icon: Compass },
-  { id: 'bedouin_games', category: 'heritage', labelKey: 'bedouin_games', icon: Compass },
+  { id: 'tent_pegging', category: 'heritage', labelKey: 'tent_pegging', icon: 'arrow' },
+  { id: 'bedouin_games', category: 'heritage', labelKey: 'bedouin_games', icon: 'arrow' },
 
   // Journeys
-  { id: 'horse_tour', category: 'journeys', labelKey: 'horse_tour', icon: Compass },
-  { id: 'chariot_tour', category: 'journeys', labelKey: 'chariot_tour', icon: Compass },
+  { id: 'horse_tour', category: 'journeys', labelKey: 'horse_tour', icon: 'share' },
+  { id: 'chariot_tour', category: 'journeys', labelKey: 'chariot_tour', icon: 'share' },
 ];
 
 export default function BookingForm() {
@@ -136,7 +123,7 @@ export default function BookingForm() {
           <div key={s} className="flex items-center">
             <div className={`w-14 h-14 flex items-center justify-center transition-all duration-cine border font-brand font-bold text-lg
               ${step >= s ? 'bg-gold border-gold text-black scale-105' : 'border-quiet text-ghost/20'}`}>
-              {step > s ? <CheckCircle2 className="w-6 h-6" /> : s}
+              {step > s ? <Icon name="notify" size={24} color="black" /> : s}
             </div>
             {s < 5 && <div className={`w-8 h-px mx-4 md:w-20 transition-colors duration-cine ${step > s ? 'bg-gold' : 'bg-quiet'}`} />}
           </div>
@@ -174,7 +161,7 @@ export default function BookingForm() {
                   </div>
                   <div className="absolute inset-0 flex flex-col justify-end p-10 z-20 text-start">
                     <span className="text-gold text-[10px] font-brand font-bold uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-                       <MapPin className="w-4 h-4" strokeWidth={1.5} /> ARKDAR ARENA
+                       <Icon name="arrow" size={16} color="currentColor" className="rotate-90" /> ARKDAR ARENA
                     </span>
                     <h3 className="text-3xl font-brand text-white group-hover:text-gold transition-colors duration-cine uppercase tracking-tighter">{loc.label}</h3>
                   </div>
@@ -209,7 +196,7 @@ export default function BookingForm() {
                             ? 'bg-gold/5 border-gold text-gold' 
                             : 'layer-1 border-quiet text-ghost/40 hover:bg-gold/[0.02] hover:border-gold/20'}`}
                       >
-                        <s.icon className={`w-10 h-10 transition-all duration-cine ${selectedServices.includes(s.id) ? 'scale-110 text-gold' : 'grayscale opacity-20'}`} strokeWidth={1} />
+                        <Icon name={s.icon as IconName} size={40} color="currentColor" className={selectedServices.includes(s.id) ? 'scale-110' : 'opacity-20'} />
                         <span className="text-[10px] font-brand font-bold uppercase tracking-widest text-center leading-tight">
                           {t(`services.${cat}.${s.labelKey}`)}
                         </span>
@@ -222,7 +209,7 @@ export default function BookingForm() {
 
             <div className="flex justify-between items-center mt-20 layer-2 p-8 border border-quiet z-50 depth-card">
               <button onClick={prevStep} className="flex items-center gap-3 text-ghost font-brand font-bold uppercase tracking-widest text-[10px] hover:text-gold transition-colors duration-cine">
-                <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
+                <Icon name="arrow" size={20} color="currentColor" className="rotate-180" /> {t('actions.back')}
               </button>
               <button 
                 disabled={selectedServices.length === 0}
@@ -246,7 +233,7 @@ export default function BookingForm() {
               <div className="grid md:grid-cols-2 gap-10">
                 <div className="space-y-4">
                   <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3">
-                    <Calendar className="w-4 h-4 text-gold/60" strokeWidth={1.5} /> {t('fields.date')}
+                    <Icon name="calendar" size={16} color="currentColor" opacity="0.6" /> {t('fields.date')}
                   </label>
                    <input 
                     type="date" 
@@ -258,7 +245,7 @@ export default function BookingForm() {
                 </div>
                 <div className="space-y-4">
                   <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3">
-                    <Users className="w-4 h-4 text-gold/60" strokeWidth={1.5} /> {t('fields.count')}
+                    <Icon name="warrior" size={16} color="currentColor" opacity="0.6" /> {t('fields.count')}
                   </label>
                   <input 
                     type="number" 
@@ -293,7 +280,7 @@ export default function BookingForm() {
 
             <div className="flex justify-between items-center max-w-2xl mx-auto pt-10">
               <button onClick={prevStep} className="flex items-center gap-3 text-ghost font-brand font-bold uppercase tracking-widest text-[10px] hover:text-gold transition-colors duration-cine">
-                <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
+                <Icon name="arrow" size={20} color="currentColor" className="rotate-180" /> {t('actions.back')}
               </button>
               <button onClick={nextStep} className="btn-sovereign px-16">
                  {t('actions.next')}
@@ -311,7 +298,7 @@ export default function BookingForm() {
 
             <div className="grid gap-10 max-w-2xl mx-auto layer-1 p-12 border border-quiet depth-card">
               <div className="space-y-4">
-                <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3"><User className="w-4 h-4 text-gold/60" strokeWidth={1.5} /> {t('fields.name')}</label>
+                <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3"><Icon name="warrior" size={16} color="currentColor" opacity="0.6" /> {t('fields.name')}</label>
                 <input 
                   type="text" 
                   title={t('fields.name')}
@@ -322,7 +309,7 @@ export default function BookingForm() {
               </div>
               <div className="grid md:grid-cols-2 gap-10">
                 <div className="space-y-4">
-                  <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3"><Mail className="w-4 h-4 text-gold/60" strokeWidth={1.5} /> {t('fields.email')}</label>
+                  <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3"><Icon name="notify" size={16} color="currentColor" opacity="0.6" /> {t('fields.email')}</label>
                   <input 
                     type="email" 
                     title={t('fields.email')}
@@ -332,7 +319,7 @@ export default function BookingForm() {
                   />
                 </div>
                 <div className="space-y-4">
-                  <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3"><Phone className="w-4 h-4 text-gold/60" strokeWidth={1.5} /> {t('fields.phone')}</label>
+                  <label className="text-[10px] font-brand font-bold uppercase tracking-widest text-ghost flex items-center gap-3"><Icon name="share" size={16} color="currentColor" opacity="0.6" /> {t('fields.phone')}</label>
                   <input 
                     type="tel" 
                     title={t('fields.phone')}
@@ -346,7 +333,7 @@ export default function BookingForm() {
 
             <div className="flex justify-between items-center max-w-2xl mx-auto pt-10">
               <button onClick={prevStep} className="flex items-center gap-3 text-ghost font-brand font-bold uppercase tracking-widest text-[10px] hover:text-gold transition-colors duration-cine">
-                <ChevronLeft className="w-5 h-5" /> {t('actions.back')}
+                <Icon name="arrow" size={20} color="currentColor" className="rotate-180" /> {t('actions.back')}
               </button>
               <button 
                 disabled={isSubmitting}
@@ -363,7 +350,7 @@ export default function BookingForm() {
         {step === 5 && (
           <div className="animate-fade-in text-center space-y-12 py-24 border border-gold/10 depth-card layer-1">
             <div className="w-32 h-32 bg-gold/5 flex items-center justify-center mx-auto ring-1 ring-gold/10 animate-pulse border border-gold/20">
-              <CheckCircle2 className="w-16 h-16 text-gold" strokeWidth={1} />
+              <Icon name="notify" size={64} color="var(--color-gold)" />
             </div>
             <div className="space-y-8">
               <h2 className="text-5xl font-brand text-gold uppercase tracking-[0.4em]">{t('home')}</h2>

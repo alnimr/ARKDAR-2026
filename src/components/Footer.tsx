@@ -1,6 +1,7 @@
 import { getTranslations, getLocale } from 'next-intl/server';
 import NextImage from 'next/image';
 import { Link } from '@/i18n/routing';
+import Icon from './core/Icon';
 
 export default async function Footer() {
   const t = await getTranslations('Footer');
@@ -72,7 +73,14 @@ export default async function Footer() {
             <h3 className="text-[10px] font-brand font-bold tracking-[0.6em] mb-16 text-gold uppercase opacity-40">
               {t('contact')}
             </h3>
-            <ul className="space-y-8 text-xl font-brand font-bold text-ghost/80">
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-4 text-[10px] font-brand font-bold tracking-[0.4em] text-ghost/40 hover:text-gold transition-all duration-cine group uppercase"
+            >
+              {t('backToTop')}
+              <Icon name="arrow" size={12} color="currentColor" className="-rotate-90 group-hover:-translate-y-1 transition-transform" />
+            </button>
+            <ul className="space-y-8 text-xl font-brand font-bold text-ghost/80 mt-16">
               <li className="flex items-center gap-6">
                 <span className="cinema-lut opacity-50 text-2xl">🇨🇭</span> <span className="tracking-[0.1em] uppercase">Interlaken</span>
               </li>
@@ -80,13 +88,17 @@ export default async function Footer() {
                 <span className="cinema-lut opacity-50 text-2xl">🇪🇬</span> <span className="tracking-[0.1em] uppercase">Cairo</span>
               </li>
               <li className="flex items-center gap-6">
-                <span className="cinema-lut opacity-50 text-2xl">🇪🇸</span> <span className="tracking-[0.1em] uppercase">Spain</span>
-              </li>
-              <li className="pt-16">
-                <a href="mailto:info@arkdar.com" className="text-gold text-2xl font-brand font-bold hover:text-white transition-all duration-cine flex items-center gap-8 group">
-                  <span className="w-20 h-20 layer-2 border border-quiet flex items-center justify-center group-hover:bg-gold group-hover:text-black transition-all duration-cine text-3xl rounded-none">✉</span> 
-                  <span className="tracking-[0.2em] uppercase">info@arkdar.com</span>
-                </a>
+                <div className="flex items-center gap-6">
+                  <Link href="https://instagram.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                    <Icon name="share" size="s" color="currentColor" />
+                  </Link>
+                  <Link href="https://twitter.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                    <Icon name="share" size="s" color="currentColor" />
+                  </Link>
+                  <Link href="https://linkedin.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                    <Icon name="share" size="s" color="currentColor" />
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>

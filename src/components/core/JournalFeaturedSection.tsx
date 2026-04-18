@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { JournalPost } from '@/types/journal';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, Calendar, Clock } from 'lucide-react';
+import Icon, { IconName } from './Icon';
 import { useTranslations } from 'next-intl';
 
 interface JournalFeaturedSectionProps {
@@ -56,14 +56,14 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
               className="w-24 h-24 border border-quiet layer-1 flex items-center justify-center text-gold/40 hover:bg-gold hover:text-black transition-all duration-cine group"
               aria-label={isRtl ? "التمرير لليمين" : "Scroll Left"}
             >
-              <ArrowLeft size={32} className={`${isRtl ? "rotate-180" : ""} group-hover:-translate-x-2 transition-transform duration-cine`} strokeWidth={1} />
+              <Icon name="arrow" size={32} color="currentColor" className={`${isRtl ? "rotate-90" : "rotate-180"} group-hover:-translate-x-2 transition-transform duration-cine`} />
             </button>
             <button 
               onClick={() => scrollContainer(isRtl ? 'left' : 'right')}
               className="w-24 h-24 border border-quiet layer-1 flex items-center justify-center text-gold/40 hover:bg-gold hover:text-black transition-all duration-cine group"
               aria-label={isRtl ? "التمرير لليسار" : "Scroll Right"}
             >
-              <ArrowRight size={32} className={`${isRtl ? "rotate-180" : ""} group-hover:translate-x-2 transition-transform duration-cine`} strokeWidth={1} />
+              <Icon name="arrow" size={32} color="currentColor" className={`${isRtl ? "rotate-180" : "rotate-90"} group-hover:translate-x-2 transition-transform duration-cine`} />
             </button>
           </div>
         </div>
@@ -111,12 +111,12 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
                 <div className="space-y-10 text-start">
                   <div className="flex items-center gap-10 text-ghost/40 text-[11px] uppercase tracking-[0.5em] font-brand font-bold">
                     <span className="flex items-center gap-4">
-                      <Calendar size={16} className="text-gold/40" strokeWidth={1} />
+                      <Icon name="calendar" size={16} color="currentColor" opacity="0.4" />
                       {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
                     <span className="w-1 h-1 bg-gold/20" />
                     <span className="flex items-center gap-4">
-                      <Clock size={16} className="text-gold/40" strokeWidth={1} />
+                      <Icon name="share" size={16} color="currentColor" opacity="0.4" />
                       {t('readTime', { minutes: 5 })}
                     </span>
                   </div>

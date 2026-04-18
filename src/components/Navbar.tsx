@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import Icon from './core/Icon';
 import ThemeToggle from './ThemeToggle';
 
 const LOCALES: { code: string; label: string }[] = [
@@ -76,7 +76,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href as '/'}
-              className="text-ghost/60 hover:text-gold transition-all duration-cine hover:tracking-[0.7em]"
+              className="text-primary/60 hover:text-gold transition-all duration-cine hover:tracking-[0.7em]"
             >
               {link.label}
             </Link>
@@ -91,11 +91,15 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-4 px-6 py-4 text-[10px] font-brand font-bold tracking-[0.4em] text-ghost/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
+              className="flex items-center gap-4 px-6 py-4 text-[10px] font-brand font-bold tracking-[0.4em] text-primary/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
             >
-              <Globe className="w-4 h-4" strokeWidth={1} />
+              <Icon name="share" size="s" color="currentColor" className="rotate-90" />
               <span className="hidden sm:inline">{locale}</span>
-              <ChevronDown className={`w-3 h-3 transition-transform duration-cine ${isLangOpen ? 'rotate-180' : ''}`} />
+              <Icon 
+                name="arrow" 
+                size={12} 
+                className={`transition-transform duration-cine rotate-90 ${isLangOpen ? '-rotate-90' : 'rotate-90'}`} 
+              />
             </button>
 
             {isLangOpen && (
@@ -104,7 +108,7 @@ export default function Navbar() {
                   <button
                     key={l.code}
                     onClick={() => switchLocale(l.code)}
-                    className={`w-full text-start px-8 py-5 text-[10px] font-brand font-bold tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-ghost/60 uppercase rounded-none
+                    className={`w-full text-start px-8 py-5 text-[10px] font-brand font-bold tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-primary/60 uppercase rounded-none
                       ${l.code === locale ? 'text-gold layer-3' : ''}`}
                   >
                     {l.label}
@@ -125,10 +129,11 @@ export default function Navbar() {
             className="lg:hidden p-3 text-gold hover:layer-2 transition-all duration-cine rounded-none"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X className="w-8 h-8" strokeWidth={1} /> : <Menu className="w-8 h-8" strokeWidth={1} />}
+            {isMenuOpen ? <Icon name="close" size={32} /> : <Icon name="menu" size={32} />}
           </button>
         </div>
       </div>
+
 
       {/* ── Mobile Menu ── */}
       {isMenuOpen && (
