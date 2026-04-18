@@ -4,83 +4,8 @@
    Source: ARKDAR Platform/src/app/globals.css + Brand Constitution v3.0
    ══════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=El+Messiri:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
 
-/* Cinzel — self-hosted brand font (Latin display, eyebrows, tags) */
-@font-face {
-  font-family: 'Cinzel';
-  src: url('fonts/Cinzel-Regular.ttf') format('truetype');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Cinzel';
-  src: url('fonts/Cinzel-Medium.ttf') format('truetype');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Cinzel';
-  src: url('fonts/Cinzel-SemiBold.ttf') format('truetype');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Cinzel';
-  src: url('fonts/Cinzel-Bold.ttf') format('truetype');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Cinzel';
-  src: url('fonts/Cinzel-ExtraBold.ttf') format('truetype');
-  font-weight: 800; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Cinzel';
-  src: url('fonts/Cinzel-Black.ttf') format('truetype');
-  font-weight: 900; font-style: normal; font-display: swap;
-}
-
-/* El Messiri — self-hosted brand font (bilingual AR/EN primary) */
-@font-face {
-  font-family: 'El Messiri';
-  src: url('fonts/ElMessiri-Regular.ttf') format('truetype');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'El Messiri';
-  src: url('fonts/ElMessiri-Medium.ttf') format('truetype');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'El Messiri';
-  src: url('fonts/ElMessiri-SemiBold.ttf') format('truetype');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'El Messiri';
-  src: url('fonts/ElMessiri-Bold.ttf') format('truetype');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
-
-/* Scheherazade New — self-hosted brand font (Arabic long-form body) */
-@font-face {
-  font-family: 'Scheherazade New';
-  src: url('fonts/ScheherazadeNew-Regular.ttf') format('truetype');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Scheherazade New';
-  src: url('fonts/ScheherazadeNew-Medium.ttf') format('truetype');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Scheherazade New';
-  src: url('fonts/ScheherazadeNew-SemiBold.ttf') format('truetype');
-  font-weight: 600; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Scheherazade New';
-  src: url('fonts/ScheherazadeNew-Bold.ttf') format('truetype');
-  font-weight: 700; font-style: normal; font-display: swap;
-}
 
 :root {
   /* ── SOVEREIGN COLORS ── Primary palette (WCAG verified) ── */
