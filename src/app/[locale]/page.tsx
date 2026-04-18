@@ -29,7 +29,7 @@ export default async function HomePage({
     <div className="flex flex-col w-full overflow-x-hidden layer-0 selection:bg-gold selection:text-black font-brand">
 
       {/* 1. HERO SECTION - Sovereign Presence */}
-      <section className="min-h-screen w-full pt-36 pb-24 px-6 md:px-12 flex flex-col justify-center relative overflow-hidden">
+      <section className="min-h-screen w-full pt-sovereign-nav pb-24 px-6 md:px-12 flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 -z-20">
           <NextImage 
             src="/images/brand/hero.png" 

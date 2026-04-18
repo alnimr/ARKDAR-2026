@@ -164,6 +164,17 @@
   .layer-3 { background-color: var(--color-layer-3); }
   .layer-4 { background-color: var(--color-layer-4); }
 
+  /* ── Sovereign Navbar Padding ── */
+  .pt-sovereign-nav {
+    padding-top: 80px;
+  }
+  @media (min-width: 768px) {
+    .pt-sovereign-nav {
+      padding-top: 180px;
+    }
+  }
+
+
   /* ── Sovereign Borders ── */
   .border-sovereign { border: 1px solid var(--border-strong); }
   .border-quiet { border: 1px solid var(--border-quiet); }

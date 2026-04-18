@@ -16,7 +16,7 @@ export default async function PulsePage({
   ];
 
   return (
-    <main className="flex flex-col w-full min-h-screen pt-32 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
+    <main className="flex flex-col w-full min-h-screen pt-sovereign-nav layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
       
       {/* Sovereign Atmosphere */}
       <div className="absolute inset-0 pointer-events-none">

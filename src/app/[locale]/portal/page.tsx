@@ -22,7 +22,7 @@ export default async function PortalPage({
   ];
 
   return (
-    <div className="flex h-screen layer-0 overflow-hidden selection:bg-gold selection:text-black font-brand">
+    <div className="flex h-screen pt-sovereign-nav layer-0 overflow-hidden selection:bg-gold selection:text-black font-brand">
       
       {/* Sovereign Atmosphere - Crescent Watermark */}
       <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.05] pointer-events-none -z-10">

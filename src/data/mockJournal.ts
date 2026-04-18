@@ -13,12 +13,16 @@ export const CATEGORIES = [
   { id: 'equestrian', ar: 'الفروسية', en: 'Equestrian', de: 'Reitsport', es: 'Ecuestre' }
 ];
 
-function cleanHtmlContent(content: string): string {
-  if (!content) return '';
+function cleanHtmlContent(html: string): string {
+  if (!html) return "";
   
-  // Basic HTML entity cleaning
-  let cleaned = content
-    .replace(/&nbsp;/g, ' ')
+  let cleaned = html
+    .replace(/\[caption[^\]]*\][\s\S]*?\[\/caption\]/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#8211;/g, "–")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8220;/g, '"')
+    .replace(/&#8221;/g, '"')
     .replace(/&quot;/g, '"')
     .replace(/&ldquo;/g, '"')
     .replace(/&rdquo;/g, '"')
@@ -27,10 +31,16 @@ function cleanHtmlContent(content: string): string {
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&lrm;/g, '') // Remove left-to-right mark
-    .replace(/&rlm;/g, ''); // Remove right-to-left mark
+    .replace(/&rlm;/g, '') // Remove right-to-left mark
+    .trim();
+
+  // If the content after stripping HTML tags is empty, return "" to allow fallback
+  const textOnly = cleaned.replace(/<[^>]*>/g, "").trim();
+  if (textOnly === "" && !cleaned.includes("<img")) {
+    return "";
+  }
 
   // Remove WordPress Shortcodes
-  cleaned = cleaned.replace(/\[caption[^\]]*\].*?\[\/caption\]/g, ''); 
   cleaned = cleaned.replace(/\[.*?\]/g, ''); 
 
   // Remove Social Media Hashtags at the end or within
@@ -93,9 +103,23 @@ export const mockJournalPosts: JournalPost[] = articles
   // Clean content for all available languages
   const cleanedContent = {
     ar: cleanHtmlContent(art.content.ar || ""),
-    en: cleanHtmlContent(art.content.en || ""),
-    de: cleanHtmlContent(art.content.de || ""),
-    es: cleanHtmlContent(art.content.es || "")
+    en: cleanHtmlContent(art.content.en || art.content.ar || ""),
+    de: cleanHtmlContent(art.content.de || art.content.en || art.content.ar || ""),
+    es: cleanHtmlContent(art.content.es || art.content.en || art.content.ar || "")
+  };
+
+  const title = {
+    ar: art.title.ar || "عنوان غير متوفر",
+    en: art.title.en || art.title.ar || "Title Unavailable",
+    de: art.title.de || art.title.en || art.title.ar || "Titel nicht verfügbar",
+    es: art.title.es || art.title.en || art.title.ar || "Título no disponible"
+  };
+
+  const excerpt = {
+    ar: art.excerpt.ar || "ملخص غير متوفر",
+    en: art.excerpt.en || art.excerpt.ar || "Excerpt Unavailable",
+    de: art.excerpt.de || art.excerpt.en || art.excerpt.ar || "Auszug nicht verfügbar",
+    es: art.excerpt.es || art.excerpt.en || art.excerpt.ar || "Resumen no disponible"
   };
 
   // Detect predominant language (optional usage of helper to satisfy lint)
@@ -106,9 +130,10 @@ export const mockJournalPosts: JournalPost[] = articles
     slug: art.slug || art.id || `article-${art.id || 'missing'}`,
     type: (art.type as JournalType) || 'article',
     categoryId: 'heritage',
-    title: art.title || { ar: 'عنوان غير متوفر', en: 'Title Unavailable', de: 'Titel nicht verfügbar', es: 'Título no disponible' },
-    excerpt: art.excerpt || { ar: 'ملخص غير متوفر', en: 'Excerpt Unavailable', de: 'Auszug nicht verfügbar', es: 'Resumen no disponible' },
+    title,
+    excerpt,
     content: cleanedContent,
+
     date: formattedDate,
     isArabic,
     author: {

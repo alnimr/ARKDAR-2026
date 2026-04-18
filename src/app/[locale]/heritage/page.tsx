@@ -49,7 +49,7 @@ export default async function HeritagePage({
 
   return (
     <main
-      className="flex flex-col w-full min-h-screen pt-24 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand"
+      className="flex flex-col w-full min-h-screen pt-sovereign-nav layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand"
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       

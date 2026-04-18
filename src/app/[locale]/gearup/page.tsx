@@ -18,7 +18,7 @@ export default async function CollectionPage({
   ];
 
   return (
-    <main className="flex flex-col w-full min-h-screen pt-32 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
+    <main className="flex flex-col w-full min-h-screen pt-sovereign-nav layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
       
       {/* Sovereign Atmosphere - Crescent Watermark */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-screen opacity-[0.15] pointer-events-none -z-10">

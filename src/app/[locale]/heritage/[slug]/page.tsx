@@ -94,7 +94,7 @@ export default async function JournalArticlePage({
 
   return (
     <main
-      className="min-h-screen layer-0 pt-32 pb-48 relative overflow-hidden transition-all duration-cine"
+      className="min-h-screen layer-0 pt-sovereign-nav pb-48 relative overflow-hidden transition-all duration-cine"
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       <ArticleReadingProgress />

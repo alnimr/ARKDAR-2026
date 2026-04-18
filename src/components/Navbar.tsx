@@ -49,14 +49,14 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-cine ease-feather ${
-      isScrolled ? 'py-0 px-4 md:px-0' : 'py-4 md:py-10 px-4 md:px-16'
+      isScrolled ? 'py-0 px-2 md:px-0' : 'py-2 md:py-8 px-2 md:px-16'
     } font-brand`}>
-      <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4 md:py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
-        isScrolled ? 'border-gold bg-layer-0' : ''
+      <div className={`max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-3 md:py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
+        isScrolled ? 'border-gold bg-layer-0/90 backdrop-blur-md' : ''
       }`}>
 
-        <Link href="/" className="flex items-center gap-6 group">
-          <div className="relative h-9 w-32">
+        <Link href="/" className="flex items-center gap-3 md:gap-6 group">
+          <div className="relative h-6 md:h-9 w-24 md:w-32">
             <NextImage
               src="/images/brand/logo/ARKDAR_Logo_Gold.png"
               alt="ARKDAR Logo"
@@ -65,18 +65,18 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span className="text-2xl font-brand font-bold tracking-[0.4em] text-gold uppercase">
+          <span className="text-lg md:text-2xl font-brand font-bold tracking-[0.2em] md:tracking-[0.4em] text-gold uppercase hidden sm:inline-block">
             {locale === 'ar' ? 'أركدار' : 'ARKDAR'}
           </span>
         </Link>
 
         {/* ── Desktop Links ── */}
-        <div className="hidden lg:flex items-center gap-12 text-[11px] font-brand font-bold tracking-[0.5em] uppercase">
+        <div className="hidden lg:flex items-center gap-8 xl:gap-12 text-[10px] xl:text-[11px] font-brand font-bold tracking-[0.3em] xl:tracking-[0.5em] uppercase">
           {navLinks.map(link => (
             <Link
               key={link.href}
               href={link.href as '/'}
-              className="text-primary/60 hover:text-gold transition-all duration-cine hover:tracking-[0.7em]"
+              className="text-primary/60 hover:text-gold transition-all duration-cine hover:tracking-[0.6em]"
             >
               {link.label}
             </Link>
@@ -84,32 +84,32 @@ export default function Navbar() {
         </div>
 
         {/* ── Actions ── */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 md:gap-6">
           <ThemeToggle />
 
           {/* Language Switcher */}
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-2 md:gap-4 px-3 md:px-6 py-3 md:py-4 text-[9px] md:text-[10px] font-brand font-bold tracking-[0.2em] md:tracking-[0.4em] text-primary/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
+              className="flex items-center gap-2 px-3 md:px-6 py-2.5 md:py-4 text-[8px] md:text-[10px] font-brand font-bold tracking-[0.1em] md:tracking-[0.4em] text-primary/80 hover:bg-gold hover:text-black transition-all duration-cine border border-quiet uppercase rounded-none"
             >
-              <Icon name="share" size="s" color="currentColor" className="rotate-90" />
-              <span className="hidden sm:inline">{locale}</span>
+              <Icon name="share" size={14} color="currentColor" className="rotate-90" />
+              <span className="hidden lg:inline">{locale}</span>
               <Icon 
                 name="arrow" 
-                size={12} 
+                size={10} 
                 className={`transition-transform duration-cine rotate-90 ${isLangOpen ? '-rotate-90' : 'rotate-90'}`} 
               />
             </button>
 
             {isLangOpen && (
-              <div className="absolute top-full mt-4 end-0 layer-2 border border-quiet overflow-hidden w-64 depth-float z-50 rounded-none">
+              <div className="absolute top-full mt-4 end-0 layer-2 border border-quiet overflow-hidden w-48 md:w-64 depth-float z-50 rounded-none animate-in fade-in zoom-in-95 duration-200">
                 {LOCALES.map(l => (
                   <button
                     key={l.code}
                     onClick={() => switchLocale(l.code)}
-                    className={`w-full text-start px-8 py-5 text-[10px] font-brand font-bold tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-primary/60 uppercase rounded-none
-                      ${l.code === locale ? 'text-gold layer-3' : ''}`}
+                    className={`w-full text-start px-6 md:px-8 py-4 md:py-5 text-[9px] md:text-[10px] font-brand font-bold tracking-[0.2em] md:tracking-[0.4em] transition-all duration-cine hover:bg-gold hover:text-black text-primary/60 uppercase rounded-none
+                      ${l.code === locale ? 'text-gold bg-layer-3' : ''}`}
                   >
                     {l.label}
                   </button>
@@ -119,17 +119,17 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <Link href="/mount-up" className="hidden xl:inline-flex btn-sovereign py-4 px-10">
+          <Link href="/mount-up" className="hidden lg:inline-flex btn-sovereign py-3 px-8 text-[9px]">
             {t('mountUp')}
           </Link>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-3 text-gold hover:layer-2 transition-all duration-cine rounded-none"
+            className="lg:hidden p-2 text-gold hover:bg-gold/5 transition-all duration-cine rounded-none"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <Icon name="close" size={32} /> : <Icon name="menu" size={32} />}
+            {isMenuOpen ? <Icon name="close" size={24} /> : <Icon name="menu" size={24} />}
           </button>
         </div>
       </div>

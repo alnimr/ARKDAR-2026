@@ -81,20 +81,20 @@ export default async function Footer() {
             <BackToTop label={t('backToTop')} />
             <ul className="space-y-8 text-xl font-brand font-bold text-ghost/80 mt-16">
               <li className="flex items-center gap-6">
-                <span className="cinema-lut opacity-50 text-2xl">🇨🇭</span> <span className="tracking-[0.1em] uppercase">Interlaken</span>
+                <span className="cinema-lut opacity-50 text-2xl">{locale === 'ar' ? '🇨🇭' : '🇨🇭'}</span> <span className="tracking-[0.1em] uppercase">{t('interlaken')}</span>
               </li>
               <li className="flex items-center gap-6">
-                <span className="cinema-lut opacity-50 text-2xl">🇪🇬</span> <span className="tracking-[0.1em] uppercase">Cairo</span>
+                <span className="cinema-lut opacity-50 text-2xl">{locale === 'ar' ? '🇪🇬' : '🇪🇬'}</span> <span className="tracking-[0.1em] uppercase">{t('cairo')}</span>
               </li>
               <li className="flex items-center gap-6">
                 <div className="flex items-center gap-6">
-                  <Link href="https://instagram.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                  <Link href="https://instagram.com/arkdar" target="_blank" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
                     <Icon name="instagram" size="s" color="currentColor" />
                   </Link>
-                  <Link href="https://twitter.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                  <Link href="https://twitter.com/arkdar" target="_blank" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
                     <Icon name="twitter" size="s" color="currentColor" />
                   </Link>
-                  <Link href="https://youtube.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                  <Link href="https://youtube.com/@arkdar" target="_blank" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
                     <Icon name="youtube" size="s" color="currentColor" />
                   </Link>
                 </div>
@@ -107,8 +107,8 @@ export default async function Footer() {
         <div className="mt-40 pt-16 flex flex-col md:flex-row items-center justify-between gap-12 text-[10px] font-brand font-bold border-t border-quiet text-ghost/40 uppercase tracking-[0.6em]">
           <p>{t('rights')}</p>
           <div className="flex items-center gap-12">
-            <Link href="/privacy" className="hover:text-gold transition-all duration-cine">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-gold transition-all duration-cine">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-gold transition-all duration-cine">{t('privacy')}</Link>
+            <Link href="/terms" className="hover:text-gold transition-all duration-cine">{t('terms')}</Link>
           </div>
         </div>
       </div>
