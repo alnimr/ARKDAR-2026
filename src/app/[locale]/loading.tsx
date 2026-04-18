@@ -15,7 +15,7 @@ export default function Loading() {
         </div>
         
         {/* Center Glow */}
-        <div className="absolute inset-4 bg-gold/10 blur-2xl rounded-full animate-pulse" />
+        <div className="absolute inset-4 bg-gold/10 blur-2xl animate-pulse" />
       </div>
       
       <div className="absolute bottom-20 text-gold text-[10px] font-bold tracking-[1em] uppercase animate-pulse">

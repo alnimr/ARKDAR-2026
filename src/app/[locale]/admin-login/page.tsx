@@ -77,23 +77,23 @@ function AdminLoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white/[0.02] border border-quiet px-5 py-5 text-white focus:outline-none focus:border-gold/50 transition-all duration-cine font-body text-sm"
+                className="w-full layer-1 border border-quiet px-5 py-5 text-white focus:outline-none focus:border-gold/50 transition-all duration-cine font-body text-sm"
                 placeholder="admin@arkdar.com"
                 dir="ltr"
               />
             </div>
             
-            <div className="group">
-              <label className="block text-[10px] font-bold text-ghost uppercase tracking-[0.2em] mb-3 font-latin group-focus-within:text-gold transition-colors duration-cine">
+            <div>
+              <label className="block text-[10px] font-brand font-bold uppercase tracking-[0.4em] text-gold/60 mb-3">
                 {isRtl ? 'كلمة المرور' : 'Password'}
               </label>
-              <input
-                type="password"
+              <input 
+                type="password" 
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-white/[0.02] border border-quiet px-5 py-5 text-white focus:outline-none focus:border-gold/50 transition-all duration-cine font-body text-sm"
                 placeholder="••••••••"
+                className="w-full layer-1 border border-quiet px-5 py-5 text-white focus:outline-none focus:border-gold/50 transition-all duration-cine font-body text-sm"
                 dir="ltr"
               />
             </div>
@@ -101,7 +101,7 @@ function AdminLoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full mt-10 bg-gold text-black hover:bg-white hover:text-black disabled:opacity-50 py-6 font-bold uppercase tracking-[0.4em] text-[10px] transition-all duration-cine flex items-center justify-center gap-4 depth-card font-latin"
+              className="w-full mt-10 bg-gold text-black hover:bg-gold-light hover:text-black disabled:opacity-50 py-6 font-bold uppercase tracking-[0.4em] text-[10px] transition-all duration-cine flex items-center justify-center gap-4 depth-card font-latin"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-black/20 border-t-black animate-spin" />

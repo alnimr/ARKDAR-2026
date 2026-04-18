@@ -1,11 +1,11 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=El+Messiri:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
+
 /* ══════════════════════════════════════════════════════════════
    ARKDAR — SOVEREIGN DESIGN TOKENS
    Colors + Type + Motion + Depth
-   Source: ARKDAR Platform/src/app/globals.css + Brand Constitution v3.0
+   Source: ARKDAR Platform/src/app/globals.css + Royal DNA v3.1
    ══════════════════════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=El+Messiri:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
-
 
 :root {
   /* ── SOVEREIGN COLORS ── Primary palette (WCAG verified) ── */
@@ -108,6 +108,28 @@
   --space-32:             128px;
   --space-48:             192px;  /* Section-to-section on hero pages */
 }
+
+@theme {
+  --font-brand: var(--font-brand);
+  --font-latin: var(--font-latin);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-dim: var(--color-gold-dim);
+  --color-black: var(--color-black);
+  --color-ivory: var(--color-ivory);
+  --color-marble: var(--color-marble);
+  --color-lapis: var(--color-lapis);
+  --color-crimson: var(--color-crimson);
+
+  --radius-base: 0px;
+  --radius-large: 0px;
+  
+  --breakpoint-xs: 375px;
+}
+
 
 /* ── LIGHT THEME (Ivory / Marble) ── */
 .light, [data-theme="light"] {
@@ -310,3 +332,7 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
   pointer-events: none;
 }
 
+/* ── GLOBAL RADIUS PURGE ── */
+* {
+  border-radius: 0 !important;
+}

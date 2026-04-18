@@ -89,8 +89,8 @@ export default function ArenaLab() {
   const drawSkeleton = useCallback((ctx: CanvasRenderingContext2D, landmarks: NormalizedLandmark[]) => {
     if (!landmarks) return;
     
-    // Draw connections - ARKDAR GOLD
-    ctx.strokeStyle = '#D4AF37'; 
+    // Draw connections
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-gold').trim() || '#B8922A'; 
     ctx.lineWidth = 4;
     ctx.lineCap = 'square';
     
@@ -113,8 +113,8 @@ export default function ArenaLab() {
       }
     });
 
-    // Draw joints - WHITE
-    ctx.fillStyle = '#FFFFFF'; 
+    // Draw joints - TEXT PRIMARY (IVORY)
+    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#F2EBD9'; 
     landmarks.forEach((lm, i) => {
       if (i > 10) { // Only body joints
         ctx.fillRect(lm.x * ctx.canvas.width - 3, lm.y * ctx.canvas.height - 3, 6, 6); // Square joints
