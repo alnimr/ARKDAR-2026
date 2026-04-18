@@ -9,7 +9,6 @@ import {
   Video, 
   Download, 
   Newspaper, 
-  ArrowUpRight, 
   Calendar,
   User
 } from 'lucide-react';
@@ -115,7 +114,9 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
       className="layer-1 group relative flex flex-col overflow-hidden border border-quiet transition-all duration-cine hover:border-gold depth-card selection:bg-gold selection:text-black font-brand"
     >
       {/* Brand Watermark Overlay */}
-      <div className="absolute top-0 right-0 w-40 h-40 opacity-0 group-hover:opacity-[0.05] -mr-10 -mt-10 rotate-12 transition-all duration-cine pointer-events-none layer-0" />
+      <div className="absolute top-0 right-0 w-40 h-40 opacity-0 group-hover:opacity-[0.05] -mr-10 -mt-10 rotate-12 transition-all duration-cine pointer-events-none layer-0">
+        <NextImage src="/images/brand/watermarks/Five_Strands_Gold.png" alt="" fill className="object-contain" />
+      </div>
       
       {/* Full Card Clickable Link */}
       <Link 
@@ -128,6 +129,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
 
       {/* Image */}
       <div className="relative h-72 overflow-hidden cinema-lut">
+        <div className="strands-bg-pattern opacity-[0.03]" />
         <NextImage
           src={post.image}
           alt={title}
@@ -176,7 +178,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
         </p>
 
         {/* Separator */}
-        <div className="mt-12 mb-10 h-px bg-quiet w-16 group-hover:w-32 group-hover:bg-gold transition-all duration-cine" />
+        <div className="arrow-divider w-16 group-hover:w-32 opacity-20 group-hover:opacity-40" />
 
         {/* CTA */}
         <div
@@ -187,7 +189,9 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
             : post.type === 'press' && isExternalOnly
               ? (isRtl ? 'البيان الصحفي' : 'PRESS RELEASE')
               : (isRtl ? 'اكتشف المزيد' : 'DISCOVERY')}
-          <ArrowUpRight size={16} className="transition-transform duration-cine group-hover:translate-x-2 group-hover:-translate-y-2" strokeWidth={1} />
+          <div className="relative w-8 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+            <NextImage src="/images/brand/arrow/Linear_Arrow_Gold.png" alt="" fill className="object-contain" />
+          </div>
         </div>
       </div>
     </motion.article>
