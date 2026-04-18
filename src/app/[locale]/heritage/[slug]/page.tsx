@@ -28,8 +28,8 @@ export async function generateMetadata({
     };
   }
 
-  const title = post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || 'Untitled Article';
-  const description = (post.excerpt && post.excerpt[locale as keyof typeof post.excerpt]) || (post.excerpt && post.excerpt.en) || (post.excerpt && post.excerpt.ar) || '';
+  const title = post.title?.[locale as keyof typeof post.title] || 'Untitled Article';
+  const description = (post.excerpt && post.excerpt[locale as keyof typeof post.excerpt]) || '';
 
   const siteName = 'ARKDAR Platform';
 
@@ -42,7 +42,7 @@ export async function generateMetadata({
       images: post.image ? [{ url: post.image }] : [],
       type: 'article',
       publishedTime: post.date,
-      authors: [post.author?.[locale as keyof typeof post.author] || post.author?.ar || 'ARKDAR'],
+      authors: [post.author?.[locale as keyof typeof post.author] || 'ARKDAR'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -78,9 +78,9 @@ export default async function JournalArticlePage({
     notFound();
   }
   
-  const title = post.title?.[locale as keyof typeof post.title] || post.title?.ar || "";
-  const content = post.content?.[locale as keyof typeof post.content] || post.content?.ar || "";
-  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
+  const title = post.title?.[locale as keyof typeof post.title] || "";
+  const content = post.content?.[locale as keyof typeof post.content] || "";
+  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || "";
 
   const typeIcon = typeIconMap[post.type as keyof typeof typeIconMap] || 'file-text';
 
@@ -110,7 +110,7 @@ export default async function JournalArticlePage({
             datePublished: post.date,
             author: {
               "@type": "Organization",
-              name: post.author?.[locale as keyof typeof post.author] || post.author?.ar || "ARKDAR",
+              name: post.author?.[locale as keyof typeof post.author] || "ARKDAR",
             },
             description: excerpt,
           }),
@@ -176,7 +176,7 @@ export default async function JournalArticlePage({
                         </span>
                       </div>
 
-                      <h1 className={`text-4xl md:text-7xl font-brand font-bold text-gold leading-tight mb-16 tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>
+                      <h1 className={`text-5xl md:text-7xl font-brand font-bold text-gold leading-tight mb-16 tracking-tight ${isRtl ? 'text-right' : 'text-left'}`}>
                         {title}
                       </h1>
                     </header>
@@ -233,11 +233,11 @@ export default async function JournalArticlePage({
                 {related.length > 0 && (
                   <section className="mt-48 pt-24 border-t border-quiet">
                     <h2 className={`text-2xl font-brand font-bold text-gold mb-16 uppercase tracking-widest ${isRtl ? 'text-right' : 'text-left'}`}>
-                      {t?.('relatedTitle') || (locale === 'ar' ? 'سجلات ذات صلة' : 'Related Records')}
+                      {t?.('relatedTitle')}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                       {related.map((relPost) => {
-                        const relTitle = relPost.title[locale as keyof typeof relPost.title] || relPost.title.en;
+                        const relTitle = relPost.title[locale as keyof typeof relPost.title] || "";
                         return (
                           <Link
                             key={relPost.id || relPost.slug}

@@ -64,7 +64,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
     { year: 'numeric', month: 'long', day: 'numeric' }
   );
 
-  const readTime = Math.ceil((post.content[locale as keyof typeof post.content] || post.content.en || '').split(' ').length / 200) || 5;
+  const readTime = Math.ceil((post.content[locale as keyof typeof post.content] || "").split(' ').length / 200) || 5;
 
   return (
     <aside className={`hidden lg:block w-80 flex-shrink-0 sticky top-56 h-fit ${isRtl ? 'ml-16' : 'mr-16'} font-brand selection:bg-gold selection:text-black`}>
@@ -87,7 +87,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
             </span>
             <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
               <Icon name="warrior" size={16} color="var(--color-gold)" opacity="0.6" />
-              {post.author?.[locale as keyof typeof post.author] || post.author?.ar}
+              {post.author?.[locale as keyof typeof post.author] || ""}
             </span>
           </div>
         )}

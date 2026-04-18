@@ -24,11 +24,11 @@ export default async function PulsePage({
       </div>
 
       {/* ── Header ── */}
-      <section className="py-32 px-8 text-center relative z-10">
+      <section className="py-20 md:py-32 px-6 md:px-12 text-center relative z-10">
         <span className="text-[11px] font-brand font-bold uppercase tracking-[0.6em] text-gold/60 mb-8 block">
           {t('heroTag')}
         </span>
-        <h1 className="text-6xl md:text-9xl font-brand font-bold text-gold mb-12 tracking-tighter leading-none uppercase">
+        <h1 className="text-4xl md:text-9xl font-brand font-bold text-gold mb-12 tracking-tighter leading-none uppercase">
           {t('title')}
         </h1>
         <div className="w-40 h-px bg-gold/20 mx-auto" />
@@ -38,7 +38,7 @@ export default async function PulsePage({
       </section>
 
       {/* ── Events Grid ── */}
-      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative">
+      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto z-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {events.map((event, i) => (

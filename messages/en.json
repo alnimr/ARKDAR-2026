@@ -9,6 +9,7 @@
     "mountUp": "Mount Up"
   },
   "MountUp": {
+    "tag": "EQUESTRIAN MASTERY",
     "title": "Arena Portal",
     "subtitle": "Begin your journey in the world of equestrian arts. Choose your passion and field for an unforgettable experience.",
     "steps": {
@@ -98,7 +99,29 @@
     "product2": "Custom Archery Arrows",
     "product3": "Equestrian Leather Accessories",
     "exploreCollection": "Explore Collection",
-    "viewAllCollection": "View All Heritage Artifacts"
+    "viewAllCollection": "View All Heritage Artifacts",
+    "creedTitle": "The Sovereign Creed",
+    "creedHeritage": "Heritage first.",
+    "creedPerformance": "Performance serves it.",
+    "creed1Label": "Heritage First",
+    "creed1Desc": "Every design starts with historical truth, rooted in Mamluk excellence.",
+    "creed2Label": "Modern Precision",
+    "creed2Desc": "We use the latest technology to ensure our equipment meets 21st-century standards.",
+    "creed3Label": "Lineage",
+    "creed3Desc": "Direct connection to historical archery masters.",
+    "creed4Label": "Purpose",
+    "creed4Desc": "Preserving the art",
+    "dnaTag": "ARKDAR DNA",
+    "gearupTitle": "Sovereign Gear",
+    "gearupDesc": "Tools designed with hybrid elite craftsmanship, merging ancestral hand-making with 21st-century technology.",
+    "gearupBtn": "Explore Armory",
+    "presenceTitle": "Global Presence",
+    "location1Country": "Switzerland",
+    "location1City": "Interlaken Hub",
+    "location1Desc": "The heart of our European operations and alpine training.",
+    "location2Country": "Egypt",
+    "location2City": "Cairo Tactical Center",
+    "location2Desc": "The ancestral home of the Mamluk horseman, optimized for desert mastery."
   },
   "Heritage": {
     "heroTag": "Resurrecting Greatness",
@@ -146,7 +169,10 @@
     "downloadCaption": "Attached high-quality file for later reading",
     "downloadButton": "Download Journal (PDF)",
     "relatedDocumentary": "Related documentary film",
-    "watchNow": "Watch Now"
+    "watchNow": "Watch Now",
+    "pulseHeading": "ARKDAR Pulse",
+    "pulseSubheading": "Articles, videos, and exclusive releases from the ARKDAR world",
+    "pulseTag": "ARKDAR Pulse"
   },
   "Arenas": {
     "heroTag": "The Field of Honor",
@@ -167,7 +193,10 @@
     "swissTours": "Interlaken (Switzerland): Scenic horse rides or traditional luxury horse-drawn carriage tours.",
     "egyptTours": "Egypt (Pre-arrangement only): Tailored journeys. Define your horse count, location, and duration; we handle the elite orchestration.",
     "bookTour": "Book My Tour",
-    "ourServices": "Our Masterclasses & Services"
+    "ourServices": "Our Masterclasses & Services",
+    "exploreTitle": "EXPLORE ANCIENT PASSIONS",
+    "bookingTitle": "SECURE YOUR PLACE IN HISTORY",
+    "uplinkStatus": "Accessing Tactical Uplink..."
   },
   "Gearup": {
     "heroTag": "Rare Collectibles",
@@ -181,7 +210,10 @@
     "product3Type": "Accessory",
     "certificate": "Certificate of Authenticity Included",
     "experience": "Explore Artifact",
-    "view_details": "Artifact Details"
+    "view_details": "Artifact Details",
+    "craftTag": "MAMLUK CRAFT",
+    "featuredTitle": "ENGINEERING ANCESTRAL POWER",
+    "featuredDesc": "Every bow in our collection is a result of years of research into historical composite construction, optimized for the modern archer without losing its soul."
   },
   "Gathering": {
     "heroTag": "Community Heartbeat",
@@ -234,7 +266,9 @@
     "search": "Search Journal...",
     "noResults": "No articles match your search.",
     "readMore": "Read More",
-    "share": "Share Story"
+    "share": "Share Story",
+    "searchPlaceholder": "SEARCH THE ARCHIVES...",
+    "noResultsFound": "NO RECORDS FOUND"
   },
   "LanguageModal": {
     "title": "Welcome to ARKDAR",

@@ -28,16 +28,8 @@ export default async function HeritagePage({
   setRequestLocale(locale);
   const t = await getTranslations('Heritage');
 
-  const journalHeading =
-    locale === 'ar' ? 'الديوان الرقمي' : locale === 'de' ? 'Digitales Journal' : locale === 'es' ? 'El Diván Digital' : 'The Digital Divan';
-  const journalSubheading =
-    locale === 'ar'
-      ? 'مقالات، فيديوهات، وإصدارات حصرية من عالم أركدار'
-      : locale === 'de'
-      ? 'Artikel, Videos und exklusive Veröffentlichungen aus der ARKDAR-Welt'
-      : locale === 'es'
-      ? 'Artículos, vídeos y publicaciones exclusivas del mundo ARKDAR'
-      : 'Articles, videos, and exclusive releases from the ARKDAR world';
+  const journalHeading = t('pulseHeading');
+  const journalSubheading = t('pulseSubheading');
 
   // Sort descending by date
   const posts = [...mockJournalPosts].sort(
@@ -67,7 +59,7 @@ export default async function HeritagePage({
       <div className="absolute inset-0 opacity-[0.03] layer-0 pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[72px] z-50 w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
+      <nav id="heritage-nav" className="sticky top-[120px] z-50 w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
         <div className="max-w-7xl mx-auto px-10 h-16 flex items-center justify-center gap-16 md:gap-24 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },
@@ -87,7 +79,7 @@ export default async function HeritagePage({
 
       {/* ── Dynamic Featured Hero Section ── */}
       {featuredPost && (
-        <section className="relative h-[90vh] flex flex-col justify-end pb-40 px-8 overflow-hidden group layer-0">
+        <section className="relative h-[90vh] flex flex-col justify-end pb-40 px-6 md:px-12 overflow-hidden group layer-0">
           <div className="strands-bg-pattern opacity-10" />
           <div className="absolute inset-0 cinema-lut">
             <NextImage
@@ -108,22 +100,22 @@ export default async function HeritagePage({
                 </span>
               </div>
               
-              <h1 className="text-6xl md:text-9xl font-brand font-bold text-primary mb-16 leading-[0.8] uppercase tracking-tighter foil-hero transition-all duration-cine group-hover/link:tracking-wider">
+              <h1 className="text-5xl md:text-9xl font-brand font-bold text-primary mb-8 md:mb-16 leading-[0.8] uppercase tracking-tighter md:tracking-tighter foil-hero transition-all duration-cine group-hover/link:tracking-wider">
                 {featuredPost.title[locale as keyof typeof featuredPost.title]}
               </h1>
               
               <p className="text-2xl md:text-3xl text-ghost font-brand font-light leading-relaxed max-w-5xl mb-20 line-clamp-2 opacity-80 italic">
-                {featuredPost.excerpt[locale as keyof typeof featuredPost.excerpt] || featuredPost.excerpt.en}
+                {featuredPost.excerpt[locale as keyof typeof featuredPost.excerpt] || ""}
               </p>
               
               <div className="flex items-center gap-12">
                 {featuredPost.author && (
                   <div className="flex items-center gap-8">
                     <div className="w-16 h-16 layer-2 border border-quiet flex items-center justify-center overflow-hidden">
-                       <span className="text-gold font-brand font-bold text-2xl">{(featuredPost.author?.[locale as keyof typeof featuredPost.author] || featuredPost.author?.ar)?.[0] || 'A'}</span>
+                       <span className="text-gold font-brand font-bold text-2xl">{(featuredPost.author?.[locale as keyof typeof featuredPost.author] || "")?.[0] || 'A'}</span>
                     </div>
                     <span className="text-ghost font-brand font-bold text-xl uppercase tracking-[0.3em] opacity-60">
-                      {featuredPost.author?.[locale as keyof typeof featuredPost.author] || featuredPost.author?.ar}
+                      {featuredPost.author?.[locale as keyof typeof featuredPost.author] || ""}
                     </span>
                   </div>
                 )}
@@ -141,7 +133,7 @@ export default async function HeritagePage({
       )}
 
       {/* ── The Vision Section (Philosophy) ── */}
-      <section id="vision" className="py-72 px-8 relative overflow-hidden layer-1 border-b border-quiet">
+      <section id="vision" className="py-72 px-6 md:px-12 relative overflow-hidden layer-1 border-b border-quiet">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <Icon name="quote" className="text-gold mx-auto mb-24 opacity-30" size="l" style={{ width: 96, height: 96 }} />
@@ -150,7 +142,7 @@ export default async function HeritagePage({
             {t('navVision')}
           </h2>
           
-          <h3 className="text-6xl md:text-8xl lg:text-9xl font-brand font-bold text-primary mb-32 leading-[0.85] uppercase tracking-tighter">
+          <h3 className="text-5xl md:text-8xl lg:text-9xl font-brand font-bold text-primary mb-32 leading-[0.85] uppercase tracking-tighter">
              {t('philosophyTitle')}
           </h3>
           
@@ -168,7 +160,7 @@ export default async function HeritagePage({
       </section>
 
       {/* ── Founding Pillars ── */}
-      <section id="lineage" className="py-72 px-8 relative z-10 layer-0 overflow-hidden">
+      <section id="lineage" className="py-72 px-6 md:px-12 relative z-10 layer-0 overflow-hidden">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-48">
@@ -206,7 +198,7 @@ export default async function HeritagePage({
       </section>
 
       {/* ── Founder's Message & Mission ── */}
-      <section className="py-72 px-8 relative z-10 layer-1 border-y border-quiet overflow-hidden">
+      <section className="py-72 px-6 md:px-12 relative z-10 layer-1 border-y border-quiet overflow-hidden">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-32 items-center">
           <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] overflow-hidden group cinema-lut border border-quiet depth-card">
@@ -264,11 +256,11 @@ export default async function HeritagePage({
       )}
 
       {/* ── The Digital Divan — Journal Grid ── */}
-      <section id="journal" className="py-72 px-8 relative z-10 border-t border-quiet layer-0">
+      <section id="journal" className="py-72 px-6 md:px-12 relative z-10 border-t border-quiet layer-0">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto mb-40 text-center">
           <span className="text-[12px] font-brand font-bold uppercase tracking-[1.2em] text-gold mb-12 block opacity-50">
-            {locale === 'ar' ? 'مستجدات أركدار' : 'ARKDAR Pulse'}
+            {t('pulseTag')}
           </span>
           <h2 className="text-6xl md:text-8xl font-brand font-bold text-primary mb-16 uppercase tracking-tighter">
             {journalHeading}

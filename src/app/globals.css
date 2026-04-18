@@ -229,6 +229,10 @@
   .me-auto { margin-inline-end: auto; }
   .ps-4 { padding-inline-start: 1rem; }
   .pe-4 { padding-inline-end: 1rem; }
+  
+  .pt-sovereign-nav {
+    @apply pt-32 md:pt-56;
+  }
 
   /* ── Sovereign Utilities ── */
   .btn-sovereign {

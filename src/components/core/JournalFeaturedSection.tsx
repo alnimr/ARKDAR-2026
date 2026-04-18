@@ -56,7 +56,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
               <span className="w-16 h-px bg-gold/30" />
               {t('heroTag')}
             </span>
-            <h2 className="text-6xl md:text-9xl font-brand font-bold text-primary leading-[0.8] uppercase tracking-tighter foil-hero">
+            <h2 className="text-5xl md:text-9xl font-brand font-bold text-primary leading-[0.8] uppercase tracking-tighter foil-hero">
               {t('featuredTitle')}
             </h2>
             <p className="text-ghost max-w-3xl text-2xl font-brand font-light leading-relaxed opacity-70 italic">
@@ -95,7 +95,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-shrink-0 w-[720px] max-w-[90vw] snap-center"
+            className="flex-shrink-0 w-[280px] sm:w-[500px] md:w-[720px] max-w-[90vw] snap-center"
           >
             <Link 
               href={`/${locale}/heritage/${post.slug}`}
@@ -135,7 +135,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
                     </span>
                   </div>
 
-                  <h3 className="text-5xl md:text-6xl font-brand font-bold text-primary group-hover:text-gold transition-all duration-cine leading-[0.9] uppercase tracking-tighter">
+                  <h3 className="text-3xl md:text-6xl font-brand font-bold text-primary group-hover:text-gold transition-all duration-cine leading-[0.9] uppercase tracking-tighter">
                     {post.title[locale as keyof typeof post.title]}
                   </h3>
                   

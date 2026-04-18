@@ -31,7 +31,7 @@ export default async function CollectionPage({
       </div>
 
       {/* ── Header ── */}
-      <section className="py-32 px-8 text-center relative z-10 overflow-hidden">
+      <section className="py-32 px-6 md:px-12 text-center relative z-10 overflow-hidden">
         <div className="strands-bg-pattern" />
         <span className="text-[11px] font-brand font-bold uppercase tracking-[0.6em] text-gold/60 mb-8 block opacity-50">
           {t('heroTag')}
@@ -46,7 +46,7 @@ export default async function CollectionPage({
       </section>
 
       {/* ── Artifacts Gallery ── */}
-      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative overflow-hidden">
+      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto z-10 relative overflow-hidden">
         <div className="strands-bg-pattern" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           
@@ -89,18 +89,18 @@ export default async function CollectionPage({
       </section>
 
       {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="arrow-divider" />
       </div>
 
       {/* ── Featured Detail Section ── */}
-      <section className="py-48 px-8 max-w-7xl mx-auto overflow-hidden relative">
+      <section className="py-48 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden relative">
          <div className="strands-bg-pattern opacity-5" />
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <div className="relative aspect-video layer-2 border border-quiet overflow-hidden depth-card group">
                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent" />
                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-gold/10 text-7xl md:text-8xl font-brand font-bold uppercase tracking-tighter opacity-40 group-hover:scale-105 transition-transform duration-cine">MAMLUK CRAFT</span>
+                  <span className="text-gold/10 text-7xl md:text-8xl font-brand font-bold uppercase tracking-tighter opacity-40 group-hover:scale-105 transition-transform duration-cine">{t('craftTag')}</span>
                </div>
                {/* Aesthetic Bow Asset */}
                <div className="absolute inset-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -108,9 +108,9 @@ export default async function CollectionPage({
                </div>
             </div>
             <div className="space-y-12">
-               <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary leading-none tracking-tighter uppercase">ENGINEERING<br/>ANCESTRAL POWER</h2>
+               <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary leading-none tracking-tighter uppercase">{t('featuredTitle')}</h2>
                <p className="text-2xl text-ghost leading-relaxed font-brand font-light opacity-70">
-                 Every bow in our collection is a result of years of research into historical composite construction, optimized for the modern archer without losing its soul.
+                 {t('featuredDesc')}
                </p>
                <div className="flex gap-8">
                   {[1, 2, 3].map(i => (

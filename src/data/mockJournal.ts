@@ -103,23 +103,23 @@ export const mockJournalPosts: JournalPost[] = articles
   // Clean content for all available languages
   const cleanedContent = {
     ar: cleanHtmlContent(art.content.ar || ""),
-    en: cleanHtmlContent(art.content.en || art.content.ar || ""),
-    de: cleanHtmlContent(art.content.de || art.content.en || art.content.ar || ""),
-    es: cleanHtmlContent(art.content.es || art.content.en || art.content.ar || "")
+    en: cleanHtmlContent(art.content.en || ""),
+    de: cleanHtmlContent(art.content.de || ""),
+    es: cleanHtmlContent(art.content.es || "")
   };
 
   const title = {
-    ar: art.title.ar || "عنوان غير متوفر",
-    en: art.title.en || art.title.ar || "Title Unavailable",
-    de: art.title.de || art.title.en || art.title.ar || "Titel nicht verfügbar",
-    es: art.title.es || art.title.en || art.title.ar || "Título no disponible"
+    ar: art.title.ar || "",
+    en: art.title.en || "",
+    de: art.title.de || "Titel nicht verfügbar",
+    es: art.title.es || "Título no disponible"
   };
 
   const excerpt = {
-    ar: art.excerpt.ar || "ملخص غير متوفر",
-    en: art.excerpt.en || art.excerpt.ar || "Excerpt Unavailable",
-    de: art.excerpt.de || art.excerpt.en || art.excerpt.ar || "Auszug nicht verfügbar",
-    es: art.excerpt.es || art.excerpt.en || art.excerpt.ar || "Resumen no disponible"
+    ar: art.excerpt.ar || "",
+    en: art.excerpt.en || "",
+    de: art.excerpt.de || "Auszug nicht verfügbar",
+    es: art.excerpt.es || "Resumen no disponible"
   };
 
   // Detect predominant language (optional usage of helper to satisfy lint)

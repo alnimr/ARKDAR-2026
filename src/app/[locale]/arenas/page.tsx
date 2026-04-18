@@ -29,22 +29,22 @@ export default async function ArenaPage({
       </div>
 
       {/* ── Header ── */}
-      <section className="py-32 px-8 text-center relative z-10 overflow-hidden">
+      <section className="py-20 md:py-32 px-6 md:px-12 text-center relative z-10 overflow-hidden">
         <div className="strands-bg-pattern" />
         <Link
           href={`/${locale}/heritage`}
-          className="inline-flex items-center gap-6 text-[11px] font-brand font-bold uppercase tracking-[0.5em] text-gold/40 hover:text-gold transition-all duration-cine mb-20 group opacity-50"
+          className="inline-flex items-center gap-6 text-[11px] font-brand font-bold uppercase tracking-[0.5em] text-gold/40 hover:text-gold transition-all duration-cine mb-12 md:mb-20 group opacity-50"
         >
           {t('heroTag')}
         </Link>
-        <h1 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-12 leading-none uppercase tracking-tighter">
+        <h1 className="text-4xl md:text-9xl font-brand font-bold text-gold mb-12 leading-none uppercase tracking-tighter">
           {t('title')}
         </h1>
         <div className="arrow-divider max-w-xs mx-auto opacity-30" />
       </section>
 
       {/* ── Experience & Hubs ── */}
-      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative overflow-hidden">
+      <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto z-10 relative overflow-hidden">
         <div className="strands-bg-pattern" />
         <div className="grid grid-cols-12 gap-12">
           
@@ -144,12 +144,12 @@ export default async function ArenaPage({
       </section>
 
       {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="arrow-divider" />
       </div>
 
       {/* ── Services Showcase ── */}
-      <section className="py-48 px-8 max-w-7xl mx-auto z-10 relative overflow-hidden">
+      <section className="py-48 px-6 md:px-12 max-w-7xl mx-auto z-10 relative overflow-hidden">
         <div className="strands-bg-pattern" />
         <div className="flex flex-col md:flex-row justify-between items-end mb-32">
           <div className="max-w-4xl">
@@ -157,7 +157,7 @@ export default async function ArenaPage({
                {t('ourServices')}
             </h3>
             <h2 className="text-5xl md:text-9xl font-brand font-bold text-primary uppercase tracking-tighter leading-[0.85]">
-               EXPLORE ANCIENT<br/>PASSIONS
+               {t('exploreTitle')}
             </h2>
           </div>
           <div className="hidden md:block">
@@ -169,12 +169,12 @@ export default async function ArenaPage({
       </section>
 
       {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="arrow-divider" />
       </div>
 
       {/* ── Image Showcase ── */}
-      <section className="py-48 px-8 max-w-7xl mx-auto overflow-hidden relative">
+      <section className="py-48 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden relative">
          <div className="strands-bg-pattern" />
          <div className="grid grid-cols-12 gap-10">
             {[1, 2, 3, 4].map(i => (
@@ -191,18 +191,18 @@ export default async function ArenaPage({
       </section>
       
       {/* ── Booking Section ── */}
-      <section id="booking" className="py-72 px-8 relative overflow-hidden layer-0 border-t border-quiet">
+      <section id="booking" className="py-72 px-6 md:px-12 relative overflow-hidden layer-0 border-t border-quiet">
         <div className="strands-bg-pattern opacity-[0.03]" />
         <div className="arrow-divider absolute top-0 left-0 w-full opacity-10" />
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-48">
             <h2 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-16 leading-none uppercase tracking-tighter">
-              SECURE YOUR PLACE<br/>IN HISTORY
+              {t('bookingTitle')}
             </h2>
             <div className="arrow-divider max-w-xs mx-auto opacity-20" />
           </div>
           
-          <Suspense fallback={<div className="text-gold text-center py-32 font-brand font-bold uppercase tracking-[0.6em] text-[11px] opacity-50">Accessing Tactical Uplink...</div>}>
+          <Suspense fallback={<div className="text-gold text-center py-32 font-brand font-bold uppercase tracking-[0.6em] text-[11px] opacity-50">{t('uplinkStatus')}</div>}>
             <BookingForm />
           </Suspense>
         </div>

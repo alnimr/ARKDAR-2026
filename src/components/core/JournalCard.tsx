@@ -82,8 +82,8 @@ const typeConfig = {
 export default function JournalCard({ post, locale, index = 0 }: JournalCardProps) {
   const config = typeConfig[post.type as keyof typeof typeConfig] || typeConfig.article;
   
-  const title = post.title?.[locale as keyof typeof post.title] || post.title?.ar || "";
-  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
+  const title = post.title?.[locale as keyof typeof post.title] || "";
+  const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || "";
   const typeLabel = config[`label${locale === 'ar' ? 'Ar' : locale === 'de' ? 'De' : locale === 'es' ? 'Es' : 'En'}` as keyof typeof config] as string;
 
   const isExternalOnly = post.type === 'press' && post.externalLink && !post.content;
@@ -158,7 +158,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
               <span className="w-1 h-1 bg-gold/20" />
               <span className="flex items-center gap-3">
                 <Icon name="warrior" size={14} color="currentColor" opacity="0.4" />
-                {post.author?.[locale as keyof typeof post.author] || post.author?.ar}
+                {post.author?.[locale as keyof typeof post.author] || ""}
               </span>
             </>
           )}

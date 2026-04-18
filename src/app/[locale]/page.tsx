@@ -19,10 +19,10 @@ export default async function HomePage({
   ];
 
   const creedItems: { icon: IconName; label: string; desc: string }[] = [
-    { icon: 'shield-check', label: 'Sovereignty', desc: 'Absolute earned identity' },
-    { icon: 'sword',       label: 'Mastery',     desc: 'Precision in every strike' },
-    { icon: 'crown',       label: 'Elite',       desc: 'The Hybrid Elite standard' },
-    { icon: 'target',      label: 'Purpose',     desc: 'Preserving the art' }
+    { icon: 'shield-check', label: t('creed1Label'), desc: t('creed1Desc') },
+    { icon: 'sword',       label: t('creed2Label'), desc: t('creed2Desc') },
+    { icon: 'crown',       label: t('creed3Label'), desc: t('creed3Desc') },
+    { icon: 'target',      label: t('creed4Label'), desc: t('creed4Desc') }
   ];
 
   return (
@@ -41,7 +41,6 @@ export default async function HomePage({
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
         </div>
 
-        {/* ── Decorative Crescent Watermark ── 60-80% Opacity per Constitution */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 opacity-70 pointer-events-none">
           <NextImage 
             src="/images/brand/crescent/Crescent_Vector.svg" 
@@ -69,7 +68,7 @@ export default async function HomePage({
                 </div>
               </Link>
               <Link href="/heritage" className="ivory-ghost-btn px-12 py-5 text-[11px] tracking-[0.3em] flex items-center justify-center">
-                ARKDAR DNA
+                {t('dnaTag')}
               </Link>
             </div>
           </div>
@@ -77,28 +76,23 @@ export default async function HomePage({
       </section>
 
       {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="arrow-divider" />
       </div>
 
-      {/* 2. PHILOSOPHY & CREED - The Mamluk Litmus Test */}
+      {/* 2. PHILOSOPHY & CREED */}
       <section className="w-full py-48 relative layer-0 border-y border-quiet overflow-hidden">
         <div className="strands-bg-pattern" />
-        {/* Five Strands Watermark */}
-        <div className="absolute top-0 right-0 w-64 h-full pointer-events-none opacity-[0.02] select-none">
-          <NextImage src="/images/brand/strands/Value_Strands.svg" alt="" fill className="object-contain object-right" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-12 gap-16 items-center">
             <div className="col-span-12 lg:col-span-7">
-              <h2 className="text-[10px] font-brand font-bold tracking-[0.5em] text-gold mb-8 uppercase opacity-50">The Sovereign Creed</h2>
+              <h2 className="text-[10px] font-brand font-bold tracking-[0.5em] text-gold mb-8 uppercase opacity-50">{t('creedTitle')}</h2>
               <h3 className="text-4xl md:text-7xl font-brand font-bold text-white mb-12 leading-[0.9] uppercase tracking-tighter">
-                &quot;Heritage first. <br /><span className="text-gold">Performance serves it.&quot;</span>
+                {t('creedHeritage')} <br /><span className="text-gold">{t('creedPerformance')}</span>
               </h3>
               <div className="space-y-10 text-xl text-ghost font-brand font-light leading-relaxed max-w-2xl opacity-80">
-                <p>أركدار ليست مجرد منصة، بل هي وعاء يحفظ عظمة الماضي بدقة المستقبل. نحن لا نعيد تمثيل التاريخ، بل نعيد صياغته بأسلوب يحترم سيادة الفارس العربي.</p>
-                <p>كل سطر برمجي، وكل خوارزمية، وكل سهم نطلقه، يخضع لاختبار واحد: <span className="text-gold italic">&quot;هل كان الفارس المملوكي سيشعر بالفخر بهذا القرار البصري؟&quot;</span></p>
+                <p>{t('creed1Desc')}</p>
+                <p>{t('creed2Desc')}</p>
               </div>
             </div>
             <div className="col-span-12 lg:col-span-5">
@@ -107,7 +101,7 @@ export default async function HomePage({
                   <div key={label} className="layer-1 p-10 border border-quiet depth-card text-center group hover:border-gold/30 transition-all duration-cine">
                     <Icon name={icon} size={48} color="currentColor" className="text-gold mx-auto mb-8 group-hover:scale-110 transition-transform duration-cine" />
                     <h4 className="text-[10px] font-brand font-bold tracking-[0.3em] text-gold uppercase mb-4">{label}</h4>
-                    <p className="text-[11px] text-ghost font-brand opacity-40 uppercase tracking-widest leading-relaxed">{desc}</p>
+                    <p className="text-[11px] text-ghost font-brand opacity-40 uppercase tracking-widest leading-relaxed line-clamp-2">{desc}</p>
                   </div>
                 ))}
               </div>
@@ -116,20 +110,13 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="arrow-divider" />
-      </div>
-
-      {/* 3. SERVICES - The Fields of Honor */}
+      {/* 3. SERVICES */}
       <section className="w-full py-48 relative layer-0 overflow-hidden">
-        <div className="strands-bg-pattern" />
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center mb-32">
             <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-gold uppercase tracking-tighter">{t('servicesTitle')}</h2>
             <p className="text-2xl text-ghost max-w-3xl mx-auto font-brand font-light leading-relaxed opacity-60">{t('servicesSubtitle')}</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {services.map(({ icon, title, desc }) => (
               <Link 
@@ -141,50 +128,37 @@ export default async function HomePage({
                   <Icon name={icon} size={40} color="currentColor" />
                 </div>
                 <h3 className="text-3xl font-brand font-bold mb-8 text-gold uppercase tracking-tight">{title}</h3>
-                <p className="text-ghost leading-relaxed font-brand font-light text-lg opacity-70">{desc}</p>
+                <p className="text-ghost leading-relaxed font-brand font-light text-lg opacity-70 line-clamp-3">{desc}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="arrow-divider" />
-      </div>
-
-      {/* 4. PRODUCTS - Royal Arsenal */}
+      {/* 4. PRODUCTS */}
       <section className="w-full py-48 relative layer-1 border-t border-quiet overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 relative">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
           <div className="grid grid-cols-12 gap-16 items-center">
             <div className="col-span-12 lg:col-span-5">
               <h2 className="text-5xl md:text-8xl font-brand font-bold mb-10 text-white uppercase tracking-tighter leading-[0.85]">{t('productsTitle')}</h2>
-              <p className="text-ghost text-xl mb-16 max-w-md font-brand font-light leading-relaxed opacity-70">العتاد السيادي: أدوات مصممة بنخبوية هجينة تجمع بين عراقة الصناعة اليدوية وتكنولوجيا القرن الحادي والعشرين.</p>
-              <Link href="/gearup" className="btn-outline px-12 py-5 text-[11px] tracking-[0.3em] flex items-center">
+              <p className="text-ghost text-xl mb-16 max-w-md font-brand font-light leading-relaxed opacity-70">{t('gearupDesc')}</p>
+              <Link href="/gearup" className="ivory-ghost-btn px-12 py-5 text-[11px] tracking-[0.3em] flex items-center">
                 {t('viewAllCollection')} 
                 <div className="ms-4 relative w-10 h-3">
                   <NextImage src="/images/brand/arrow/Linear_Arrow_Gold.png" alt="" fill className="object-contain" />
                 </div>
               </Link>
             </div>
-
             <div className="col-span-12 lg:col-span-7">
               <div className="layer-2 p-16 border border-quiet group relative overflow-hidden depth-card">
                 <div className="flex flex-col md:flex-row items-center gap-20">
                   <div className="w-full md:w-1/2 h-96 relative">
-                    <NextImage 
-                      src="/images/brand/crescent/Crescent_Gold.png" 
-                      alt="Guardian Bow" 
-                      fill 
-                      className="object-contain cinema-lut scale-110 group-hover:scale-125 transition-all duration-cine" 
-                    />
+                    <NextImage src="/images/brand/crescent/Crescent_Gold.png" alt="Guardian Bow" fill className="object-contain cinema-lut scale-110 group-hover:scale-125 transition-all duration-cine" />
                   </div>
                   <div className="w-full md:w-1/2">
                     <h3 className="text-4xl text-gold font-brand font-bold mb-8 uppercase tracking-tight">{t('product1')}</h3>
-                    <p className="text-ghost mb-12 text-lg leading-relaxed font-brand font-light opacity-70">درة تاج المهندسين في أركدار. قوس معزز بالكربون بتصميم تراثي لا يُضاهى.</p>
-                    <Link href="/gearup" className="btn-sovereign w-full py-5 text-[11px] tracking-[0.3em]">
-                      Shop Now
-                    </Link>
+                    <p className="text-ghost mb-12 text-lg leading-relaxed font-brand font-light opacity-70">{t('creed2Desc')}</p>
+                    <Link href="/gearup" className="btn-sovereign w-full py-5 text-[11px] tracking-[0.3em]">{t('gearupBtn')}</Link>
                   </div>
                 </div>
               </div>
@@ -193,37 +167,22 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* Sovereign Divider */}
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="arrow-divider" />
-      </div>
-
-      {/* 5. REGIONS - Global Sovereignty */}
-      <section className="w-full py-48 px-8 relative layer-0">
+      {/* 5. REGIONS */}
+      <section className="w-full py-48 px-6 md:px-12 relative layer-0">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-40">
-            <h2 className="text-5xl md:text-8xl font-brand font-bold text-gold uppercase tracking-tighter">
-              Global Presence
-            </h2>
+            <h2 className="text-5xl md:text-8xl font-brand font-bold text-gold uppercase tracking-tighter">{t('presenceTitle')}</h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
-              { flag: '🇪🇬', country: 'Egypt',       city: 'Cairo',         desc: 'أصل الميراث المملوكي ومركز التدريب العالمي.' },
-              { flag: '🇨🇭', country: 'Switzerland', city: 'Interlaken',    desc: 'مركز التميز الأوروبي للرماية في الميادين الألبية.' },
-              { flag: '🇪🇸', country: 'Spain',       city: 'Andalusia',     desc: 'مركز التوسع الأندلسي للتدريب في الميادين المتنوعة.' },
+              { country: t('location1Country'), city: t('location1City'), desc: t('location1Desc') },
+              { country: t('location2Country'), city: t('location2City'), desc: t('location2Desc') }
             ].map(r => (
-              <div
-                key={r.country}
-                className="layer-1 p-16 flex flex-col items-start gap-10 border border-quiet group hover:border-gold/30 transition-all duration-cine depth-card"
-              >
-                <div className="text-8xl mb-8 grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-cine">{r.flag}</div>
-                <div>
-                  <h3 className="text-3xl font-brand font-bold text-gold uppercase tracking-tight">{r.country}</h3>
-                  <p className="text-[10px] flex items-center gap-4 mt-4 text-ghost font-brand font-bold tracking-[0.4em] opacity-50">
-                    <Icon name="location" size={20} color="var(--color-gold)" /> {r.city.toUpperCase()}
-                  </p>
-                </div>
+              <div key={r.country} className="layer-1 p-16 flex flex-col items-start gap-10 border border-quiet group hover:border-gold/30 transition-all duration-cine depth-card">
+                <h3 className="text-3xl font-brand font-bold text-gold uppercase tracking-tight">{r.country}</h3>
+                <p className="text-[10px] flex items-center gap-4 mt-4 text-ghost font-brand font-bold tracking-[0.4em] opacity-50">
+                  <Icon name="location" size={20} color="var(--color-gold)" /> {r.city.toUpperCase()}
+                </p>
                 <p className="text-lg leading-relaxed text-ghost mt-10 font-brand font-light opacity-70">{r.desc}</p>
               </div>
             ))}

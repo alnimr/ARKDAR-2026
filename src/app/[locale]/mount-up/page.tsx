@@ -15,7 +15,7 @@ export default async function MountUpPage() {
   const t = await getTranslations('MountUp');
 
   return (
-    <main className="relative min-h-screen pt-48 pb-32 overflow-hidden layer-0 selection:bg-gold selection:text-black font-brand">
+    <main className="relative min-h-screen pt-sovereign-nav pb-32 overflow-hidden layer-0 selection:bg-gold selection:text-black font-brand">
       
       {/* Sovereign Atmosphere */}
       <div className="absolute inset-0 z-0">
@@ -34,7 +34,7 @@ export default async function MountUpPage() {
         {/* Header Section */}
         <div className="text-center max-w-4xl mx-auto mb-24 transition-all duration-cine">
           <span className="text-[11px] font-brand font-bold uppercase tracking-[0.6em] text-gold/60 mb-8 block">
-            EQUESTRIAN MASTERY
+            {t('tag')}
           </span>
           <h1 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-12 tracking-tighter leading-none uppercase">
             {t('title')}

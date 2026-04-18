@@ -23,8 +23,8 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
     
     // Search filter
     const query = searchQuery.toLowerCase();
-    const title = (post.title?.[locale as keyof typeof post.title] || post.title?.en || post.title?.ar || '').toLowerCase();
-    const excerpt = (post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.en || post.excerpt?.ar || '').toLowerCase();
+    const title = (post.title?.[locale as keyof typeof post.title] || '').toLowerCase();
+    const excerpt = (post.excerpt?.[locale as keyof typeof post.excerpt] || '').toLowerCase();
     
     const matchSearch = query === '' || title.includes(query) || excerpt.includes(query);
 
@@ -33,7 +33,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
 
   return (
     <>
-      <div className="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto mb-16 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
         {/* Category Tabs */}
         <div className={`flex flex-wrap justify-center gap-6 ${isRtl ? 'md:justify-start' : 'md:justify-start'}`}>
           {CATEGORIES.map((tab) => {
@@ -79,7 +79,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
              </p>
            </div>
         ) : (
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {filteredPosts.map((post, i) => (
               <JournalCard key={post.id || i} post={post} locale={locale} index={i} />
             ))}
