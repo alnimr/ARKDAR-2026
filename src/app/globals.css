@@ -1,285 +1,356 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
-/* ══════════════════════════════════════════════════════════════ 
-   ARKDAR SOVEREIGN DESIGN SYSTEM (Version 3.0 - 2025)
-   STRICT COMPLIANCE - ROYAL DNA ENFORCEMENT
+/* ══════════════════════════════════════════════════════════════
+   ARKDAR — SOVEREIGN DESIGN TOKENS
+   Colors + Type + Motion + Depth
+   Source: ARKDAR Platform/src/app/globals.css + Brand Constitution v3.0
    ══════════════════════════════════════════════════════════════ */
 
-@theme {
-  /* Sovereign Colors */
-  --color-black:       #0D0B08;
-  --color-gold:        #B8922A;
-  --color-gold-light:  #D4AF6A;
-  --color-gold-dim:    #6B5119;
-  --color-ivory:       #F2EBD9;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap');
 
-  /* Heritage */
-  --color-lapis:       #1B3D6E;
-  --color-crimson:     #7A1515;
-  --color-marble:      #EDF2F4;
-  
-  /* Dynamic Depth Layers */
-  --color-layer-0: var(--layer-0);
-  --color-layer-1: var(--layer-1);
-  --color-layer-2: var(--layer-2);
-  --color-layer-3: var(--layer-3);
-  --color-layer-4: var(--layer-4);
-
-  /* Typography */
-  --font-brand:  var(--font-el-messiri), serif;
-  --font-latin:  var(--font-cinzel), serif;
-  --font-body:   var(--font-scheherazade), serif;
-  
-  /* Motion - Arrow & Feather */
-  --transition-timing-function-arrow:    cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-timing-function-feather:  cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-duration-base: 250ms;
-  --transition-duration-exp:  500ms;
-  --transition-duration-cine: 800ms;
-
-  /* Sovereign Animations */
-  --animate-spin-slow: spin 8s linear infinite;
-  --animate-fade-in: fade-in 1s ease-out forwards;
-  --animate-fade-up: fade-up 1s ease-out forwards;
-
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes fade-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* Cinzel — self-hosted brand font (Latin display, eyebrows, tags) */
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-ExtraBold.ttf') format('truetype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('fonts/Cinzel-Black.ttf') format('truetype');
+  font-weight: 900; font-style: normal; font-display: swap;
 }
 
-@layer base {
-  :root {
-    /* Sovereign Layers - Light (Ivory/Marble) */
-    --layer-0: #F2EBD9;
-    --layer-1: #EBE4D2;
-    --layer-2: #E4DDCB;
-    --layer-3: #DDD6C4;
-    --layer-4: #D6CFBD;
-
-    /* Base Colors */
-    --background: var(--layer-0);
-    --foreground: #0D0B08;
-    
-    /* Sovereign Borders */
-    --border-strong: hsla(43,64%,45%,0.35);
-    --border-quiet:  hsla(43,64%,45%,0.15);
-    --border-active: hsla(43,64%,45%,0.65);
-    
-    /* Text Hierarchy */
-    --text-primary:      #0D0B08;
-    --text-secondary:    rgba(13, 11, 8, 0.65);
-    --text-ghost:        rgba(13, 11, 8, 0.35);
-
-    /* Radius Reset - Absolute Sharpness */
-    --radius-base:  0px;
-    --radius-large: 0px;
-  }
-
-  .dark {
-    /* Sovereign Layers - Dark (Charcoal/Gold-Dust) */
-    --layer-0: #0D0B08;
-    --layer-1: #111009;
-    --layer-2: #161410;
-    --layer-3: #1C1914;
-    --layer-4: #222018;
-
-    --background: var(--layer-0);
-    --foreground: #F2EBD9;
-    
-    /* Text Hierarchy - Dark */
-    --text-primary:      #F2EBD9;
-    --text-secondary:    hsla(37,33%,91%,0.62);
-    --text-ghost:        hsla(37,33%,91%,0.35);
-    
-    /* Adjust Borders for Dark */
-    --border-strong: hsla(43,64%,45%,0.25);
-    --border-quiet:  hsla(43,64%,45%,0.10);
-  }
-
-  * {
-    border-color: var(--border-quiet);
-    /* Strict Sharpness Enforcement */
-    border-radius: 0 !important;
-  }
-
-  ::selection {
-    background-color: var(--color-gold);
-    color: var(--color-black);
-  }
-
-  body {
-    background-color: var(--background);
-    color: var(--text-primary);
-    font-family: var(--font-brand);
-    line-height: 1.8;
-    letter-spacing: -0.01em;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* 2% Noise Texture (Sovereign DNA) */
-  .dark body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
-    opacity: 0.015;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-brand);
-    color: var(--color-gold);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 0.5em;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-  }
-
-  /* Language Specific Line Heights */
-  :lang(ar) {
-    --lh-body: 1.8;
-    --lh-heading: 1.1;
-  }
-  
-  :lang(en) {
-    --lh-body: 1.6;
-    --lh-heading: 1.1;
-  }
+/* El Messiri — self-hosted brand font (bilingual AR/EN primary) */
+@font-face {
+  font-family: 'El Messiri';
+  src: url('fonts/ElMessiri-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'El Messiri';
+  src: url('fonts/ElMessiri-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'El Messiri';
+  src: url('fonts/ElMessiri-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'El Messiri';
+  src: url('fonts/ElMessiri-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
 }
 
-@layer utilities {
-  /* ── Depth Layering (Total Replacement for Glassmorphism) ── */
-  .layer-0 { background-color: var(--color-layer-0); }
-  .layer-1 { background-color: var(--color-layer-1); }
-  .layer-2 { background-color: var(--color-layer-2); }
-  .layer-3 { background-color: var(--color-layer-3); }
-  .layer-4 { background-color: var(--color-layer-4); }
-
-  /* ── Sovereign Navbar Padding ── */
-  .pt-sovereign-nav {
-    padding-top: 80px;
-  }
-  @media (min-width: 768px) {
-    .pt-sovereign-nav {
-      padding-top: 180px;
-    }
-  }
-
-
-  /* ── Sovereign Borders ── */
-  .border-sovereign { border: 1px solid var(--border-strong); }
-  .border-quiet { border: 1px solid var(--border-quiet); }
-  .border-active { border: 1px solid var(--border-active); }
-  
-  /* ── Shadows (Depth via Inset & High Black Point) ── */
-  .depth-card {
-    box-shadow: 
-      0 1px 0 hsla(43,64%,45%,0.08) inset,
-      0 -1px 0 hsla(0,0%,0%,0.35) inset,
-      0 12px 40px hsla(0,0%,0%,0.8);
-  }
-
-  .depth-float {
-    box-shadow: 
-      0 1px 0 hsla(43,64%,45%,0.12) inset,
-      0 -1px 0 hsla(0,0%,0%,0.4) inset,
-      0 24px 64px hsla(0,0%,0%,0.9);
-  }
-
-  /* ── Typography Utilities ── */
-  .font-brand { font-family: var(--font-brand); }
-  .font-latin { font-family: var(--font-latin); }
-  .font-body { font-family: var(--font-body); }
-  
-  .text-gold { color: var(--color-gold); }
-  .text-ivory { color: var(--color-ivory); }
-  .text-ghost { color: var(--text-ghost); }
-  
-  /* ── Cinema LUT ── */
-  .cinema-lut {
-    filter: sepia(0.05) contrast(1.15) brightness(0.9);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ── Hero Foil Gradient ── */
-  .foil-hero {
-    background: linear-gradient(
-      105deg,
-      #6B5119 0%, #D4AF6A 35%,
-      #B8922A 50%, #D4AF6A 65%,
-      #6B5119 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-  }
-
-  /* ── Logical Properties ── */
-  .ms-auto { margin-inline-start: auto; }
-  .me-auto { margin-inline-end: auto; }
-  .ps-4 { padding-inline-start: 1rem; }
-  .pe-4 { padding-inline-end: 1rem; }
-  
-  .pt-sovereign-nav {
-    @apply pt-32 md:pt-56;
-  }
-
-  /* ── Sovereign Utilities ── */
-  .btn-sovereign {
-    @apply inline-flex items-center justify-center gap-4 px-12 py-6 
-           bg-gold text-black font-brand font-bold text-[11px] uppercase tracking-[0.5em] 
-           transition-all duration-cine ease-out border-0 rounded-none;
-    box-shadow: 0 -1px 0 rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.1) inset;
-  }
-
-  .btn-sovereign:hover {
-    @apply bg-white tracking-[0.7em];
-  }
-
-  .btn-outline-sovereign {
-    @apply inline-flex items-center justify-center gap-4 px-12 py-6 
-           bg-transparent text-gold font-brand font-bold text-[11px] uppercase tracking-[0.5em] 
-           transition-all duration-cine ease-out border border-gold rounded-none;
-  }
-
-  .btn-outline-sovereign:hover {
-    @apply bg-gold text-black tracking-[0.7em];
-  }
-
-  .reading-progress-bar {
-    @apply fixed top-0 left-0 h-[2px] z-[100] bg-gold 
-           transition-all duration-cine ease-out;
-    width: var(--reading-progress, 0%);
-  }
-
-  .selection-gold {
-    @apply selection:bg-gold selection:text-black;
-  }
-
-  /* ── Sovereign Dividers ── */
-  .arrow-divider {
-    @apply w-full h-16 opacity-50 my-12;
-    background-image: url('/images/brand/arrow/Linear_Arrow_Gold.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .strands-bg-pattern {
-    @apply absolute inset-0 pointer-events-none opacity-[0.06] select-none -z-10;
-    background-image: url('/images/brand/strands/Value_Strands.svg');
-    background-size: 800px;
-    background-position: center;
-  }
+/* Scheherazade New — self-hosted brand font (Arabic long-form body) */
+@font-face {
+  font-family: 'Scheherazade New';
+  src: url('fonts/ScheherazadeNew-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Scheherazade New';
+  src: url('fonts/ScheherazadeNew-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Scheherazade New';
+  src: url('fonts/ScheherazadeNew-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Scheherazade New';
+  src: url('fonts/ScheherazadeNew-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
 }
 
+:root {
+  /* ── SOVEREIGN COLORS ── Primary palette (WCAG verified) ── */
+  --color-black:          #0D0B08;  /* Sovereign black — absolute background */
+  --color-gold:           #B8922A;  /* Royal gold — headings, logo, primary CTA */
+  --color-gold-light:     #D4AF6A;  /* Luminous gold — hover + interactive */
+  --color-gold-dim:       #6B5119;  /* Deep gold — eyebrows, micro-copy */
+  --color-ivory:          #F2EBD9;  /* Warm ivory — body text on dark */
+
+  /* ── HERITAGE ACCENTS (sparing use) ── */
+  --color-lapis:          #1B3D6E;  /* Andalusian lapis — info/portal accents */
+  --color-crimson:        #7A1515;  /* Royal crimson — ceremony only */
+  --color-marble:         #EDF2F4;  /* Cool marble — light-mode surface */
+
+  /* ── LAYER STACK (dark theme — default) ── */
+  --layer-0:              #0D0B08;
+  --layer-1:              #111009;
+  --layer-2:              #161410;
+  --layer-3:              #1C1914;
+  --layer-4:              #222018;
+
+  /* Background + foreground semantic ── */
+  --background:           var(--layer-0);
+  --foreground:           var(--color-ivory);
+
+  /* ── TEXT HIERARCHY (dark) ── */
+  --text-primary:         #F2EBD9;
+  --text-secondary:       hsla(37, 33%, 91%, 0.62);
+  --text-ghost:           hsla(37, 33%, 91%, 0.35);
+
+  /* ── BORDERS (all gold-tinted) ── */
+  --border-strong:        hsla(43, 64%, 45%, 0.25);
+  --border-quiet:         hsla(43, 64%, 45%, 0.10);
+  --border-active:        hsla(43, 64%, 45%, 0.65);
+
+  /* ── RADII — Absolute sharpness is law ── */
+  --radius-base:          0px;
+  --radius-large:         0px;
+
+  /* ── TYPOGRAPHY FAMILIES ── */
+  --font-brand:           'El Messiri', serif;       /* Primary — bilingual AR/EN unified voice */
+  --font-latin:           'Cinzel', serif;           /* Latin display — eyebrows, tags, meta */
+  --font-body:            'Scheherazade New', serif; /* Arabic long-form body */
+  --font-mono:            ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ── TYPE SCALE (rem-based, dense caps treatment) ── */
+  --text-eyebrow:         10px;   /* Cinzel, 0.5em letterspacing, uppercase */
+  --text-micro:           11px;   /* Cinzel, 0.5em letterspacing */
+  --text-caption:         13px;
+  --text-body:            15px;
+  --text-body-lg:         17px;
+  --text-lead:            20px;
+  --text-h5:              24px;
+  --text-h4:              32px;
+  --text-h3:              44px;
+  --text-h2:              64px;
+  --text-h1:              96px;    /* Foil-gradient hero only */
+
+  /* ── LETTERSPACING (signature ARKDAR treatment) ── */
+  --track-tight:          -0.02em; /* Display headlines */
+  --track-body:           -0.01em; /* Body */
+  --track-wide:           0.1em;   /* Labels */
+  --track-caps:           0.3em;   /* Caps micro-copy */
+  --track-sovereign:      0.5em;   /* Signature — buttons, nav, eyebrows */
+  --track-hover:          0.7em;   /* Hover-state expansion on CTAs */
+
+  /* ── LINE HEIGHTS ── */
+  --lh-display:           0.9;    /* Hero / oversized headlines */
+  --lh-heading:           1.1;
+  --lh-body:              1.8;    /* Arabic-aware body rhythm */
+  --lh-body-en:           1.6;
+
+  /* ── MOTION (The Arrow + The Feather) ── */
+  --ease-arrow:           cubic-bezier(0.4, 0, 0.2, 1);   /* Purposeful motion */
+  --ease-feather:         cubic-bezier(0.16, 1, 0.3, 1);  /* Settle / reveal */
+  --duration-base:        250ms;
+  --duration-exp:         500ms;
+  --duration-cine:        800ms;  /* Cinematic — default for most transitions */
+
+  /* ── SHADOWS (depth via inset + high black point) ── */
+  --depth-card:
+    0 1px 0 hsla(43, 64%, 45%, 0.08) inset,
+    0 -1px 0 hsla(0, 0%, 0%, 0.35) inset,
+    0 12px 40px hsla(0, 0%, 0%, 0.80);
+  --depth-float:
+    0 1px 0 hsla(43, 64%, 45%, 0.12) inset,
+    0 -1px 0 hsla(0, 0%, 0%, 0.40) inset,
+    0 24px 64px hsla(0, 0%, 0%, 0.90);
+
+  /* ── SPACING (8px rhythm, with sovereign generosity) ── */
+  --space-1:              4px;
+  --space-2:              8px;
+  --space-3:              12px;
+  --space-4:              16px;
+  --space-6:              24px;
+  --space-8:              32px;
+  --space-12:             48px;
+  --space-16:             64px;
+  --space-24:             96px;
+  --space-32:             128px;
+  --space-48:             192px;  /* Section-to-section on hero pages */
+}
+
+/* ── LIGHT THEME (Ivory / Marble) ── */
+.light, [data-theme="light"] {
+  --layer-0:              #F2EBD9;
+  --layer-1:              #EBE4D2;
+  --layer-2:              #E4DDCB;
+  --layer-3:              #DDD6C4;
+  --layer-4:              #D6CFBD;
+  --background:           var(--layer-0);
+  --foreground:           #0D0B08;
+  --text-primary:         #0D0B08;
+  --text-secondary:       rgba(13, 11, 8, 0.65);
+  --text-ghost:           rgba(13, 11, 8, 0.35);
+  --border-strong:        hsla(43, 64%, 45%, 0.35);
+  --border-quiet:         hsla(43, 64%, 45%, 0.15);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SEMANTIC ELEMENT STYLES
+   ══════════════════════════════════════════════════════════════ */
+
+* { border-radius: 0 !important; }
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-brand);
+  line-height: var(--lh-body);
+  letter-spacing: var(--track-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: var(--lh-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--track-tight);
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(48px, 7vw, var(--text-h1)); line-height: var(--lh-display); }
+h2 { font-size: clamp(36px, 5vw, var(--text-h2)); line-height: var(--lh-display); }
+h3 { font-size: var(--text-h3); }
+h4 { font-size: var(--text-h4); }
+h5 { font-size: var(--text-h5); }
+
+p  { font-size: var(--text-body); color: var(--text-secondary); line-height: var(--lh-body); margin: 0 0 1em; }
+
+small, .eyebrow {
+  font-family: var(--font-latin);
+  font-size: var(--text-eyebrow);
+  letter-spacing: var(--track-sovereign);
+  text-transform: uppercase;
+  color: var(--color-gold-dim);
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-gold-dim);
+}
+
+::selection { background: var(--color-gold); color: var(--color-black); }
+
+a { color: var(--color-gold); text-decoration: none; transition: all var(--duration-cine) var(--ease-feather); }
+a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
+
+/* ── FOIL GRADIENT (hero text only) ── */
+.foil-hero {
+  background: linear-gradient(
+    105deg,
+    #6B5119 0%, #D4AF6A 35%,
+    #B8922A 50%, #D4AF6A 65%,
+    #6B5119 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+  animation: foil 6s ease infinite;
+}
+@keyframes foil {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* ── CINEMA LUT (images) ── */
+.cinema-lut {
+  filter: sepia(0.05) contrast(1.15) brightness(0.9);
+}
+
+/* ── LAYER UTILS ── */
+.layer-0 { background: var(--layer-0); }
+.layer-1 { background: var(--layer-1); }
+.layer-2 { background: var(--layer-2); }
+.layer-3 { background: var(--layer-3); }
+.layer-4 { background: var(--layer-4); }
+
+/* ── NOISE TEXTURE (dark theme DNA) ── */
+.noise-dna {
+  position: relative;
+}
+.noise-dna::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  opacity: 0.015;
+}
+
+/* ── BUTTONS ── */
+.btn-sovereign {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 48px;
+  background: var(--color-gold);
+  color: var(--color-black);
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-sovereign);
+  border: 0;
+  cursor: pointer;
+  transition: all var(--duration-cine) var(--ease-arrow);
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.1) inset;
+}
+.btn-sovereign:hover { background: #fff; letter-spacing: var(--track-hover); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 48px;
+  background: transparent;
+  color: var(--color-gold);
+  font-family: var(--font-brand);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-sovereign);
+  border: 1px solid var(--color-gold);
+  cursor: pointer;
+  transition: all var(--duration-cine) var(--ease-arrow);
+}
+.btn-outline:hover { background: var(--color-gold); color: var(--color-black); letter-spacing: var(--track-hover); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-ghost);
+  border: 0;
+}
+.btn-ghost:hover { color: var(--color-gold); letter-spacing: var(--track-hover); }
+
+/* ── CARDS ── */
+.card-sovereign {
+  background: var(--layer-1);
+  border: 1px solid var(--border-quiet);
+  padding: 40px;
+  box-shadow: var(--depth-card);
+  transition: border-color var(--duration-cine) var(--ease-feather);
+}
+.card-sovereign:hover { border-color: hsla(43, 64%, 45%, 0.30); }
