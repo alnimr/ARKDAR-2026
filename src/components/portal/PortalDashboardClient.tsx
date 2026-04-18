@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { 
-  UserCircle, GraduationCap 
-} from 'lucide-react';
+import Icon from '@/components/core/Icon';
 import { Link } from '@/i18n/routing';
 import TrainingHistory from '@/components/portal/TrainingHistory';
 import CoachDashboard from '@/components/portal/CoachDashboard';
@@ -14,7 +12,6 @@ export default function PortalDashboardClient() {
   const t = useTranslations('Portal');
   const [viewMode, setViewMode] = useState<'trainee' | 'coach'>('trainee');
 
-  const isRtl = true; // Portal is currently primary Arabic
 
   return (
     <div className="flex flex-col gap-16">
@@ -37,14 +34,14 @@ export default function PortalDashboardClient() {
               onClick={() => setViewMode('trainee')}
               className={`px-8 py-3 flex items-center gap-3 text-[10px] font-bold transition-all duration-cine uppercase tracking-[0.2em] font-latin ${viewMode === 'trainee' ? 'bg-gold text-black depth-card' : 'text-ghost hover:text-white'}`}
             >
-              <UserCircle size={16} />
+              <Icon name="warrior" size={16} color="currentColor" />
               {t('viewAsTrainee')}
             </button>
             <button 
               onClick={() => setViewMode('coach')}
               className={`px-8 py-3 flex items-center gap-3 text-[10px] font-bold transition-all duration-cine uppercase tracking-[0.2em] font-latin ${viewMode === 'coach' ? 'bg-gold text-black depth-card' : 'text-ghost hover:text-white'}`}
             >
-              <GraduationCap size={16} />
+              <Icon name="graduation-cap" size={16} color="currentColor" />
               {t('viewAsCoach')}
             </button>
           </div>

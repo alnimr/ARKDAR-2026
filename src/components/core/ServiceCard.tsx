@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Gauge } from 'lucide-react';
+import Icon from './Icon';
 import { useRouter, usePathname } from '@/i18n/routing';
 import Image from 'next/image';
 import { ServiceData } from '@/data/mockServices';
@@ -48,7 +48,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       {/* Content */}
       <div className="p-12 flex flex-col h-[calc(100%-320px)]">
         <div className="flex items-center gap-4 mb-8 text-[10px] font-brand font-bold tracking-[0.5em] text-gold/60 uppercase">
-          <MapPin size={16} className="text-gold/60" strokeWidth={1} />
+          <Icon name="location" size={16} color="var(--color-gold)" opacity="0.6" />
           {service.location}
         </div>
 
@@ -63,11 +63,11 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* Metadata Grid */}
         <div className="grid grid-cols-2 gap-8 mb-12">
           <div className="flex items-center gap-4 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em]">
-            <Clock size={16} className="text-gold/40" strokeWidth={1} />
+            <Icon name="clock" size={16} color="var(--color-gold)" opacity="0.4" />
             <span>{service.duration}</span>
           </div>
           <div className="flex items-center gap-4 text-ghost/40 text-[10px] font-brand font-bold uppercase tracking-[0.4em]">
-            <Gauge size={16} className="text-gold/40" strokeWidth={1} />
+            <Icon name="gauge" size={16} color="var(--color-gold)" opacity="0.4" />
             <span>{service.level}</span>
           </div>
         </div>

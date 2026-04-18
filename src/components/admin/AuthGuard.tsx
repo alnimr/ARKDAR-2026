@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/arena/firebase';
-import { ShieldAlert } from 'lucide-react';
+import Icon from '@/components/core/Icon';
 
 export default function AuthGuard({ children, locale }: { children: React.ReactNode, locale: string }) {
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ export default function AuthGuard({ children, locale }: { children: React.ReactN
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex flex-col items-center justify-center text-white selection:bg-gold selection:text-black">
-        <ShieldAlert size={64} className="text-gold animate-pulse mb-8 opacity-80" strokeWidth={1.5} />
+        <Icon name="shield-alert" size="l" className="text-gold animate-pulse mb-8 opacity-80" style={{ width: 64, height: 64 }} />
         <h2 className="text-2xl font-brand tracking-[0.3em] uppercase text-gold">ARKDAR SECURE CHECK</h2>
         <div className="mt-10 w-80 h-[2px] bg-quiet relative overflow-hidden">
            <div className="absolute top-0 left-0 h-full bg-gold w-1/3 animate-loading-bar" />

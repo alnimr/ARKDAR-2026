@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Calendar, User, Clock } from 'lucide-react';
+import Icon from './Icon';
 import { JournalPost } from '@/types/journal';
 
 interface ArticleSidebarProps {
@@ -75,7 +75,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
             {translations.date}
           </span>
           <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
-            <Calendar size={16} className="text-gold/60" strokeWidth={1} />
+            <Icon name="calendar" size={16} color="var(--color-gold)" opacity="0.6" />
             {formattedDate}
           </span>
         </div>
@@ -86,7 +86,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
               {translations.author}
             </span>
             <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
-              <User size={16} className="text-gold/60" strokeWidth={1} />
+              <Icon name="warrior" size={16} color="var(--color-gold)" opacity="0.6" />
               {post.author}
             </span>
           </div>
@@ -97,7 +97,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
             {translations.readTime}
           </span>
           <span className="text-ghost text-[11px] font-brand font-bold flex items-center gap-4 uppercase tracking-widest">
-            <Clock size={16} className="text-gold/60" strokeWidth={1} />
+            <Icon name="clock" size={16} color="var(--color-gold)" opacity="0.6" />
             {readTime} {locale === 'ar' ? 'دقائق قراءة' : 'MIN READ'}
           </span>
         </div>

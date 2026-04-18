@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, ArrowRight, ShieldCheck } from 'lucide-react';
+import Icon from './core/Icon';
 
 export default function LanguageSelectorModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +72,7 @@ export default function LanguageSelectorModal() {
           <div className="relative p-12 md:p-20 text-center">
             {/* Header Icon */}
             <div className="inline-flex items-center justify-center w-20 h-20 mb-10 layer-1 border border-gold">
-              <Globe className="w-10 h-10 text-gold" strokeWidth={1} />
+              <Icon name="globe" size={40} color="var(--color-gold)" />
             </div>
 
             <h2 className="text-3xl md:text-5xl font-brand font-bold mb-8 text-gold tracking-[0.2em] uppercase">
@@ -108,12 +108,12 @@ export default function LanguageSelectorModal() {
             >
               <span className="flex items-center justify-center gap-4">
                 {t('confirm')}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-cine" />
+                <Icon name="arrow" size={20} className="group-hover:translate-x-2 transition-transform duration-cine" />
               </span>
             </button>
 
             <div className="mt-12 flex items-center justify-center gap-4 text-white/10 text-[9px] font-brand font-bold uppercase tracking-[0.5em]">
-              <ShieldCheck className="w-4 h-4 text-gold/20" />
+              <Icon name="shield" size={16} color="var(--color-gold)" opacity="0.2" />
               <span>ARKDAR DIGITAL SOVEREIGNTY PROTECTED</span>
             </div>
           </div>

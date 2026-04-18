@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import NextImage from 'next/image';
 import Link from 'next/link';
@@ -90,10 +91,14 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
     ? post.externalLink!
     : `/${locale}/heritage/${post.slug}`;
 
-  const formattedDate = new Date(post.date).toLocaleDateString(
-    locale === 'ar' ? 'ar-SA' : locale === 'de' ? 'de-DE' : locale === 'es' ? 'es-ES' : 'en-US',
-    { year: 'numeric', month: 'long', day: 'numeric' }
-  );
+  const [formattedDate, setFormattedDate] = useState("");
+
+  useEffect(() => {
+    setFormattedDate(new Date(post.date).toLocaleDateString(
+      locale === 'ar' ? 'ar-SA' : locale === 'de' ? 'de-DE' : locale === 'es' ? 'es-ES' : 'en-US',
+      { year: 'numeric', month: 'long', day: 'numeric' }
+    ));
+  }, [post.date, locale]);
 
   const isRtl = locale === 'ar';
 
@@ -107,7 +112,7 @@ export default function JournalCard({ post, locale, index = 0 }: JournalCardProp
     >
       {/* Brand Watermark Overlay */}
       <div className="absolute top-0 right-0 w-40 h-40 opacity-0 group-hover:opacity-[0.05] -mr-10 -mt-10 rotate-12 transition-all duration-cine pointer-events-none layer-0">
-        <NextImage src="/images/brand/watermarks/Five_Strands_Gold.png" alt="" fill className="object-contain" />
+        <NextImage src="/images/brand/strands/Value_Strands_Gold.png" alt="" fill className="object-contain" />
       </div>
       
       {/* Full Card Clickable Link */}

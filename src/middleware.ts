@@ -4,7 +4,7 @@ import {NextRequest, NextResponse} from 'next/server';
 
 const middleware = createMiddleware(routing);
 
-export default function (request: NextRequest) {
+export default function middlewareWrapper(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
   // Check if the path already has a locale
@@ -19,7 +19,7 @@ export default function (request: NextRequest) {
 
     if (acceptLanguage) {
       const languages = acceptLanguage.split(',').map(lang => lang.split(';')[0].trim().toLowerCase().split('-')[0]);
-      const match = languages.find(lang => routing.locales.includes(lang as any));
+      const match = languages.find(lang => routing.locales.includes(lang as typeof routing.locales[number]));
       
       if (match) {
         detectedLocale = match;

@@ -20,6 +20,7 @@ const eslintConfig = [
       "public/**",
       "**/*.json",
       "**/*.md",
+      "next-env.d.ts",
       "**/scratch/**",
       "**/scripts/**"
     ],

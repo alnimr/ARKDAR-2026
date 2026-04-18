@@ -1,12 +1,26 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { JournalPost } from '@/types/journal';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import Icon, { IconName } from './Icon';
+import Icon from './Icon';
 import { useTranslations } from 'next-intl';
+
+function FormattedDate({ date, locale }: { date: string; locale: string }) {
+  const [formatted, setFormatted] = useState("");
+  
+  useEffect(() => {
+    setFormatted(new Date(date).toLocaleDateString(locale, { 
+      month: 'short', 
+      day: 'numeric', 
+      year: 'numeric' 
+    }));
+  }, [date, locale]);
+
+  return <>{formatted}</>;
+}
 
 interface JournalFeaturedSectionProps {
   posts: JournalPost[];
@@ -112,7 +126,7 @@ export default function JournalFeaturedSection({ posts, locale }: JournalFeature
                   <div className="flex items-center gap-10 text-ghost/40 text-[11px] uppercase tracking-[0.5em] font-brand font-bold">
                     <span className="flex items-center gap-4">
                       <Icon name="calendar" size={16} color="currentColor" opacity="0.4" />
-                      {new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', year: 'numeric' })}
+                      <FormattedDate date={post.date} locale={locale} />
                     </span>
                     <span className="w-1 h-1 bg-gold/20" />
                     <span className="flex items-center gap-4">

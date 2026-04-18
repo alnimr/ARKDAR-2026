@@ -1,14 +1,21 @@
 "use client";
 
-import { Users, FileText, CalendarCheck, TrendingUp } from 'lucide-react';
+import Icon, { IconName } from '@/components/core/Icon';
 import { motion } from 'framer-motion';
 
+interface Stat {
+  title: string;
+  value: string;
+  icon: IconName;
+  color: string;
+}
+
 export default function AdminDashboard() {
-  const stats = [
-    { title: 'المقالات المنشورة', value: '25', icon: FileText, color: 'text-gold' },
-    { title: 'طلبات الحجز الجديدة', value: '12', icon: CalendarCheck, color: 'text-secondary' },
-    { title: 'المتدربين النشطين', value: '48', icon: Users, color: 'text-ghost' },
-    { title: 'مبيعات المعدات (THE COLLECTION)', value: '+14%', icon: TrendingUp, color: 'text-ghost' },
+  const stats: Stat[] = [
+    { title: 'المقالات المنشورة', value: '25', icon: 'file-text', color: 'text-gold' },
+    { title: 'طلبات الحجز الجديدة', value: '12', icon: 'calendar-check', color: 'text-secondary' },
+    { title: 'المتدربين النشطين', value: '48', icon: 'users', color: 'text-ghost' },
+    { title: 'مبيعات المعدات (THE COLLECTION)', value: '+14%', icon: 'trending-up', color: 'text-ghost' },
   ];
 
   return (
@@ -25,24 +32,21 @@ export default function AdminDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {stats.map((stat, i) => {
-          const Icon = stat.icon;
-          return (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="p-10 layer-1 border border-quiet hover:border-gold/30 transition-all duration-cine depth-card group"
-            >
-              <div className="flex items-center justify-between mb-6">
-                 <span className="text-ghost text-[10px] font-brand font-bold uppercase tracking-[0.2em] opacity-50 group-hover:opacity-100 transition-opacity duration-cine">{stat.title}</span>
-                 <Icon size={24} className={`${stat.color} opacity-40 group-hover:opacity-100 transition-all duration-cine`} strokeWidth={1.5} />
-              </div>
-              <div className="text-5xl font-brand text-gold tracking-tighter group-hover:scale-105 transition-transform duration-cine origin-left">{stat.value}</div>
-            </motion.div>
-          );
-        })}
+        {stats.map((stat, i) => (
+          <motion.div 
+            key={i} 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: i * 0.1, duration: 0.6 }}
+            className="p-10 layer-1 border border-quiet hover:border-gold/30 transition-all duration-cine depth-card group"
+          >
+            <div className="flex items-center justify-between mb-6">
+               <span className="text-ghost text-[10px] font-brand font-bold uppercase tracking-[0.2em] opacity-50 group-hover:opacity-100 transition-opacity duration-cine">{stat.title}</span>
+               <Icon name={stat.icon} size={24} className={`${stat.color} opacity-40 group-hover:opacity-100 transition-all duration-cine`} />
+            </div>
+            <div className="text-5xl font-brand text-gold tracking-tighter group-hover:scale-105 transition-transform duration-cine origin-left">{stat.value}</div>
+          </motion.div>
+        ))}
       </div>
 
       {/* Recent Activity */}

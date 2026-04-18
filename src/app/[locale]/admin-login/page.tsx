@@ -4,7 +4,7 @@ import { useState, Suspense } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/arena/firebase';
-import { Shield, Lock } from 'lucide-react';
+import Icon from '@/components/core/Icon';
 
 function AdminLoginForm() {
   const router = useRouter();
@@ -52,7 +52,7 @@ function AdminLoginForm() {
           
           <div className="flex justify-center mb-12">
             <div className="w-20 h-20 bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
-              <Shield size={32} strokeWidth={1.5} />
+              <Icon name="shield" size={32} />
             </div>
           </div>
 
@@ -107,7 +107,7 @@ function AdminLoginForm() {
                 <div className="w-5 h-5 border-2 border-black/20 border-t-black animate-spin" />
               ) : (
                 <>
-                  <Lock size={14} />
+                  <Icon name="lock" size={14} />
                   {isRtl ? 'تسجيل الدخول للقيادة' : 'Login to HQ'}
                 </>
               )}

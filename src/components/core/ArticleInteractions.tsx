@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart, MessageCircle, Share2, Link as LinkIcon, Send, MoreHorizontal } from 'lucide-react';
+import Icon, { IconName } from './Icon';
 
 interface ArticleInteractionsProps {
   locale: string;
@@ -51,14 +51,14 @@ export default function ArticleInteractions({ locale, translations }: ArticleInt
             className={`flex items-center gap-6 group transition-all duration-cine ${isLiked ? 'text-gold' : 'text-ghost/40 hover:text-gold'}`}
           >
             <div className={`w-16 h-16 border border-quiet flex items-center justify-center transition-all duration-cine ${isLiked ? 'layer-3 border-gold bg-gold/10' : 'layer-1 group-hover:border-gold'}`}>
-              <Heart size={24} fill={isLiked ? 'currentColor' : 'none'} className="transition-transform duration-cine group-active:scale-150" strokeWidth={1} />
+              <Icon name="favourite" size={24} color={isLiked ? 'currentColor' : 'var(--text-ghost)'} fill={isLiked ? 'currentColor' : 'none'} className="transition-transform duration-cine group-active:scale-150" />
             </div>
             <span className="font-brand font-bold text-sm tracking-[0.4em] uppercase">{likes}</span>
           </button>
 
           <div className="flex items-center gap-6 text-ghost/40">
             <div className="w-16 h-16 border border-quiet layer-1 flex items-center justify-center">
-              <MessageCircle size={24} strokeWidth={1} />
+              <Icon name="message" size={24} color="currentColor" />
             </div>
             <span className="font-brand font-bold text-sm tracking-[0.4em] uppercase">{comments.length}</span>
           </div>
@@ -67,8 +67,8 @@ export default function ArticleInteractions({ locale, translations }: ArticleInt
         <div className="flex items-center gap-8">
           <span className="text-[11px] font-brand font-bold uppercase tracking-[0.6em] text-gold/40 mr-4">{translations.shareTitle}</span>
           {[
-            { icon: Share2, label: 'Share' },
-            { icon: LinkIcon, label: 'Copy Link' }
+            { icon: 'share', label: 'Share' },
+            { icon: 'link', label: 'Copy Link' }
           ].map((social, i) => (
             <button 
                key={i}
@@ -76,7 +76,7 @@ export default function ArticleInteractions({ locale, translations }: ArticleInt
                title={social.label}
                className="w-14 h-14 border border-quiet layer-1 flex items-center justify-center text-ghost/60 hover:bg-gold hover:text-black hover:border-gold transition-all duration-cine"
             >
-               <social.icon size={20} strokeWidth={1} />
+               <Icon name={social.icon as IconName} size={20} color="currentColor" />
             </button>
           ))}
           <button 
@@ -84,7 +84,7 @@ export default function ArticleInteractions({ locale, translations }: ArticleInt
             title="More share options"
             className="w-14 h-14 border border-quiet layer-1 flex items-center justify-center text-ghost/60 hover:bg-gold hover:text-black hover:border-gold transition-all duration-cine"
           >
-            <MoreHorizontal size={20} strokeWidth={1} />
+            <Icon name="more" size={20} color="currentColor" />
           </button>
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function ArticleInteractions({ locale, translations }: ArticleInt
             className={`absolute bottom-10 ${isRtl ? 'left-10' : 'right-10'} flex items-center gap-4 py-4 px-12 bg-gold text-black text-[11px] font-brand font-bold uppercase tracking-[0.4em] disabled:opacity-0 disabled:translate-y-4 transition-all duration-cine hover:tracking-[0.6em]`}
           >
             {translations.postComment}
-            <Send size={16} className={isRtl ? 'rotate-180' : ''} strokeWidth={1.5} />
+            <Icon name="send" size={16} color="currentColor" className={isRtl ? 'rotate-180' : ''} />
           </button>
         </form>
 

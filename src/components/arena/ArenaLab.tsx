@@ -4,10 +4,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { usePoseAnalysis } from '@/lib/arena/usePoseAnalysis';
 import * as ArenaEngine from '@/lib/arena/arenaEngine';
 import { PoseLandmarkerResult, ObjectDetectorResult, NormalizedLandmark } from '@mediapipe/tasks-vision';
-import { 
-  Upload, Camera, Download, Activity, Target, 
-  Save, Share2, Info, CheckCircle2 
-} from 'lucide-react';
+import Icon from '@/components/core/Icon';
 import { motion } from 'framer-motion';
 import { db, auth } from '@/lib/arena/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -246,7 +243,7 @@ export default function ArenaLab() {
                 htmlFor="video-upload"
                 className="px-8 py-4 layer-1 border border-quiet flex items-center gap-3 transition-all duration-cine cursor-pointer font-bold uppercase tracking-[0.2em] text-[10px] hover:border-gold hover:text-gold"
               >
-                <Upload size={18} />
+                <Icon name="upload" size={18} />
                 <span>رفع فيديو</span>
                 <input 
                   id="video-upload" 
@@ -258,7 +255,7 @@ export default function ArenaLab() {
                 />
               </label>
             <button className="btn-sovereign px-8 py-4 flex items-center gap-3">
-              <Camera size={18} />
+              <Icon name="camera" size={18} />
               <span>الكاميرا المباشرة</span>
             </button>
           </div>
@@ -266,7 +263,7 @@ export default function ArenaLab() {
 
         {!isLoaded ? (
           <div className="flex flex-col items-center justify-center py-40 layer-1 border border-quiet border-dashed">
-            <Activity className="w-16 h-16 text-gold animate-pulse mb-8" />
+            <Icon name="activity" size="l" className="text-gold animate-pulse mb-8" />
             <p className="text-xl font-brand font-bold text-ghost tracking-[0.3em] uppercase opacity-40">جاري تحميل نماذج السيادة الرقمية...</p>
           </div>
         ) : (
@@ -291,7 +288,7 @@ export default function ArenaLab() {
                   </>
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-ghost/20">
-                    <Activity size={80} className="mb-8 opacity-5" />
+                    <Icon name="activity" size="l" className="mb-8 opacity-5" style={{ width: 80, height: 80 }} />
                     <p className="font-brand uppercase tracking-widest text-sm opacity-40">قم برفع فيديو أو تشغيل الكاميرا لبدء التحليل</p>
                   </div>
                 )}
@@ -313,14 +310,14 @@ export default function ArenaLab() {
                   onClick={() => setDiscipline('horseback_archery')}
                   className={`flex-1 py-6 flex flex-col items-center gap-4 transition-all duration-cine font-brand border ${discipline === 'horseback_archery' ? 'bg-gold text-black border-gold shadow-lg' : 'layer-2 text-ghost border-quiet hover:border-gold/30 hover:text-white'}`}
                 >
-                  <Target size={24} />
+                  <Icon name="target" size={24} />
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em]">الرماية من الخيل</span>
                 </button>
                 <button 
                   onClick={() => setDiscipline('tent_pegging')}
                   className={`flex-1 py-6 flex flex-col items-center gap-4 transition-all duration-cine font-brand border ${discipline === 'tent_pegging' ? 'bg-gold text-black border-gold shadow-lg' : 'layer-2 text-ghost border-quiet hover:border-gold/30 hover:text-white'}`}
                 >
-                  <Activity size={24} />
+                  <Icon name="activity" size={24} />
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em]">التقاط الأوتاد</span>
                 </button>
               </div>
@@ -331,7 +328,7 @@ export default function ArenaLab() {
               <div className="layer-1 p-10 flex flex-col h-full border border-quiet depth-card">
                 <div className="flex items-center justify-between mb-12">
                   <h3 className="text-2xl font-brand font-bold flex items-center gap-3 text-white uppercase tracking-widest">
-                    <Activity className="text-gold" size={28} />
+                    <Icon name="activity" className="text-gold" size={28} />
                     لوحة البيانات
                   </h3>
                   <div className="flex gap-3">
@@ -345,13 +342,13 @@ export default function ArenaLab() {
                         isSaving ? 'animate-pulse text-gold/20 border-gold/20' : 'layer-2 border-quiet text-ghost hover:text-white hover:border-gold/50'
                       }`}
                     >
-                      {saveStatus === 'success' ? <CheckCircle2 size={24} /> : <Save size={24} />}
+                      {saveStatus === 'success' ? <Icon name="shield-check" size={24} /> : <Icon name="save" size={24} />}
                     </button>
                     <button 
                       title="Download Report"
                       className="p-3 layer-2 border border-quiet text-ghost hover:text-white hover:border-gold/50 transition-all duration-cine"
                     >
-                      <Download size={24} />
+                      <Icon name="download" size={24} />
                     </button>
                   </div>
                 </div>
@@ -390,7 +387,7 @@ export default function ArenaLab() {
                   <div className="layer-2 p-8 border border-gold/20 relative overflow-hidden group">
                     <div className="absolute top-0 left-0 w-1 h-full bg-gold" />
                     <div className="flex items-center gap-3 mb-4 text-gold">
-                      <Info size={18} />
+                      <Icon name="info" size={18} />
                       <span className="text-[10px] font-brand font-bold uppercase tracking-[0.3em]">توجيه السيادة الرقمية</span>
                     </div>
                     <p className="text-base text-ghost leading-relaxed italic font-brand group-hover:text-white transition-colors duration-cine">
@@ -399,7 +396,7 @@ export default function ArenaLab() {
                   </div>
 
                   <button className="w-full py-6 bg-secondary hover:bg-gold text-black font-brand font-bold transition-all duration-cine flex items-center justify-center gap-3 uppercase tracking-[0.3em] text-[12px] depth-card">
-                    <Share2 size={24} />
+                    <Icon name="share" size={24} />
                     مشاركة التقرير السيادي
                   </button>
                 </div>

@@ -2,14 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  CalendarCheck, 
-  Users, 
-  Settings, 
-  LogOut 
-} from 'lucide-react';
+import Icon, { IconName } from '@/components/core/Icon';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/arena/firebase';
 import { useRouter } from 'next/navigation';
@@ -29,11 +22,11 @@ export default function AdminSidebar({ locale }: { locale: string }) {
   };
 
   const navItems = [
-    { href: `/${locale}/admin`, icon: LayoutDashboard, label: 'لوحة القيادة' },
-    { href: `/${locale}/admin/heritage`, icon: FileText, label: 'المجلة والديوان' },
-    { href: `/${locale}/admin/bookings`, icon: CalendarCheck, label: 'الحجوزات' },
-    { href: `/${locale}/admin/trainees`, icon: Users, label: 'مختبر الذكاء الاصطناعي' },
-    { href: `/${locale}/admin/settings`, icon: Settings, label: 'الإعدادات' },
+    { href: `/${locale}/admin`, icon: 'layout-dashboard', label: 'لوحة القيادة' },
+    { href: `/${locale}/admin/heritage`, icon: 'file-text', label: 'المجلة والديوان' },
+    { href: `/${locale}/admin/bookings`, icon: 'calendar-check', label: 'الحجوزات' },
+    { href: `/${locale}/admin/trainees`, icon: 'users', label: 'مختبر الذكاء الاصطناعي' },
+    { href: `/${locale}/admin/settings`, icon: 'settings', label: 'الإعدادات' },
   ];
 
   return (
@@ -49,7 +42,6 @@ export default function AdminSidebar({ locale }: { locale: string }) {
       <nav className="flex-1 overflow-y-auto py-12 px-6 space-y-4">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
-          const Icon = item.icon;
           return (
             <Link
               key={item.href}
@@ -60,7 +52,7 @@ export default function AdminSidebar({ locale }: { locale: string }) {
                 : 'text-ghost hover:bg-gold/5 hover:text-white border border-transparent hover:border-quiet'
               }`}
             >
-              <Icon size={18} className={isActive ? 'text-black' : 'text-inherit'} strokeWidth={isActive ? 2 : 1.5} />
+              <Icon name={item.icon as IconName} size={18} className={isActive ? 'text-black' : 'text-inherit'} />
               <span className={`text-[11px] font-brand font-bold uppercase tracking-[0.2em] ${isActive ? 'text-black' : 'text-inherit'}`}>
                 {item.label}
               </span>
@@ -75,7 +67,7 @@ export default function AdminSidebar({ locale }: { locale: string }) {
           onClick={handleLogout}
           className="w-full flex items-center justify-center gap-3 px-6 py-5 text-ghost hover:text-white transition-all duration-cine font-brand border border-quiet hover:bg-gold hover:text-black hover:border-gold"
         >
-          <LogOut size={16} />
+          <Icon name="logout" size={16} />
           <span className="text-[10px] font-bold uppercase tracking-[0.3em]">تسجيل الخروج</span>
         </button>
       </div>

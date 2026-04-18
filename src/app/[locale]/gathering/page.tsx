@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Calendar, Users, MapPin, ArrowRight, Share2 } from 'lucide-react';
+import Icon from '@/components/core/Icon';
 
 export default async function PulsePage({
   params
@@ -48,14 +48,14 @@ export default async function PulsePage({
                
                <div className="flex justify-between items-start mb-12">
                   <div className="flex items-center gap-6 text-gold/80">
-                     <Calendar size={24} strokeWidth={1} />
+                     <Icon name="calendar" size={24} color="currentColor" />
                      <span className="text-[11px] font-brand font-bold tracking-[0.4em] uppercase">{event.date}</span>
                   </div>
                   <button 
                     className="p-5 border border-quiet layer-2 opacity-0 group-hover:opacity-100 transition-all duration-cine hover:border-gold"
                     aria-label="Share event"
                   >
-                     <Share2 size={18} className="text-white" />
+                     <Icon name="share" size={18} color="white" />
                   </button>
                </div>
 
@@ -64,12 +64,12 @@ export default async function PulsePage({
                
                <div className="flex items-center gap-10 mt-auto pt-10 border-t border-quiet">
                   <div className="flex items-center gap-4 text-[11px] font-brand font-bold uppercase tracking-[0.3em] text-ghost opacity-60">
-                     <MapPin size={20} className="text-gold" strokeWidth={1} /> {event.loc}
+                     <Icon name="location" size={20} color="var(--color-gold)" /> {event.loc}
                   </div>
                   <div className="flex items-center gap-4 text-[11px] font-brand font-bold uppercase tracking-[0.3em] text-ghost opacity-60">
-                     <Users size={20} strokeWidth={1} /> {t('restricted')}
+                     <Icon name="users" size={20} color="currentColor" /> {t('restricted')}
                   </div>
-                  <ArrowRight size={32} strokeWidth={1} className="ms-auto text-gold opacity-0 group-hover:opacity-100 transition-all duration-cine translate-x-[-12px] group-hover:translate-x-0" />
+                  <Icon name="arrow" size={32} color="currentColor" className="ms-auto text-gold opacity-0 group-hover:opacity-100 transition-all duration-cine translate-x-[-12px] group-hover:translate-x-0" />
                </div>
 
             </div>

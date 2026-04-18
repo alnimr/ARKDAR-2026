@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { Target, Shield, Compass, Globe } from 'lucide-react';
+import Icon from '@/components/core/Icon';
 import NextImage from 'next/image';
 import { Suspense } from 'react';
 import ServiceGrid from '@/components/layout/ServiceGrid';
@@ -54,7 +54,7 @@ export default async function ArenaPage({
              
              <div className="flex items-center gap-10 mb-16 relative">
                 <div className="w-24 h-24 layer-2 flex items-center justify-center border border-quiet group-hover:bg-gold group-hover:text-black transition-all duration-cine">
-                   <Target size={40} strokeWidth={1} />
+                   <Icon name="target" size={40} color="currentColor" />
                 </div>
                 <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary uppercase tracking-tighter leading-none">{t('masterclassTitle')}</h2>
              </div>
@@ -79,7 +79,7 @@ export default async function ArenaPage({
              
              <div className="flex items-center gap-10 mb-16">
                 <div className="w-24 h-24 layer-2 flex items-center justify-center border border-quiet group-hover:bg-gold group-hover:text-black transition-all duration-cine">
-                   <Compass size={40} strokeWidth={1} />
+                   <Icon name="compass" size={40} color="currentColor" />
                 </div>
                 <h2 className="text-5xl md:text-7xl font-brand font-bold text-primary uppercase tracking-tighter leading-none">{t('toursTitle')}</h2>
              </div>
@@ -87,7 +87,7 @@ export default async function ArenaPage({
              <div className="space-y-12 mb-20">
                 <div className="flex gap-10 items-start group/hub">
                    <div className="w-14 h-14 layer-2 border border-quiet flex items-center justify-center shrink-0 group-hover/hub:border-gold transition-colors duration-cine">
-                      <Globe size={24} className="text-gold" />
+                      <Icon name="globe" size={24} color="var(--color-gold)" />
                    </div>
                    <div>
                       <h4 className="text-gold font-brand font-bold text-2xl mb-3 uppercase tracking-tight">{t('swissHub') || 'INTERLAKEN'}</h4>
@@ -97,7 +97,7 @@ export default async function ArenaPage({
 
                 <div className="flex gap-10 items-start group/hub">
                    <div className="w-14 h-14 layer-2 border border-quiet flex items-center justify-center shrink-0 group-hover/hub:border-gold transition-colors duration-cine">
-                      <Globe size={24} className="text-gold" />
+                      <Icon name="globe" size={24} color="var(--color-gold)" />
                    </div>
                    <div>
                       <h4 className="text-gold font-brand font-bold text-2xl mb-3 uppercase tracking-tight">{t('hubCairo')}</h4>
@@ -119,7 +119,7 @@ export default async function ArenaPage({
           {/* Secondary Stats/Info */}
           <div className="col-span-12 lg:col-span-5 space-y-12">
              <div className="layer-2 p-12 border border-quiet group transition-all duration-cine hover:border-gold/30 depth-card">
-                <Shield size={40} className="text-gold mb-10 opacity-60" strokeWidth={1} />
+                <Icon name="shield" size={40} color="var(--color-gold)" opacity="0.6" className="mb-10" />
                 <h3 className="text-gold font-brand font-bold text-3xl mb-8 uppercase tracking-tight">{t('safetyTitle')}</h3>
                 <p className="text-lg text-ghost font-brand font-light leading-relaxed opacity-60">{t('safetyDesc')}</p>
              </div>

@@ -2,6 +2,7 @@ import { getTranslations, getLocale } from 'next-intl/server';
 import NextImage from 'next/image';
 import { Link } from '@/i18n/routing';
 import Icon from './core/Icon';
+import BackToTop from './BackToTop';
 
 export default async function Footer() {
   const t = await getTranslations('Footer');
@@ -46,9 +47,13 @@ export default async function Footer() {
                 <Link
                   key={s}
                   href="/"
-                  className="w-16 h-16 flex items-center justify-center text-[10px] font-brand font-bold tracking-[0.5em] transition-all duration-cine hover:-translate-y-2 hover:bg-gold hover:text-black layer-2 border border-quiet text-gold uppercase rounded-none"
+                  className="w-16 h-16 flex items-center justify-center transition-all duration-cine hover:-translate-y-2 hover:bg-gold hover:text-black layer-2 border border-quiet text-gold rounded-none"
                 >
-                  {s}
+                  <Icon 
+                    name={s === 'IG' ? 'instagram' : s === 'TW' ? 'twitter' : s === 'YT' ? 'youtube' : 'facebook'} 
+                    size={20} 
+                    color="currentColor" 
+                  />
                 </Link>
               ))}
             </div>
@@ -73,13 +78,7 @@ export default async function Footer() {
             <h3 className="text-[10px] font-brand font-bold tracking-[0.6em] mb-16 text-gold uppercase opacity-40">
               {t('contact')}
             </h3>
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-4 text-[10px] font-brand font-bold tracking-[0.4em] text-ghost/40 hover:text-gold transition-all duration-cine group uppercase"
-            >
-              {t('backToTop')}
-              <Icon name="arrow" size={12} color="currentColor" className="-rotate-90 group-hover:-translate-y-1 transition-transform" />
-            </button>
+            <BackToTop label={t('backToTop')} />
             <ul className="space-y-8 text-xl font-brand font-bold text-ghost/80 mt-16">
               <li className="flex items-center gap-6">
                 <span className="cinema-lut opacity-50 text-2xl">🇨🇭</span> <span className="tracking-[0.1em] uppercase">Interlaken</span>
@@ -90,13 +89,13 @@ export default async function Footer() {
               <li className="flex items-center gap-6">
                 <div className="flex items-center gap-6">
                   <Link href="https://instagram.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
-                    <Icon name="share" size="s" color="currentColor" />
+                    <Icon name="instagram" size="s" color="currentColor" />
                   </Link>
                   <Link href="https://twitter.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
-                    <Icon name="share" size="s" color="currentColor" />
+                    <Icon name="twitter" size="s" color="currentColor" />
                   </Link>
-                  <Link href="https://linkedin.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
-                    <Icon name="share" size="s" color="currentColor" />
+                  <Link href="https://youtube.com" className="p-3 border border-quiet hover:border-gold hover:text-gold transition-all duration-cine rounded-none">
+                    <Icon name="youtube" size="s" color="currentColor" />
                   </Link>
                 </div>
               </li>

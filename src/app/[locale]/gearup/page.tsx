@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ShieldCheck, Star } from 'lucide-react';
+import Icon from '@/components/core/Icon';
 import NextImage from 'next/image';
 
 export default async function CollectionPage({
@@ -65,7 +65,7 @@ export default async function CollectionPage({
                   className="opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-cine group-hover:scale-110" 
                  />
                  <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-cine translate-y-[-10px] group-hover:translate-y-0">
-                    <Star size={24} className="text-gold" fill="currentColor" />
+                    <Icon name="star" size={24} className="text-gold" fill="currentColor" />
                  </div>
               </div>
 
@@ -73,7 +73,7 @@ export default async function CollectionPage({
               <h3 className="text-4xl font-brand font-bold text-primary mb-6 transition-colors duration-cine group-hover:text-gold tracking-tighter uppercase">{item.name}</h3>
               
               <div className="flex items-center gap-4 text-[11px] font-brand font-bold uppercase tracking-[0.3em] text-ghost mb-12 opacity-50">
-                 <ShieldCheck size={18} className="text-gold" /> {t('certificate')}
+                 <Icon name="shield-check" size={18} className="text-gold" /> {t('certificate')}
               </div>
 
               <button className="gold-sovereign-btn w-full justify-center group-hover:translate-y-[-4px] transition-all duration-cine px-12 py-7 text-[11px] tracking-[0.4em] flex items-center gap-6">

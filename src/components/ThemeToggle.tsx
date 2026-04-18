@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
+import Icon from "./core/Icon";
 
 /**
  * ThemeToggle Component
@@ -32,14 +32,18 @@ export default function ThemeToggle() {
       className="relative w-12 h-12 flex items-center justify-center layer-1 border border-quiet hover:bg-gold hover:text-black transition-all duration-cine group overflow-hidden"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <div className="relative z-10 w-5 h-5 flex items-center justify-center">
-        <Sun 
-          className={`absolute inset-0 w-5 h-5 transition-all duration-cine ${
+      <div className="relative z-10 w-6 h-6 flex items-center justify-center">
+        <Icon 
+          name="sun"
+          size={24}
+          className={`absolute inset-0 transition-all duration-cine ${
             isDark ? "scale-0 opacity-0 rotate-90" : "scale-100 opacity-100 rotate-0"
           }`} 
         />
-        <Moon 
-          className={`absolute inset-0 w-5 h-5 transition-all duration-cine ${
+        <Icon 
+          name="moon"
+          size={24}
+          className={`absolute inset-0 transition-all duration-cine ${
             isDark ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 -rotate-90"
           }`} 
         />

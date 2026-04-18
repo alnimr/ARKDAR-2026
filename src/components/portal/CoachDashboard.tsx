@@ -3,10 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/lib/arena/firebase';
-import { 
-  Users, Activity, Target, ChevronRight, MessageSquare, 
-  Search, Filter, Shield 
-} from 'lucide-react';
+import Icon from '@/components/core/Icon';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface TrainingSession {
@@ -74,7 +71,7 @@ export default function CoachDashboard() {
       <div className="lg:col-span-7 space-y-4">
         <div className="flex items-center justify-between mb-8 border-b border-quiet pb-6">
            <h3 className="text-xl font-bold uppercase tracking-widest text-white flex items-center gap-3 font-brand">
-             <Users size={20} className="text-gold" />
+             <Icon name="users" size={20} color="currentColor" />
              طلبات مراجعة الأداء
            </h3>
            <div className="flex gap-3">
@@ -82,13 +79,13 @@ export default function CoachDashboard() {
                 title="Filter"
                 className="p-3 layer-1 border border-quiet text-ghost/40 hover:text-gold hover:border-gold/50 transition-all duration-cine"
               >
-                <Filter size={18}/>
+                <Icon name="filter" size={18} color="currentColor" />
               </button>
               <button 
                 title="Search"
                 className="p-3 layer-1 border border-quiet text-ghost/40 hover:text-gold hover:border-gold/50 transition-all duration-cine"
               >
-                <Search size={18}/>
+                <Icon name="search" size={18} color="currentColor" />
               </button>
            </div>
         </div>
@@ -109,7 +106,7 @@ export default function CoachDashboard() {
             >
               <div className="flex items-center gap-6">
                  <div className={`w-14 h-14 flex items-center justify-center border transition-all duration-cine ${session.sport === 'archery' ? 'bg-gold/10 text-gold border-gold/30 group-hover:bg-gold group-hover:text-black' : 'bg-ghost/5 text-ghost border-quiet group-hover:bg-ghost group-hover:text-black'}`}>
-                    {session.sport === 'archery' ? <Target size={28} /> : <Activity size={28} />}
+                    {session.sport === 'archery' ? <Icon name="target" size={28} color="currentColor" /> : <Icon name="activity" size={28} color="currentColor" />}
                  </div>
                  <div>
                     <h4 className="font-bold text-white group-hover:text-gold transition-colors font-brand text-lg uppercase tracking-tight">
@@ -123,7 +120,7 @@ export default function CoachDashboard() {
 
               <div className="flex items-center gap-6">
                  {!session.isReviewed && <span className="w-2.5 h-2.5 bg-gold shadow-[0_0_10px_rgba(212,175,55,0.5)] animate-pulse" />}
-                 <ChevronRight size={20} className="text-ghost/20 group-hover:text-gold transition-all duration-cine transform group-hover:translate-x-1" />
+                 <Icon name="chevron" size={20} color="currentColor" className="text-ghost/20 group-hover:text-gold transition-all duration-cine transform group-hover:translate-x-1" />
               </div>
             </motion.div>
           ))}
@@ -167,7 +164,7 @@ export default function CoachDashboard() {
 
               <div className="space-y-6">
                  <label className="text-[10px] font-bold text-gold uppercase tracking-[0.3em] flex items-center gap-3 font-brand">
-                   <MessageSquare size={18} />
+                   <Icon name="message-square" size={18} color="currentColor" />
                    رأيك كمدرب محترف
                  </label>
                  <textarea 
@@ -187,7 +184,7 @@ export default function CoachDashboard() {
             </motion.div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center text-center p-16 layer-1 border border-quiet border-dashed depth-card opacity-50">
-               <Shield size={80} className="text-gold/20 mb-8" />
+               <Icon name="shield" size={80} color="var(--color-gold)" opacity="0.2" className="mb-8" />
                <h4 className="text-xl font-brand font-bold text-ghost uppercase tracking-widest">اختر جلسة للتقييم</h4>
                <p className="text-xs text-ghost/40 mt-4 max-w-xs font-brand leading-relaxed">يمكنك هنا مراجعة أداء فرسانك وتقديم نصائح تكتيكية لهم مباشرة وفق المعايير السيادية.</p>
             </div>

@@ -1,8 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { 
-  LayoutDashboard, Activity, Users, Settings, Zap, 
-  ShieldCheck 
-} from 'lucide-react';
+import Icon, { IconName } from '@/components/core/Icon';
 import PortalDashboardClient from '@/components/portal/PortalDashboardClient';
 import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
@@ -15,6 +12,14 @@ export default async function PortalPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('Portal');
+
+  const navItems: { name: string; icon: IconName; active?: boolean; href: string }[] = [
+    { name: t('navOverview'), icon: 'layout-dashboard', active: true, href: '/portal' },
+    { name: t('navMetrics'), icon: 'activity', href: '#' },
+    { name: t('navMembers'), icon: 'users', href: '#' },
+    { name: t('navLab'), icon: 'zap', href: '/portal/lab' },
+    { name: t('navSettings'), icon: 'settings', href: '#' },
+  ];
 
   return (
     <div className="flex h-screen layer-0 overflow-hidden selection:bg-gold selection:text-black font-brand">
@@ -40,19 +45,13 @@ export default async function PortalPage({
          </div>
 
          <nav className="flex-grow space-y-6 relative">
-            {[
-              { name: t('navOverview'), icon: LayoutDashboard, active: true, href: '/portal' },
-              { name: t('navMetrics'), icon: Activity, href: '#' },
-              { name: t('navMembers'), icon: Users, href: '#' },
-              { name: t('navLab'), icon: Zap, href: '/portal/lab' },
-              { name: t('navSettings'), icon: Settings, href: '#' },
-            ].map(item => (
+            {navItems.map(item => (
               <Link 
                 href={item.href as '/'} 
                 key={item.name} 
                 className={`flex items-center gap-6 px-8 py-6 text-[11px] font-brand font-bold uppercase tracking-[0.4em] transition-all duration-cine ${item.active ? 'bg-gold text-black' : 'text-ghost/60 hover:bg-white/5 hover:text-white hover:ps-10'}`}
               >
-                <item.icon size={20} strokeWidth={item.active ? 2 : 1} />
+                <Icon name={item.icon} size={20} />
                 {item.name}
               </Link>
             ))}
@@ -63,7 +62,7 @@ export default async function PortalPage({
                <div className="strands-bg-pattern opacity-[0.03]" />
                <div className="flex items-center justify-between mb-6">
                   <p className="text-[11px] text-gold font-brand font-bold uppercase tracking-[0.4em]">{t('connectivity')}</p>
-                  <ShieldCheck size={16} className="text-gold" />
+                  <Icon name="shield-check" size={16} className="text-gold" />
                </div>
                <p className="text-[12px] text-ghost font-brand font-light leading-relaxed opacity-70">
                   {t('uplink')}

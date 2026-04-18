@@ -3,14 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { mockJournalPosts } from '@/data/mockJournal';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import {
-  ArrowLeft,
-  ArrowRight,
-  FileText,
-  Video,
-  Download,
-  Newspaper,
-} from 'lucide-react';
+import Icon, { IconName } from '@/components/core/Icon';
 import ArticleReadingProgress from '@/components/core/ArticleReadingProgress';
 import ArticleInteractions from '@/components/core/ArticleInteractions';
 import ArticleSidebar from '@/components/core/ArticleSidebar';
@@ -61,13 +54,13 @@ export async function generateMetadata({
 }
 
 
-const typeIconMap = {
-  article: FileText,
-  media: Video,
-  video: Video,
-  download: Download,
-  press: Newspaper,
-  news: Newspaper,
+const typeIconMap: Record<string, IconName> = {
+  article: 'file-text',
+  media: 'video',
+  video: 'video',
+  download: 'download',
+  press: 'newspaper',
+  news: 'newspaper',
 };
 
 
@@ -89,11 +82,11 @@ export default async function JournalArticlePage({
   const content = post.content?.[locale as keyof typeof post.content] || post.content?.ar || "";
   const excerpt = post.excerpt?.[locale as keyof typeof post.excerpt] || post.excerpt?.ar || "";
 
-  const TypeIcon = typeIconMap[post.type as keyof typeof typeIconMap];
+  const typeIcon = typeIconMap[post.type as keyof typeof typeIconMap] || 'file-text';
 
   const t = await getTranslations('Heritage').catch(() => null);
   const isRtl = locale === 'ar';
-  const BackIcon = isRtl ? ArrowRight : ArrowLeft;
+  const backIcon = isRtl ? 'arrow-right' : 'arrow-left';
 
   const related = mockJournalPosts
     .filter((p) => p.id !== post.id && p.content)
@@ -129,7 +122,7 @@ export default async function JournalArticlePage({
             href={`/${locale}/heritage`}
             className="inline-flex items-center gap-4 text-[10px] font-latin font-bold uppercase tracking-[0.4em] text-ghost hover:text-gold transition-all duration-base mb-20 group"
           >
-            <BackIcon size={14} className="group-hover:-translate-x-1 transition-transform duration-base ease-arrow" />
+            <Icon name={backIcon as IconName} size={14} className="group-hover:-translate-x-1 transition-transform duration-base ease-arrow" />
             {t?.('backToJournal') || (locale === 'ar' ? 'العودة للديوان' : 'Back to Journal')}
           </Link>
 
@@ -172,7 +165,7 @@ export default async function JournalArticlePage({
                     <header className="mb-20">
                       <div className={`flex items-center gap-4 mb-10 ${isRtl ? 'flex-row-reverse' : ''}`}>
                         <span className="inline-flex items-center gap-3 px-6 py-2.5 layer-2 border border-quiet text-gold text-[9px] font-latin font-bold uppercase tracking-[0.4em]">
-                          <TypeIcon size={12} />
+                          <Icon name={typeIcon} size={12} />
                           {post.type === 'article'
                             ? (t?.('typeArticle') || (locale === 'ar' ? 'مقالة' : 'Article'))
                             : post.type === 'media' || post.type === 'video'
@@ -219,7 +212,7 @@ export default async function JournalArticlePage({
                         download
                         className="btn-sovereign w-fit"
                       >
-                        <Download size={16} strokeWidth={2.5} />
+                        <Icon name="download" size={16} />
                         {t?.('downloadButton') || (locale === 'ar' ? 'تحميل المجلة (PDF)' : 'Download Archive')}
                       </a>
                     </div>

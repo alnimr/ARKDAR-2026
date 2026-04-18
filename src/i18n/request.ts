@@ -10,7 +10,7 @@ export default getRequestConfig(async ({requestLocale}) => {
   return {
     locale,
     messages: (await import(`../../messages/${locale}.json`)).default,
-    onError(error: any) {
+    onError(error: Error & { code?: string }) {
       if (error.code === 'MISSING_MESSAGE') {
         // Log the missing key but don't crash
         console.warn(error.message);
@@ -18,7 +18,7 @@ export default getRequestConfig(async ({requestLocale}) => {
         console.error(error);
       }
     },
-    getMessageFallback({namespace, key, error}: any) {
+    getMessageFallback({namespace, key, error}: {namespace?: string; key: string; error: Error & { code?: string }}) {
       const path = [namespace, key].filter((part) => part != null).join('.');
       if (error.code === 'MISSING_MESSAGE') {
         return path;

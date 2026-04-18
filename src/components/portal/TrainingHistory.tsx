@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 import { db } from '@/lib/arena/firebase';
-import { Calendar, Activity, ChevronRight, Target, Clock, MessageSquare, ShieldCheck, GraduationCap } from 'lucide-react';
+import Icon from '@/components/core/Icon';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface TrainingSession {
@@ -60,20 +60,20 @@ export default function TrainingHistory() {
             >
               <div className="flex items-center gap-6">
                 <div className={`p-4 border border-quiet layer-3 ${session.sport === 'archery' ? 'text-gold' : 'text-secondary'}`}>
-                  {session.sport === 'archery' ? <Target size={24} /> : <Activity size={24} />}
+                  {session.sport === 'archery' ? <Icon name="target" size={24} color="currentColor" /> : <Icon name="activity" size={24} color="currentColor" />}
                 </div>
                 <div>
                   <h4 className="font-bold text-lg font-brand text-primary tracking-tight flex items-center gap-4">
                     {session.sport === 'archery' ? 'رماية من على الخيل' : 'التقاط أوتاد'}
                     {session.isReviewed && (
                       <span className="inline-flex items-center gap-2 px-3 py-1 layer-3 border border-gold/30 text-gold text-[9px] uppercase tracking-[0.2em] font-bold font-latin">
-                        <ShieldCheck size={12} /> EVALUATED
+                        <Icon name="shield" size={12} color="currentColor" /> EVALUATED
                       </span>
                     )}
                   </h4>
                   <div className="flex items-center gap-5 mt-2 text-[10px] text-ghost uppercase tracking-[0.2em] font-latin font-bold">
-                    <span className="flex items-center gap-2"><Calendar size={12} className="text-gold/40" /> {new Date(session.timestamp).toLocaleDateString('ar-EG')}</span>
-                    <span className="flex items-center gap-2"><Clock size={12} className="text-gold/40" /> {new Date(session.timestamp).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+                    <span className="flex items-center gap-2"><Icon name="calendar" size={12} color="var(--color-gold)" opacity="0.4" /> {new Date(session.timestamp).toLocaleDateString('ar-EG')}</span>
+                    <span className="flex items-center gap-2"><Icon name="clock" size={12} color="var(--color-gold)" opacity="0.4" /> {new Date(session.timestamp).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,9 @@ export default function TrainingHistory() {
                   <span className="text-[9px] text-ghost uppercase tracking-[0.1em] font-body">التوازن</span>
                   <span className="font-bold text-secondary text-lg font-latin">{session.metrics?.balanceScore?.toFixed(1)}°</span>
                 </div>
-                <ChevronRight size={24} className={`text-ghost/20 group-hover:text-gold transition-all duration-cine ${expandedId === session.id ? 'rotate-90 text-gold' : ''}`} />
+                <div className={`transition-all duration-cine ${expandedId === session.id ? 'rotate-90 text-gold' : 'text-ghost/20 group-hover:text-gold'}`}>
+                  <Icon name="chevron" size={24} color="currentColor" />
+                </div>
               </div>
             </motion.div>
 
@@ -110,11 +112,11 @@ export default function TrainingHistory() {
                      {session.isReviewed ? (
                        <div className="layer-3 p-8 border border-gold/20 relative overflow-hidden group">
                           <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity duration-cine">
-                             <GraduationCap size={64} className="text-gold" />
+                             <Icon name="graduation-cap" size={64} color="var(--color-gold)" />
                           </div>
                           <div className="flex items-start gap-6">
                              <div className="w-12 h-12 bg-gold flex items-center justify-center text-black shrink-0">
-                                <MessageSquare size={24} />
+                                <Icon name="message-square" size={24} color="currentColor" />
                              </div>
                              <div>
                                 <p className="text-[10px] text-gold font-bold uppercase tracking-[0.3em] mb-3 font-latin">COACH FEEDBACK</p>

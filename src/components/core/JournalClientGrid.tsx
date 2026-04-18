@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { JournalPost } from '@/types/journal';
 import { CATEGORIES } from '@/data/mockJournal';
 import JournalCard from './JournalCard';
-import { Search } from 'lucide-react';
+import Icon from './Icon';
 
 interface JournalClientGridProps {
   posts: JournalPost[];
@@ -57,7 +57,7 @@ export default function JournalClientGrid({ posts, locale }: JournalClientGridPr
         {/* Search Bar */}
         <div className="relative w-full md:w-[400px] group">
           <div className={`absolute inset-y-0 ${isRtl ? 'right-8' : 'left-8'} flex items-center pointer-events-none text-gold/30 group-focus-within:text-gold transition-colors duration-cine`}>
-            <Search size={20} strokeWidth={1} />
+            <Icon name="search" size={20} />
           </div>
           <input
             type="text"

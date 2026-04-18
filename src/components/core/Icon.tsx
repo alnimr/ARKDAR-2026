@@ -14,7 +14,54 @@ export type IconName =
   | 'share' 
   | 'filter' 
   | 'favourite' 
-  | 'play';
+  | 'play'
+  | 'sun'
+  | 'moon'
+  | 'globe'
+  | 'shield'
+  | 'shield-check'
+  | 'shield-alert'
+  | 'message'
+  | 'message-square'
+  | 'link'
+  | 'send'
+  | 'more'
+  | 'clock'
+  | 'gauge'
+  | 'activity'
+  | 'chevron'
+  | 'target'
+  | 'graduation-cap'
+  | 'users'
+  | 'instagram'
+  | 'facebook'
+  | 'twitter'
+  | 'youtube'
+  | 'hammer'
+  | 'tree-pine'
+  | 'crown'
+  | 'sword'
+  | 'quote'
+  | 'star'
+  | 'compass'
+  | 'lock'
+  | 'file-text'
+  | 'calendar-check'
+  | 'trending-up'
+  | 'upload'
+  | 'camera'
+  | 'download'
+  | 'save'
+  | 'info'
+  | 'layout-dashboard'
+  | 'settings' 
+  | 'logout'
+  | 'zap'
+  | 'activity'
+  | 'video'
+  | 'newspaper'
+  | 'arrow-left'
+  | 'arrow-right';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: IconName;
@@ -238,6 +285,413 @@ export default function Icon({ name, size = 'm', color = 'currentColor', classNa
             <path d="M18 15 L36 24 L18 33 L21 24 Z" fill={color}/>
             <path d="M21 22 L30 24 L21 26" fill="var(--color-gold-light)" opacity="0.5"/>
             <circle cx="24" cy="5.5" r="1.75" fill="var(--color-gold-light)" opacity="0.7"/>
+          </>
+        );
+      
+      case 'sun':
+        return (
+          <>
+            <circle cx="24" cy="24" r="8" stroke={color} strokeWidth="2.5" fill="none"/>
+            <circle cx="24" cy="24" r="3" fill="var(--color-gold-light)"/>
+            {[0, 45, 90, 135, 180, 225, 270, 315].map(angle => (
+              <path 
+                key={angle}
+                d="M24 10 L24 4" 
+                stroke={color} 
+                strokeWidth="2.5" 
+                strokeLinecap="round"
+                transform={`rotate(${angle} 24 24)`}
+              />
+            ))}
+            <circle cx="24" cy="4" r="1.5" fill="var(--color-gold-light)" transform="rotate(45 24 24)"/>
+            <circle cx="24" cy="4" r="1.5" fill="var(--color-gold-light)" transform="rotate(225 24 24)"/>
+          </>
+        );
+
+      case 'moon':
+        return (
+          <>
+            <path d="M32 12 C24 12 18 18 18 26 C18 34 24 40 32 40 C28 40 12 36 12 26 C12 16 28 12 32 12 Z" fill={color}/>
+            <path d="M32 12 C24 12 18 18 18 26 C18 34 24 40 32 40 C26 38 22 32 22 26 C22 20 26 14 32 12 Z" fill="var(--color-gold-light)" opacity="0.3"/>
+            <circle cx="15" cy="20" r="1.5" fill="var(--color-gold-light)" opacity="0.6"/>
+            <circle cx="22" cy="34" r="1" fill="var(--color-gold-light)" opacity="0.4"/>
+          </>
+        );
+
+      case 'globe':
+        return (
+          <>
+            <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="2.5" fill="none"/>
+            <ellipse cx="24" cy="24" rx="8" ry="20" stroke={color} strokeWidth="1.5" fill="none" opacity="0.5"/>
+            <line x1="4" y1="24" x2="44" y2="24" stroke={color} strokeWidth="1.5" opacity="0.5"/>
+            <path d="M10 12 Q24 8 38 12" stroke={color} strokeWidth="1" opacity="0.3" fill="none"/>
+            <path d="M10 36 Q24 40 38 36" stroke={color} strokeWidth="1" opacity="0.3" fill="none"/>
+            <circle cx="24" cy="24" r="3" fill="var(--color-gold-light)"/>
+            <path d="M24 4 L24 44" stroke="var(--color-gold-light)" strokeWidth="0.5" opacity="0.4"/>
+          </>
+        );
+
+      case 'shield':
+        return (
+          <>
+            <path d="M24 4 L40 8 V20 C40 32 32 40 24 44 C16 40 8 32 8 20 V8 L24 4 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M24 4 L40 8 V20 C40 32 32 40 24 44 C16 40 8 32 8 20 V8 L24 4 Z" fill={color} opacity="0.05"/>
+            <path d="M24 12 V36" stroke="var(--color-gold-light)" strokeWidth="0.5" opacity="0.4"/>
+            <path d="M12 20 H36" stroke="var(--color-gold-light)" strokeWidth="0.5" opacity="0.2"/>
+            <circle cx="24" cy="20" r="2.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'message':
+        return (
+          <>
+            <path d="M8 8 H40 V32 H16 L8 40 V8 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M8 8 H40 V32 H16 L8 40 V8 Z" fill={color} opacity="0.05"/>
+            <circle cx="16" cy="20" r="2" fill="var(--color-gold-light)"/>
+            <circle cx="24" cy="20" r="2" fill="var(--color-gold-light)"/>
+            <circle cx="32" cy="20" r="2" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'link':
+        return (
+          <>
+            <path d="M18 18 Q12 12 12 24 Q12 36 18 30 L24 24" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+            <path d="M30 30 Q36 36 36 24 Q36 12 30 18 L24 24" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+            <circle cx="24" cy="24" r="2" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'send':
+        return (
+          <>
+            <path d="M4 24 L44 4 L38 44 L28 28 L4 24 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
+            <path d="M44 4 L28 28" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+            <circle cx="44" cy="4" r="2" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'more':
+        return (
+          <>
+            <circle cx="10" cy="24" r="3" fill={color}/>
+            <circle cx="24" cy="24" r="3" fill={color}/>
+            <circle cx="38" cy="24" r="3" fill={color}/>
+            <circle cx="24" cy="24" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'clock':
+        return (
+          <>
+            <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M24 12 V24 L32 32" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="24" cy="24" r="2.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'gauge':
+        return (
+          <>
+            <path d="M8 32 C8 24 16 12 24 12 C32 12 40 24 40 32" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+            <line x1="8" y1="32" x2="40" y2="32" stroke={color} strokeWidth="1.5" opacity="0.3"/>
+            <path d="M24 32 L36 20" stroke="var(--color-gold-light)" strokeWidth="2.5" strokeLinecap="round"/>
+            <circle cx="24" cy="32" r="3" fill="var(--color-gold-light)"/>
+          </>
+        );
+      
+      case 'activity':
+        return (
+          <path d="M4 24 H12 L18 10 L30 38 L36 24 H44" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'chevron':
+        return (
+          <path d="M18 12 L30 24 L18 36" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'target':
+        return (
+          <>
+            <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="1.5" fill="none" opacity="0.3"/>
+            <circle cx="24" cy="24" r="12" stroke={color} strokeWidth="1.5" fill="none" opacity="0.6"/>
+            <circle cx="24" cy="24" r="4" fill="var(--color-gold-light)"/>
+            <path d="M24 4 V8 M24 40 V44 M4 24 H8 M40 24 H44" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+          </>
+        );
+
+      case 'message-square':
+        return (
+          <path d="M8 8 H40 V32 H20 L8 40 V8 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'graduation-cap':
+        return (
+          <>
+            <path d="M4 16 L24 8 L44 16 L24 24 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 20 V32 C12 32 18 36 24 36 C30 36 36 32 36 32 V20" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M44 16 V28" stroke="var(--color-gold-light)" strokeWidth="1.5" strokeLinecap="round"/>
+          </>
+        );
+
+      case 'users':
+        return (
+          <>
+            <circle cx="16" cy="14" r="5" stroke={color} strokeWidth="2" fill="none"/>
+            <path d="M6 34 V30 C6 24 10 21 16 21 C22 21 26 24 26 30 V34" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round"/>
+            <circle cx="32" cy="14" r="5" stroke="var(--color-gold-light)" strokeWidth="2" fill="none"/>
+            <path d="M22 34 V30 C22 24 26 21 32 21 C38 21 42 24 42 30 V34" stroke="var(--color-gold-light)" strokeWidth="2" fill="none" strokeLinecap="round"/>
+          </>
+        );
+
+      case 'search':
+        return (
+          <>
+            <circle cx="20" cy="20" r="14" stroke={color} strokeWidth="2.5" fill="none"/>
+            <line x1="30" y1="30" x2="42" y2="42" stroke={color} strokeWidth="3" strokeLinecap="round"/>
+            <circle cx="15" cy="15" r="3" fill="var(--color-gold-light)" opacity="0.4"/>
+          </>
+        );
+
+      case 'filter':
+        return (
+          <path d="M4 8 H44 L28 24 V40 L20 36 V24 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'instagram':
+        return (
+          <>
+            <rect x="8" y="8" width="32" height="32" rx="8" stroke={color} strokeWidth="2.5" fill="none"/>
+            <circle cx="24" cy="24" r="7" stroke={color} strokeWidth="2.5" fill="none"/>
+            <circle cx="34" cy="14" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'facebook':
+        return (
+          <path d="M30 8 H26 C22 8 20 10 20 14 V40 M20 24 H30" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'twitter':
+        return (
+          <path d="M12 8 L24 22 L36 8 M12 40 L24 26 L36 40 M24 22 V26" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'youtube':
+        return (
+          <>
+            <rect x="4" y="10" width="40" height="28" rx="6" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M20 18 L30 24 L20 30 Z" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'shield-check':
+        return (
+          <>
+            <path d="M24 4 L6 10 V24 C6 34 14 41 24 44 C34 41 42 34 42 24 V10 L24 4 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M16 24 L21 29 L32 18" stroke="var(--color-gold-light)" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+          </>
+        );
+
+      case 'shield-alert':
+        return (
+          <>
+            <path d="M24 4 L6 10 V24 C6 34 14 41 24 44 C34 41 42 34 42 24 V10 L24 4 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M24 16 V28 M24 34 H24.01" stroke="var(--color-gold-light)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+          </>
+        );
+
+      case 'hammer':
+        return (
+          <path d="M28 6 L42 20 L36 26 L22 12 L28 6 Z M26 16 L10 32 L16 38 L32 22" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'tree-pine':
+        return (
+          <path d="M24 4 L8 32 H16 L12 40 H36 L32 32 H40 L24 4 Z M24 40 V44" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'crown':
+        return (
+          <path d="M4 36 L8 12 L16 24 L24 8 L32 24 L40 12 L44 36 H4 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'sword':
+        return (
+          <path d="M36 4 L12 28 M8 32 L4 36 L12 44 L16 40 M10 30 L18 38" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'quote':
+        return (
+          <path d="M8 12 H20 V24 H12 C12 30 16 34 20 36 M28 12 H40 V24 H32 C32 30 36 34 40 36" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'star':
+        return (
+          <path d="M24 4 L30 16 L44 18 L34 28 L36 42 L24 36 L12 42 L14 28 L4 18 L18 16 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'compass':
+        return (
+          <>
+            <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M28 20 L24 32 L20 28 L32 24 Z" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'lock':
+        return (
+          <>
+            <rect x="10" y="20" width="28" height="20" rx="4" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M16 20 V14 C16 10 20 6 24 6 C28 6 32 10 32 14 V20" stroke={color} strokeWidth="2.5" fill="none"/>
+          </>
+        );
+
+      case 'file-text':
+        return (
+          <>
+            <path d="M8 4 H32 L40 12 V44 H8 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M16 16 H24 M16 24 H32 M16 32 H32" stroke="var(--color-gold-light)" strokeWidth="2" fill="none"/>
+          </>
+        );
+
+      case 'calendar-check':
+        return (
+          <>
+            <rect x="8" y="10" width="32" height="30" rx="4" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M16 6 V14 M32 6 V14 M8 20 H40" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M20 30 L23 33 L28 28" stroke="var(--color-gold-light)" strokeWidth="2.5" fill="none"/>
+          </>
+        );
+
+      case 'trending-up':
+        return (
+          <path d="M4 40 L16 28 L24 36 L44 16 M44 16 H34 M44 16 V26" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        );
+
+      case 'upload':
+        return (
+          <>
+            <path d="M24 32 V8 M14 18 L24 8 L34 18" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M8 32 V40 H40 V32" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="24" cy="8" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'camera':
+        return (
+          <>
+            <rect x="6" y="14" width="36" height="26" rx="4" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M16 14 L18 8 H30 L32 14" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="24" cy="27" r="6" stroke={color} strokeWidth="2" fill="none"/>
+            <circle cx="36" cy="18" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'download':
+        return (
+          <>
+            <path d="M24 8 V32 M14 22 L24 32 L34 22" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M8 32 V40 H40 V32" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="24" cy="32" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'save':
+        return (
+          <>
+            <path d="M10 6 H34 L40 12 V42 H10 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <rect x="16" y="6" width="16" height="12" stroke={color} strokeWidth="1.5" fill="none"/>
+            <rect x="14" y="24" width="20" height="18" stroke={color} strokeWidth="1.5" fill="none"/>
+            <circle cx="24" cy="33" r="2.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'info':
+        return (
+          <>
+            <circle cx="24" cy="24" r="20" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M24 24 V34 M24 14 H24.01" stroke={color} strokeWidth="3" strokeLinecap="round"/>
+            <circle cx="24" cy="14" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'layout-dashboard':
+        return (
+          <>
+            <rect x="6" y="6" width="16" height="16" stroke={color} strokeWidth="2.5" fill="none"/>
+            <rect x="26" y="6" width="16" height="16" stroke={color} strokeWidth="2.5" fill="none"/>
+            <rect x="6" y="26" width="16" height="16" stroke={color} strokeWidth="2.5" fill="none"/>
+            <rect x="26" y="26" width="16" height="16" stroke={color} strokeWidth="2.5" fill="none"/>
+            <circle cx="14" cy="14" r="1.5" fill="var(--color-gold-light)"/>
+            <circle cx="34" cy="34" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'settings':
+        return (
+          <>
+            <circle cx="24" cy="24" r="8" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M24 6 V12 M24 36 V42 M6 24 H12 M36 24 H42 M11.3 11.3 L15.5 15.5 M32.5 32.5 L36.7 36.7 M11.3 36.7 L15.5 32.5 M32.5 15.5 L36.7 11.3" stroke={color} strokeWidth="2.5" strokeLinecap="round"/>
+            <circle cx="24" cy="24" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'logout':
+        return (
+          <>
+            <path d="M28 8 H40 V40 H28 M12 24 H32 M22 14 L32 24 L22 34" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="32" cy="24" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'zap':
+        return (
+          <>
+            <path d="M30 4 L14 26 H24 L18 44 L34 22 H24 L30 4 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
+            <circle cx="24" cy="24" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'activity':
+        return (
+          <>
+            <path d="M6 24 H12 L18 10 L30 38 L36 24 H42" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="24" cy="24" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'video':
+        return (
+          <>
+            <rect x="4" y="10" width="28" height="28" rx="4" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M32 18 L44 12 V36 L32 30" stroke={color} strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
+            <circle cx="12" cy="18" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'newspaper':
+        return (
+          <>
+            <path d="M4 10 H44 V38 H4 Z" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M10 18 H20 M10 26 H20 M10 30 H20 M28 18 H38 M28 22 H38 M28 26 H38 M28 30 H38" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+            <rect x="28" y="18" width="10" height="6" stroke="var(--color-gold-light)" strokeWidth="1" fill="none"/>
+          </>
+        );
+
+      case 'arrow-left':
+        return (
+          <>
+            <path d="M40 24 H8 M18 14 L8 24 L18 34" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="8" cy="24" r="1.5" fill="var(--color-gold-light)"/>
+          </>
+        );
+
+      case 'arrow-right':
+        return (
+          <>
+            <path d="M8 24 H40 M30 14 L40 24 L30 34" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="40" cy="24" r="1.5" fill="var(--color-gold-light)"/>
           </>
         );
 

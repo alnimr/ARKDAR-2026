@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
-import { Target, Hammer, TreePine, MapPin, ShieldCheck, Crown, Sword } from 'lucide-react';
+import Icon, { IconName } from '@/components/core/Icon';
 
 export default async function HomePage({
   params
@@ -12,10 +12,17 @@ export default async function HomePage({
   setRequestLocale(locale);
   const t = await getTranslations('Home');
 
-  const services = [
-    { icon: Target,   title: t('service1Title'), desc: t('service1Desc') },
-    { icon: Hammer,   title: t('service2Title'), desc: t('service2Desc') },
-    { icon: TreePine, title: t('service3Title'), desc: t('service3Desc') },
+  const services: { icon: IconName; title: string; desc: string }[] = [
+    { icon: 'target',   title: t('service1Title'), desc: t('service1Desc') },
+    { icon: 'hammer',   title: t('service2Title'), desc: t('service2Desc') },
+    { icon: 'tree-pine', title: t('service3Title'), desc: t('service3Desc') },
+  ];
+
+  const creedItems: { icon: IconName; label: string; desc: string }[] = [
+    { icon: 'shield-check', label: 'Sovereignty', desc: 'Absolute earned identity' },
+    { icon: 'sword',       label: 'Mastery',     desc: 'Precision in every strike' },
+    { icon: 'crown',       label: 'Elite',       desc: 'The Hybrid Elite standard' },
+    { icon: 'target',      label: 'Purpose',     desc: 'Preserving the art' }
   ];
 
   return (
@@ -96,14 +103,9 @@ export default async function HomePage({
             </div>
             <div className="col-span-12 lg:col-span-5">
               <div className="grid grid-cols-2 gap-8">
-                {[
-                  { icon: ShieldCheck, label: 'Sovereignty', desc: 'Absolute earned identity' },
-                  { icon: Sword,       label: 'Mastery',     desc: 'Precision in every strike' },
-                  { icon: Crown,       label: 'Elite',       desc: 'The Hybrid Elite standard' },
-                  { icon: Target,      label: 'Purpose',     desc: 'Preserving the art' }
-                ].map(({ icon: Icon, label, desc }) => (
+                {creedItems.map(({ icon, label, desc }) => (
                   <div key={label} className="layer-1 p-10 border border-quiet depth-card text-center group hover:border-gold/30 transition-all duration-cine">
-                    <Icon className="w-12 h-12 text-gold mx-auto mb-8 group-hover:scale-110 transition-transform duration-cine" strokeWidth={1} />
+                    <Icon name={icon} size={48} color="currentColor" className="text-gold mx-auto mb-8 group-hover:scale-110 transition-transform duration-cine" />
                     <h4 className="text-[10px] font-brand font-bold tracking-[0.3em] text-gold uppercase mb-4">{label}</h4>
                     <p className="text-[11px] text-ghost font-brand opacity-40 uppercase tracking-widest leading-relaxed">{desc}</p>
                   </div>
@@ -129,14 +131,14 @@ export default async function HomePage({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {services.map(({ icon: Icon, title, desc }) => (
+            {services.map(({ icon, title, desc }) => (
               <Link 
                 key={title} 
                 href="/arenas"
                 className="layer-1 p-12 border border-quiet hover:border-gold/30 transition-all duration-cine group relative overflow-hidden depth-card"
               >
                 <div className="w-24 h-24 layer-2 text-gold flex items-center justify-center mb-12 group-hover:bg-gold group-hover:text-black transition-all duration-cine border border-quiet">
-                  <Icon size={40} strokeWidth={1} />
+                  <Icon name={icon} size={40} color="currentColor" />
                 </div>
                 <h3 className="text-3xl font-brand font-bold mb-8 text-gold uppercase tracking-tight">{title}</h3>
                 <p className="text-ghost leading-relaxed font-brand font-light text-lg opacity-70">{desc}</p>
@@ -219,7 +221,7 @@ export default async function HomePage({
                 <div>
                   <h3 className="text-3xl font-brand font-bold text-gold uppercase tracking-tight">{r.country}</h3>
                   <p className="text-[10px] flex items-center gap-4 mt-4 text-ghost font-brand font-bold tracking-[0.4em] opacity-50">
-                    <MapPin className="w-5 h-5 text-gold" /> {r.city.toUpperCase()}
+                    <Icon name="location" size={20} color="var(--color-gold)" /> {r.city.toUpperCase()}
                   </p>
                 </div>
                 <p className="text-lg leading-relaxed text-ghost mt-10 font-brand font-light opacity-70">{r.desc}</p>

@@ -4,7 +4,7 @@ import JournalClientGrid from '@/components/core/JournalClientGrid';
 import JournalFeaturedSection from '@/components/core/JournalFeaturedSection';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import { Quote } from 'lucide-react';
+import Icon, { IconName } from '@/components/core/Icon';
 
 export async function generateMetadata({
   params,
@@ -142,7 +142,7 @@ export default async function HeritagePage({
       <section id="vision" className="py-72 px-8 relative overflow-hidden layer-1 border-b border-quiet">
         <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <Quote className="text-gold mx-auto mb-24 opacity-30" size={96} strokeWidth={0.5} />
+          <Icon name="quote" className="text-gold mx-auto mb-24 opacity-30" size="l" style={{ width: 96, height: 96 }} />
           
           <h2 className="text-[12px] font-brand font-bold uppercase tracking-[1em] text-gold mb-16 opacity-50">
             {t('navVision')}
@@ -181,16 +181,16 @@ export default async function HeritagePage({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
-              { title: t('pillar1Title'), desc: t('pillar1Desc'), icon: '/images/brand/icons/Script_Icon.svg' },
-              { title: t('pillar2Title'), desc: t('pillar2Desc'), icon: '/images/brand/icons/Power_Icon.svg' },
-              { title: t('pillar3Title'), desc: t('pillar3Desc'), icon: '/images/brand/icons/Eagle_Icon.svg' }
+              { title: t('pillar1Title'), desc: t('pillar1Desc'), icon: 'newspaper' as IconName },
+              { title: t('pillar2Title'), desc: t('pillar2Desc'), icon: 'activity' as IconName },
+              { title: t('pillar3Title'), desc: t('pillar3Desc'), icon: 'crown' as IconName }
             ].map((pillar, i) => (
               <div 
                 key={i}
                 className="layer-1 border border-quiet p-20 hover:border-gold transition-all duration-cine group relative overflow-hidden flex flex-col items-center text-center depth-card"
               >
-                <div className="w-32 h-32 mb-16 transform group-hover:scale-110 transition-transform duration-cine cinema-lut opacity-30 group-hover:opacity-100 relative">
-                  <NextImage src={pillar.icon} alt="" fill className="object-contain" />
+                <div className="w-32 h-32 mb-16 transform group-hover:scale-110 transition-transform duration-cine cinema-lut opacity-30 group-hover:opacity-100 relative flex items-center justify-center">
+                  <Icon name={pillar.icon} size={64} color="var(--gold)" />
                 </div>
                 <h3 className="text-4xl font-brand font-bold text-primary mb-10 group-hover:text-gold transition-all tracking-tight uppercase">{pillar.title}</h3>
                 <p className="text-ghost leading-relaxed font-brand font-light text-xl opacity-70">{pillar.desc}</p>
