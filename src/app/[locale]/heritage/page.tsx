@@ -52,6 +52,17 @@ export default async function HeritagePage({
       className="flex flex-col w-full min-h-screen pt-24 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand"
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
+      
+      {/* Sovereign Atmosphere - Crescent Watermark */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-screen opacity-[0.12] pointer-events-none -z-10">
+        <NextImage 
+          src="/images/brand/crescent/Crescent_Vector.svg"
+          alt=""
+          fill
+          className="object-contain"
+        />
+      </div>
+
       {/* ── Background Texture Layers ── */}
       <div className="absolute inset-0 opacity-[0.03] layer-0 pointer-events-none" />
 
@@ -77,6 +88,7 @@ export default async function HeritagePage({
       {/* ── Dynamic Featured Hero Section ── */}
       {featuredPost && (
         <section className="relative h-[90vh] flex flex-col justify-end pb-40 px-8 overflow-hidden group layer-0">
+          <div className="strands-bg-pattern opacity-10" />
           <div className="absolute inset-0 cinema-lut">
             <NextImage
               src={featuredPost.image}
@@ -128,6 +140,7 @@ export default async function HeritagePage({
 
       {/* ── The Vision Section (Philosophy) ── */}
       <section id="vision" className="py-72 px-8 relative overflow-hidden layer-1 border-b border-quiet">
+        <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <Quote className="text-gold mx-auto mb-24 opacity-30" size={96} strokeWidth={0.5} />
           
@@ -148,12 +161,13 @@ export default async function HeritagePage({
             </p>
           </div>
           
-          <div className="mt-48 brand-sep-bow mx-auto max-w-2xl opacity-30" />
+          <div className="arrow-divider max-w-2xl mx-auto mt-48 opacity-20" />
         </div>
       </section>
 
       {/* ── Founding Pillars ── */}
       <section id="lineage" className="py-72 px-8 relative z-10 layer-0 overflow-hidden">
+        <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-48">
             <h4 className="text-gold font-brand font-bold tracking-[0.8em] uppercase text-[12px] mb-12 opacity-50">
@@ -162,20 +176,22 @@ export default async function HeritagePage({
             <h2 className="text-6xl md:text-9xl font-brand font-bold text-white leading-[0.8] mb-16 uppercase tracking-tighter">
               {t('pillarsTitle')}
             </h2>
-            <div className="w-48 h-px bg-gold/30 mx-auto" />
+            <div className="arrow-divider max-w-xs mx-auto opacity-30" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
-              { title: t('pillar1Title'), desc: t('pillar1Desc'), icon: '📜' },
-              { title: t('pillar2Title'), desc: t('pillar2Desc'), icon: '🦾' },
-              { title: t('pillar3Title'), desc: t('pillar3Desc'), icon: '🦅' }
+              { title: t('pillar1Title'), desc: t('pillar1Desc'), icon: '/images/brand/icons/Script_Icon.svg' },
+              { title: t('pillar2Title'), desc: t('pillar2Desc'), icon: '/images/brand/icons/Power_Icon.svg' },
+              { title: t('pillar3Title'), desc: t('pillar3Desc'), icon: '/images/brand/icons/Eagle_Icon.svg' }
             ].map((pillar, i) => (
               <div 
                 key={i}
                 className="layer-1 border border-quiet p-20 hover:border-gold transition-all duration-cine group relative overflow-hidden flex flex-col items-center text-center depth-card"
               >
-                <div className="text-9xl mb-16 transform group-hover:scale-110 transition-transform duration-cine cinema-lut opacity-30 group-hover:opacity-100">{pillar.icon}</div>
+                <div className="w-32 h-32 mb-16 transform group-hover:scale-110 transition-transform duration-cine cinema-lut opacity-30 group-hover:opacity-100 relative">
+                  <NextImage src={pillar.icon} alt="" fill className="object-contain" />
+                </div>
                 <h3 className="text-4xl font-brand font-bold text-white mb-10 group-hover:text-gold transition-all tracking-tight uppercase">{pillar.title}</h3>
                 <p className="text-ghost leading-relaxed font-brand font-light text-xl opacity-70">{pillar.desc}</p>
                 <div className="mt-20 pt-16 border-t border-quiet w-full flex justify-center">
@@ -189,6 +205,7 @@ export default async function HeritagePage({
 
       {/* ── Founder's Message & Mission ── */}
       <section className="py-72 px-8 relative z-10 layer-1 border-y border-quiet overflow-hidden">
+        <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-32 items-center">
           <div className="col-span-12 lg:col-span-5 relative aspect-square lg:aspect-[4/5] overflow-hidden group cinema-lut border border-quiet depth-card">
             <NextImage
@@ -222,11 +239,17 @@ export default async function HeritagePage({
             </div>
 
             <div className="flex flex-wrap gap-12 pt-12">
-              <Link href={`/${locale}/mount-up`} className="btn-sovereign px-16 py-7 text-[12px] tracking-[0.5em]">
+              <Link href={`/${locale}/mount-up`} className="gold-sovereign-btn px-16 py-7 text-[12px] tracking-[0.5em] flex items-center gap-6">
                 {t('ctaJoinJourney')}
+                <div className="relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+                  <NextImage src="/images/brand/arrow/Linear_Arrow_Dark.png" alt="" fill className="object-contain" />
+                </div>
               </Link>
-              <Link href={`/${locale}/heritage`} className="flex items-center justify-center px-16 py-7 border border-quiet text-white hover:bg-white hover:text-black transition-all duration-cine text-[12px] tracking-[0.5em] font-brand font-bold uppercase">
+              <Link href={`/${locale}/heritage`} className="ivory-ghost-btn px-16 py-7 text-[12px] tracking-[0.5em] flex items-center gap-6">
                 {t('ctaExploreStory')}
+                <div className="relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+                  <NextImage src="/images/brand/arrow/Linear_Arrow_Gold.png" alt="" fill className="object-contain" />
+                </div>
               </Link>
             </div>
           </div>
@@ -240,6 +263,7 @@ export default async function HeritagePage({
 
       {/* ── The Digital Divan — Journal Grid ── */}
       <section id="journal" className="py-72 px-8 relative z-10 border-t border-quiet layer-0">
+        <div className="strands-bg-pattern opacity-5" />
         <div className="max-w-7xl mx-auto mb-40 text-center">
           <span className="text-[12px] font-brand font-bold uppercase tracking-[1.2em] text-gold mb-12 block opacity-50">
             {locale === 'ar' ? 'مستجدات أركدار' : 'ARKDAR Pulse'}
@@ -247,7 +271,7 @@ export default async function HeritagePage({
           <h2 className="text-6xl md:text-8xl font-brand font-bold text-white mb-16 uppercase tracking-tighter">
             {journalHeading}
           </h2>
-          <div className="w-48 h-px bg-gold/30 mx-auto mb-16" />
+          <div className="arrow-divider max-w-xs mx-auto mb-16 opacity-30" />
           <p className="text-ghost max-w-4xl mx-auto text-2xl leading-relaxed font-brand font-light opacity-70">
             {journalSubheading}
           </p>
@@ -258,7 +282,8 @@ export default async function HeritagePage({
 
       {/* ── Closing Signature ── */}
        <section className="py-96 text-center relative overflow-hidden layer-0">
-        <div className="brand-sep-bow mb-32 opacity-30 mx-auto max-w-3xl" />
+        <div className="strands-bg-pattern opacity-10" />
+        <div className="arrow-divider mb-32 opacity-30 mx-auto max-w-3xl" />
         <h3 className="text-4xl md:text-6xl font-brand font-bold text-gold italic px-12 z-10 relative leading-tight tracking-tight uppercase">
           &quot;{t('quote')}&quot;
         </h3>

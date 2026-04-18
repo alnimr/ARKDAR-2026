@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Gauge, ArrowRight } from 'lucide-react';
+import { MapPin, Clock, Gauge } from 'lucide-react';
 import { useRouter, usePathname } from '@/i18n/routing';
 import Image from 'next/image';
 import { ServiceData } from '@/data/mockServices';
@@ -93,10 +93,17 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           
           <button 
             onClick={handleBookNow}
-            className="w-16 h-16 layer-2 border border-quiet text-gold hover:bg-gold hover:text-black transition-all duration-cine flex items-center justify-center"
+            className="w-20 h-20 layer-2 border border-quiet text-gold hover:bg-gold hover:text-black transition-all duration-cine flex items-center justify-center p-6 group/btn"
             aria-label={`Book ${service.title}`}
           >
-            <ArrowRight size={24} strokeWidth={1} className="group-hover:translate-x-2 transition-transform duration-cine" />
+            <div className="relative w-full h-full group-hover/btn:translate-x-2 transition-transform duration-cine">
+              <Image 
+                src="/images/brand/arrow/Linear_Arrow_Gold.png"
+                alt="Book Now"
+                fill
+                className="object-contain cinema-lut invert brightness-0 group-hover:invert-0 group-hover:brightness-100 transition-all"
+              />
+            </div>
           </button>
         </div>
       </div>

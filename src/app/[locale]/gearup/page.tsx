@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { History, ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import { ShieldCheck, Star } from 'lucide-react';
+import NextImage from 'next/image';
 
 export default async function CollectionPage({
   params
@@ -19,27 +20,34 @@ export default async function CollectionPage({
   return (
     <main className="flex flex-col w-full min-h-screen pt-32 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
       
-      {/* Sovereign Atmosphere */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-gold/[0.04] to-transparent" />
+      {/* Sovereign Atmosphere - Crescent Watermark */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-screen opacity-[0.15] pointer-events-none -z-10">
+        <NextImage 
+          src="/images/brand/crescent/Crescent_Vector.svg"
+          alt=""
+          fill
+          className="object-contain"
+        />
       </div>
 
       {/* ── Header ── */}
-      <section className="py-32 px-8 text-center relative z-10">
-        <span className="text-[11px] font-brand font-bold uppercase tracking-[0.6em] text-gold/60 mb-8 block">
+      <section className="py-32 px-8 text-center relative z-10 overflow-hidden">
+        <div className="strands-bg-pattern" />
+        <span className="text-[11px] font-brand font-bold uppercase tracking-[0.6em] text-gold/60 mb-8 block opacity-50">
           {t('heroTag')}
         </span>
         <h1 className="text-6xl md:text-9xl font-brand font-bold text-gold mb-12 tracking-tighter leading-none uppercase">
           {t('title')}
         </h1>
-        <div className="w-40 h-px bg-gold/20 mx-auto" />
+        <div className="arrow-divider max-w-xs mx-auto opacity-30" />
         <p className="text-2xl text-ghost font-brand font-light mt-12 max-w-3xl mx-auto leading-relaxed opacity-70">
           {t('subtitle')}
         </p>
       </section>
 
       {/* ── Artifacts Gallery ── */}
-      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative">
+      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative overflow-hidden">
+        <div className="strands-bg-pattern" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
           
           {products.map((item, i) => (
@@ -47,9 +55,15 @@ export default async function CollectionPage({
               <div className="absolute top-0 left-0 w-24 h-px bg-gold/30" />
               <div className="absolute top-0 left-0 w-px h-24 bg-gold/30" />
               
-              <div className="aspect-[4/5] w-full layer-2 border border-quiet mb-12 relative flex items-center justify-center overflow-hidden">
+              <div className="aspect-[4/5] w-full layer-2 border border-quiet mb-12 relative flex items-center justify-center overflow-hidden p-8">
                  <div className="absolute inset-0 bg-gradient-to-t from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-cine" />
-                 <History size={80} strokeWidth={0.5} className="text-white/10 group-hover:text-gold/30 transition-all duration-cine group-hover:scale-110" />
+                 <NextImage 
+                  src="/images/brand/bows/Bow_Icon_Gold.svg" 
+                  alt="" 
+                  width={120} 
+                  height={120} 
+                  className="opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-cine group-hover:scale-110" 
+                 />
                  <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-cine translate-y-[-10px] group-hover:translate-y-0">
                     <Star size={24} className="text-gold" fill="currentColor" />
                  </div>
@@ -62,8 +76,11 @@ export default async function CollectionPage({
                  <ShieldCheck size={18} className="text-gold" /> {t('certificate')}
               </div>
 
-              <button className="btn-sovereign w-full justify-center group-hover:translate-y-[-4px] transition-all duration-cine px-12 py-7 text-[11px] tracking-[0.4em]">
-                {t('experience')} <ArrowRight size={20} className="ms-3" />
+              <button className="gold-sovereign-btn w-full justify-center group-hover:translate-y-[-4px] transition-all duration-cine px-12 py-7 text-[11px] tracking-[0.4em] flex items-center gap-6">
+                {t('experience')} 
+                <div className="relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+                  <NextImage src="/images/brand/arrow/Linear_Arrow_Dark.png" alt="" fill className="object-contain" />
+                </div>
               </button>
             </div>
           ))}
@@ -71,13 +88,23 @@ export default async function CollectionPage({
         </div>
       </section>
 
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
+
       {/* ── Featured Detail Section ── */}
-      <section className="py-48 px-8 max-w-7xl mx-auto border-t border-quiet">
+      <section className="py-48 px-8 max-w-7xl mx-auto overflow-hidden relative">
+         <div className="strands-bg-pattern opacity-5" />
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <div className="relative aspect-video layer-2 border border-quiet overflow-hidden depth-card group">
                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent" />
                <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-gold/10 text-7xl md:text-8xl font-brand font-bold uppercase tracking-tighter opacity-40 group-hover:scale-105 transition-transform duration-cine">MAMLUK CRAFT</span>
+               </div>
+               {/* Aesthetic Bow Asset */}
+               <div className="absolute inset-0 p-12 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <NextImage src="/images/brand/brand-bow.png" alt="" fill className="object-contain" />
                </div>
             </div>
             <div className="space-y-12">

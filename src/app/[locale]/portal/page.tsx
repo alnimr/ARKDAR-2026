@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import PortalDashboardClient from '@/components/portal/PortalDashboardClient';
 import { Link } from '@/i18n/routing';
+import NextImage from 'next/image';
 
 export default async function PortalPage({
   params
@@ -17,15 +18,28 @@ export default async function PortalPage({
 
   return (
     <div className="flex h-screen layer-0 overflow-hidden selection:bg-gold selection:text-black font-brand">
+      
+      {/* Sovereign Atmosphere - Crescent Watermark */}
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.05] pointer-events-none -z-10">
+        <NextImage 
+          src="/images/brand/crescent/Crescent_Vector.svg"
+          alt=""
+          fill
+          className="object-contain"
+        />
+      </div>
+
       {/* Tactical Sidebar */}
-      <aside className="w-80 h-full border-l border-quiet layer-1 flex flex-col p-12 z-30 shadow-2xl relative">
-         <div className="mb-20">
+      <aside className="w-80 h-full border-l border-quiet layer-1 flex flex-col p-12 z-30 shadow-2xl relative overflow-hidden">
+         <div className="strands-bg-pattern opacity-10" />
+         <div className="mb-20 relative">
             <h1 className="text-2xl font-brand font-bold text-white tracking-[0.5em] uppercase leading-none">
                ARK-PORTAL <span className="text-gold">3.0</span>
             </h1>
+            <div className="arrow-divider mt-8 opacity-20" />
          </div>
 
-         <nav className="flex-grow space-y-6">
+         <nav className="flex-grow space-y-6 relative">
             {[
               { name: t('navOverview'), icon: LayoutDashboard, active: true, href: '/portal' },
               { name: t('navMetrics'), icon: Activity, href: '#' },
@@ -36,7 +50,7 @@ export default async function PortalPage({
               <Link 
                 href={item.href as '/'} 
                 key={item.name} 
-                className={`flex items-center gap-6 px-8 py-6 text-[11px] font-brand font-bold uppercase tracking-[0.4em] transition-all duration-cine ${item.active ? 'bg-gold text-black depth-card' : 'text-ghost/60 hover:bg-white/5 hover:text-white hover:ps-10'}`}
+                className={`flex items-center gap-6 px-8 py-6 text-[11px] font-brand font-bold uppercase tracking-[0.4em] transition-all duration-cine ${item.active ? 'bg-gold text-black' : 'text-ghost/60 hover:bg-white/5 hover:text-white hover:ps-10'}`}
               >
                 <item.icon size={20} strokeWidth={item.active ? 2 : 1} />
                 {item.name}
@@ -44,8 +58,9 @@ export default async function PortalPage({
             ))}
          </nav>
 
-         <div className="mt-auto">
-            <div className="layer-2 p-10 border border-quiet depth-card group hover:border-gold/30 transition-all duration-cine">
+         <div className="mt-auto relative">
+            <div className="layer-2 p-10 border border-quiet depth-card group hover:border-gold/30 transition-all duration-cine overflow-hidden">
+               <div className="strands-bg-pattern opacity-[0.03]" />
                <div className="flex items-center justify-between mb-6">
                   <p className="text-[11px] text-gold font-brand font-bold uppercase tracking-[0.4em]">{t('connectivity')}</p>
                   <ShieldCheck size={16} className="text-gold" />
@@ -59,6 +74,7 @@ export default async function PortalPage({
 
       {/* Main Command Center */}
       <main className="flex-grow overflow-y-auto relative p-20 layer-0">
+        <div className="strands-bg-pattern opacity-[0.02]" />
         <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-gold/[0.03] to-transparent pointer-events-none" />
         <PortalDashboardClient />
       </main>

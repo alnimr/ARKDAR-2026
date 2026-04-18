@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { Target, ArrowRight, Shield, Compass, Globe } from 'lucide-react';
+import { Target, Shield, Compass, Globe } from 'lucide-react';
 import NextImage from 'next/image';
 import { Suspense } from 'react';
 import ServiceGrid from '@/components/layout/ServiceGrid';
@@ -18,13 +18,19 @@ export default async function ArenaPage({
   return (
     <main className="flex flex-col w-full min-h-screen pt-32 layer-0 relative overflow-x-hidden selection:bg-gold selection:text-black font-brand">
       
-      {/* Sovereign Atmosphere */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-gold/[0.02] to-transparent" />
+      {/* Sovereign Atmosphere - Crescent Watermark */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-screen opacity-[0.15] pointer-events-none -z-10">
+        <NextImage 
+          src="/images/brand/crescent/Crescent_Vector.svg"
+          alt=""
+          fill
+          className="object-contain"
+        />
       </div>
 
       {/* ── Header ── */}
-      <section className="py-32 px-8 text-center relative z-10">
+      <section className="py-32 px-8 text-center relative z-10 overflow-hidden">
+        <div className="strands-bg-pattern" />
         <Link
           href={`/${locale}/heritage`}
           className="inline-flex items-center gap-6 text-[11px] font-brand font-bold uppercase tracking-[0.5em] text-gold/40 hover:text-gold transition-all duration-cine mb-20 group opacity-50"
@@ -34,11 +40,12 @@ export default async function ArenaPage({
         <h1 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-12 leading-none uppercase tracking-tighter">
           {t('title')}
         </h1>
-        <div className="w-40 h-px bg-gold/20 mx-auto" />
+        <div className="arrow-divider max-w-xs mx-auto opacity-30" />
       </section>
 
       {/* ── Experience & Hubs ── */}
-      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative">
+      <section className="py-32 px-8 max-w-7xl mx-auto z-10 relative overflow-hidden">
+        <div className="strands-bg-pattern" />
         <div className="grid grid-cols-12 gap-12">
           
           {/* Main Experience Card (Training) */}
@@ -57,8 +64,11 @@ export default async function ArenaPage({
              </p>
 
              <div className="flex flex-wrap gap-10 relative">
-                <button className="btn-sovereign px-16 py-7 text-[11px] tracking-[0.4em] group-hover:translate-x-2 transition-transform duration-cine">
-                   {t('bookSession')} <ArrowRight size={22} className="ms-4" />
+                <button className="gold-sovereign-btn px-16 py-7 text-[11px] tracking-[0.4em] flex items-center gap-6">
+                   {t('bookSession')} 
+                   <div className="relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+                    <NextImage src="/images/brand/arrow/Linear_Arrow_Dark.png" alt="" fill className="object-contain" />
+                   </div>
                 </button>
              </div>
           </div>
@@ -97,8 +107,11 @@ export default async function ArenaPage({
              </div>
 
              <div className="flex flex-wrap gap-10">
-                <button className="px-14 py-7 border border-quiet layer-2 text-white font-brand font-bold uppercase tracking-[0.4em] text-[11px] hover:bg-gold hover:text-black transition-all duration-cine flex items-center gap-6">
-                   {t('bookTour')} <ArrowRight size={20} />
+                <button className="ivory-ghost-btn px-14 py-7 text-[11px] flex items-center gap-6">
+                   {t('bookTour')} 
+                   <div className="relative w-10 h-3 group-hover:translate-x-2 transition-transform duration-cine">
+                    <NextImage src="/images/brand/arrow/Linear_Arrow_Gold.png" alt="" fill className="object-contain" />
+                   </div>
                 </button>
              </div>
           </div>
@@ -130,8 +143,14 @@ export default async function ArenaPage({
         </div>
       </section>
 
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
+
       {/* ── Services Showcase ── */}
-      <section className="py-48 px-8 max-w-7xl mx-auto z-10 relative">
+      <section className="py-48 px-8 max-w-7xl mx-auto z-10 relative overflow-hidden">
+        <div className="strands-bg-pattern" />
         <div className="flex flex-col md:flex-row justify-between items-end mb-32">
           <div className="max-w-4xl">
             <h3 className="text-gold font-brand font-bold tracking-[0.8em] text-[11px] uppercase mb-12 opacity-50">
@@ -142,15 +161,21 @@ export default async function ArenaPage({
             </h2>
           </div>
           <div className="hidden md:block">
-             <div className="w-40 h-px bg-gold/20 mb-16" />
+             <div className="arrow-divider w-40 opacity-20" />
           </div>
         </div>
 
         <ServiceGrid />
       </section>
 
+      {/* Sovereign Divider */}
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="arrow-divider" />
+      </div>
+
       {/* ── Image Showcase ── */}
-      <section className="py-48 px-8 max-w-7xl mx-auto">
+      <section className="py-48 px-8 max-w-7xl mx-auto overflow-hidden relative">
+         <div className="strands-bg-pattern" />
          <div className="grid grid-cols-12 gap-10">
             {[1, 2, 3, 4].map(i => (
                <div key={i} className="col-span-6 md:col-span-3 relative aspect-square overflow-hidden layer-2 border border-quiet hover:border-gold/30 transition-all duration-cine p-4 depth-card group">
@@ -167,13 +192,14 @@ export default async function ArenaPage({
       
       {/* ── Booking Section ── */}
       <section id="booking" className="py-72 px-8 relative overflow-hidden layer-0 border-t border-quiet">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="strands-bg-pattern opacity-[0.03]" />
+        <div className="arrow-divider absolute top-0 left-0 w-full opacity-10" />
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center mb-48">
             <h2 className="text-5xl md:text-9xl font-brand font-bold text-gold mb-16 leading-none uppercase tracking-tighter">
               SECURE YOUR PLACE<br/>IN HISTORY
             </h2>
-            <div className="w-40 h-px bg-gold/20 mx-auto" />
+            <div className="arrow-divider max-w-xs mx-auto opacity-20" />
           </div>
           
           <Suspense fallback={<div className="text-gold text-center py-32 font-brand font-bold uppercase tracking-[0.6em] text-[11px] opacity-50">Accessing Tactical Uplink...</div>}>
