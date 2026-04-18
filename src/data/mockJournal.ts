@@ -111,7 +111,12 @@ export const mockJournalPosts: JournalPost[] = articles
     content: cleanedContent,
     date: formattedDate,
     isArabic,
-    author: 'أركدار',
+    author: {
+      ar: 'أركدار',
+      en: 'ARKDAR',
+      de: 'ARKDAR',
+      es: 'ARKDAR'
+    },
     language: 'ar',
     status: (art.status === 'published' || art.status === 'draft') ? art.status : 'published',
     featured: art.id === 'u373770086_inatc_3101' || art.id === 'u373770086_inatc_3416',

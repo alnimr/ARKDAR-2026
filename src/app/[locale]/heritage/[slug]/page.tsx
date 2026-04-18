@@ -42,7 +42,7 @@ export async function generateMetadata({
       images: post.image ? [{ url: post.image }] : [],
       type: 'article',
       publishedTime: post.date,
-      authors: [post.author || 'ARKDAR'],
+      authors: [post.author?.[locale as keyof typeof post.author] || post.author?.ar || 'ARKDAR'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -110,7 +110,7 @@ export default async function JournalArticlePage({
             datePublished: post.date,
             author: {
               "@type": "Organization",
-              name: post.author || "ARKDAR",
+              name: post.author?.[locale as keyof typeof post.author] || post.author?.ar || "ARKDAR",
             },
             description: excerpt,
           }),
