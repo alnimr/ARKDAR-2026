@@ -68,7 +68,11 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen bg-background relative overflow-x-hidden">
+              {/* Sovereign Background Layers */}
+              <div className="fixed inset-0 z-0 pointer-events-none mamluk-grid opacity-30" />
+              <div className="fixed inset-0 z-0 pointer-events-none mamluk-pattern opacity-100" />
+              
               {/* Header / Navbar Component */}
               <Navbar />
               

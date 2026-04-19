@@ -154,8 +154,8 @@ export function evaluateFrameMetrics(
     const { discipline, phase, locale = 'ar' } = context;
 
     const evalResults = {
-        torso: { level: 'N/A', color: 'var(--text-secondary)' },
-        cog: { level: 'N/A', color: 'var(--text-secondary)' },
+        torso: { level: 'N/A', color: 'var(--text-dim)' },
+        cog: { level: 'N/A', color: 'var(--text-dim)' },
         feedback: locale === 'ar' ? "جاري تحليل القوام والحركة..." : "Analyzing posture and movement..."
     };
 
@@ -168,19 +168,19 @@ export function evaluateFrameMetrics(
 
     if (typeof torsoAngle === 'number') {
         if (torsoAngle >= torsoT.min && torsoAngle <= torsoT.max) {
-            evalResults.torso = { level: isAr ? 'ممتاز' : 'Excellent', color: 'var(--color-brand-primary)' };
+            evalResults.torso = { level: isAr ? 'ممتاز' : 'Excellent', color: 'var(--color-gold)' };
             evalResults.feedback = isAr ? "وضعية رائعة! زاوية الجذع مثالية لهذه المرحلة." : "Great posture! Your trunk angle is well-balanced for this phase.";
         } else if (torsoAngle >= torsoT.min - 10 && torsoAngle <= torsoT.max + 15) {
-            evalResults.torso = { level: isAr ? 'جيد' : 'Good', color: 'var(--color-brand-secondary)' };
+            evalResults.torso = { level: isAr ? 'جيد' : 'Good', color: 'var(--color-gold-light)' };
             evalResults.feedback = isAr ? "وضعية جيدة، حاول ضبط زاوية الجذع لزيادة الثبات." : "Good posture, but try to refine your trunk angle for better stability.";
         } else {
-            evalResults.torso = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: 'var(--color-brand-tertiary)' };
+            evalResults.torso = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: 'var(--color-crimson)' };
             evalResults.feedback = isAr ? "الجذع مائل جداً. حاول موازنة مركز الثقل بشكل أفضل." : "Your trunk is leaning too far. Try to adjust your center of gravity.";
         }
         
         if (halfSeatData && halfSeatData.ratio > WELFARE_THRESHOLDS.MAX_HALF_SEAT_RATIO) {
             if (evalResults.torso.level.includes('تحسين') || evalResults.torso.level.includes('improvement')) {
-                evalResults.torso = { level: isAr ? 'مقبول (نصف مقعد)' : 'Acceptable (Half-seat)', color: '#f59e0b' };
+                evalResults.torso = { level: isAr ? 'مقبول (نصف مقعد)' : 'Acceptable (Half-seat)', color: 'var(--color-gold)' };
                 evalResults.feedback = isAr ? "ميل للأمام مع الحفاظ على وضعية نصف المقعد لحماية ظهر الحصان." : "Leaning forward, but maintaining a good half-seat to protect the horse's back.";
             }
         }
@@ -191,12 +191,12 @@ export function evaluateFrameMetrics(
 
     if (cogBalance && typeof cogBalance.verticalAngle === 'number') {
         const absAngle = Math.abs(cogBalance.verticalAngle);
-        if (absAngle <= cogT.excellent) evalResults.cog = { level: isAr ? 'ممتاز' : 'Excellent', color: 'var(--color-brand-primary)' };
+        if (absAngle <= cogT.excellent) evalResults.cog = { level: isAr ? 'ممتاز' : 'Excellent', color: 'var(--color-gold)' };
         else if (absAngle <= cogT.good) {
-            evalResults.cog = { level: isAr ? 'جيد' : 'Good', color: 'var(--color-brand-secondary)' };
+            evalResults.cog = { level: isAr ? 'جيد' : 'Good', color: 'var(--color-gold-light)' };
         }
         else {
-            evalResults.cog = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: 'var(--color-brand-tertiary)' };
+            evalResults.cog = { level: isAr ? 'بحاجة لتحسين' : 'Needs improvement', color: 'var(--color-crimson)' };
             evalResults.feedback = isAr ? "مركز الثقل غير مستقر. ركز على محاذاة الأكتاف فوق الركبتين." : "Your center of gravity is shifting. Focus on aligning your shoulders over your knees.";
         }
     }

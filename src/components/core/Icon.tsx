@@ -96,7 +96,7 @@ export default function Icon({ name, size = 'm', color = 'currentColor', classNa
         if (opticalSize === 'm') {
           return (
             <>
-              <path d="M19 5 C27 5 33 11 33 19 C33 27 27 33 19 33 C11 33 5 27 5 19 C11 5 11 5 19 5 Z M19 8 C25 8 30 13 30 19 C30 25 25 30 19 30 C13 30 8 25 8 19 C8 13 13 8 19 8 Z" fill={color} fillRule="evenodd"/>
+              <path d="M19 5 C27 5 33 11 33 19 C33 27 27 33 19 33 C11 33 5 27 5 19 C5 11 11 5 19 5 Z M19 8 C25 8 30 13 30 19 C30 25 25 30 19 30 C13 30 8 25 8 19 C8 13 13 8 19 8 Z" fill={color} fillRule="evenodd"/>
               <path d="M28 28 L44 44" stroke={color} strokeWidth="3" strokeLinecap="round"/>
               <circle cx="44" cy="44" r="2.5" fill="var(--color-gold-light)"/>
             </>
@@ -175,7 +175,6 @@ export default function Icon({ name, size = 'm', color = 'currentColor', classNa
             </>
           );
         }
-        // Medium and Large follow same calligraphic style
         return (
           <>
             <path d="M5 13.5 C14 13 30 13 43 13.5 L43 15.5 C30 15 14 15 5 15.5 Z" fill={color}/>
@@ -444,18 +443,30 @@ export default function Icon({ name, size = 'm', color = 'currentColor', classNa
           </>
         );
 
-      case 'search':
+      case 'share':
         return (
           <>
-            <circle cx="20" cy="20" r="14" stroke={color} strokeWidth="2.5" fill="none"/>
-            <line x1="30" y1="30" x2="42" y2="42" stroke={color} strokeWidth="3" strokeLinecap="round"/>
-            <circle cx="15" cy="15" r="3" fill="var(--color-gold-light)" opacity="0.4"/>
+            <circle cx="36" cy="12" r="6" stroke={color} strokeWidth="2.5" fill="none"/>
+            <circle cx="12" cy="24" r="6" stroke={color} strokeWidth="2.5" fill="none"/>
+            <circle cx="36" cy="36" r="6" stroke={color} strokeWidth="2.5" fill="none"/>
+            <path d="M18 21 L30 15" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+            <path d="M18 27 L30 33" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+            <circle cx="36" cy="12" r="2" fill="var(--color-gold-light)"/>
+            <path d="M12 24 L14 24" stroke="var(--color-gold-light)" strokeWidth="1" strokeLinecap="round"/>
           </>
         );
 
       case 'filter':
+        if (opticalSize === 's') {
+          return <path d="M4 10 H44 L28 24 V40 L20 36 V24 Z" stroke={color} strokeWidth="5" fill="none"/>;
+        }
         return (
-          <path d="M4 8 H44 L28 24 V40 L20 36 V24 Z" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+          <>
+            <path d="M6 10 H42 L28 24 V38 L20 34 V24 Z" fill={color} opacity="0.05"/>
+            <path d="M6 10 H42 L28 24 V38 L20 34 V24 Z M9 13 H39 L26.5 24.5 V35.5 L21.5 33 V24.5 Z" fill={color} fillRule="evenodd"/>
+            <circle cx="24" cy="10" r="2.5" fill="var(--color-gold-light)"/>
+            <path d="M14 10 Q24 7 34 10" stroke="var(--color-gold-light)" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.6"/>
+          </>
         );
 
       case 'instagram':

@@ -41,51 +41,48 @@
   --border-quiet:         hsla(43, 64%, 45%, 0.10);
   --border-active:        hsla(43, 64%, 45%, 0.65);
 
-  /* ── RADII — Absolute sharpness is law ── */
+  /* ── RADII — Absolute sharpness is law (v3.1 Sovereign Directive) ── */
   --radius-base:          0px;
   --radius-large:         0px;
 
   /* ── TYPOGRAPHY FAMILIES ── */
-  --font-brand:           'El Messiri', serif;       /* Primary — bilingual AR/EN unified voice */
-  --font-latin:           'Cinzel', serif;           /* Latin display — eyebrows, tags, meta */
-  --font-body:            'Scheherazade New', serif; /* Arabic long-form body */
+  --font-brand:           'El Messiri', serif;
+  --font-latin:           'Cinzel', serif;
+  --font-body:            'Scheherazade New', serif;
   --font-mono:            ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* ── TYPE SCALE (rem-based, dense caps treatment) ── */
-  --text-eyebrow:         10px;   /* Cinzel, 0.5em letterspacing, uppercase */
-  --text-micro:           11px;   /* Cinzel, 0.5em letterspacing */
-  --text-caption:         13px;
-  --text-body:            15px;
-  --text-body-lg:         17px;
-  --text-lead:            20px;
-  --text-h5:              24px;
-  --text-h4:              32px;
-  --text-h3:              44px;
-  --text-h2:              64px;
-  --text-h1:              80px;    /* Foil-gradient hero only */
+  /* ── LETTERSPACING ── */
+  --track-tight:          -0.02em;
+  --track-body:           -0.01em;
+  --track-wide:           0.1em;
+  --track-caps:           0.3em;
+  --track-sovereign:      0.5em;
+  --track-hover:          0.7em;
 
-  /* ── LETTERSPACING (signature ARKDAR treatment) ── */
-  --track-tight:          -0.02em; /* Display headlines */
-  --track-body:           -0.01em; /* Body */
-  --track-wide:           0.1em;   /* Labels */
-  --track-caps:           0.3em;   /* Caps micro-copy */
-  --track-sovereign:      0.5em;   /* Signature — buttons, nav, eyebrows */
-  --track-hover:          0.7em;   /* Hover-state expansion on CTAs */
+  /* ── MOTION (The Arrow + The Feather + The Draw) ── */
+  --ease-arrow:           cubic-bezier(0.76, 0, 0.24, 1);   /* Arrow shot: purpose */
+  --ease-feather:         cubic-bezier(0.34, 1.28, 0.64, 1); /* Feather fall: reveal */
+  --ease-draw:            cubic-bezier(0.4, 0, 0.2, 1);      /* Geometric precision */
+  
+  --dur-micro:            150ms;
+  --dur-base:             250ms;
+  --dur-mod:              350ms;
+  --dur-exp:              500ms;
+  --dur-cine:             800ms;
 
-  /* ── LINE HEIGHTS ── */
-  --lh-display:           0.9;    /* Hero / oversized headlines */
-  --lh-heading:           1.1;
-  --lh-body:              1.8;    /* Arabic-aware body rhythm */
-  --lh-body-en:           1.6;
+  /* ── GRID & LAYOUT ── */
+  --grid-cols:            12;
+  --grid-gap:             24px;
+  --grid-margin:          80px;
+  --w-max:                1280px;
+  --w-content:            960px;
+  --w-narrow:             720px;
 
-  /* ── MOTION (The Arrow + The Feather) ── */
-  --ease-arrow:           cubic-bezier(0.4, 0, 0.2, 1);   /* Purposeful motion */
-  --ease-feather:         cubic-bezier(0.16, 1, 0.3, 1);  /* Settle / reveal */
-  --duration-base:        250ms;
-  --duration-exp:         500ms;
-  --duration-cine:        800ms;  /* Cinematic — default for most transitions */
+  /* ── SPACING SCALE (8px base) ── */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+  --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 80px; --sp-10: 120px; --sp-11: 160px;
 
-  /* ── SHADOWS (depth via inset + high black point) ── */
+  /* ── SHADOWS ── */
   --depth-card:
     0 1px 0 hsla(43, 64%, 45%, 0.08) inset,
     0 -1px 0 hsla(0, 0%, 0%, 0.35) inset,
@@ -94,19 +91,6 @@
     0 1px 0 hsla(43, 64%, 45%, 0.12) inset,
     0 -1px 0 hsla(0, 0%, 0%, 0.40) inset,
     0 24px 64px hsla(0, 0%, 0%, 0.90);
-
-  /* ── SPACING (8px rhythm, with sovereign generosity) ── */
-  --space-1:              4px;
-  --space-2:              8px;
-  --space-3:              12px;
-  --space-4:              16px;
-  --space-6:              24px;
-  --space-8:              32px;
-  --space-12:             48px;
-  --space-16:             64px;
-  --space-24:             96px;
-  --space-32:             128px;
-  --space-48:             192px;  /* Section-to-section on hero pages */
 }
 
 @theme {
@@ -153,18 +137,86 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════════════
+   SOVEREIGN GRID SYSTEM (8px BASE)
+   ══════════════════════════════════════════════════════════════ */
+
+.s-container {
+  width: 100%;
+  max-width: var(--w-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-5);
+}
+
+.s-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+
+.s-section {
+  padding-block: var(--sp-9);
+}
+
+.s-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.s-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Fluid Spacing Utilities */
+.gap-sovereign { gap: var(--grid-gap); }
+.p-sovereign { padding: var(--sp-5); }
+.m-sovereign { margin: var(--sp-5); }
+
+/* Decorative Sovereign Elements */
+.s-border-bottom { border-bottom: 1px solid var(--border-strong); }
+.s-border-top { border-top: 1px solid var(--border-strong); }
+.s-border-left { border-left: 1px solid var(--border-strong); }
+.s-border-right { border-right: 1px solid var(--border-strong); }
+
+/* ── MAMLUK ORNAMENTS ── */
+.ornament-edge {
+  position: relative;
+  overflow: hidden;
+}
+
+.ornament-edge::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--color-gold) 20%, 
+    var(--color-gold) 80%, 
+    transparent
+  );
+  opacity: 0.4;
+}
+
+/* ══════════════════════════════════════════════════════════════
    SEMANTIC ELEMENT STYLES
    ══════════════════════════════════════════════════════════════ */
 
-* { border-radius: 0 !important; }
+* { 
+  border-radius: 0 !important; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
   background: var(--background);
   color: var(--text-primary);
   font-family: var(--font-brand);
-  line-height: var(--lh-body);
+  line-height: 1.6;
   letter-spacing: var(--track-body);
-  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--dur-mod) var(--ease-draw);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -267,7 +319,44 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
   transition: all var(--duration-cine) var(--ease-arrow);
   box-shadow: 0 -1px 0 rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.1) inset;
 }
-.btn-sovereign:hover { background: #fff; letter-spacing: var(--track-hover); }
+.btn-sovereign:hover { background: var(--color-gold-light); color: var(--color-black); letter-spacing: var(--track-hover); }
+
+/* ══════════════════════════════════════════════════════════════
+   SOVEREIGN ANIMATIONS (THE ARROW, THE FEATHER, THE DRAW)
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes sovereign-reveal-arrow {
+  0% { transform: scaleX(0); transform-origin: left; opacity: 0; }
+  100% { transform: scaleX(1); transform-origin: left; opacity: 1; }
+}
+
+@keyframes sovereign-reveal-feather {
+  0% { transform: translateY(20px); opacity: 0; filter: blur(10px); }
+  100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+
+@keyframes sovereign-draw-line {
+  0% { width: 0; opacity: 0; }
+  100% { width: 100%; opacity: 1; }
+}
+
+.animate-arrow {
+  animation: sovereign-reveal-arrow var(--dur-mod) var(--ease-arrow) forwards;
+}
+
+.animate-feather {
+  animation: sovereign-reveal-feather var(--dur-exp) var(--ease-feather) forwards;
+}
+
+.animate-draw {
+  animation: sovereign-draw-line var(--dur-cine) var(--ease-draw) forwards;
+}
+
+/* Delay staggered children */
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
 
 .btn-outline {
   display: inline-flex;
@@ -322,15 +411,49 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
 .depth-card { box-shadow: var(--depth-card); }
 .depth-float { box-shadow: var(--depth-float); }
 
-.strands-bg-pattern {
+.mamluk-pattern {
   position: absolute;
   inset: 0;
-  background-image: url('/images/brand/strands/Value_Strands_Gold.png');
-  background-size: 800px;
-  background-position: center;
-  opacity: 0.05;
   pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 10L65 45L100 50L65 55L60 90L55 55L20 50L55 45L60 10Z' stroke='%23B8922A' stroke-width='0.8'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
 }
+
+.mamluk-grid {
+  background-image: 
+    linear-gradient(var(--border-quiet) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-quiet) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.text-shadow-gold {
+  text-shadow: 0 2px 10px hsla(43, 64%, 45%, 0.3);
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold-dim) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sovereign-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold) 50%, transparent);
+  opacity: 0.3;
+  position: relative;
+  overflow: visible;
+}
+
+.glass-sovereign {
+  background: rgba(22, 20, 16, 0.75);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-quiet);
+}
+
 
 /* ── GLOBAL RADIUS PURGE ── */
 * {

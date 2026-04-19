@@ -5,6 +5,7 @@ import JournalFeaturedSection from '@/components/core/JournalFeaturedSection';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import Icon, { IconName } from '@/components/core/Icon';
+import { MamlukStar, SovereignDivider } from '@/components/core/MamlukOrnaments';
 
 export async function generateMetadata({
   params,
@@ -45,14 +46,9 @@ export default async function HeritagePage({
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
     >
       
-      {/* Sovereign Atmosphere - Crescent Watermark */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-screen opacity-[0.12] pointer-events-none -z-10">
-        <NextImage 
-          src="/images/brand/crescent/Crescent_Vector.svg"
-          alt=""
-          fill
-          className="object-contain"
-        />
+      {/* Sovereign Atmosphere - Mamluk Sovereign Star */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-screen opacity-[0.08] pointer-events-none -z-10 flex items-center justify-center">
+        <MamlukStar type={12} size="80%" degree="sovereign" color="var(--color-gold)" opacity={0.4} />
       </div>
 
       {/* ── Background Texture Layers ── */}
@@ -100,7 +96,7 @@ export default async function HeritagePage({
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-9xl font-brand font-bold text-primary mb-8 md:mb-16 leading-[0.8] uppercase tracking-tighter md:tracking-tighter foil-hero transition-all duration-cine group-hover/link:tracking-wider">
+              <h1 className="text-5xl md:text-9xl font-brand font-bold mb-8 md:mb-16 leading-[0.8] uppercase tracking-tighter md:tracking-tighter hero-gradient-text text-shadow-gold transition-all duration-cine group-hover/link:tracking-wider">
                 {featuredPost.title[locale as keyof typeof featuredPost.title]}
               </h1>
               
@@ -142,7 +138,7 @@ export default async function HeritagePage({
             {t('navVision')}
           </h2>
           
-          <h3 className="text-5xl md:text-8xl lg:text-9xl font-brand font-bold text-primary mb-32 leading-[0.85] uppercase tracking-tighter">
+          <h3 className="text-5xl md:text-8xl lg:text-9xl font-brand font-bold hero-gradient-text mb-32 leading-[0.85] uppercase tracking-tighter">
              {t('philosophyTitle')}
           </h3>
           
@@ -155,7 +151,7 @@ export default async function HeritagePage({
             </p>
           </div>
           
-          <div className="arrow-divider max-w-2xl mx-auto mt-48 opacity-20" />
+          <SovereignDivider className="max-w-2xl mx-auto mt-48 opacity-40" />
         </div>
       </section>
 
@@ -170,7 +166,7 @@ export default async function HeritagePage({
             <h2 className="text-6xl md:text-9xl font-brand font-bold text-primary leading-[0.8] mb-16 uppercase tracking-tighter">
               {t('pillarsTitle')}
             </h2>
-            <div className="arrow-divider max-w-xs mx-auto opacity-30" />
+            <SovereignDivider className="max-w-xs mx-auto opacity-40" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -265,7 +261,7 @@ export default async function HeritagePage({
           <h2 className="text-6xl md:text-8xl font-brand font-bold text-primary mb-16 uppercase tracking-tighter">
             {journalHeading}
           </h2>
-          <div className="arrow-divider max-w-xs mx-auto mb-16 opacity-30" />
+          <SovereignDivider className="max-w-xs mx-auto mb-16 opacity-40" />
           <p className="text-ghost max-w-4xl mx-auto text-2xl leading-relaxed font-brand font-light opacity-70">
             {journalSubheading}
           </p>

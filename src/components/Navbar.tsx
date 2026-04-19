@@ -7,6 +7,7 @@ import { Link } from '@/i18n/routing';
 import NextImage from 'next/image';
 import Icon from './core/Icon';
 import ThemeToggle from './ThemeToggle';
+import { MamlukStar } from './core/MamlukOrnaments';
 
 const LOCALES: { code: string; label: string }[] = [
   { code: 'ar', label: 'العربية' },
@@ -50,12 +51,15 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-cine ease-feather ${
       isScrolled ? 'py-0 px-2 md:px-0' : 'py-2 md:py-8 px-2 md:px-16'
-    } font-brand`}>
-      <div className={`max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-3 md:py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
+    } font-brand animate-feather`}>
+      <div className={`s-container flex items-center justify-between px-4 md:px-10 py-3 md:py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
         isScrolled ? 'border-gold bg-layer-0/90 backdrop-blur-md' : ''
       }`}>
 
-        <Link href="/" className="flex items-center gap-3 md:gap-6 group">
+        <Link href="/" className="flex items-center gap-3 md:gap-6 group relative">
+          <div className="absolute -inset-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-exp flex items-center justify-center">
+            <MamlukStar type={12} size={140} degree="hidden" color="var(--color-gold-light)" opacity={0.6} />
+          </div>
           <div className="relative h-6 md:h-9 w-24 md:w-32">
             <NextImage
               src="/images/brand/logo/ARKDAR_Logo_Gold.png"
@@ -72,15 +76,23 @@ export default function Navbar() {
 
         {/* ── Desktop Links ── */}
         <div className="hidden lg:flex items-center gap-8 xl:gap-12 text-[10px] xl:text-[11px] font-brand font-bold tracking-[0.3em] xl:tracking-[0.5em] uppercase">
-          {navLinks.map(link => (
-            <Link
-              key={link.href}
-              href={link.href as '/'}
-              className="text-primary/60 hover:text-gold transition-all duration-cine hover:tracking-[0.6em]"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map(link => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.href}
+                href={link.href as '/'}
+                className={`relative flex items-center gap-2 transition-all duration-cine uppercase group/item
+                  ${isActive ? 'text-gold tracking-[0.6em]' : 'text-primary/60 hover:text-gold hover:tracking-[0.6em]'}
+                `}
+              >
+                {isActive && (
+                  <MamlukStar type={8} size={10} degree="divider" className="absolute -start-4" color="var(--color-gold-light)" />
+                )}
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* ── Actions ── */}

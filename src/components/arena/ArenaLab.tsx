@@ -8,6 +8,7 @@ import Icon from '@/components/core/Icon';
 import { motion } from 'framer-motion';
 import { db, auth } from '@/lib/arena/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { MamlukStar } from '@/components/core/MamlukOrnaments';
 
 interface MetricCardProps {
   label: string;
@@ -228,12 +229,13 @@ export default function ArenaLab() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white p-12 md:p-16 font-brand selection:bg-gold selection:text-black">
+    <div className="min-h-screen bg-background text-primary p-12 md:p-16 font-brand selection:bg-gold selection:text-black">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-8 border-b border-quiet pb-12">
           <div className="space-y-3">
-            <h1 className="text-4xl font-brand font-bold tracking-tight md:text-6xl text-gold uppercase">
+            <h1 className="text-4xl font-brand font-bold tracking-tight md:text-6xl text-gold uppercase flex items-center gap-6">
+              <MamlukStar type={12} size={48} degree="divider" className="animate-spin-slow" />
               ARKDAR Arena Lab
             </h1>
             <p className="text-ghost mt-2 text-lg font-brand opacity-60 uppercase tracking-widest">المعيار السيادي للتدريب - تحليل الأداء الميكانيكي</p>
@@ -269,7 +271,11 @@ export default function ArenaLab() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Main Viewport */}
-            <div className="lg:col-span-8 flex flex-col gap-6">
+            <div className="lg:col-span-8 flex flex-col gap-6 relative">
+              {/* Sovereign Viewport Background */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.03]">
+                <MamlukStar type={16} size={500} degree="hidden" color="var(--color-gold)" />
+              </div>
               <div className="relative aspect-video bg-black overflow-hidden border border-quiet group depth-card">
                 {videoSrc ? (
                   <>
@@ -327,7 +333,7 @@ export default function ArenaLab() {
             <div className="lg:col-span-4 flex flex-col gap-8">
               <div className="layer-1 p-10 flex flex-col h-full border border-quiet depth-card">
                 <div className="flex items-center justify-between mb-12">
-                  <h3 className="text-2xl font-brand font-bold flex items-center gap-3 text-white uppercase tracking-widest">
+                  <h3 className="text-2xl font-brand font-bold flex items-center gap-3 text-primary uppercase tracking-widest">
                     <Icon name="activity" className="text-gold" size={28} />
                     لوحة البيانات
                   </h3>
@@ -338,7 +344,7 @@ export default function ArenaLab() {
                       disabled={isSaving || !currentMetrics.torsoAngle}
                       className={`p-3 transition-all duration-cine border ${
                         saveStatus === 'success' ? 'bg-gold/20 text-gold border-gold' : 
-                        saveStatus === 'error' ? 'bg-red-900/20 text-red-500 border-red-500' :
+                        saveStatus === 'error' ? 'bg-crimson/20 text-crimson border-crimson' :
                         isSaving ? 'animate-pulse text-gold/20 border-gold/20' : 'layer-2 border-quiet text-ghost hover:text-white hover:border-gold/50'
                       }`}
                     >
@@ -358,7 +364,7 @@ export default function ArenaLab() {
                     label="زاوية الجذع" 
                     value={currentMetrics.torsoAngle?.toFixed(1) ?? '--'} 
                     unit="°"
-                    statusColor={evaluations.torso?.color.includes('brand') ? 'text-gold' : evaluations.torso?.color}
+                    statusColor={evaluations.torso?.color}
                     description="الزاوية بين الكتف والحوض بالنسبة للعامود الفقري"
                   />
                   <MetricCard 
@@ -371,7 +377,7 @@ export default function ArenaLab() {
                     label="التوازن (COG)" 
                     value={currentMetrics.cogBalance?.verticalAngle?.toFixed(1) ?? '--'} 
                     unit="°"
-                    statusColor={evaluations.cog?.color.includes('brand') ? 'text-gold' : evaluations.cog?.color}
+                    statusColor={evaluations.cog?.color}
                     description="انحراف كتلة الجسم عن محور الركب"
                   />
                   <MetricCard 
@@ -395,7 +401,7 @@ export default function ArenaLab() {
                     </p>
                   </div>
 
-                  <button className="w-full py-6 bg-secondary hover:bg-gold text-black font-brand font-bold transition-all duration-cine flex items-center justify-center gap-3 uppercase tracking-[0.3em] text-[12px] depth-card">
+                  <button className="w-full py-6 bg-gold hover:bg-gold-light text-black font-brand font-bold transition-all duration-cine flex items-center justify-center gap-3 uppercase tracking-[0.3em] text-[12px] depth-card">
                     <Icon name="share" size={24} />
                     مشاركة التقرير السيادي
                   </button>

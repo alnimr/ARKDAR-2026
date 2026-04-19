@@ -3,6 +3,7 @@ import NextImage from 'next/image';
 import { Link } from '@/i18n/routing';
 import Icon from './core/Icon';
 import BackToTop from './BackToTop';
+import { MamlukStar, SovereignDivider } from './core/MamlukOrnaments';
 
 export default async function Footer() {
   const t = await getTranslations('Footer');
@@ -11,14 +12,9 @@ export default async function Footer() {
 
   return (
     <footer className="mt-48 relative z-20 layer-1 border-t border-quiet font-brand overflow-hidden">
-      {/* ── Sovereign Watermark: Five Strands ── 4-8% Opacity */}
-      <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none opacity-[0.06] select-none">
-        <NextImage
-          src="/images/brand/strands/Value_Strands.svg"
-          alt=""
-          fill
-          className="object-contain object-right-top cinema-lut"
-        />
+      {/* ── Sovereign Watermark: Mamluk Star ── 4-8% Opacity */}
+      <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-[0.06] select-none flex items-center justify-end">
+        <MamlukStar type={16} size={600} degree="hidden" color="var(--color-gold)" className="-mr-64" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-40">
@@ -103,8 +99,10 @@ export default async function Footer() {
           </div>
         </div>
 
+        <SovereignDivider className="opacity-20 !my-24" />
+
         {/* ── Bottom Bar ── */}
-        <div className="mt-40 pt-16 flex flex-col md:flex-row items-center justify-between gap-12 text-[10px] font-brand font-bold border-t border-quiet text-ghost/40 uppercase tracking-[0.6em]">
+        <div className="mt-12 pt-16 flex flex-col md:flex-row items-center justify-between gap-12 text-[10px] font-brand font-bold border-t border-quiet text-ghost/40 uppercase tracking-[0.6em]">
           <p>{t('rights')}</p>
           <div className="flex items-center gap-12">
             <Link href="/privacy" className="hover:text-gold transition-all duration-cine">{t('privacy')}</Link>
