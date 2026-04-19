@@ -4,7 +4,7 @@
  */
 
 export const ARKDAR_SYSTEM = {
-  // الحالة: سيادي (Sovereign DNA v3.1)
+  // الحالة: سيادي (Royal DNA v3.1)
   dark: {
     bg: "#0D0B08",
     surface: "#111009",
@@ -13,17 +13,21 @@ export const ARKDAR_SYSTEM = {
     goldLight: "#D4AF6A",
     goldDim: "#6B5119",
     border: "hsla(43, 64%, 45%, 0.25)",
-    glass: { 
-      blur: "12px", 
-      border: "1px hsla(43, 64%, 45%, 0.1)" 
-    }
+    layer1: "#111009",
+    layer2: "#161410",
+    layer3: "#1C1914",
+    layer4: "#222018"
   },
   light: {
     bg: "#F2EBD9",
     surface: "#EBE4D2",
     text: "#0D0B08",
     gold: "#B8922A",
-    border: "rgba(184, 146, 42, 0.55)"
+    border: "hsla(43, 64%, 45%, 0.35)",
+    layer1: "#EBE4D2",
+    layer2: "#E4DDCB",
+    layer3: "#DDD6C4",
+    layer4: "#D6CFBD"
   },
   geometry: {
     radius: "0px", // الصرامة السيادية
@@ -41,8 +45,8 @@ export const ARKDAR_SYSTEM = {
       cine: "800ms"
     },
     ease: {
-      arrow: "cubic-bezier(0.76, 0, 0.24, 1)",
-      feather: "cubic-bezier(0.34, 1.28, 0.64, 1)",
+      arrow: "cubic-bezier(0.4, 0, 0.2, 1)",
+      feather: "cubic-bezier(0.16, 1, 0.3, 1)",
       draw: "cubic-bezier(0.4, 0, 0.2, 1)"
     }
   }

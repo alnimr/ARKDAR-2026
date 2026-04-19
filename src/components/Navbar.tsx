@@ -52,8 +52,8 @@ export default function Navbar() {
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-cine ease-feather ${
       isScrolled ? 'py-0 px-2 md:px-0' : 'py-2 md:py-8 px-2 md:px-16'
     } font-brand animate-feather`}>
-      <div className={`s-container flex items-center justify-between px-4 md:px-10 py-3 md:py-6 transition-all duration-cine layer-1 border border-quiet depth-card rounded-none ${
-        isScrolled ? 'border-gold bg-layer-0/90 backdrop-blur-md' : ''
+      <div className={`s-container flex items-center justify-between px-4 md:px-10 py-3 md:py-6 transition-all duration-cine border border-quiet depth-card rounded-none ${
+        isScrolled ? 'border-gold bg-layer-1 layer-sovereign' : 'bg-layer-1'
       }`}>
 
         <Link href="/" className="flex items-center gap-3 md:gap-6 group relative">

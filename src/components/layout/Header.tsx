@@ -4,7 +4,7 @@ import { APP_ROUTES } from '@/config/routes';
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full layer-1 border-b border-quiet backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full layer-1 border-b border-quiet layer-sovereign">
       <div className="max-w-7xl mx-auto flex h-24 items-center justify-between px-6 lg:px-10">
         
         {/* Logo Area */}
