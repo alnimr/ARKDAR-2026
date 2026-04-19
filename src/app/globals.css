@@ -31,6 +31,10 @@
   --background:           var(--layer-0);
   --foreground:           var(--color-ivory);
 
+  /* ── COLOR SEMANTICS ── */
+  --color-primary:        var(--color-gold);
+  --color-secondary:      var(--color-gold-dim);
+  
   /* ── TEXT HIERARCHY (dark) ── */
   --text-primary:         var(--color-ivory);
   --text-secondary:       hsla(37, 33%, 91%, 0.62);
@@ -119,11 +123,25 @@
   --color-gold: var(--color-gold);
   --color-gold-light: var(--color-gold-light);
   --color-gold-dim: var(--color-gold-dim);
-  --color-black: var(--color-black);
+  --color-black: var(--color-black); /* Overriding Tailwind black with Sovereign Black */
   --color-ivory: var(--color-ivory);
   --color-marble: var(--color-marble);
   --color-lapis: var(--color-lapis);
   --color-crimson: var(--color-crimson);
+
+  /* Semantic Colors for Tailwind Utilities */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-ghost: var(--text-ghost);
+  --color-quiet: var(--border-quiet);
+  --color-strong: var(--border-strong);
+  
+  /* Layer Colors */
+  --color-layer-0: var(--layer-0);
+  --color-layer-1: var(--layer-1);
+  --color-layer-2: var(--layer-2);
+  --color-layer-3: var(--layer-3);
+  --color-layer-4: var(--layer-4);
 
   --radius-base: 0px;
   --radius-large: 0px;
@@ -147,11 +165,9 @@
   --border-strong:        hsla(43, 64%, 45%, 0.35);
   --border-quiet:         hsla(43, 64%, 45%, 0.15);
   
-  /* ── NAV OFFSETS ── */
-  --nav-h-desktop:        160px;
-  --nav-h-mobile:         100px;
-  --nav-h-scrolled:       80px;
-}
+  /* Re-defining sovereign black for light mode utilities if needed */
+  --color-black:          #0D0B08; 
+
 
 /* ══════════════════════════════════════════════════════════════
 /* ══════════════════════════════════════════════════════════════
@@ -232,7 +248,7 @@ body {
   color: var(--text-primary);
   font-family: var(--font-brand);
   line-height: var(--lh-body);
-  letter-spacing: var(--track-body);
+  letter-spacing: 0; /* الصرامة السيادية: لا تباعد للحروف العربية */
   transition: background-color var(--dur-mod) var(--ease-draw);
   position: relative;
 }
@@ -250,7 +266,7 @@ body::after {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-brand);
   line-height: var(--lh-heading);
-  letter-spacing: var(--track-tight);
+  letter-spacing: 0 !important; /* محظور على الخط العربي */
   margin: 0;
   color: var(--color-gold);
 }
@@ -258,8 +274,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: clamp(48px, 7vw, var(--text-h1)); font-weight: 700; line-height: var(--lh-display); }
 h2 { font-size: clamp(36px, 5vw, var(--text-h2)); font-weight: 600; line-height: var(--lh-display); }
 h3 { font-size: var(--text-h3); font-weight: 600; }
-h4 { font-size: var(--text-h4); font-weight: 500; }
-h5 { font-size: var(--text-h5); font-weight: 500; }
+h4 { font-size: var(--text-h4); font-weight: 600; }
+h5 { font-size: var(--text-h5); font-weight: 600; }
 
 p  { font-size: var(--text-body); color: var(--text-secondary); line-height: var(--lh-body); margin: 0 0 1em; }
 
@@ -269,6 +285,7 @@ small, .eyebrow {
   letter-spacing: var(--track-sovereign);
   text-transform: uppercase;
   color: var(--color-gold-dim);
+  display: inline-block;
 }
 
 code, pre, .mono {
@@ -502,7 +519,14 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
   animation: spin-slow 20s linear infinite;
 }
 
-/* ── GLOBAL RADIUS PURGE ── */
+/* ── GLOBAL SOVEREIGN PURGE ── */
 * {
   border-radius: 0 !important;
+  /* Allow backdrop-filter for luxury layering, but keep it sharp */
+}
+
+/* Latin-specific tracking overrides */
+[lang="en"] h1, [lang="en"] h2, [lang="en"] h3, 
+.font-latin {
+  letter-spacing: var(--track-tight) !important;
 }

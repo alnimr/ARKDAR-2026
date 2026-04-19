@@ -58,7 +58,7 @@ export const MamlukStar: React.FC<OrnamentProps> = ({
 
     if (degree === 'hidden') {
         return (
-            <svg width={size} height={size} viewBox="0 0 200 200" fill="none" className={`pointer-events-none select-none ${className}`} style={{ opacity: 0.045 * opacity }}>
+            <svg width={size} height={size} viewBox="0 0 200 200" fill="none" className={`pointer-events-none select-none ${className}`} style={{ opacity }}>
                 <path d={starPath(cx, cy, R, r, n)} fill={color} />
                 <path d={starPath(cx, cy, R, r, n)} stroke={color} strokeWidth="1" fill="none" />
             </svg>
@@ -68,14 +68,14 @@ export const MamlukStar: React.FC<OrnamentProps> = ({
     if (degree === 'divider') {
         return (
             <svg width={size} height={size} viewBox="0 0 200 200" fill="none" className={className} style={{ opacity }}>
-                <path d={starPath(cx, cy, R, r, n)} fill={color} opacity="0.12" />
-                <path d={starPath(cx, cy, R, r, n)} stroke={color} strokeWidth="1.2" fill="none" />
-                <circle cx={cx} cy={cy} r="4" fill={accentColor} opacity="0.7" />
+                <path d={starPath(cx, cy, R, r, n)} fill={color} className="opacity-[0.12]" />
+                <path d={starPath(cx, cy, R, r, n)} stroke={color} strokeWidth="1.2" fill="none" className="animate-draw" />
+                <circle cx={cx} cy={cy} r="4" fill={accentColor} className="opacity-[0.7]" />
             </svg>
         );
     }
 
-    // Sovereign Degree: Full complexity
+    // Sovereign Degree: Full complexity + Construction Animation
     return (
         <svg width={size} height={size} viewBox="0 0 200 200" fill="none" className={className} style={{ opacity }}>
             {/* Background layers */}
@@ -86,7 +86,8 @@ export const MamlukStar: React.FC<OrnamentProps> = ({
                         key={ring}
                         d={starPath(cx, cy, R * rScale, r * rScale, n, -Math.PI / 2 + ring * Math.PI / (n * 2))}
                         fill={color}
-                        opacity={0.06 + ring * 0.04}
+                        className="transition-opacity duration-exp"
+                        style={{ opacity: 0.06 + ring * 0.04 }}
                     />
                 );
             })}
@@ -96,7 +97,9 @@ export const MamlukStar: React.FC<OrnamentProps> = ({
                 <circle 
                     key={i}
                     cx={cx} cy={cy} r={radius}
-                    stroke={color} strokeWidth="0.5" fill="none" opacity={0.2 - i * 0.05}
+                    stroke={color} strokeWidth="0.5" fill="none"
+                    className="opacity-[0.15] animate-pulse"
+                    style={{ animationDelay: `${i * 200}ms` }}
                 />
             ))}
 
@@ -111,34 +114,24 @@ export const MamlukStar: React.FC<OrnamentProps> = ({
                     <line 
                         key={i}
                         x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y}
-                        stroke={color} strokeWidth="0.4" opacity="0.2"
+                        stroke={color} strokeWidth="0.4" className="opacity-[0.2] animate-draw"
+                        style={{ animationDelay: `${i * 50}ms` }}
                     />
                 );
             })}
 
             {/* Main star */}
-            <path d={starPath(cx, cy, R, r, n)} stroke={accentColor} strokeWidth="1.5" fill="none" />
+            <path d={starPath(cx, cy, R, r, n)} stroke={accentColor} strokeWidth="1.5" fill="none" className="animate-draw" />
 
             {/* Secondary star rotated */}
             <path 
                 d={starPath(cx, cy, R * 0.6, r * 0.6, n, -Math.PI / 2 + Math.PI / n)} 
-                stroke={color} strokeWidth="0.8" fill="none" opacity="0.55" 
+                stroke={color} strokeWidth="0.8" fill="none" className="opacity-[0.55] animate-draw" 
+                style={{ animationDelay: '300ms' }}
             />
 
-            {/* Third star */}
-            <path d={starPath(cx, cy, R * 0.35, r * 0.35, n)} stroke={accentColor} strokeWidth="0.6" fill="none" opacity="0.4" />
-
-            {/* Point dots */}
-            {Array.from({ length: n }).map((_, i) => {
-                const a = -Math.PI / 2 + (2 * Math.PI * i) / n;
-                const p = { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) };
-                return (
-                    <circle key={i} cx={p.x} cy={p.y} r="2.5" fill={accentColor} opacity="0.8" />
-                );
-            })}
-
             {/* Center */}
-            <circle cx={cx} cy={cy} r="4" fill={accentColor} opacity="0.7" />
+            <circle cx={cx} cy={cy} r="4" fill={accentColor} className="opacity-[0.7] animate-feather" />
         </svg>
     );
 };
