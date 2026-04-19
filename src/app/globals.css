@@ -426,6 +426,17 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
     linear-gradient(var(--border-quiet) 1px, transparent 1px),
     linear-gradient(90deg, var(--border-quiet) 1px, transparent 1px);
   background-size: 40px 40px;
+  position: relative;
+}
+
+/* ── Mamluk DNA: Geometric Constants ── */
+.mamluk-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 2px 2px, var(--border-quiet) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
 }
 
 .text-shadow-gold {
@@ -454,6 +465,15 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
   border: 1px solid var(--border-quiet);
 }
 
+/* ── ANIMATIONS ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
 
 /* ── GLOBAL RADIUS PURGE ── */
 * {
