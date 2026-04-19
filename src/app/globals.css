@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=El+Messiri:wght@400;500;600;700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
 /* ══════════════════════════════════════════════════════════════
    ARKDAR — SOVEREIGN DESIGN TOKENS
@@ -167,7 +167,7 @@
   
   /* Re-defining sovereign black for light mode utilities if needed */
   --color-black:          #0D0B08; 
-
+}
 
 /* ══════════════════════════════════════════════════════════════
 /* ══════════════════════════════════════════════════════════════
