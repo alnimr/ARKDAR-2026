@@ -30,7 +30,7 @@ export default function AdminSidebar({ locale }: { locale: string }) {
   ];
 
   return (
-    <aside className={`fixed top-0 bottom-0 ${isRtl ? 'right-0' : 'left-0'} w-72 bg-black border-${isRtl ? 'l' : 'r'} border-quiet z-50 flex flex-col selection:bg-gold selection:text-black`}>
+    <aside className={`fixed top-[var(--nav-h-mobile)] lg:top-[var(--nav-h-desktop)] bottom-0 ${isRtl ? 'right-0' : 'left-0'} w-72 bg-black border-${isRtl ? 'l' : 'r'} border-quiet z-50 flex flex-col selection:bg-gold selection:text-black`}>
       {/* Brand */}
       <div className="h-24 flex items-center px-10 border-b border-quiet layer-1">
         <span className="text-xl font-brand text-white tracking-[0.25em] uppercase">

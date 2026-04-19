@@ -137,7 +137,7 @@ export default function CoachDashboard() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.6 }}
-              className="layer-1 p-10 h-full sticky top-8 border border-quiet depth-card"
+              className="layer-1 p-10 h-full sticky-sovereign-nav border border-quiet depth-card"
             >
               <div className="flex items-center justify-between mb-12">
                  <h4 className="text-2xl font-brand font-bold text-white uppercase tracking-tight border-s-2 border-gold ps-6">تفاصيل الجلسة</h4>

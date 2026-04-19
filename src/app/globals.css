@@ -97,6 +97,13 @@
   --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
   --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 80px; --sp-10: 120px; --sp-11: 160px;
 
+  /* ── LAYOUT DIMENSIONS ── */
+  --nav-h-mobile:         64px;
+  --nav-h-desktop:        120px; /* Base height for top padding */
+  --nav-h-scrolled:       60px;
+  --nav-z-index:          100;
+  --sub-nav-z-index:      90;
+
   /* ── LINE HEIGHTS ── */
   --lh-display:           0.9;
   --lh-heading:           1.1;
@@ -440,9 +447,35 @@ a:hover { color: var(--color-gold-light); letter-spacing: var(--track-hover); }
 .card-sovereign:hover { border-color: hsla(43, 64%, 45%, 0.30); }
 
 /* ── SOVEREIGN UTILITIES ── */
-.pt-sovereign-nav { padding-top: var(--nav-h-mobile); }
-@media (min-width: 768px) {
-  .pt-sovereign-nav { padding-top: var(--nav-h-desktop); }
+.pt-sovereign-nav { 
+  padding-top: var(--nav-h-mobile); 
+}
+
+@media (min-width: 1024px) {
+  .pt-sovereign-nav { 
+    padding-top: var(--nav-h-desktop); 
+  }
+}
+
+.sticky-sovereign-nav {
+  position: sticky;
+  top: calc(var(--nav-h-mobile) + 16px);
+  z-index: var(--sub-nav-z-index);
+}
+
+.sticky-stacked-nav {
+  position: sticky;
+  top: var(--nav-h-mobile);
+  z-index: var(--sub-nav-z-index);
+}
+
+@media (min-width: 1024px) {
+  .sticky-sovereign-nav {
+    top: calc(var(--nav-h-desktop) + 32px);
+  }
+  .sticky-stacked-nav {
+    top: var(--nav-h-desktop);
+  }
 }
 
 .px-sovereign { padding-left: 24px; padding-right: 24px; }

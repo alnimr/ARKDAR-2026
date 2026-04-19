@@ -67,7 +67,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
   const readTime = Math.ceil((post.content[locale as keyof typeof post.content] || "").split(' ').length / 200) || 5;
 
   return (
-    <aside className={`hidden lg:block w-80 flex-shrink-0 sticky top-56 h-fit ${isRtl ? 'ml-16' : 'mr-16'} font-brand selection:bg-gold selection:text-black`}>
+    <aside className={`hidden lg:block w-80 flex-shrink-0 sticky-sovereign-nav h-fit ${isRtl ? 'ml-16' : 'mr-16'} font-brand selection:bg-gold selection:text-black`}>
       {/* Metadata Section */}
       <div className="mb-24 space-y-12">
         <div className={`flex flex-col gap-4 ${isRtl ? 'items-start text-right' : 'items-start text-left'}`}>

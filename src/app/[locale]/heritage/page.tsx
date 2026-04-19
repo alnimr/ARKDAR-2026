@@ -55,7 +55,7 @@ export default async function HeritagePage({
       <div className="absolute inset-0 opacity-[0.03] layer-0 pointer-events-none" />
 
       {/* ── Sticky Sub-Navigation ── */}
-      <nav id="heritage-nav" className="sticky top-[80px] md:top-[var(--nav-h-scrolled)] z-50 w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
+      <nav id="heritage-nav" className="sticky-stacked-nav w-full layer-2 border-y border-quiet depth-card transition-all duration-cine">
         <div className="max-w-7xl mx-auto px-10 h-16 flex items-center justify-center gap-16 md:gap-24 overflow-x-auto no-scrollbar">
           {[
             { id: 'vision', label: t('navVision') },

@@ -12,7 +12,7 @@ export default function ArticleReadingProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-0.5 bg-gold z-[100] origin-left pointer-events-none"
+      className="fixed top-[var(--nav-h-mobile)] lg:top-[var(--nav-h-desktop)] left-0 right-0 h-0.5 bg-gold z-[90] origin-left pointer-events-none"
       style={{ scaleX }}
     />
   );

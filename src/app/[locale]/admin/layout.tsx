@@ -15,14 +15,14 @@ export default async function AdminLayout({
 
   return (
     <AuthGuard locale={locale}>
-      <div className="min-h-screen bg-black flex selection:bg-gold selection:text-black" dir={isRtl ? 'rtl' : 'ltr'}>
+      <div className="min-h-screen bg-black flex selection:bg-gold selection:text-black pt-sovereign-nav" dir={isRtl ? 'rtl' : 'ltr'}>
         {/* Sidebar */}
         <AdminSidebar locale={locale} />
       
         {/* Main Content Area */}
         <main className={`flex-1 min-h-screen ${isRtl ? 'mr-72' : 'ml-72'} bg-black`}>
           {/* Admin Header */}
-          <header className="h-24 border-b border-quiet layer-1 flex items-center px-12 sticky top-0 z-40">
+          <header className="h-24 border-b border-quiet layer-1 flex items-center px-12 sticky-stacked-nav">
             <h1 className="text-gold font-brand text-xl uppercase tracking-[0.2em] leading-none pt-1">
               {isRtl ? 'مركز القيادة الموحد' : 'Unified Command Center'}
             </h1>
